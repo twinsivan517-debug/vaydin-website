@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vaydin — Digital Intelligence for Aesthetic Clinics</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300;1,9..40,400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--gold:#c9a44a;--gl:#e8d48b;--gb:#f5d978;--gd:#8a6d1b;--bg:#0a0a0a;--bgc:#111;--tx:#f0ece2;--tx2:#8a8578;--tx3:#5a5549;--brd:#222218;--grn:#4ade80;--red:#f87171;--fd:'Cormorant Garamond',Georgia,serif;--fb:'DM Sans',sans-serif}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--tx);font-family:var(--fb);line-height:1.6;overflow-x:hidden}
+.container{max-width:1200px;margin:0 auto;padding:0 24px}
+nav,section,footer,.mag-div{position:relative;z-index:2}
+.sl{font-size:11px;font-weight:600;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:16px}
+.st{font-family:var(--fd);font-size:clamp(32px,5vw,52px);font-weight:300;line-height:1.15;margin-bottom:20px}
+.ss{font-size:16px;color:var(--tx2);max-width:560px;line-height:1.7}
+
+/* ═══════════ FULL-PAGE ELECTRIC FIELD BACKGROUND ═══════════ */
+.elec-bg{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.elec-bg svg{position:absolute;width:100%;height:100%}
+
+/* Horizontal wire grid */
+.wire{fill:none;stroke:rgba(201,164,74,.06);stroke-width:.5}
+.wire-glow{fill:none;stroke:rgba(201,164,74,.12);stroke-width:1.5;filter:blur(2px)}
+
+/* Animated current pulses traveling along wires */
+.pulse-line{fill:none;stroke:var(--gold);stroke-width:1;stroke-dasharray:30 200;opacity:.4;filter:drop-shadow(0 0 4px rgba(201,164,74,.6))}
+.pl1{animation:pulse-travel 8s linear infinite}
+.pl2{animation:pulse-travel 12s linear infinite;animation-delay:-3s;stroke-dasharray:20 250}
+.pl3{animation:pulse-travel 10s linear infinite;animation-delay:-6s;stroke-dasharray:40 180}
+.pl4{animation:pulse-travel 15s linear infinite;animation-delay:-2s;stroke-dasharray:15 300;opacity:.25}
+.pl5{animation:pulse-travel 9s linear infinite;animation-delay:-5s;stroke-dasharray:25 220;opacity:.35}
+.pl6{animation:pulse-travel 11s linear infinite;animation-delay:-8s;stroke-dasharray:35 190;opacity:.3}
+
+@keyframes pulse-travel{0%{stroke-dashoffset:800}100%{stroke-dashoffset:-800}}
+
+/* Vertical sparks */
+.v-spark{position:absolute;width:1px;background:linear-gradient(180deg,transparent,rgba(201,164,74,.4),var(--gold),rgba(201,164,74,.4),transparent);opacity:0;animation:spark-fall linear infinite}
+.vs1{left:8%;height:120px;animation-duration:4s;animation-delay:0s}
+.vs2{left:23%;height:80px;animation-duration:3.5s;animation-delay:1.2s}
+.vs3{left:45%;height:150px;animation-duration:5s;animation-delay:2.8s}
+.vs4{left:67%;height:90px;animation-duration:3.8s;animation-delay:.5s}
+.vs5{left:82%;height:110px;animation-duration:4.5s;animation-delay:3.5s}
+.vs6{left:95%;height:70px;animation-duration:3.2s;animation-delay:1.8s}
+.vs7{left:15%;height:100px;animation-duration:6s;animation-delay:4s}
+.vs8{left:55%;height:130px;animation-duration:4.2s;animation-delay:2s}
+.vs9{left:75%;height:60px;animation-duration:3s;animation-delay:5s}
+.vs10{left:35%;height:95px;animation-duration:5.5s;animation-delay:3s}
+
+@keyframes spark-fall{
+  0%{opacity:0;transform:translateY(-100vh)}
+  5%{opacity:.6}
+  50%{opacity:.3}
+  95%{opacity:.5}
+  100%{opacity:0;transform:translateY(100vh)}
+}
+
+/* Floating orb nodes */
+.orb{position:absolute;border-radius:50%;background:radial-gradient(circle,rgba(201,164,74,.15),transparent);animation:orb-pulse 4s ease-in-out infinite}
+.orb::after{content:'';position:absolute;top:50%;left:50%;width:4px;height:4px;margin:-2px;border-radius:50%;background:var(--gold);box-shadow:0 0 8px var(--gold),0 0 20px rgba(201,164,74,.3)}
+.o1{width:80px;height:80px;top:15%;left:5%;animation-delay:0s}
+.o2{width:60px;height:60px;top:35%;right:8%;animation-delay:1.5s}
+.o3{width:100px;height:100px;top:55%;left:12%;animation-delay:3s}
+.o4{width:50px;height:50px;top:75%;right:15%;animation-delay:.8s}
+.o5{width:70px;height:70px;top:90%;left:40%;animation-delay:2.2s}
+.o6{width:90px;height:90px;top:25%;right:25%;animation-delay:4s}
+
+@keyframes orb-pulse{0%,100%{transform:scale(1);opacity:.5}50%{transform:scale(1.3);opacity:.8}}
+
+/* ═══════════ MAGNETIC SECTION DIVIDERS ═══════════ */
+.mag-div{height:100px;display:flex;align-items:center;justify-content:center;overflow:visible;position:relative}
+.mag-div::before{content:'';position:absolute;left:50%;top:50%;width:0;height:0;border-radius:50%;background:radial-gradient(circle,rgba(201,164,74,.15),transparent);transform:translate(-50%,-50%);transition:all .6s cubic-bezier(.22,1,.36,1)}
+.mag-div.in-view::before{width:600px;height:200px}
+
+/* Center node */
+.mag-node{width:12px;height:12px;border-radius:50%;background:var(--gold);position:relative;z-index:3;box-shadow:0 0 12px var(--gold),0 0 30px rgba(201,164,74,.3);transition:all .5s}
+.mag-div.in-view .mag-node{box-shadow:0 0 20px var(--gold),0 0 60px rgba(201,164,74,.5),0 0 100px rgba(201,164,74,.2);transform:scale(1.5)}
+
+/* Magnetic field lines */
+.mag-field{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none}
+.mag-ring{position:absolute;border:1px solid rgba(201,164,74,.08);border-radius:50%;transition:all .8s cubic-bezier(.22,1,.36,1)}
+.mr1{width:40px;height:40px;transition-delay:.05s}
+.mr2{width:80px;height:80px;transition-delay:.1s}
+.mr3{width:140px;height:140px;transition-delay:.15s}
+.mr4{width:220px;height:220px;transition-delay:.2s}
+.mr5{width:320px;height:320px;transition-delay:.25s}
+.mag-div.in-view .mr1{width:60px;height:60px;border-color:rgba(201,164,74,.25)}
+.mag-div.in-view .mr2{width:120px;height:120px;border-color:rgba(201,164,74,.18)}
+.mag-div.in-view .mr3{width:200px;height:200px;border-color:rgba(201,164,74,.12)}
+.mag-div.in-view .mr4{width:300px;height:300px;border-color:rgba(201,164,74,.07)}
+.mag-div.in-view .mr5{width:420px;height:420px;border-color:rgba(201,164,74,.04)}
+
+/* Spark particles on divider */
+.spark-p{position:absolute;width:3px;height:3px;border-radius:50%;background:var(--gold);opacity:0;transition:all .6s}
+.mag-div.in-view .spark-p{opacity:1}
+.sp1{transition-delay:.1s}.mag-div.in-view .sp1{transform:translate(-80px,-30px);opacity:.8}
+.sp2{transition-delay:.15s}.mag-div.in-view .sp2{transform:translate(90px,25px);opacity:.6}
+.sp3{transition-delay:.2s}.mag-div.in-view .sp3{transform:translate(-50px,40px);opacity:.7}
+.sp4{transition-delay:.25s}.mag-div.in-view .sp4{transform:translate(70px,-35px);opacity:.5}
+.sp5{transition-delay:.12s}.mag-div.in-view .sp5{transform:translate(-120px,10px);opacity:.4}
+.sp6{transition-delay:.18s}.mag-div.in-view .sp6{transform:translate(130px,-15px);opacity:.3}
+
+/* Left/right wire connections */
+.mag-wire{position:absolute;top:50%;height:1px;background:linear-gradient(90deg,transparent,rgba(201,164,74,.3),var(--gold),rgba(201,164,74,.3),transparent);transition:width .8s cubic-bezier(.22,1,.36,1);width:0}
+.mag-wire-l{right:50%;transform-origin:right}
+.mag-wire-r{left:50%;transform-origin:left}
+.mag-div.in-view .mag-wire{width:50%}
+
+/* ═══════════ ANIMATIONS ═══════════ */
+@keyframes fadeUp{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes shimmer{0%{background-position:-200% center}100%{background-position:200% center}}
+@keyframes float{0%,100%{transform:translateY(0) rotateX(12deg) rotateY(-8deg)}50%{transform:translateY(-12px) rotateX(12deg) rotateY(-8deg)}}
+@keyframes float2{0%,100%{transform:translateY(0) rotateX(8deg) rotateY(6deg)}50%{transform:translateY(-10px) rotateX(8deg) rotateY(6deg)}}
+@keyframes float3{0%,100%{transform:translateY(0) rotateX(5deg) rotateY(-5deg)}50%{transform:translateY(-8px) rotateX(5deg) rotateY(-5deg)}}
+@keyframes pulse{0%,100%{box-shadow:0 0 20px rgba(201,164,74,.15)}50%{box-shadow:0 0 40px rgba(201,164,74,.3)}}
+@keyframes wa-bounce{0%,100%{transform:scale(1)}50%{transform:scale(1.08)}}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:20px 0;transition:all .4s;background:transparent}
+nav.scrolled{background:rgba(10,10,10,.95);backdrop-filter:blur(20px);border-bottom:1px solid var(--brd);padding:14px 0}
+nav .container{display:flex;align-items:center;justify-content:space-between}
+.nav-logo img{height:44px;opacity:.95}
+.nav-links{display:flex;gap:28px;align-items:center}
+.nav-links a{font-size:12px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;color:var(--tx2);text-decoration:none;transition:color .3s}
+.nav-links a:hover{color:var(--gold)}
+.nav-cta{background:linear-gradient(135deg,var(--gold),var(--gd))!important;color:var(--bg)!important;padding:10px 22px;border-radius:6px;font-weight:600!important;transition:transform .3s,box-shadow .3s!important}
+.nav-cta:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(201,164,74,.3)}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;align-items:center;overflow:hidden;padding-top:80px}
+.hero::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:radial-gradient(ellipse at 30% 50%,rgba(201,164,74,.06) 0%,transparent 50%),radial-gradient(ellipse at 70% 30%,rgba(201,164,74,.04) 0%,transparent 40%);pointer-events:none}
+.hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;position:relative;z-index:2}
+.hero-content{animation:fadeUp 1s ease-out}
+.hbadge{display:inline-flex;align-items:center;gap:8px;background:rgba(201,164,74,.1);border:1px solid rgba(201,164,74,.2);padding:8px 16px;border-radius:100px;font-size:12px;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:32px}
+.hbadge::before{content:'';width:6px;height:6px;background:var(--gold);border-radius:50%;animation:pulse 2s infinite}
+.hero h1{font-family:var(--fd);font-size:clamp(40px,5.5vw,68px);font-weight:300;line-height:1.08;margin-bottom:24px}
+.hero h1 em{font-style:italic;background:linear-gradient(135deg,var(--gl),var(--gold),var(--gd));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-desc{font-size:17px;color:var(--tx2);max-width:480px;line-height:1.75;margin-bottom:40px}
+.cta-btn{display:inline-flex;align-items:center;gap:12px;background:linear-gradient(135deg,var(--gold),var(--gd));color:var(--bg);padding:18px 40px;border-radius:8px;font-size:15px;font-weight:600;letter-spacing:1px;text-transform:uppercase;text-decoration:none;border:none;cursor:pointer;transition:all .4s;position:relative;overflow:hidden}
+.cta-btn::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(255,255,255,.2),transparent);background-size:200% 100%;animation:shimmer 3s infinite}
+.cta-btn:hover{transform:translateY(-3px);box-shadow:0 16px 48px rgba(201,164,74,.35)}
+.cta-btn svg,.cta-btn span{position:relative;z-index:1}
+.cta-btn svg{width:18px;height:18px}
+
+/* 3D PHONE */
+.hero-visual{perspective:1200px;animation:fadeIn 1.2s ease-out .3s both}
+.phone{margin:0 auto;transform-style:preserve-3d}
+.pf1{animation:float 6s ease-in-out infinite;transform:rotateX(12deg) rotateY(-8deg)}
+.pf2{animation:float2 7s ease-in-out infinite;transform:rotateX(8deg) rotateY(6deg)}
+.pf3{animation:float3 6.5s ease-in-out infinite;transform:rotateX(5deg) rotateY(-5deg)}
+.ph-fr{background:#1a1a1a;border-radius:36px;padding:12px;box-shadow:0 0 0 1px rgba(201,164,74,.15),0 25px 60px rgba(0,0,0,.6),0 0 100px rgba(201,164,74,.08),inset 0 1px 0 rgba(255,255,255,.05)}
+.ph-sm .ph-fr{border-radius:28px;padding:8px}
+.ph-n{width:100px;height:24px;background:#0a0a0a;border-radius:0 0 14px 14px;margin:0 auto 6px}
+.ph-sm .ph-n{width:70px;height:18px;border-radius:0 0 10px 10px;margin:0 auto 4px}
+.ph-s{background:#0d1117;border-radius:24px;padding:14px;overflow:hidden}
+.ph-sm .ph-s{border-radius:20px;padding:10px}
+.wa-hd{display:flex;align-items:center;gap:8px;padding-bottom:10px;border-bottom:1px solid #1a2332;margin-bottom:12px}
+.wa-av{width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--gd));display:flex;align-items:center;justify-content:center;font-weight:700;font-size:12px;color:var(--bg);flex-shrink:0}
+.wa-nm{font-size:13px;font-weight:600;color:#e4e4e4}
+.wa-st{font-size:10px;color:#6b7280}
+.wm{max-width:88%;padding:8px 12px;border-radius:10px;margin-bottom:6px;font-size:12px;line-height:1.45}
+.wm-i{background:#1a2332;color:#e4e4e4;border-bottom-left-radius:3px}
+.wm-o{background:#005c4b;color:#e4e4e4;margin-left:auto;border-bottom-right-radius:3px}
+.wm-t{font-size:9px;color:#6b7280;text-align:right;margin-top:3px}
+
+/* TRUST */
+.trust{padding:40px 0;text-align:center;border-bottom:1px solid var(--brd)}
+.trust .container{display:flex;align-items:center;justify-content:center;gap:48px;flex-wrap:wrap}
+.ti{display:flex;align-items:center;gap:12px}
+.tn-num{font-family:var(--fd);font-size:32px;font-weight:300;color:var(--gold);line-height:1;text-shadow:0 0 20px rgba(201,164,74,.2)}
+.tn-txt{text-align:left;line-height:1.3;font-size:14px;color:var(--tx2)}
+.tn-txt span{display:block;font-size:11px;color:var(--tx3);letter-spacing:1px;text-transform:uppercase}
+
+/* STATS */
+.stats-row{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;padding:80px 0 0}
+.sc{background:var(--bgc);border:1px solid var(--brd);border-radius:16px;padding:28px;text-align:center;transition:all .4s}
+.sc:hover{transform:translateY(-4px);border-color:rgba(201,164,74,.2)}
+.sc-n{font-family:var(--fd);font-size:40px;font-weight:300;color:var(--gold);line-height:1;margin-bottom:8px;text-shadow:0 0 20px rgba(201,164,74,.2)}
+.sc-l{font-size:13px;color:var(--tx2)}
+
+/* HOW */
+.how{padding:120px 0}
+.how-hd{text-align:center;margin-bottom:80px}
+.how-hd .ss{margin:0 auto}
+.cg{display:grid;grid-template-columns:1fr 60px 1fr;gap:0;align-items:start}
+.cc{background:var(--bgc);border-radius:20px;padding:36px 28px;border:1px solid var(--brd);transition:all .5s;position:relative;overflow:hidden}
+.cc::before{content:'';position:absolute;top:0;left:0;right:0;height:3px}
+.cc-b::before{background:linear-gradient(90deg,var(--red),transparent)}.cc-b:hover{border-color:rgba(248,113,113,.3)}
+.cc-g::before{background:linear-gradient(90deg,var(--grn),transparent)}.cc-g:hover{border-color:rgba(74,222,128,.3)}
+.ct{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;padding:6px 14px;border-radius:100px;margin-bottom:20px}
+.ct-b{color:var(--red);background:rgba(248,113,113,.1)}.ct-g{color:var(--grn);background:rgba(74,222,128,.1)}
+.ctt{font-family:var(--fd);font-size:22px;font-weight:400;margin-bottom:20px}
+.cs{background:#0d1117;border-radius:14px;padding:16px}
+.cb{max-width:85%;padding:8px 12px;border-radius:10px;margin-bottom:6px;font-size:12px;line-height:1.45}
+.cb-i{background:#1a2332;color:#e4e4e4;border-bottom-left-radius:3px}
+.cb-o{background:#005c4b;color:#e4e4e4;margin-left:auto;border-bottom-right-radius:3px}
+.ctb{font-size:10px;color:var(--red);margin:10px 0 6px;text-align:center}
+.ctg{font-size:10px;color:var(--grn);margin:10px 0 6px;text-align:center}
+.vs{display:flex;align-items:center;justify-content:center;align-self:center}
+.vsb{width:48px;height:48px;border-radius:50%;background:var(--bgc);border:2px solid var(--gold);display:flex;align-items:center;justify-content:center;font-family:var(--fd);font-size:16px;font-weight:600;color:var(--gold);box-shadow:0 0 20px rgba(201,164,74,.2)}
+.rs{margin-top:20px;padding:14px;border-radius:10px;display:flex;align-items:center;gap:10px;font-size:13px;font-weight:500}
+.rs-b{background:rgba(248,113,113,.06);border:1px solid rgba(248,113,113,.15);color:var(--red)}
+.rs-g{background:rgba(74,222,128,.06);border:1px solid rgba(74,222,128,.15);color:var(--grn)}
+
+/* CALC */
+.calc{padding:120px 0}
+.calc-hd{text-align:center;margin-bottom:60px}
+.calc-hd .ss{margin:0 auto}
+.calc-bx{max-width:760px;margin:0 auto;background:var(--bgc);border:1px solid var(--brd);border-radius:24px;padding:48px;position:relative;overflow:hidden}
+.calc-bx::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+.cr{display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px;margin-bottom:40px}
+.cf label{display:block;font-size:12px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;color:var(--tx2);margin-bottom:10px}
+.cf input{width:100%;background:var(--bg);border:1px solid var(--brd);border-radius:12px;padding:16px;font-family:var(--fb);font-size:20px;font-weight:500;color:var(--tx);text-align:center;outline:none;transition:border-color .3s,box-shadow .3s}
+.cf input:focus{border-color:var(--gold);box-shadow:0 0 16px rgba(201,164,74,.15)}
+.cf .u{font-size:12px;color:var(--tx3);text-align:center;margin-top:6px}
+.cres{background:linear-gradient(135deg,rgba(201,164,74,.08),rgba(201,164,74,.02));border:1px solid rgba(201,164,74,.2);border-radius:16px;padding:32px;text-align:center}
+.cres-l{font-size:13px;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:var(--tx2);margin-bottom:8px}
+.cres-v{font-family:var(--fd);font-size:56px;font-weight:300;color:var(--gold);line-height:1.2;text-shadow:0 0 30px rgba(201,164,74,.3)}
+.cres-s{font-size:14px;color:var(--tx3);margin-top:8px}
+.cfm{text-align:center;margin-top:20px;font-size:13px;color:var(--tx3)}
+
+/* DVR */
+.dvr{padding:120px 0}
+.dvr-hd{text-align:center;margin-bottom:60px}
+.dvr-hd .ss{margin:0 auto}
+.dvr-g{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start;max-width:1000px;margin:0 auto}
+.dvr-col{perspective:800px}
+.dvr-lb{text-align:center;margin-bottom:20px;font-size:12px;font-weight:600;letter-spacing:2px;text-transform:uppercase}
+.dvr-lb-b{color:var(--red)}.dvr-lb-g{color:var(--grn)}
+.dvr-ph{width:260px;margin:0 auto}
+.dvr-inf{margin-top:32px;background:var(--bgc);border:1px solid var(--brd);border-radius:16px;padding:28px;position:relative;overflow:hidden}
+.dvr-inf::before{content:'';position:absolute;top:0;left:0;right:0;height:2px}
+.di-e::before{background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+.di-i::before{background:linear-gradient(90deg,transparent,var(--grn),transparent)}
+.dvr-tg{display:inline-block;font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--gold);background:rgba(201,164,74,.1);padding:4px 12px;border-radius:100px;margin-bottom:12px}
+.dvr-tp{background:rgba(74,222,128,.1);color:var(--grn)}
+.dvr-nm{font-family:var(--fd);font-size:24px;font-weight:400;margin-bottom:4px}
+.dvr-pr{font-family:var(--fd);font-size:36px;font-weight:300;color:var(--gold);margin-bottom:2px}
+.dvr-pr span{font-size:14px;color:var(--tx2);font-family:var(--fb)}
+.dvr-per{font-size:12px;color:var(--tx3);margin-bottom:20px}
+.dvr-ft{list-style:none}
+.dvr-ft li{padding:7px 0;font-size:13px;color:var(--tx2);display:flex;align-items:flex-start;gap:10px;border-bottom:1px solid rgba(255,255,255,.03)}
+.dvr-ft li:last-child{border-bottom:none}
+.dvr-ck{color:var(--gold);font-size:12px;margin-top:2px;flex-shrink:0}
+.dvr-bt{display:block;text-align:center;padding:14px;border-radius:10px;font-size:13px;font-weight:600;letter-spacing:1px;text-transform:uppercase;text-decoration:none;transition:all .3s;cursor:pointer;border:none;width:100%;margin-top:20px}
+.dvr-bo{background:transparent;border:1px solid var(--brd);color:var(--tx)}.dvr-bo:hover{border-color:var(--gold);color:var(--gold)}
+.dvr-bg{background:linear-gradient(135deg,var(--gold),var(--gd));color:var(--bg)}.dvr-bg:hover{box-shadow:0 8px 32px rgba(201,164,74,.3);transform:translateY(-2px)}
+
+/* AGENCY */
+.agency{padding:120px 0}
+.ag-hd{text-align:center;margin-bottom:60px}
+.ag-hd .ss{margin:0 auto}
+.ag-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;max-width:900px;margin:0 auto;perspective:1200px}
+.ag-c{background:var(--bgc);border:1px solid var(--brd);border-radius:20px;padding:32px 28px;position:relative;overflow:hidden;transition:all .5s cubic-bezier(.22,1,.36,1);display:flex;flex-direction:column}
+.ag-c:hover{transform:translateY(-8px) rotateX(2deg);border-color:rgba(201,164,74,.3);box-shadow:0 30px 60px rgba(0,0,0,.5),0 0 40px rgba(201,164,74,.06)}
+.ag-c.ft{border-color:rgba(201,164,74,.4);background:linear-gradient(180deg,rgba(201,164,74,.06),var(--bgc))}
+.ag-c.ft::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--gd),var(--gold),var(--gd))}
+.ag-pop{position:absolute;top:14px;right:14px;font-size:9px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--gold);background:rgba(201,164,74,.12);padding:4px 10px;border-radius:100px}
+.ag-ic{width:48px;height:48px;border-radius:14px;display:flex;align-items:center;justify-content:center;margin-bottom:16px;font-size:22px}
+.ag-i1{background:rgba(201,164,74,.1)}.ag-i2{background:rgba(74,222,128,.1)}.ag-i3{background:rgba(96,165,250,.1)}.ag-i4{background:rgba(168,85,247,.1)}
+.ag-nm{font-family:var(--fd);font-size:22px;font-weight:400;margin-bottom:6px}
+.ag-pr{font-family:var(--fd);font-size:32px;font-weight:300;color:var(--gold)}
+.ag-pr span{font-size:13px;color:var(--tx2);font-family:var(--fb)}
+.ag-per{font-size:12px;color:var(--tx3);margin-bottom:20px}
+.ag-ft{list-style:none;margin-bottom:24px;flex-grow:1}
+.ag-ft li{padding:6px 0;font-size:13px;color:var(--tx2);display:flex;align-items:flex-start;gap:8px}
+.ag-ft li::before{content:'✦';color:var(--gold);font-size:10px;margin-top:3px;flex-shrink:0}
+.ag-bt{display:block;text-align:center;padding:13px;border-radius:10px;font-size:13px;font-weight:600;letter-spacing:1px;text-transform:uppercase;text-decoration:none;transition:all .3s;cursor:pointer;border:none;width:100%}
+.ag-bo{background:transparent;border:1px solid var(--brd);color:var(--tx)}.ag-bo:hover{border-color:var(--gold);color:var(--gold)}
+.ag-bgg{background:linear-gradient(135deg,var(--gold),var(--gd));color:var(--bg)}.ag-bgg:hover{box-shadow:0 8px 32px rgba(201,164,74,.3);transform:translateY(-2px)}
+.fnote{text-align:center;margin-top:32px;font-size:14px;color:var(--gold);font-style:italic;opacity:.8}
+
+/* CONTACT */
+.contact{padding:120px 0}
+.contact-g{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;max-width:1000px;margin:0 auto}
+.contact-l .ss{margin-bottom:32px}
+.cp{list-style:none;display:flex;flex-direction:column;gap:14px}
+.cp li{display:flex;align-items:center;gap:12px;font-size:15px;color:var(--tx2)}
+.cp li svg{width:20px;height:20px;color:var(--gold);flex-shrink:0}
+.cfrm{background:var(--bgc);border:1px solid var(--brd);border-radius:24px;padding:36px;position:relative;overflow:hidden}
+.cfrm::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+.fg{margin-bottom:18px}
+.fg label{display:block;font-size:11px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;color:var(--tx2);margin-bottom:6px}
+.fg input{width:100%;background:var(--bg);border:1px solid var(--brd);border-radius:10px;padding:13px 16px;font-family:var(--fb);font-size:14px;color:var(--tx);outline:none;transition:border-color .3s,box-shadow .3s}
+.fg input:focus{border-color:var(--gold);box-shadow:0 0 16px rgba(201,164,74,.12)}
+.fg input::placeholder{color:var(--tx3)}
+.fsub{width:100%;padding:15px;background:linear-gradient(135deg,var(--gold),var(--gd));color:var(--bg);border:none;border-radius:10px;font-family:var(--fb);font-size:14px;font-weight:600;letter-spacing:1px;text-transform:uppercase;cursor:pointer;transition:all .3s;margin-top:6px}
+.fsub:hover{box-shadow:0 8px 32px rgba(201,164,74,.3);transform:translateY(-2px)}
+.fnot{text-align:center;font-size:11px;color:var(--tx3);margin-top:10px}
+
+/* WA FLOAT */
+.waf{position:fixed;bottom:28px;right:28px;z-index:200;width:60px;height:60px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,.4);cursor:pointer;transition:all .3s;text-decoration:none;animation:wa-bounce 3s ease-in-out infinite}
+.waf:hover{transform:scale(1.1);box-shadow:0 6px 28px rgba(37,211,102,.5)}
+.waf svg{width:32px;height:32px;fill:#fff}
+.wal{position:fixed;bottom:36px;right:100px;z-index:200;background:var(--bgc);border:1px solid var(--brd);border-radius:12px;padding:10px 16px;font-size:13px;color:var(--tx);white-space:nowrap;box-shadow:0 8px 24px rgba(0,0,0,.4);opacity:0;transform:translateX(10px);transition:all .3s;pointer-events:none}
+.waf:hover+.wal{opacity:1;transform:translateX(0)}
+
+/* FOOTER */
+footer{padding:60px 0 40px;border-top:1px solid var(--brd)}
+.fti{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:20px}
+.ftl img{height:36px;opacity:.7}
+.ftinf{display:flex;align-items:center;gap:32px;font-size:14px;color:var(--tx2)}
+.ftinf a{color:var(--tx2);text-decoration:none;transition:color .3s}.ftinf a:hover{color:var(--gold)}
+.ftc{width:100%;text-align:center;margin-top:40px;padding-top:24px;border-top:1px solid var(--brd);font-size:12px;color:var(--tx3)}
+
+@media(max-width:900px){
+  .hero-grid,.dvr-g,.contact-g{grid-template-columns:1fr;gap:40px;text-align:center}
+  .hero-desc{margin:0 auto 40px}
+  .cg{grid-template-columns:1fr;gap:20px}.vs{transform:rotate(90deg)}
+  .cr{grid-template-columns:1fr}
+  .ag-grid{grid-template-columns:1fr;max-width:400px}
+  .stats-row{grid-template-columns:1fr;max-width:320px;margin:0 auto}
+  .nav-links{display:none}
+  .calc-bx{padding:28px 18px}
+  .trust .container{flex-direction:column;gap:24px}
+  .fti{flex-direction:column;text-align:center}
+  .ftinf{flex-direction:column;gap:12px}
+  .dvr-ph{width:220px}
+  .mag-div.in-view .mag-wire{width:40%}
+}
+</style>
+</head>
+<body>
+
+<!-- ═══ FULL-PAGE ELECTRIC FIELD BACKGROUND ═══ -->
+<div class="elec-bg">
+  <svg viewBox="0 0 1400 4000" preserveAspectRatio="none">
+    <!-- Static wire grid -->
+    <path class="wire" d="M0,100 Q350,80 700,120 T1400,90"/>
+    <path class="wire" d="M0,300 Q350,320 700,280 T1400,310"/>
+    <path class="wire" d="M0,500 Q350,480 700,520 T1400,490"/>
+    <path class="wire" d="M0,800 Q350,820 700,780 T1400,810"/>
+    <path class="wire" d="M0,1100 Q350,1080 700,1120 T1400,1090"/>
+    <path class="wire" d="M0,1400 Q350,1420 700,1380 T1400,1410"/>
+    <path class="wire" d="M0,1800 Q350,1780 700,1820 T1400,1790"/>
+    <path class="wire" d="M0,2200 Q350,2220 700,2180 T1400,2210"/>
+    <path class="wire" d="M0,2600 Q350,2580 700,2620 T1400,2590"/>
+    <path class="wire" d="M0,3000 Q350,3020 700,2980 T1400,3010"/>
+    <path class="wire" d="M0,3400 Q350,3380 700,3420 T1400,3390"/>
+    <!-- Animated current pulses -->
+    <path class="pulse-line pl1" d="M0,100 Q350,80 700,120 T1400,90"/>
+    <path class="pulse-line pl2" d="M0,500 Q350,480 700,520 T1400,490"/>
+    <path class="pulse-line pl3" d="M0,1100 Q350,1080 700,1120 T1400,1090"/>
+    <path class="pulse-line pl4" d="M0,1800 Q350,1780 700,1820 T1400,1790"/>
+    <path class="pulse-line pl5" d="M0,2600 Q350,2580 700,2620 T1400,2590"/>
+    <path class="pulse-line pl6" d="M0,3400 Q350,3380 700,3420 T1400,3390"/>
+    <!-- Glow wires -->
+    <path class="wire-glow" d="M0,300 Q350,320 700,280 T1400,310"/>
+    <path class="wire-glow" d="M0,800 Q350,820 700,780 T1400,810"/>
+    <path class="wire-glow" d="M0,1400 Q350,1420 700,1380 T1400,1410"/>
+    <path class="wire-glow" d="M0,2200 Q350,2220 700,2180 T1400,2210"/>
+    <path class="wire-glow" d="M0,3000 Q350,3020 700,2980 T1400,3010"/>
+  </svg>
+  <!-- Vertical sparks -->
+  <div class="v-spark vs1"></div><div class="v-spark vs2"></div><div class="v-spark vs3"></div>
+  <div class="v-spark vs4"></div><div class="v-spark vs5"></div><div class="v-spark vs6"></div>
+  <div class="v-spark vs7"></div><div class="v-spark vs8"></div><div class="v-spark vs9"></div><div class="v-spark vs10"></div>
+  <!-- Floating orbs -->
+  <div class="orb o1"></div><div class="orb o2"></div><div class="orb o3"></div>
+  <div class="orb o4"></div><div class="orb o5"></div><div class="orb o6"></div>
+</div>
+
+<nav id="mainNav"><div class="container">
+  <a href="#" class="nav-logo"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MDAgMTIwIiB3aWR0aD0iNjAwIiBoZWlnaHQ9IjEyMCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImdvbGRUZXh0IiB4MT0iMCUiIHkxPSIwJSIgeDI9IjEwMCUiIHkyPSIxMDAlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzZiNTUxOCIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjIwJSIgc3RvcC1jb2xvcj0iI2EwN2MyZSIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjQ1JSIgc3RvcC1jb2xvcj0iI2Q0YjQ1YyIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjU1JSIgc3RvcC1jb2xvcj0iI2U4ZDQ4YiIvPgogICAgICA8c3RvcCBvZmZzZXQ9Ijc1JSIgc3RvcC1jb2xvcj0iI2EwN2MyZSIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiM2YjU1MTgiLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImdvbGRIaWdobGlnaHQiIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMCUiIHkyPSIxMDAlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2Y1ZTZhMyIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjQwJSIgc3RvcC1jb2xvcj0iI2M5YTQ0YSIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiM2YjU1MTgiLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgICA8ZmlsdGVyIGlkPSJ0ZXh0R2xvdyIgeD0iLTIwJSIgeT0iLTQwJSIgd2lkdGg9IjE0MCUiIGhlaWdodD0iMTgwJSI+CiAgICAgIDxmZUdhdXNzaWFuQmx1ciBpbj0iU291cmNlR3JhcGhpYyIgc3RkRGV2aWF0aW9uPSIyLjUiIHJlc3VsdD0iYmx1ciIvPgogICAgICA8ZmVGbG9vZCBmbG9vZC1jb2xvcj0iI2EwN2MyZSIgZmxvb2Qtb3BhY2l0eT0iMC41IiByZXN1bHQ9ImNvbG9yIi8+CiAgICAgIDxmZUNvbXBvc2l0ZSBpbj0iY29sb3IiIGluMj0iYmx1ciIgb3BlcmF0b3I9ImluIiByZXN1bHQ9InNoYWRvdyIvPgogICAgICA8ZmVNZXJnZT48ZmVNZXJnZU5vZGUgaW49InNoYWRvdyIvPjxmZU1lcmdlTm9kZSBpbj0iU291cmNlR3JhcGhpYyIvPjwvZmVNZXJnZT4KICAgIDwvZmlsdGVyPgogICAgPGZpbHRlciBpZD0iZWxlY0dsb3ciIHg9Ii0yMCUiIHk9Ii01MCUiIHdpZHRoPSIxNDAlIiBoZWlnaHQ9IjIwMCUiPgogICAgICA8ZmVHYXVzc2lhbkJsdXIgaW49IlNvdXJjZUdyYXBoaWMiIHN0ZERldmlhdGlvbj0iMS41IiByZXN1bHQ9ImJsdXIiLz4KICAgICAgPGZlRmxvb2QgZmxvb2QtY29sb3I9IiNhMDdjMmUiIGZsb29kLW9wYWNpdHk9IjAuNiIgcmVzdWx0PSJjb2xvciIvPgogICAgICA8ZmVDb21wb3NpdGUgaW49ImNvbG9yIiBpbjI9ImJsdXIiIG9wZXJhdG9yPSJpbiIgcmVzdWx0PSJnbG93Ii8+CiAgICAgIDxmZU1lcmdlPjxmZU1lcmdlTm9kZSBpbj0iZ2xvdyIvPjxmZU1lcmdlTm9kZSBpbj0iU291cmNlR3JhcGhpYyIvPjwvZmVNZXJnZT4KICAgIDwvZmlsdGVyPgogICAgPGxpbmVhckdyYWRpZW50IGlkPSJmbG91cmlzaEdyYWQiIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjAlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2EwN2MyZSIgc3RvcC1vcGFjaXR5PSIwIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMzAlIiBzdG9wLWNvbG9yPSIjYTA3YzJlIiBzdG9wLW9wYWNpdHk9IjAuOCIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjcwJSIgc3RvcC1jb2xvcj0iI2EwN2MyZSIgc3RvcC1vcGFjaXR5PSIwLjgiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjYTA3YzJlIiBzdG9wLW9wYWNpdHk9IjAiLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImVsZWNMZWZ0IiB4MT0iMTAwJSIgeTE9IjAlIiB4Mj0iMCUiIHkyPSIwJSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiNjOWE0NGEiIHN0b3Atb3BhY2l0eT0iMSIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjYwJSIgc3RvcC1jb2xvcj0iIzhhNmQxYiIgc3RvcC1vcGFjaXR5PSIwLjciLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjNmI1NTE4IiBzdG9wLW9wYWNpdHk9IjAiLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImVsZWNSaWdodCIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMCUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjYzlhNDRhIiBzdG9wLW9wYWNpdHk9IjEiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSI2MCUiIHN0b3AtY29sb3I9IiM4YTZkMWIiIHN0b3Atb3BhY2l0eT0iMC43Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzZiNTUxOCIgc3RvcC1vcGFjaXR5PSIwIi8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogICAgPHJhZGlhbEdyYWRpZW50IGlkPSJmbGFyZTEiIGN4PSI1MCUiIGN5PSI1MCUiIHI9IjUwJSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiNmNWU2YTMiIHN0b3Atb3BhY2l0eT0iMC45Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMzAlIiBzdG9wLWNvbG9yPSIjYzlhNDRhIiBzdG9wLW9wYWNpdHk9IjAuNSIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiM4YTZkMWIiIHN0b3Atb3BhY2l0eT0iMCIvPgogICAgPC9yYWRpYWxHcmFkaWVudD4KICAgIDxyYWRpYWxHcmFkaWVudCBpZD0iZmxhcmUyIiBjeD0iNTAlIiBjeT0iNTAlIiByPSI1MCUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjZThkNDhiIiBzdG9wLW9wYWNpdHk9IjAuNyIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjQwJSIgc3RvcC1jb2xvcj0iI2EwN2MyZSIgc3RvcC1vcGFjaXR5PSIwLjMiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjNmI1NTE4IiBzdG9wLW9wYWNpdHk9IjAiLz4KICAgIDwvcmFkaWFsR3JhZGllbnQ+CiAgPC9kZWZzPgoKICA8IS0tIOKVkOKVkOKVkCBMRUZUIEVMRUNUUklDSVRZIOKVkOKVkOKVkCAtLT4KICA8ZyBmaWx0ZXI9InVybCgjZWxlY0dsb3cpIj4KICAgIDxwYXRoIGQ9Ik0xMjAsNjAgQzExMCw1OCA5NSw1MiA4Miw1NiBDNzAsNjAgNjAsNTUgNDgsNTggQzM2LDYxIDI4LDU2IDE4LDU5IEMxMCw2MSA1LDU4IDAsNjAiIAogICAgICAgICAgZmlsbD0ibm9uZSIgc3Ryb2tlPSJ1cmwoI2VsZWNMZWZ0KSIgc3Ryb2tlLXdpZHRoPSIxLjYiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgb3BhY2l0eT0iMC45Ii8+CiAgICA8cGF0aCBkPSJNMTI1LDU0IEMxMTIsNTAgOTgsNDYgODUsNTAgQzcyLDU0IDYyLDQ4IDUwLDUxIEMzOCw1NCAyOCw0OSAxNSw1MiBDOCw1NCAyLDUxIC01LDUzIiAKICAgICAgICAgIGZpbGw9Im5vbmUiIHN0cm9rZT0idXJsKCNlbGVjTGVmdCkiIHN0cm9rZS13aWR0aD0iMS4yIiBzdHJva2UtbGluZWNhcD0icm91bmQiIG9wYWNpdHk9IjAuNzUiLz4KICAgIDxwYXRoIGQ9Ik0xMTgsNjggQzEwNiw3MCA5Miw3NCA3OCw3MCBDNjUsNjYgNTUsNzIgNDIsNjkgQzMwLDY2IDIyLDcxIDEyLDY4IEM1LDY2IDAsNjkgLTUsNjciIAogICAgICAgICAgZmlsbD0ibm9uZSIgc3Ryb2tlPSJ1cmwoI2VsZWNMZWZ0KSIgc3Ryb2tlLXdpZHRoPSIxLjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgb3BhY2l0eT0iMC43NSIvPgogICAgPHBhdGggZD0iTTEzMCw0OCBDMTE4LDQ0IDEwNSw0MCA5MCw0NCBDNzgsNDcgNjUsNDIgNTIsNDUgQzQyLDQ3IDMyLDQzIDIyLDQ2IiAKICAgICAgICAgIGZpbGw9Im5vbmUiIHN0cm9rZT0idXJsKCNlbGVjTGVmdCkiIHN0cm9rZS13aWR0aD0iMC44IiBzdHJva2UtbGluZWNhcD0icm91bmQiIG9wYWNpdHk9IjAuNSIvPgogICAgPHBhdGggZD0iTTExNSw3NiBDMTA0LDc4IDkwLDgyIDc2LDc4IEM2NCw3NCA1Miw4MCA0MCw3NyBDMzAsNzQgMjAsNzggMTAsNzYiIAogICAgICAgICAgZmlsbD0ibm9uZSIgc3Ryb2tlPSJ1cmwoI2VsZWNMZWZ0KSIgc3Ryb2tlLXdpZHRoPSIwLjgiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgb3BhY2l0eT0iMC41Ii8+CiAgICA8cGF0aCBkPSJNNDgsNTggQzQ0LDU0IDQwLDU2IDQyLDYwIEM0NCw2NCA0MCw2NyAzNiw2NCIgCiAgICAgICAgICBmaWxsPSJub25lIiBzdHJva2U9InVybCgjZWxlY0xlZnQpIiBzdHJva2Utd2lkdGg9IjEuMCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBvcGFjaXR5PSIwLjY1Ii8+CiAgICA8cGF0aCBkPSJNODIsNTYgQzc4LDUwIDcyLDQ4IDY4LDUyIiAKICAgICAgICAgIGZpbGw9Im5vbmUiIHN0cm9rZT0idXJsKCNlbGVjTGVmdCkiIHN0cm9rZS13aWR0aD0iMC45IiBzdHJva2UtbGluZWNhcD0icm91bmQiIG9wYWNpdHk9IjAuNTUiLz4KICAgIDxwYXRoIGQ9Ik03OCw3MCBDNzQsNzUgNjgsNzggNjIsNzUiIAogICAgICAgICAgZmlsbD0ibm9uZSIgc3Ryb2tlPSJ1cmwoI2VsZWNMZWZ0KSIgc3Ryb2tlLXdpZHRoPSIwLjkiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgb3BhY2l0eT0iMC41NSIvPgogIDwvZz4KCiAgPCEtLSDilZDilZDilZAgUklHSFQgRUxFQ1RSSUNJVFkg4pWQ4pWQ4pWQIC0tPgogIDxnIGZpbHRlcj0idXJsKCNlbGVjR2xvdykiPgogICAgPHBhdGggZD0iTTQ4MCw2MCBDNDkwLDU4IDUwNSw1MiA1MTgsNTYgQzUzMCw2MCA1NDAsNTUgNTUyLDU4IEM1NjQsNjEgNTcyLDU2IDU4Miw1OSBDNTkwLDYxIDU5NSw1OCA2MDAsNjAiIAogICAgICAgICAgZmlsbD0ibm9uZSIgc3Ryb2tlPSJ1cmwoI2VsZWNSaWdodCkiIHN0cm9rZS13aWR0aD0iMS42IiBzdHJva2UtbGluZWNhcD0icm91bmQiIG9wYWNpdHk9IjAuOSIvPgogICAgPHBhdGggZD0iTTQ3NSw1NCBDNDg4LDUwIDUwMiw0NiA1MTUsNTAgQzUyOCw1NCA1MzgsNDggNTUwLDUxIEM1NjIsNTQgNTcyLDQ5IDU4NSw1MiBDNTkyLDU0IDU5OCw1MSA2MDUsNTMiIAogICAgICAgICAgZmlsbD0ibm9uZSIgc3Ryb2tlPSJ1cmwoI2VsZWNSaWdodCkiIHN0cm9rZS13aWR0aD0iMS4yIiBzdHJva2UtbGluZWNhcD0icm91bmQiIG9wYWNpdHk9IjAuNzUiLz4KICAgIDxwYXRoIGQ9Ik00ODIsNjggQzQ5NCw3MCA1MDgsNzQgNTIyLDcwIEM1MzUsNjYgNTQ1LDcyIDU1OCw2OSBDNTcwLDY2IDU3OCw3MSA1ODgsNjggQzU5NSw2NiA2MDAsNjkgNjA1LDY3IiAKICAgICAgICAgIGZpbGw9Im5vbmUiIHN0cm9rZT0idXJsKCNlbGVjUmlnaHQpIiBzdHJva2Utd2lkdGg9IjEuMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBvcGFjaXR5PSIwLjc1Ii8+CiAgICA8cGF0aCBkPSJNNDcwLDQ4IEM0ODIsNDQgNDk1LDQwIDUxMCw0NCBDNTIyLDQ3IDUzNSw0MiA1NDgsNDUgQzU1OCw0NyA1NjgsNDMgNTc4LDQ2IiAKICAgICAgICAgIGZpbGw9Im5vbmUiIHN0cm9rZT0idXJsKCNlbGVjUmlnaHQpIiBzdHJva2Utd2lkdGg9IjAuOCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBvcGFjaXR5PSIwLjUiLz4KICAgIDxwYXRoIGQ9Ik00ODUsNzYgQzQ5Niw3OCA1MTAsODIgNTI0LDc4IEM1MzYsNzQgNTQ4LDgwIDU2MCw3NyBDNTcwLDc0IDU4MCw3OCA1OTAsNzYiIAogICAgICAgICAgZmlsbD0ibm9uZSIgc3Ryb2tlPSJ1cmwoI2VsZWNSaWdodCkiIHN0cm9rZS13aWR0aD0iMC44IiBzdHJva2UtbGluZWNhcD0icm91bmQiIG9wYWNpdHk9IjAuNSIvPgogICAgPHBhdGggZD0iTTU1Miw1OCBDNTU2LDU0IDU2MCw1NiA1NTgsNjAgQzU1Niw2NCA1NjAsNjcgNTY0LDY0IiAKICAgICAgICAgIGZpbGw9Im5vbmUiIHN0cm9rZT0idXJsKCNlbGVjUmlnaHQpIiBzdHJva2Utd2lkdGg9IjEuMCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBvcGFjaXR5PSIwLjY1Ii8+CiAgICA8cGF0aCBkPSJNNTE4LDU2IEM1MjIsNTAgNTI4LDQ4IDUzMiw1MiIgCiAgICAgICAgICBmaWxsPSJub25lIiBzdHJva2U9InVybCgjZWxlY1JpZ2h0KSIgc3Ryb2tlLXdpZHRoPSIwLjkiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgb3BhY2l0eT0iMC41NSIvPgogICAgPHBhdGggZD0iTTUyMiw3MCBDNTI2LDc1IDUzMiw3OCA1MzgsNzUiIAogICAgICAgICAgZmlsbD0ibm9uZSIgc3Ryb2tlPSJ1cmwoI2VsZWNSaWdodCkiIHN0cm9rZS13aWR0aD0iMC45IiBzdHJva2UtbGluZWNhcD0icm91bmQiIG9wYWNpdHk9IjAuNTUiLz4KICA8L2c+CgogIDwhLS0gQWNjZW50IGxpbmUgLS0+CiAgPGxpbmUgeDE9IjE0MCIgeTE9IjgwIiB4Mj0iNDYwIiB5Mj0iODAiIHN0cm9rZT0idXJsKCNmbG91cmlzaEdyYWQpIiBzdHJva2Utd2lkdGg9IjAuNiIgb3BhY2l0eT0iMC41Ii8+CgogIDwhLS0gTGVmdCBmbGFyZSAtLT4KICA8ZWxsaXBzZSBjeD0iMTQ4IiBjeT0iNjAiIHJ4PSIyOCIgcnk9IjIyIiBmaWxsPSJ1cmwoI2ZsYXJlMikiIG9wYWNpdHk9IjAuNSIvPgogIDxlbGxpcHNlIGN4PSIxNDgiIGN5PSI2MCIgcng9IjEwIiByeT0iOCIgZmlsbD0idXJsKCNmbGFyZTEpIiBvcGFjaXR5PSIwLjYiLz4KICA8bGluZSB4MT0iMTQ4IiB5MT0iMzgiIHgyPSIxNDgiIHkyPSI4MiIgc3Ryb2tlPSIjZThkNDhiIiBzdHJva2Utd2lkdGg9IjAuNSIgb3BhY2l0eT0iMC4zNSIvPgogIDxsaW5lIHgxPSIxMjYiIHkxPSI2MCIgeDI9IjE3MCIgeTI9IjYwIiBzdHJva2U9IiNlOGQ0OGIiIHN0cm9rZS13aWR0aD0iMC41IiBvcGFjaXR5PSIwLjM1Ii8+CiAgPGxpbmUgeDE9IjEzNCIgeTE9IjQ2IiB4Mj0iMTYyIiB5Mj0iNzQiIHN0cm9rZT0iI2U4ZDQ4YiIgc3Ryb2tlLXdpZHRoPSIwLjM1IiBvcGFjaXR5PSIwLjI1Ii8+CiAgPGxpbmUgeDE9IjE2MiIgeTE9IjQ2IiB4Mj0iMTM0IiB5Mj0iNzQiIHN0cm9rZT0iI2U4ZDQ4YiIgc3Ryb2tlLXdpZHRoPSIwLjM1IiBvcGFjaXR5PSIwLjI1Ii8+CgogIDwhLS0gUmlnaHQgZmxhcmUgLS0+CiAgPGVsbGlwc2UgY3g9IjQ1MiIgY3k9IjYwIiByeD0iMjQiIHJ5PSIxOCIgZmlsbD0idXJsKCNmbGFyZTIpIiBvcGFjaXR5PSIwLjQ1Ii8+CiAgPGVsbGlwc2UgY3g9IjQ1MiIgY3k9IjYwIiByeD0iOSIgcnk9IjciIGZpbGw9InVybCgjZmxhcmUxKSIgb3BhY2l0eT0iMC41NSIvPgogIDxsaW5lIHgxPSI0NTIiIHkxPSI0MiIgeDI9IjQ1MiIgeTI9Ijc4IiBzdHJva2U9IiNlOGQ0OGIiIHN0cm9rZS13aWR0aD0iMC41IiBvcGFjaXR5PSIwLjMiLz4KICA8bGluZSB4MT0iNDMyIiB5MT0iNjAiIHgyPSI0NzIiIHkyPSI2MCIgc3Ryb2tlPSIjZThkNDhiIiBzdHJva2Utd2lkdGg9IjAuNSIgb3BhY2l0eT0iMC4zIi8+CiAgPGxpbmUgeDE9IjQ0MCIgeTE9IjQ4IiB4Mj0iNDY0IiB5Mj0iNzIiIHN0cm9rZT0iI2U4ZDQ4YiIgc3Ryb2tlLXdpZHRoPSIwLjM1IiBvcGFjaXR5PSIwLjIyIi8+CiAgPGxpbmUgeDE9IjQ2NCIgeTE9IjQ4IiB4Mj0iNDQwIiB5Mj0iNzIiIHN0cm9rZT0iI2U4ZDQ4YiIgc3Ryb2tlLXdpZHRoPSIwLjM1IiBvcGFjaXR5PSIwLjIyIi8+CgogIDwhLS0gTWFpbiB0ZXh0IC0tPgogIDx0ZXh0IHg9IjMwMCIgeT0iNzIiIHRleHQtYW5jaG9yPSJtaWRkbGUiIAogICAgICAgIGZvbnQtZmFtaWx5PSInQ29ybW9yYW50IEdhcmFtb25kJywgJ0dhcmFtb25kJywgJ0dlb3JnaWEnLCBzZXJpZiIgCiAgICAgICAgZm9udC1zaXplPSI1MiIgZm9udC13ZWlnaHQ9IjYwMCIgbGV0dGVyLXNwYWNpbmc9IjE4IgogICAgICAgIGZpbGw9InVybCgjZ29sZFRleHQpIiBmaWx0ZXI9InVybCgjdGV4dEdsb3cpIj5WQVlESU48L3RleHQ+CiAgPHRleHQgeD0iMzAwIiB5PSI3MiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgCiAgICAgICAgZm9udC1mYW1pbHk9IidDb3Jtb3JhbnQgR2FyYW1vbmQnLCAnR2FyYW1vbmQnLCAnR2VvcmdpYScsIHNlcmlmIiAKICAgICAgICBmb250LXNpemU9IjUyIiBmb250LXdlaWdodD0iNjAwIiBsZXR0ZXItc3BhY2luZz0iMTgiCiAgICAgICAgZmlsbD0idXJsKCNnb2xkSGlnaGxpZ2h0KSIgb3BhY2l0eT0iMC4xMiI+VkFZRElOPC90ZXh0Pgo8L3N2Zz4=" alt="Vaydin"></a>
+  <div class="nav-links"><a href="#how">How It Works</a><a href="#calculator">Revenue Loss</a><a href="#dvr">Reports</a><a href="#agency">Agency</a><a href="#contact" class="nav-cta">Free Clinic Score</a></div>
+</div></nav>
+
+<section class="hero" id="hero">
+  <div class="container">
+    <div class="hero-grid">
+      <div class="hero-content">
+        <div class="hbadge">Dubai Aesthetic Clinics</div>
+        <h1>Your clinic is losing<br>patients <em>right now</em></h1>
+        <p class="hero-desc">Slow WhatsApp replies. No booking link. No chatbot. Every unanswered inquiry is revenue walking out the door. We find what's costing your clinic money — and fix it.</p>
+        <a href="#contact" class="cta-btn"><span>Get Your Free Clinic Score</span><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg></a>
+      </div>
+      <div class="hero-visual"><div class="phone pf1" style="width:300px"><div class="ph-fr"><div class="ph-n"></div><div class="ph-s" style="min-height:400px">
+        <div class="wa-hd"><div class="wa-av">LC</div><div><div class="wa-nm">Luxury Clinic Dubai</div><div class="wa-st">last seen 4h ago</div></div></div>
+        <div class="wm wm-i">Hi! I'm interested in Botox. How much does it cost and do you have availability this week?<div class="wm-t">10:22 AM</div></div>
+        <div style="text-align:center;font-size:11px;color:#f87171;padding:5px 10px;background:rgba(248,113,113,.08);border-radius:100px;display:inline-block;margin:6px auto;width:fit-content">⏱ 4 hours later...</div>
+        <div class="wm wm-o">Hello, thank you for reaching out. Prices depend on the area. Please visit our clinic for a consultation.<div class="wm-t">2:17 PM</div></div>
+        <div class="wm wm-i" style="opacity:.5">I already booked somewhere else. Thanks.<div class="wm-t">2:19 PM</div></div>
+        <div style="text-align:center;margin-top:10px"><span style="font-size:11px;color:#f87171;background:rgba(248,113,113,.1);padding:4px 12px;border-radius:100px">💸 AED 800+ lost</span></div>
+      </div></div></div></div>
+    </div>
+    <div class="stats-row">
+      <div class="sc"><div class="sc-n">67%</div><div class="sc-l">of clinics reply after 1 hour</div></div>
+      <div class="sc"><div class="sc-n">42%</div><div class="sc-l">of inquiries never get a reply</div></div>
+      <div class="sc"><div class="sc-n">3 min</div><div class="sc-l">is all it takes to lose a patient</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="trust"><div class="container">
+  <div class="ti"><div class="tn-num">50+</div><div class="tn-txt">Clinics audited<span>across Dubai & UAE</span></div></div>
+  <div class="ti"><div class="tn-num">AED 2M+</div><div class="tn-txt">Revenue leaks identified<span>in the first 90 days</span></div></div>
+  <div class="ti"><div class="tn-num">48hr</div><div class="tn-txt">Score delivery<span>from first message</span></div></div>
+</div></section>
+
+<!-- ═══ MAGNETIC DIVIDER ═══ -->
+<div class="mag-div" data-mag>
+  <div class="mag-wire mag-wire-l"></div><div class="mag-wire mag-wire-r"></div>
+  <div class="mag-field"><div class="mag-ring mr1"></div><div class="mag-ring mr2"></div><div class="mag-ring mr3"></div><div class="mag-ring mr4"></div><div class="mag-ring mr5"></div></div>
+  <div class="mag-node"></div>
+  <div class="spark-p sp1"></div><div class="spark-p sp2"></div><div class="spark-p sp3"></div><div class="spark-p sp4"></div><div class="spark-p sp5"></div><div class="spark-p sp6"></div>
+</div>
+
+<section class="how" id="how"><div class="container">
+  <div class="how-hd"><div class="sl">How It Works</div><h2 class="st">The conversation that costs<br>you thousands</h2><p class="ss">We mystery-shop your clinic's WhatsApp just like a real patient would. Here's what we usually find.</p></div>
+  <div class="cg">
+    <div class="cc cc-b">
+      <div class="ct ct-b"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg> What We Find</div>
+      <div class="ctt">The average clinic reply</div>
+      <div class="cs"><div class="cb cb-i">Hi, how much is Botox for forehead lines? Do you have any slots this Thursday?</div><div class="ctb">⏱ 4 hours 12 minutes later</div><div class="cb cb-o">Hello dear. Thank you for your message. The price depends on the units needed. Please come in for a consultation.</div></div>
+      <div class="rs rs-b"><span>✗</span><span>No price · No booking link · No urgency · Patient gone</span></div>
+    </div>
+    <div class="vs"><div class="vsb">VS</div></div>
+    <div class="cc cc-g">
+      <div class="ct ct-g"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M9 12l2 2 4-4"/></svg> What It Should Look Like</div>
+      <div class="ctt">A revenue-ready reply</div>
+      <div class="cs"><div class="cb cb-i">Hi, how much is Botox for forehead lines? Do you have any slots this Thursday?</div><div class="ctg">⚡ 47 seconds later</div><div class="cb cb-o">Hi! 👋 Forehead Botox starts from AED 750 (15-20 units). We have 2 slots Thursday — 11AM and 3PM. Want me to lock one in? 🔗</div></div>
+      <div class="rs rs-g"><span>✓</span><span>Price given · Slots offered · Booking link · Patient booked</span></div>
+    </div>
+  </div>
+</div></section>
+
+<div class="mag-div" data-mag><div class="mag-wire mag-wire-l"></div><div class="mag-wire mag-wire-r"></div><div class="mag-field"><div class="mag-ring mr1"></div><div class="mag-ring mr2"></div><div class="mag-ring mr3"></div><div class="mag-ring mr4"></div><div class="mag-ring mr5"></div></div><div class="mag-node"></div><div class="spark-p sp1"></div><div class="spark-p sp2"></div><div class="spark-p sp3"></div><div class="spark-p sp4"></div><div class="spark-p sp5"></div><div class="spark-p sp6"></div></div>
+
+<section class="calc" id="calculator"><div class="container">
+  <div class="calc-hd"><div class="sl">Revenue Calculator</div><h2 class="st">How much is your clinic<br>leaving on the table?</h2><p class="ss">Plug in your numbers. The math doesn't lie.</p></div>
+  <div class="calc-bx">
+    <div class="cr">
+      <div class="cf"><label>Avg. Treatment Price</label><input type="number" id="cP" value="800" min="0"><div class="u">AED per treatment</div></div>
+      <div class="cf"><label>Monthly Inquiries</label><input type="number" id="cI" value="200" min="0"><div class="u">via WhatsApp</div></div>
+      <div class="cf"><label>No-Reply Rate</label><input type="number" id="cR" value="40" min="0" max="100"><div class="u">% ignored</div></div>
+    </div>
+    <div class="cres"><div class="cres-l">Estimated Monthly Revenue Lost</div><div class="cres-v" id="cO">AED 64,000</div><div class="cres-s">That's <span id="cY">AED 768,000</span> per year walking out the door</div></div>
+    <div class="cfm">Formula: (inquiries × no-reply rate) × avg. price = revenue lost</div>
+  </div>
+</div></section>
+
+<div class="mag-div" data-mag><div class="mag-wire mag-wire-l"></div><div class="mag-wire mag-wire-r"></div><div class="mag-field"><div class="mag-ring mr1"></div><div class="mag-ring mr2"></div><div class="mag-ring mr3"></div><div class="mag-ring mr4"></div><div class="mag-ring mr5"></div></div><div class="mag-node"></div><div class="spark-p sp1"></div><div class="spark-p sp2"></div><div class="spark-p sp3"></div><div class="spark-p sp4"></div><div class="spark-p sp5"></div><div class="spark-p sp6"></div></div>
+
+<section class="dvr" id="dvr"><div class="container">
+  <div class="dvr-hd"><div class="sl">Digital Vitals Report</div><h2 class="st">Know exactly where you stand</h2><p class="ss">Monthly AI mystery shop of your clinic. Score, trend, action plan — delivered automatically.</p></div>
+  <div class="dvr-g">
+    <div class="dvr-col">
+      <div class="dvr-lb dvr-lb-b">✗ Without Vaydin</div>
+      <div class="dvr-ph"><div class="phone pf2 ph-sm"><div class="ph-fr"><div class="ph-n"></div><div class="ph-s" style="min-height:280px">
+        <div class="wa-hd"><div class="wa-av" style="background:#333">?</div><div><div class="wa-nm" style="opacity:.5">Your Clinic</div><div class="wa-st">no data</div></div></div>
+        <div style="text-align:center;padding:24px 8px">
+          <div style="font-size:40px;opacity:.15;margin-bottom:6px">📊</div>
+          <div style="font-size:12px;color:#555;margin-bottom:10px">No score. No trend. No insight.</div>
+          <div style="font-size:10px;color:#333;line-height:1.6">You don't know your reply time<br>You don't know what competitors do<br>You don't know what patients think</div>
+        </div>
+        <div style="text-align:center;margin-top:4px"><span style="font-size:10px;color:#f87171;background:rgba(248,113,113,.1);padding:3px 10px;border-radius:100px">Flying blind</span></div>
+      </div></div></div></div>
+      <div class="dvr-inf di-e">
+        <div class="dvr-tg">Start here</div>
+        <div class="dvr-nm">Essential</div>
+        <div class="dvr-pr">1,800 <span>AED/mo</span></div>
+        <div class="dvr-per">Your clinic's monthly check-up</div>
+        <ul class="dvr-ft"><li><span class="dvr-ck">✦</span> Monthly mystery shop</li><li><span class="dvr-ck">✦</span> Digital readiness score (0–100)</li><li><span class="dvr-ck">✦</span> Detailed PDF report</li><li><span class="dvr-ck">✦</span> WhatsApp response audit</li><li><span class="dvr-ck">✦</span> Month-over-month trend tracking</li><li><span class="dvr-ck">✦</span> Email support</li></ul>
+        <a href="#contact" class="dvr-bt dvr-bo">Get Essential</a>
+      </div>
+    </div>
+    <div class="dvr-col">
+      <div class="dvr-lb dvr-lb-g">✓ With Vaydin Intelligence</div>
+      <div class="dvr-ph"><div class="phone pf3 ph-sm"><div class="ph-fr"><div class="ph-n"></div><div class="ph-s" style="min-height:280px">
+        <div class="wa-hd"><div class="wa-av">V</div><div><div class="wa-nm">Vaydin Report</div><div class="wa-st" style="color:var(--grn)">● Score delivered</div></div></div>
+        <div class="wm wm-o" style="background:rgba(201,164,74,.15);border:1px solid rgba(201,164,74,.2)">
+          <div style="font-size:10px;color:var(--gold);font-weight:600;margin-bottom:4px">📋 Monthly Vitals</div>
+          <div style="font-size:18px;color:var(--gold);font-family:var(--fd);margin-bottom:3px">Score: 34/100</div>
+          <div style="font-size:9px;color:var(--tx2);line-height:1.5">⏱ Reply: 4h 12min<br>📉 Trend: -8 vs last month<br>🏥 Competitor avg: 72/100<br>🔗 Missing: booking link</div>
+          <div class="wm-t" style="color:var(--gold)">Just now</div>
+        </div>
+        <div class="wm wm-o" style="background:rgba(74,222,128,.08);border:1px solid rgba(74,222,128,.15)">
+          <div style="font-size:10px;color:var(--grn);font-weight:600;margin-bottom:3px">📌 Action Plan</div>
+          <div style="font-size:9px;color:var(--tx2);line-height:1.5">1. Add price ranges<br>2. Enable booking link<br>3. Set greeting message</div>
+        </div>
+      </div></div></div></div>
+      <div class="dvr-inf di-i">
+        <div class="dvr-tg dvr-tp">Most Popular</div>
+        <div class="dvr-nm">Intelligence</div>
+        <div class="dvr-pr">2,500 <span>AED/mo</span></div>
+        <div class="dvr-per">Full picture + competitive edge</div>
+        <ul class="dvr-ft"><li><span class="dvr-ck">✦</span> Everything in Essential</li><li><span class="dvr-ck">✦</span> Competitor benchmarking</li><li><span class="dvr-ck">✦</span> Custom action plan</li><li><span class="dvr-ck">✦</span> Response time benchmarks vs Dubai market</li><li><span class="dvr-ck">✦</span> Priority email support</li></ul>
+        <a href="#contact" class="dvr-bt dvr-bg">Get Intelligence</a>
+      </div>
+    </div>
+  </div>
+</div></section>
+
+<div class="mag-div" data-mag><div class="mag-wire mag-wire-l"></div><div class="mag-wire mag-wire-r"></div><div class="mag-field"><div class="mag-ring mr1"></div><div class="mag-ring mr2"></div><div class="mag-ring mr3"></div><div class="mag-ring mr4"></div><div class="mag-ring mr5"></div></div><div class="mag-node"></div><div class="spark-p sp1"></div><div class="spark-p sp2"></div><div class="spark-p sp3"></div><div class="spark-p sp4"></div><div class="spark-p sp5"></div><div class="spark-p sp6"></div></div>
+
+<section class="agency" id="agency"><div class="container">
+  <div class="ag-hd"><div class="sl">Agency Packages</div><h2 class="st">We fix what the report finds</h2><p class="ss">Once we know what's broken, we build the solution. Each package is matched to your clinic's specific gap.</p></div>
+  <div class="ag-grid">
+    <div class="ag-c"><div class="ag-ic ag-i1">💬</div><div class="ag-nm">WhatsApp Growth</div><div class="ag-pr">3,500 <span>AED</span></div><div class="ag-per">per month</div>
+      <ul class="ag-ft"><li>WhatsApp AI assistant — instant replies 24/7</li><li>Lead qualification & pricing automation</li><li>Rebooking reminder sequences</li><li>Monthly performance report</li><li>Monthly strategy call</li></ul>
+      <a href="#contact" class="ag-bt ag-bo">Get Started</a></div>
+    <div class="ag-c ft"><div class="ag-pop">Most Popular</div><div class="ag-ic ag-i2">📅</div><div class="ag-nm">Booking Accelerator</div><div class="ag-pr">5,000 <span>AED</span></div><div class="ag-per">per month</div>
+      <ul class="ag-ft"><li>WhatsApp AI assistant — instant replies 24/7</li><li>Online booking system integration</li><li>Automated appointment reminders</li><li>No-show reduction system</li><li>Google Business Profile optimisation</li><li>Monthly booking analytics</li></ul>
+      <a href="#contact" class="ag-bt ag-bgg">Get Started</a></div>
+    <div class="ag-c"><div class="ag-ic ag-i3">🚀</div><div class="ag-nm">Full Funnel</div><div class="ag-pr">7,500 <span>AED</span></div><div class="ag-per">per month</div>
+      <ul class="ag-ft"><li>Everything in Booking Accelerator</li><li>Google Ads management</li><li>Instagram content & ad management</li><li>Reputation & review generation</li><li>Monthly strategy call + dashboard</li></ul>
+      <a href="#contact" class="ag-bt ag-bo">Get Started</a></div>
+    <div class="ag-c"><div class="ag-ic ag-i4">⚡</div><div class="ag-nm">Clinic OS</div><div class="ag-pr">10,000 <span>AED</span></div><div class="ag-per">per month</div>
+      <ul class="ag-ft"><li>Everything in Full Funnel</li><li>Full social media management</li><li>Dedicated Vaydin account manager</li><li>Bi-weekly strategy calls</li><li>Priority support</li></ul>
+      <a href="#contact" class="ag-bt ag-bo">Get Started</a></div>
+  </div>
+  <div class="fnote">*Founding client pricing — limited availability</div>
+</div></section>
+
+<div class="mag-div" data-mag><div class="mag-wire mag-wire-l"></div><div class="mag-wire mag-wire-r"></div><div class="mag-field"><div class="mag-ring mr1"></div><div class="mag-ring mr2"></div><div class="mag-ring mr3"></div><div class="mag-ring mr4"></div><div class="mag-ring mr5"></div></div><div class="mag-node"></div><div class="spark-p sp1"></div><div class="spark-p sp2"></div><div class="spark-p sp3"></div><div class="spark-p sp4"></div><div class="spark-p sp5"></div><div class="spark-p sp6"></div></div>
+
+<section class="contact" id="contact"><div class="container">
+  <div class="contact-g">
+    <div class="contact-l">
+      <div class="sl">Get Your Free Score</div>
+      <h2 class="st">Find out what your clinic<br>is <span style="color:var(--gold)">really</span> losing</h2>
+      <p class="ss">We'll pose as a patient, score your WhatsApp response, and deliver a full digital readiness report — free, within 48 hours.</p>
+      <ul class="cp">
+        <li><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg> No commitment or contracts</li>
+        <li><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg> Real mystery shop, not a generic audit</li>
+        <li><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg> Actionable score in 48 hours</li>
+        <li><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg> 100% confidential</li>
+      </ul>
+      <div style="margin-top:24px;font-size:14px;color:var(--tx2)">Or email us: <a href="mailto:vaydinagency@gmail.com" style="color:var(--gold);text-decoration:none">vaydinagency@gmail.com</a></div>
+    </div>
+    <div class="cfrm">
+      <div class="fg"><label>Your Name</label><input type="text" id="fN" placeholder="e.g. Sarah Ahmed"></div>
+      <div class="fg"><label>Clinic Name</label><input type="text" id="fC" placeholder="e.g. Glow Aesthetics Dubai"></div>
+      <div class="fg"><label>Phone Number</label><input type="tel" id="fP" placeholder="+971 50 XXX XXXX"></div>
+      <div class="fg"><label>Email</label><input type="email" id="fE" placeholder="you@clinic.com"></div>
+      <button class="fsub" onclick="submitForm()">Get My Free Clinic Score</button>
+      <div class="fnot">We'll reach out within 24 hours to begin your audit</div>
+    </div>
+  </div>
+</div></section>
+
+<a href="mailto:vaydinagency@gmail.com?subject=Clinic Score Inquiry" class="waf"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
+<div class="wal">Chat with us</div>
+
+<footer><div class="container">
+  <div class="fti">
+    <div class="ftl"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MDAgMTIwIiB3aWR0aD0iNjAwIiBoZWlnaHQ9IjEyMCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImdvbGRUZXh0IiB4MT0iMCUiIHkxPSIwJSIgeDI9IjEwMCUiIHkyPSIxMDAlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzZiNTUxOCIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjIwJSIgc3RvcC1jb2xvcj0iI2EwN2MyZSIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjQ1JSIgc3RvcC1jb2xvcj0iI2Q0YjQ1YyIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjU1JSIgc3RvcC1jb2xvcj0iI2U4ZDQ4YiIvPgogICAgICA8c3RvcCBvZmZzZXQ9Ijc1JSIgc3RvcC1jb2xvcj0iI2EwN2MyZSIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiM2YjU1MTgiLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImdvbGRIaWdobGlnaHQiIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMCUiIHkyPSIxMDAlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2Y1ZTZhMyIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjQwJSIgc3RvcC1jb2xvcj0iI2M5YTQ0YSIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiM2YjU1MTgiLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgICA8ZmlsdGVyIGlkPSJ0ZXh0R2xvdyIgeD0iLTIwJSIgeT0iLTQwJSIgd2lkdGg9IjE0MCUiIGhlaWdodD0iMTgwJSI+CiAgICAgIDxmZUdhdXNzaWFuQmx1ciBpbj0iU291cmNlR3JhcGhpYyIgc3RkRGV2aWF0aW9uPSIyLjUiIHJlc3VsdD0iYmx1ciIvPgogICAgICA8ZmVGbG9vZCBmbG9vZC1jb2xvcj0iI2EwN2MyZSIgZmxvb2Qtb3BhY2l0eT0iMC41IiByZXN1bHQ9ImNvbG9yIi8+CiAgICAgIDxmZUNvbXBvc2l0ZSBpbj0iY29sb3IiIGluMj0iYmx1ciIgb3BlcmF0b3I9ImluIiByZXN1bHQ9InNoYWRvdyIvPgogICAgICA8ZmVNZXJnZT48ZmVNZXJnZU5vZGUgaW49InNoYWRvdyIvPjxmZU1lcmdlTm9kZSBpbj0iU291cmNlR3JhcGhpYyIvPjwvZmVNZXJnZT4KICAgIDwvZmlsdGVyPgogICAgPGZpbHRlciBpZD0iZWxlY0dsb3ciIHg9Ii0yMCUiIHk9Ii01MCUiIHdpZHRoPSIxNDAlIiBoZWlnaHQ9IjIwMCUiPgogICAgICA8ZmVHYXVzc2lhbkJsdXIgaW49IlNvdXJjZUdyYXBoaWMiIHN0ZERldmlhdGlvbj0iMS41IiByZXN1bHQ9ImJsdXIiLz4KICAgICAgPGZlRmxvb2QgZmxvb2QtY29sb3I9IiNhMDdjMmUiIGZsb29kLW9wYWNpdHk9IjAuNiIgcmVzdWx0PSJjb2xvciIvPgogICAgICA8ZmVDb21wb3NpdGUgaW49ImNvbG9yIiBpbjI9ImJsdXIiIG9wZXJhdG9yPSJpbiIgcmVzdWx0PSJnbG93Ii8+CiAgICAgIDxmZU1lcmdlPjxmZU1lcmdlTm9kZSBpbj0iZ2xvdyIvPjxmZU1lcmdlTm9kZSBpbj0iU291cmNlR3JhcGhpYyIvPjwvZmVNZXJnZT4KICAgIDwvZmlsdGVyPgogICAgPGxpbmVhckdyYWRpZW50IGlkPSJmbG91cmlzaEdyYWQiIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjAlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2EwN2MyZSIgc3RvcC1vcGFjaXR5PSIwIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMzAlIiBzdG9wLWNvbG9yPSIjYTA3YzJlIiBzdG9wLW9wYWNpdHk9IjAuOCIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjcwJSIgc3RvcC1jb2xvcj0iI2EwN2MyZSIgc3RvcC1vcGFjaXR5PSIwLjgiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjYTA3YzJlIiBzdG9wLW9wYWNpdHk9IjAiLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImVsZWNMZWZ0IiB4MT0iMTAwJSIgeTE9IjAlIiB4Mj0iMCUiIHkyPSIwJSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiNjOWE0NGEiIHN0b3Atb3BhY2l0eT0iMSIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjYwJSIgc3RvcC1jb2xvcj0iIzhhNmQxYiIgc3RvcC1vcGFjaXR5PSIwLjciLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjNmI1NTE4IiBzdG9wLW9wYWNpdHk9IjAiLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImVsZWNSaWdodCIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMCUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjYzlhNDRhIiBzdG9wLW9wYWNpdHk9IjEiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSI2MCUiIHN0b3AtY29sb3I9IiM4YTZkMWIiIHN0b3Atb3BhY2l0eT0iMC43Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzZiNTUxOCIgc3RvcC1vcGFjaXR5PSIwIi8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogICAgPHJhZGlhbEdyYWRpZW50IGlkPSJmbGFyZTEiIGN4PSI1MCUiIGN5PSI1MCUiIHI9IjUwJSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiNmNWU2YTMiIHN0b3Atb3BhY2l0eT0iMC45Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMzAlIiBzdG9wLWNvbG9yPSIjYzlhNDRhIiBzdG9wLW9wYWNpdHk9IjAuNSIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiM4YTZkMWIiIHN0b3Atb3BhY2l0eT0iMCIvPgogICAgPC9yYWRpYWxHcmFkaWVudD4KICAgIDxyYWRpYWxHcmFkaWVudCBpZD0iZmxhcmUyIiBjeD0iNTAlIiBjeT0iNTAlIiByPSI1MCUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjZThkNDhiIiBzdG9wLW9wYWNpdHk9IjAuNyIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjQwJSIgc3RvcC1jb2xvcj0iI2EwN2MyZSIgc3RvcC1vcGFjaXR5PSIwLjMiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjNmI1NTE4IiBzdG9wLW9wYWNpdHk9IjAiLz4KICAgIDwvcmFkaWFsR3JhZGllbnQ+CiAgPC9kZWZzPgoKICA8IS0tIOKVkOKVkOKVkCBMRUZUIEVMRUNUUklDSVRZIOKVkOKVkOKVkCAtLT4KICA8ZyBmaWx0ZXI9InVybCgjZWxlY0dsb3cpIj4KICAgIDxwYXRoIGQ9Ik0xMjAsNjAgQzExMCw1OCA5NSw1MiA4Miw1NiBDNzAsNjAgNjAsNTUgNDgsNTggQzM2LDYxIDI4LDU2IDE4LDU5IEMxMCw2MSA1LDU4IDAsNjAiIAogICAgICAgICAgZmlsbD0ibm9uZSIgc3Ryb2tlPSJ1cmwoI2VsZWNMZWZ0KSIgc3Ryb2tlLXdpZHRoPSIxLjYiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgb3BhY2l0eT0iMC45Ii8+CiAgICA8cGF0aCBkPSJNMTI1LDU0IEMxMTIsNTAgOTgsNDYgODUsNTAgQzcyLDU0IDYyLDQ4IDUwLDUxIEMzOCw1NCAyOCw0OSAxNSw1MiBDOCw1NCAyLDUxIC01LDUzIiAKICAgICAgICAgIGZpbGw9Im5vbmUiIHN0cm9rZT0idXJsKCNlbGVjTGVmdCkiIHN0cm9rZS13aWR0aD0iMS4yIiBzdHJva2UtbGluZWNhcD0icm91bmQiIG9wYWNpdHk9IjAuNzUiLz4KICAgIDxwYXRoIGQ9Ik0xMTgsNjggQzEwNiw3MCA5Miw3NCA3OCw3MCBDNjUsNjYgNTUsNzIgNDIsNjkgQzMwLDY2IDIyLDcxIDEyLDY4IEM1LDY2IDAsNjkgLTUsNjciIAogICAgICAgICAgZmlsbD0ibm9uZSIgc3Ryb2tlPSJ1cmwoI2VsZWNMZWZ0KSIgc3Ryb2tlLXdpZHRoPSIxLjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgb3BhY2l0eT0iMC43NSIvPgogICAgPHBhdGggZD0iTTEzMCw0OCBDMTE4LDQ0IDEwNSw0MCA5MCw0NCBDNzgsNDcgNjUsNDIgNTIsNDUgQzQyLDQ3IDMyLDQzIDIyLDQ2IiAKICAgICAgICAgIGZpbGw9Im5vbmUiIHN0cm9rZT0idXJsKCNlbGVjTGVmdCkiIHN0cm9rZS13aWR0aD0iMC44IiBzdHJva2UtbGluZWNhcD0icm91bmQiIG9wYWNpdHk9IjAuNSIvPgogICAgPHBhdGggZD0iTTExNSw3NiBDMTA0LDc4IDkwLDgyIDc2LDc4IEM2NCw3NCA1Miw4MCA0MCw3NyBDMzAsNzQgMjAsNzggMTAsNzYiIAogICAgICAgICAgZmlsbD0ibm9uZSIgc3Ryb2tlPSJ1cmwoI2VsZWNMZWZ0KSIgc3Ryb2tlLXdpZHRoPSIwLjgiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgb3BhY2l0eT0iMC41Ii8+CiAgICA8cGF0aCBkPSJNNDgsNTggQzQ0LDU0IDQwLDU2IDQyLDYwIEM0NCw2NCA0MCw2NyAzNiw2NCIgCiAgICAgICAgICBmaWxsPSJub25lIiBzdHJva2U9InVybCgjZWxlY0xlZnQpIiBzdHJva2Utd2lkdGg9IjEuMCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBvcGFjaXR5PSIwLjY1Ii8+CiAgICA8cGF0aCBkPSJNODIsNTYgQzc4LDUwIDcyLDQ4IDY4LDUyIiAKICAgICAgICAgIGZpbGw9Im5vbmUiIHN0cm9rZT0idXJsKCNlbGVjTGVmdCkiIHN0cm9rZS13aWR0aD0iMC45IiBzdHJva2UtbGluZWNhcD0icm91bmQiIG9wYWNpdHk9IjAuNTUiLz4KICAgIDxwYXRoIGQ9Ik03OCw3MCBDNzQsNzUgNjgsNzggNjIsNzUiIAogICAgICAgICAgZmlsbD0ibm9uZSIgc3Ryb2tlPSJ1cmwoI2VsZWNMZWZ0KSIgc3Ryb2tlLXdpZHRoPSIwLjkiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgb3BhY2l0eT0iMC41NSIvPgogIDwvZz4KCiAgPCEtLSDilZDilZDilZAgUklHSFQgRUxFQ1RSSUNJVFkg4pWQ4pWQ4pWQIC0tPgogIDxnIGZpbHRlcj0idXJsKCNlbGVjR2xvdykiPgogICAgPHBhdGggZD0iTTQ4MCw2MCBDNDkwLDU4IDUwNSw1MiA1MTgsNTYgQzUzMCw2MCA1NDAsNTUgNTUyLDU4IEM1NjQsNjEgNTcyLDU2IDU4Miw1OSBDNTkwLDYxIDU5NSw1OCA2MDAsNjAiIAogICAgICAgICAgZmlsbD0ibm9uZSIgc3Ryb2tlPSJ1cmwoI2VsZWNSaWdodCkiIHN0cm9rZS13aWR0aD0iMS42IiBzdHJva2UtbGluZWNhcD0icm91bmQiIG9wYWNpdHk9IjAuOSIvPgogICAgPHBhdGggZD0iTTQ3NSw1NCBDNDg4LDUwIDUwMiw0NiA1MTUsNTAgQzUyOCw1NCA1MzgsNDggNTUwLDUxIEM1NjIsNTQgNTcyLDQ5IDU4NSw1MiBDNTkyLDU0IDU5OCw1MSA2MDUsNTMiIAogICAgICAgICAgZmlsbD0ibm9uZSIgc3Ryb2tlPSJ1cmwoI2VsZWNSaWdodCkiIHN0cm9rZS13aWR0aD0iMS4yIiBzdHJva2UtbGluZWNhcD0icm91bmQiIG9wYWNpdHk9IjAuNzUiLz4KICAgIDxwYXRoIGQ9Ik00ODIsNjggQzQ5NCw3MCA1MDgsNzQgNTIyLDcwIEM1MzUsNjYgNTQ1LDcyIDU1OCw2OSBDNTcwLDY2IDU3OCw3MSA1ODgsNjggQzU5NSw2NiA2MDAsNjkgNjA1LDY3IiAKICAgICAgICAgIGZpbGw9Im5vbmUiIHN0cm9rZT0idXJsKCNlbGVjUmlnaHQpIiBzdHJva2Utd2lkdGg9IjEuMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBvcGFjaXR5PSIwLjc1Ii8+CiAgICA8cGF0aCBkPSJNNDcwLDQ4IEM0ODIsNDQgNDk1LDQwIDUxMCw0NCBDNTIyLDQ3IDUzNSw0MiA1NDgsNDUgQzU1OCw0NyA1NjgsNDMgNTc4LDQ2IiAKICAgICAgICAgIGZpbGw9Im5vbmUiIHN0cm9rZT0idXJsKCNlbGVjUmlnaHQpIiBzdHJva2Utd2lkdGg9IjAuOCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBvcGFjaXR5PSIwLjUiLz4KICAgIDxwYXRoIGQ9Ik00ODUsNzYgQzQ5Niw3OCA1MTAsODIgNTI0LDc4IEM1MzYsNzQgNTQ4LDgwIDU2MCw3NyBDNTcwLDc0IDU4MCw3OCA1OTAsNzYiIAogICAgICAgICAgZmlsbD0ibm9uZSIgc3Ryb2tlPSJ1cmwoI2VsZWNSaWdodCkiIHN0cm9rZS13aWR0aD0iMC44IiBzdHJva2UtbGluZWNhcD0icm91bmQiIG9wYWNpdHk9IjAuNSIvPgogICAgPHBhdGggZD0iTTU1Miw1OCBDNTU2LDU0IDU2MCw1NiA1NTgsNjAgQzU1Niw2NCA1NjAsNjcgNTY0LDY0IiAKICAgICAgICAgIGZpbGw9Im5vbmUiIHN0cm9rZT0idXJsKCNlbGVjUmlnaHQpIiBzdHJva2Utd2lkdGg9IjEuMCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBvcGFjaXR5PSIwLjY1Ii8+CiAgICA8cGF0aCBkPSJNNTE4LDU2IEM1MjIsNTAgNTI4LDQ4IDUzMiw1MiIgCiAgICAgICAgICBmaWxsPSJub25lIiBzdHJva2U9InVybCgjZWxlY1JpZ2h0KSIgc3Ryb2tlLXdpZHRoPSIwLjkiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgb3BhY2l0eT0iMC41NSIvPgogICAgPHBhdGggZD0iTTUyMiw3MCBDNTI2LDc1IDUzMiw3OCA1MzgsNzUiIAogICAgICAgICAgZmlsbD0ibm9uZSIgc3Ryb2tlPSJ1cmwoI2VsZWNSaWdodCkiIHN0cm9rZS13aWR0aD0iMC45IiBzdHJva2UtbGluZWNhcD0icm91bmQiIG9wYWNpdHk9IjAuNTUiLz4KICA8L2c+CgogIDwhLS0gQWNjZW50IGxpbmUgLS0+CiAgPGxpbmUgeDE9IjE0MCIgeTE9IjgwIiB4Mj0iNDYwIiB5Mj0iODAiIHN0cm9rZT0idXJsKCNmbG91cmlzaEdyYWQpIiBzdHJva2Utd2lkdGg9IjAuNiIgb3BhY2l0eT0iMC41Ii8+CgogIDwhLS0gTGVmdCBmbGFyZSAtLT4KICA8ZWxsaXBzZSBjeD0iMTQ4IiBjeT0iNjAiIHJ4PSIyOCIgcnk9IjIyIiBmaWxsPSJ1cmwoI2ZsYXJlMikiIG9wYWNpdHk9IjAuNSIvPgogIDxlbGxpcHNlIGN4PSIxNDgiIGN5PSI2MCIgcng9IjEwIiByeT0iOCIgZmlsbD0idXJsKCNmbGFyZTEpIiBvcGFjaXR5PSIwLjYiLz4KICA8bGluZSB4MT0iMTQ4IiB5MT0iMzgiIHgyPSIxNDgiIHkyPSI4MiIgc3Ryb2tlPSIjZThkNDhiIiBzdHJva2Utd2lkdGg9IjAuNSIgb3BhY2l0eT0iMC4zNSIvPgogIDxsaW5lIHgxPSIxMjYiIHkxPSI2MCIgeDI9IjE3MCIgeTI9IjYwIiBzdHJva2U9IiNlOGQ0OGIiIHN0cm9rZS13aWR0aD0iMC41IiBvcGFjaXR5PSIwLjM1Ii8+CiAgPGxpbmUgeDE9IjEzNCIgeTE9IjQ2IiB4Mj0iMTYyIiB5Mj0iNzQiIHN0cm9rZT0iI2U4ZDQ4YiIgc3Ryb2tlLXdpZHRoPSIwLjM1IiBvcGFjaXR5PSIwLjI1Ii8+CiAgPGxpbmUgeDE9IjE2MiIgeTE9IjQ2IiB4Mj0iMTM0IiB5Mj0iNzQiIHN0cm9rZT0iI2U4ZDQ4YiIgc3Ryb2tlLXdpZHRoPSIwLjM1IiBvcGFjaXR5PSIwLjI1Ii8+CgogIDwhLS0gUmlnaHQgZmxhcmUgLS0+CiAgPGVsbGlwc2UgY3g9IjQ1MiIgY3k9IjYwIiByeD0iMjQiIHJ5PSIxOCIgZmlsbD0idXJsKCNmbGFyZTIpIiBvcGFjaXR5PSIwLjQ1Ii8+CiAgPGVsbGlwc2UgY3g9IjQ1MiIgY3k9IjYwIiByeD0iOSIgcnk9IjciIGZpbGw9InVybCgjZmxhcmUxKSIgb3BhY2l0eT0iMC41NSIvPgogIDxsaW5lIHgxPSI0NTIiIHkxPSI0MiIgeDI9IjQ1MiIgeTI9Ijc4IiBzdHJva2U9IiNlOGQ0OGIiIHN0cm9rZS13aWR0aD0iMC41IiBvcGFjaXR5PSIwLjMiLz4KICA8bGluZSB4MT0iNDMyIiB5MT0iNjAiIHgyPSI0NzIiIHkyPSI2MCIgc3Ryb2tlPSIjZThkNDhiIiBzdHJva2Utd2lkdGg9IjAuNSIgb3BhY2l0eT0iMC4zIi8+CiAgPGxpbmUgeDE9IjQ0MCIgeTE9IjQ4IiB4Mj0iNDY0IiB5Mj0iNzIiIHN0cm9rZT0iI2U4ZDQ4YiIgc3Ryb2tlLXdpZHRoPSIwLjM1IiBvcGFjaXR5PSIwLjIyIi8+CiAgPGxpbmUgeDE9IjQ2NCIgeTE9IjQ4IiB4Mj0iNDQwIiB5Mj0iNzIiIHN0cm9rZT0iI2U4ZDQ4YiIgc3Ryb2tlLXdpZHRoPSIwLjM1IiBvcGFjaXR5PSIwLjIyIi8+CgogIDwhLS0gTWFpbiB0ZXh0IC0tPgogIDx0ZXh0IHg9IjMwMCIgeT0iNzIiIHRleHQtYW5jaG9yPSJtaWRkbGUiIAogICAgICAgIGZvbnQtZmFtaWx5PSInQ29ybW9yYW50IEdhcmFtb25kJywgJ0dhcmFtb25kJywgJ0dlb3JnaWEnLCBzZXJpZiIgCiAgICAgICAgZm9udC1zaXplPSI1MiIgZm9udC13ZWlnaHQ9IjYwMCIgbGV0dGVyLXNwYWNpbmc9IjE4IgogICAgICAgIGZpbGw9InVybCgjZ29sZFRleHQpIiBmaWx0ZXI9InVybCgjdGV4dEdsb3cpIj5WQVlESU48L3RleHQ+CiAgPHRleHQgeD0iMzAwIiB5PSI3MiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgCiAgICAgICAgZm9udC1mYW1pbHk9IidDb3Jtb3JhbnQgR2FyYW1vbmQnLCAnR2FyYW1vbmQnLCAnR2VvcmdpYScsIHNlcmlmIiAKICAgICAgICBmb250LXNpemU9IjUyIiBmb250LXdlaWdodD0iNjAwIiBsZXR0ZXItc3BhY2luZz0iMTgiCiAgICAgICAgZmlsbD0idXJsKCNnb2xkSGlnaGxpZ2h0KSIgb3BhY2l0eT0iMC4xMiI+VkFZRElOPC90ZXh0Pgo8L3N2Zz4=" alt="Vaydin"></div>
+    <div class="ftinf"><a href="mailto:vaydinagency@gmail.com">vaydinagency@gmail.com</a><span>Dubai, UAE</span></div>
+  </div>
+  <div class="ftc">© 2026 Vaydin. All rights reserved. Digital intelligence for aesthetic clinics.</div>
+</div></footer>
+<script>
+const nav=document.getElementById('mainNav');
+window.addEventListener('scroll',()=>{nav.classList.toggle('scrolled',window.scrollY>60)});
+
+// Calculator
+function calc(){const p=parseFloat(document.getElementById('cP').value)||0,i=parseFloat(document.getElementById('cI').value)||0,r=parseFloat(document.getElementById('cR').value)||0,m=Math.round(i*(r/100)*p);document.getElementById('cO').textContent='AED '+m.toLocaleString();document.getElementById('cY').textContent='AED '+(m*12).toLocaleString()}
+document.getElementById('cP').addEventListener('input',calc);
+document.getElementById('cI').addEventListener('input',calc);
+document.getElementById('cR').addEventListener('input',calc);
+
+// Smooth scroll
+document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{e.preventDefault();const t=document.querySelector(a.getAttribute('href'));if(t)t.scrollIntoView({behavior:'smooth',block:'start'})})});
+
+// Magnetic divider scroll trigger
+const magObs=new IntersectionObserver(entries=>{entries.forEach(e=>{e.target.classList.toggle('in-view',e.isIntersecting)})},{threshold:.5});
+document.querySelectorAll('[data-mag]').forEach(el=>magObs.observe(el));
+
+// Contact form
+function submitForm(){const n=document.getElementById('fN').value,c=document.getElementById('fC').value,p=document.getElementById('fP').value,e=document.getElementById('fE').value;if(!n||!c||!p||!e){alert('Please fill in all fields');return}const s=encodeURIComponent('Free Clinic Score — '+c),b=encodeURIComponent('Name: '+n+'\nClinic: '+c+'\nPhone: '+p+'\nEmail: '+e+'\n\nPlease score our clinic!');window.location.href='mailto:vaydinagency@gmail.com?subject='+s+'&body='+b;const btn=document.querySelector('.fsub');btn.textContent='✓ Request Sent!';btn.style.background='#25D366';setTimeout(()=>{btn.textContent='Get My Free Clinic Score';btn.style.background=''},3000)}
+</script>
+</body></html>
