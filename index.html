@@ -520,13 +520,13 @@ footer{padding:60px 0 40px;border-top:1px solid var(--brd)}
 <section class="contact" id="contact"><div class="container">
   <div class="contact-g">
     <div class="contact-l">
-      <div class="sl">Get Your Free Score</div>
+      <div class="sl">Free Digital Health Check</div>
       <h2 class="st">Find out what your clinic<br>is <span style="color:var(--gold)">really</span> losing</h2>
-      <p class="ss">We'll pose as a patient, score your WhatsApp response, and deliver a full digital readiness report — free, within 48 hours.</p>
+      <p class="ss">Fill in your details. Within 1–2 days we mystery shop your clinic as a real patient. You get a free Digital Health Check PDF — your score, your revenue gap, and exactly what to fix.</p>
       <ul class="cp">
-        <li><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg> No commitment or contracts</li>
-        <li><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg> Real mystery shop, not a generic audit</li>
-        <li><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg> Actionable score in 48 hours</li>
+        <li><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg> Real mystery shop — not a generic audit</li>
+        <li><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg> Your digital score (0–100) + revenue gap</li>
+        <li><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg> PDF delivered by email — free, no commitment</li>
         <li><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg> 100% confidential</li>
       </ul>
       <div style="margin-top:24px;font-size:14px;color:var(--tx2)">Or email us: <a href="mailto:vaydinagency@gmail.com" style="color:var(--gold);text-decoration:none">vaydinagency@gmail.com</a></div>
@@ -536,8 +536,23 @@ footer{padding:60px 0 40px;border-top:1px solid var(--brd)}
       <div class="fg"><label>Clinic Name</label><input type="text" id="fC" placeholder="e.g. Glow Aesthetics Dubai"></div>
       <div class="fg"><label>Phone Number</label><input type="tel" id="fP" placeholder="+971 50 XXX XXXX"></div>
       <div class="fg"><label>Email</label><input type="email" id="fE" placeholder="you@clinic.com"></div>
-      <button class="fsub" onclick="submitForm()">Get My Free Clinic Score</button>
-      <div class="fnot">We'll reach out within 24 hours to begin your audit</div>
+      <button class="fsub" onclick="submitForm()">Get My Free Digital Health Check</button>
+      <div class="fnot" style="margin-top:16px">
+        <div style="display:flex;flex-direction:column;gap:10px;margin-top:4px">
+          <div style="display:flex;align-items:flex-start;gap:12px">
+            <div style="min-width:22px;height:22px;border-radius:50%;background:rgba(201,164,74,.15);border:1px solid rgba(201,164,74,.3);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:var(--gold);flex-shrink:0">1</div>
+            <div style="font-size:12px;color:var(--tx2);line-height:1.5"><span style="color:var(--tx);font-weight:500">We receive your request</span><br>You'll get a confirmation email shortly.</div>
+          </div>
+          <div style="display:flex;align-items:flex-start;gap:12px">
+            <div style="min-width:22px;height:22px;border-radius:50%;background:rgba(201,164,74,.15);border:1px solid rgba(201,164,74,.3);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:var(--gold);flex-shrink:0">2</div>
+            <div style="font-size:12px;color:var(--tx2);line-height:1.5"><span style="color:var(--tx);font-weight:500">Mystery shop within 1–2 days</span><br>A Vaydin agent contacts your clinic as a real patient — WhatsApp, booking flow, everything.</div>
+          </div>
+          <div style="display:flex;align-items:flex-start;gap:12px">
+            <div style="min-width:22px;height:22px;border-radius:50%;background:rgba(201,164,74,.15);border:1px solid rgba(201,164,74,.3);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:var(--gold);flex-shrink:0">3</div>
+            <div style="font-size:12px;color:var(--tx2);line-height:1.5"><span style="color:var(--tx);font-weight:500">Your Digital Health Check PDF arrives</span><br>Score, revenue gap, and what to fix — straight to your inbox.</div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div></section>
@@ -570,6 +585,6 @@ const magObs=new IntersectionObserver(entries=>{entries.forEach(e=>{e.target.cla
 document.querySelectorAll('[data-mag]').forEach(el=>magObs.observe(el));
 
 // Contact form
-function submitForm(){const n=document.getElementById('fN').value,c=document.getElementById('fC').value,p=document.getElementById('fP').value,e=document.getElementById('fE').value;if(!n||!c||!p||!e){alert('Please fill in all fields');return}const s=encodeURIComponent('Free Clinic Score — '+c),b=encodeURIComponent('Name: '+n+'\nClinic: '+c+'\nPhone: '+p+'\nEmail: '+e+'\n\nPlease score our clinic!');window.location.href='mailto:vaydinagency@gmail.com?subject='+s+'&body='+b;const btn=document.querySelector('.fsub');btn.textContent='✓ Request Sent!';btn.style.background='#25D366';setTimeout(()=>{btn.textContent='Get My Free Clinic Score';btn.style.background=''},3000)}
+function submitForm(){const n=document.getElementById('fN').value,c=document.getElementById('fC').value,p=document.getElementById('fP').value,e=document.getElementById('fE').value;if(!n||!c||!p||!e){alert('Please fill in all fields');return}const s=encodeURIComponent('Free Digital Health Check — '+c),b=encodeURIComponent('Name: '+n+'\nClinic: '+c+'\nPhone: '+p+'\nEmail: '+e+'\n\nPlease send my free Digital Health Check!');window.location.href='mailto:vaydinagency@gmail.com?subject='+s+'&body='+b;const btn=document.querySelector('.fsub');btn.textContent='✓ Request Sent — expect your PDF in 1-2 days!';btn.style.background='#25D366';setTimeout(()=>{btn.textContent='Get My Free Digital Health Check';btn.style.background=''},5000)}
 </script>
 </body></html>
