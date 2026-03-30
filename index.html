@@ -591,6 +591,16 @@ const magObs=new IntersectionObserver(entries=>{entries.forEach(e=>{e.target.cla
 document.querySelectorAll('[data-mag]').forEach(el=>magObs.observe(el));
 
 // Contact form
-function submitForm(){const n=document.getElementById('fN').value,c=document.getElementById('fC').value,p=document.getElementById('fP').value,e=document.getElementById('fE').value;if(!n||!c||!p||!e){alert('Please fill in all fields');return}const s=encodeURIComponent('Free Digital Health Check — '+c),b=encodeURIComponent('Name: '+n+'\nClinic: '+c+'\nPhone: '+p+'\nEmail: '+e+'\n\nPlease send my free Digital Health Check!');window.location.href='mailto:vaydinagency@gmail.com?subject='+s+'&body='+b;const btn=document.querySelector('.fsub');btn.textContent='✓ Request Sent — expect your PDF in 1-2 days!';btn.style.background='#25D366';setTimeout(()=>{btn.textContent='Get My Free Digital Health Check';btn.style.background=''},5000)}
+async function submitForm(){
+  const n=document.getElementById('fN').value.trim(),c=document.getElementById('fC').value.trim(),p=document.getElementById('fP').value.trim(),e=document.getElementById('fE').value.trim();
+  if(!n||!c||!p||!e){alert('Please fill in all fields');return}
+  const btn=document.querySelector('.fsub');
+  btn.textContent='Sending...';btn.disabled=true;
+  try{
+    await fetch('https://web-production-b1b12.up.railway.app/contact',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name:n,clinic:c,phone:p,email:e})});
+  }catch(err){}
+  btn.textContent='Request Sent — expect your PDF in 1-2 days!';btn.style.background='#25D366';btn.disabled=false;
+  setTimeout(()=>{btn.textContent='Get My Free Digital Health Check';btn.style.background=''},6000);
+}
 </script>
 </body></html>
