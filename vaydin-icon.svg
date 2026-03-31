@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <linearGradient id="gld" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#6b5518"/>
+      <stop offset="30%" stop-color="#c9a44a"/>
+      <stop offset="50%" stop-color="#e8d48b"/>
+      <stop offset="70%" stop-color="#c9a44a"/>
+      <stop offset="100%" stop-color="#6b5518"/>
+    </linearGradient>
+    <linearGradient id="gld2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#8a6d1b" stop-opacity="0"/>
+      <stop offset="40%" stop-color="#f5e6a3" stop-opacity="0.3"/>
+      <stop offset="60%" stop-color="#f5e6a3" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#8a6d1b" stop-opacity="0"/>
+    </linearGradient>
+    <filter id="glow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="6" result="blur"/>
+      <feFlood flood-color="#c9a44a" flood-opacity="0.35" result="color"/>
+      <feComposite in="color" in2="blur" operator="in" result="shadow"/>
+      <feMerge><feMergeNode in="shadow"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <!-- Dark background -->
+  <rect width="512" height="512" rx="64" fill="#0a0a0a"/>
+  <rect x="1" y="1" width="510" height="510" rx="63" fill="none" stroke="#1a1710" stroke-width="2"/>
+
+  <!-- The mark -->
+  <g filter="url(#glow)">
+    <line x1="75" y1="95" x2="170" y2="385" stroke="url(#gld)" stroke-width="18" stroke-linecap="round"/>
+    <line x1="170" y1="385" x2="375" y2="155" stroke="url(#gld)" stroke-width="14" stroke-linecap="round"/>
+    <line x1="275" y1="75" x2="375" y2="385" stroke="url(#gld)" stroke-width="18" stroke-linecap="round"/>
+    <line x1="75" y1="95" x2="345" y2="220" stroke="url(#gld)" stroke-width="10" stroke-linecap="round"/>
+  </g>
+
+  <!-- Highlight pass -->
+  <g opacity="0.4">
+    <line x1="75" y1="95" x2="170" y2="385" stroke="url(#gld2)" stroke-width="10" stroke-linecap="round"/>
+    <line x1="275" y1="75" x2="375" y2="385" stroke="url(#gld2)" stroke-width="10" stroke-linecap="round"/>
+  </g>
+</svg>
