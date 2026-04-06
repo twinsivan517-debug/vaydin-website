@@ -227,9 +227,10 @@ nav .container{display:flex;align-items:center;justify-content:space-between}
 .vid-wrap video:-webkit-full-screen{object-fit:contain;background:#000}
 .vid-wrap video:-moz-full-screen{object-fit:contain;background:#000}
 .vid-wrap video:fullscreen{object-fit:contain;background:#000}
-/* Thumbnail overlay */
+/* Thumbnail overlay — hidden on mobile, fade out on desktop when video loads */
 #vidThumb{position:absolute;inset:0;z-index:11;transition:opacity .6s}
 #vidThumb.hidden{opacity:0;pointer-events:none}
+@media(max-width:900px){#vidThumb{display:none}}
 
 /* HOW */
 .how{padding:120px 0}
@@ -359,7 +360,7 @@ footer{padding:60px 0 40px;border-top:1px solid var(--brd)}
 @media(max-width:900px){
   /* Kill expensive background animations on mobile for smooth scrolling */
   .elec-bg,.v-spark,.pulse-line,.mag-div{display:none}
-  *{animation-duration:.001ms!important;animation-iteration-count:1!important}
+  .pl1,.pl2,.pl3,.pl4,.pl5,.pl6,.vs1,.vs2,.vs3,.vs4,.vs5{animation:none}
   .hero-grid,.dvr-g,.contact-g{grid-template-columns:1fr;gap:40px;text-align:center}
   .hero-desc{margin:0 auto 40px}
   .cg{grid-template-columns:1fr;gap:20px}.vs{transform:rotate(90deg)}
