@@ -219,7 +219,12 @@ nav .container{display:flex;align-items:center;justify-content:space-between}
 .vid-tagline{position:absolute;bottom:16%;left:0;width:100%;font-family:var(--fd);font-size:16px;font-weight:300;color:var(--tx);letter-spacing:1.5px;text-shadow:0 2px 16px rgba(0,0,0,.9);pointer-events:none}
 .vid-sub{position:absolute;bottom:9%;left:0;width:100%;font-size:9px;color:var(--tx2);letter-spacing:2.5px;text-transform:uppercase;pointer-events:none}
 .vid-scanline{position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;background:repeating-linear-gradient(0deg,transparent,transparent 3px,rgba(201,164,74,.012) 3px,rgba(201,164,74,.012) 4px);opacity:.5}
-.vid-wrap iframe{position:absolute;inset:0;width:100%;height:100%;border:none;z-index:10}
+.vid-wrap video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:10}
+.vid-sound{position:absolute;bottom:20%;right:8%;z-index:20;width:32px;height:32px;border-radius:50%;background:rgba(0,0,0,.55);border:1px solid rgba(201,164,74,.4);display:none;align-items:center;justify-content:center;cursor:pointer;backdrop-filter:blur(4px)}
+.vid-sound svg{width:14px;height:14px;fill:var(--gold)}
+/* Thumbnail overlay */
+#vidThumb{position:absolute;inset:0;z-index:11;transition:opacity .6s}
+#vidThumb.hidden{opacity:0;pointer-events:none}
 
 /* HOW */
 .how{padding:120px 0}
@@ -479,19 +484,28 @@ footer{padding:60px 0 40px;border-top:1px solid var(--brd)}
         <div class="phone-btn-r"></div>
         <div class="phone-btn-l1"></div>
         <div class="phone-btn-l2"></div>
-        <div class="vid-wrap" id="vidWrap" onclick="playVideo(this)">
-          <svg class="vid-pulse" viewBox="0 0 300 50" preserveAspectRatio="none">
-            <polyline points="0,25 60,25 70,25 78,6 86,44 94,16 102,28 110,25 170,25 178,25 186,6 194,44 202,16 210,28 218,25 300,25">
-              <animate attributeName="points" dur="3s" repeatCount="indefinite"
-                values="0,25 60,25 70,25 78,6 86,44 94,16 102,28 110,25 170,25 178,25 186,6 194,44 202,16 210,28 218,25 300,25;
-                        0,25 60,25 72,25 80,10 88,40 96,18 104,26 112,25 170,25 180,25 188,10 196,40 204,18 212,26 220,25 300,25;
-                        0,25 60,25 70,25 78,6 86,44 94,16 102,28 110,25 170,25 178,25 186,6 194,44 202,16 210,28 218,25 300,25"/>
-            </polyline>
-          </svg>
-          <div class="vid-scanline"></div>
-          <div class="vid-play"><svg viewBox="0 0 24 24"><polygon points="6,3 20,12 6,21"/></svg></div>
-          <div class="vid-tagline">Your clinic is being tested</div>
-          <div class="vid-sub">Digital Vitals Report</div>
+        <div class="vid-wrap" id="vidWrap">
+          <!-- Video (autoplays muted on scroll, click to unmute) -->
+          <video id="dvrVideo" src="dvr_explainer.mp4" muted playsinline loop></video>
+          <!-- Sound toggle -->
+          <div class="vid-sound" id="vidSound" onclick="toggleSound()">
+            <svg id="soundIcon" viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg>
+          </div>
+          <!-- Thumbnail overlay (hidden once video loads) -->
+          <div id="vidThumb">
+            <svg class="vid-pulse" viewBox="0 0 300 50" preserveAspectRatio="none">
+              <polyline points="0,25 60,25 70,25 78,6 86,44 94,16 102,28 110,25 170,25 178,25 186,6 194,44 202,16 210,28 218,25 300,25">
+                <animate attributeName="points" dur="3s" repeatCount="indefinite"
+                  values="0,25 60,25 70,25 78,6 86,44 94,16 102,28 110,25 170,25 178,25 186,6 194,44 202,16 210,28 218,25 300,25;
+                          0,25 60,25 72,25 80,10 88,40 96,18 104,26 112,25 170,25 180,25 188,10 196,40 204,18 212,26 220,25 300,25;
+                          0,25 60,25 70,25 78,6 86,44 94,16 102,28 110,25 170,25 178,25 186,6 194,44 202,16 210,28 218,25 300,25"/>
+              </polyline>
+            </svg>
+            <div class="vid-scanline"></div>
+            <div class="vid-play"><svg viewBox="0 0 24 24"><polygon points="6,3 20,12 6,21"/></svg></div>
+            <div class="vid-tagline">Your clinic is being tested</div>
+            <div class="vid-sub">Digital Vitals Report</div>
+          </div>
         </div>
         <div class="phone-home"></div>
       </div>
@@ -702,21 +716,32 @@ document.getElementById('cR').addEventListener('input',calc);
 // Smooth scroll
 document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{e.preventDefault();const t=document.querySelector(a.getAttribute('href'));if(t)t.scrollIntoView({behavior:'smooth',block:'start'})})});
 
-// Video player — swap thumbnail for YouTube iframe
-function playVideo(wrap){
-  // Replace YOUTUBE_VIDEO_ID with your real ID once the video is uploaded
-  const ytId = 'GYWRSu_CXlI';
-  if(ytId === 'YOUTUBE_VIDEO_ID'){
-    // Video not uploaded yet — subtle pulse feedback
-    wrap.querySelector('.vid-play').style.boxShadow='0 0 60px rgba(201,164,74,.5)';
-    setTimeout(()=>{wrap.querySelector('.vid-play').style.boxShadow=''},800);
-    return;
-  }
-  const iframe = document.createElement('iframe');
-  iframe.src = 'https://www.youtube.com/embed/'+ytId+'?autoplay=1&rel=0&modestbranding=1';
-  iframe.allow = 'autoplay; encrypted-media';
-  iframe.allowFullscreen = true;
-  wrap.appendChild(iframe);
+// Native video — autoplay muted on scroll, sound toggle on click
+const dvrVideo = document.getElementById('dvrVideo');
+const vidThumb = document.getElementById('vidThumb');
+const vidSound = document.getElementById('vidSound');
+
+// Fade out thumbnail once video can play
+dvrVideo.addEventListener('canplay', () => {
+  vidThumb.classList.add('hidden');
+  vidSound.style.display = 'flex';
+});
+
+// Intersection Observer — autoplay when 40% visible, pause when out of view
+const vidObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if(e.isIntersecting){ dvrVideo.play().catch(()=>{}); }
+    else { dvrVideo.pause(); }
+  });
+}, { threshold: 0.4 });
+vidObs.observe(dvrVideo);
+
+// Sound toggle
+function toggleSound(){
+  dvrVideo.muted = !dvrVideo.muted;
+  document.getElementById('soundIcon').innerHTML = dvrVideo.muted
+    ? '<path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/>'
+    : '<path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zm-2.5 0c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/>';
 }
 
 // Magnetic divider scroll trigger
