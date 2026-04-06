@@ -223,6 +223,10 @@ nav .container{display:flex;align-items:center;justify-content:space-between}
 /* Style native video controls to blend with dark theme */
 .vid-wrap video::-webkit-media-controls-panel{background:linear-gradient(transparent,rgba(0,0,0,.7))}
 .vid-wrap video::-webkit-media-controls{border-radius:0 0 30px 30px}
+/* Fullscreen: show full video, no cropping */
+.vid-wrap video:-webkit-full-screen{object-fit:contain;background:#000}
+.vid-wrap video:-moz-full-screen{object-fit:contain;background:#000}
+.vid-wrap video:fullscreen{object-fit:contain;background:#000}
 /* Thumbnail overlay */
 #vidThumb{position:absolute;inset:0;z-index:11;transition:opacity .6s}
 #vidThumb.hidden{opacity:0;pointer-events:none}
