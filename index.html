@@ -186,6 +186,42 @@ nav .container{display:flex;align-items:center;justify-content:space-between}
 .sc-n{font-family:var(--fd);font-size:40px;font-weight:300;color:var(--gold);line-height:1;margin-bottom:8px;text-shadow:0 0 20px rgba(201,164,74,.2)}
 .sc-l{font-size:13px;color:var(--tx2)}
 
+/* VIDEO / EXPLAINER */
+.vid{padding:100px 0 80px;text-align:center}
+.vid-hd{margin-bottom:56px}
+.vid-hd .st{margin-bottom:12px}
+/* Phone mockup shell */
+.phone-shell{position:relative;display:inline-block;margin:0 auto}
+.phone-frame{position:relative;width:300px;border-radius:44px;background:linear-gradient(145deg,#1a1a1a,#0d0d0d);border:2px solid rgba(201,164,74,.5);box-shadow:0 0 0 1px rgba(201,164,74,.1),0 0 60px rgba(201,164,74,.12),0 40px 80px rgba(0,0,0,.7),inset 0 1px 0 rgba(255,255,255,.06);padding:14px;transition:box-shadow .4s}
+.phone-frame:hover{box-shadow:0 0 0 1px rgba(201,164,74,.2),0 0 80px rgba(201,164,74,.22),0 40px 80px rgba(0,0,0,.7),inset 0 1px 0 rgba(255,255,255,.06)}
+/* Notch / Dynamic Island */
+.phone-notch{position:absolute;top:18px;left:50%;transform:translateX(-50%);width:88px;height:26px;background:#000;border-radius:20px;z-index:20;display:flex;align-items:center;justify-content:center;gap:8px}
+.phone-notch::after{content:'';width:8px;height:8px;border-radius:50%;background:rgba(201,164,74,.25);box-shadow:0 0 6px rgba(201,164,74,.4)}
+/* Side buttons */
+.phone-btn-r{position:absolute;right:-3px;top:80px;width:3px;height:56px;background:rgba(201,164,74,.3);border-radius:0 2px 2px 0}
+.phone-btn-l1{position:absolute;left:-3px;top:72px;width:3px;height:32px;background:rgba(201,164,74,.2);border-radius:2px 0 0 2px}
+.phone-btn-l2{position:absolute;left:-3px;top:116px;width:3px;height:32px;background:rgba(201,164,74,.2);border-radius:2px 0 0 2px}
+/* Home indicator */
+.phone-home{position:absolute;bottom:10px;left:50%;transform:translateX(-50%);width:80px;height:4px;background:rgba(201,164,74,.25);border-radius:2px}
+/* The actual video screen */
+.vid-wrap{position:relative;width:100%;aspect-ratio:9/16;border-radius:32px;overflow:hidden;background:#080808;cursor:pointer}
+/* Heartbeat line on thumbnail */
+.vid-pulse{position:absolute;bottom:36%;left:0;width:100%;height:50px;opacity:.2;pointer-events:none}
+.vid-pulse polyline{fill:none;stroke:var(--gold);stroke-width:1.5;stroke-linecap:round;filter:drop-shadow(0 0 4px rgba(201,164,74,.5))}
+/* Play button */
+.vid-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:64px;height:64px;border-radius:50%;background:rgba(201,164,74,.15);border:2px solid var(--gold);display:flex;align-items:center;justify-content:center;transition:all .4s;backdrop-filter:blur(8px)}
+.phone-frame:hover .vid-play{background:rgba(201,164,74,.3);transform:translate(-50%,-50%) scale(1.1);box-shadow:0 0 32px rgba(201,164,74,.4)}
+.vid-play svg{width:22px;height:22px;fill:var(--gold);margin-left:3px}
+/* Overlay text on thumbnail */
+.vid-tagline{position:absolute;bottom:16%;left:0;width:100%;font-family:var(--fd);font-size:18px;font-weight:300;color:var(--tx);letter-spacing:1.5px;text-shadow:0 2px 16px rgba(0,0,0,.9);pointer-events:none}
+.vid-sub{position:absolute;bottom:9%;left:0;width:100%;font-size:10px;color:var(--tx2);letter-spacing:2.5px;text-transform:uppercase;pointer-events:none}
+/* Scan lines */
+.vid-scanline{position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;background:repeating-linear-gradient(0deg,transparent,transparent 3px,rgba(201,164,74,.012) 3px,rgba(201,164,74,.012) 4px);opacity:.5}
+/* YouTube iframe */
+.vid-wrap iframe{position:absolute;inset:0;width:100%;height:100%;border:none;z-index:10}
+/* Glow ring behind phone */
+.phone-glow{position:absolute;inset:-40px;border-radius:80px;background:radial-gradient(ellipse at center,rgba(201,164,74,.08) 0%,transparent 70%);pointer-events:none;z-index:-1}
+
 /* HOW */
 .how{padding:120px 0}
 .how-hd{text-align:center;margin-bottom:80px}
@@ -325,6 +361,10 @@ footer{padding:60px 0 40px;border-top:1px solid var(--brd)}
   .ftinf{flex-direction:column;gap:12px}
   .dvr-ph{width:220px}
   .mag-div.in-view .mag-wire{width:40%}
+  .vid{padding:60px 0 40px}
+  .phone-frame{width:240px}
+  .vid-play{width:52px;height:52px}
+  .vid-play svg{width:18px;height:18px}
 }
 </style>
 </head>
@@ -403,6 +443,47 @@ footer{padding:60px 0 40px;border-top:1px solid var(--brd)}
   <div class="ti"><div class="tn-num">50+</div><div class="tn-txt">Clinics audited<span>across Dubai & UAE</span></div></div>
   <div class="ti"><div class="tn-num">AED 2M+</div><div class="tn-txt">Revenue leaks identified<span>in the first 90 days</span></div></div>
   <div class="ti"><div class="tn-num">48hr</div><div class="tn-txt">Score delivery<span>from first message</span></div></div>
+</div></section>
+
+<!-- ═══ VIDEO EXPLAINER ═══ -->
+<section class="vid" id="video"><div class="container">
+  <div class="vid-hd">
+    <div class="sl">See It In Action</div>
+    <h2 class="st">79 seconds to understand</h2>
+    <p class="ss" style="margin:0 auto">Watch how we audit your clinic's digital presence — from WhatsApp to Google Maps — and turn blind spots into revenue.</p>
+  </div>
+  <div class="phone-shell">
+    <div class="phone-glow"></div>
+    <div class="phone-frame">
+      <!-- Dynamic Island notch -->
+      <div class="phone-notch"></div>
+      <!-- Side buttons -->
+      <div class="phone-btn-r"></div>
+      <div class="phone-btn-l1"></div>
+      <div class="phone-btn-l2"></div>
+      <!-- Screen -->
+      <div class="vid-wrap" id="vidWrap" onclick="playVideo(this)">
+        <!-- Heartbeat EKG line on thumbnail -->
+        <svg class="vid-pulse" viewBox="0 0 300 50" preserveAspectRatio="none">
+          <polyline points="0,25 60,25 70,25 78,6 86,44 94,16 102,28 110,25 170,25 178,25 186,6 194,44 202,16 210,28 218,25 300,25">
+            <animate attributeName="points" dur="3s" repeatCount="indefinite"
+              values="0,25 60,25 70,25 78,6 86,44 94,16 102,28 110,25 170,25 178,25 186,6 194,44 202,16 210,28 218,25 300,25;
+                      0,25 60,25 72,25 80,10 88,40 96,18 104,26 112,25 170,25 180,25 188,10 196,40 204,18 212,26 220,25 300,25;
+                      0,25 60,25 70,25 78,6 86,44 94,16 102,28 110,25 170,25 178,25 186,6 194,44 202,16 210,28 218,25 300,25"/>
+          </polyline>
+        </svg>
+        <!-- Scanline overlay -->
+        <div class="vid-scanline"></div>
+        <!-- Play button -->
+        <div class="vid-play"><svg viewBox="0 0 24 24"><polygon points="6,3 20,12 6,21"/></svg></div>
+        <!-- Text overlays -->
+        <div class="vid-tagline">Your clinic is being tested</div>
+        <div class="vid-sub">Digital Vitals Report</div>
+      </div>
+      <!-- Home indicator -->
+      <div class="phone-home"></div>
+    </div>
+  </div>
 </div></section>
 
 <!-- ═══ MAGNETIC DIVIDER ═══ -->
@@ -590,6 +671,23 @@ document.getElementById('cR').addEventListener('input',calc);
 
 // Smooth scroll
 document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{e.preventDefault();const t=document.querySelector(a.getAttribute('href'));if(t)t.scrollIntoView({behavior:'smooth',block:'start'})})});
+
+// Video player — swap thumbnail for YouTube iframe
+function playVideo(wrap){
+  // Replace YOUTUBE_VIDEO_ID with your real ID once the video is uploaded
+  const ytId = 'eu8-T0_JUMk';
+  if(ytId === 'YOUTUBE_VIDEO_ID'){
+    // Video not uploaded yet — subtle pulse feedback
+    wrap.querySelector('.vid-play').style.boxShadow='0 0 60px rgba(201,164,74,.5)';
+    setTimeout(()=>{wrap.querySelector('.vid-play').style.boxShadow=''},800);
+    return;
+  }
+  const iframe = document.createElement('iframe');
+  iframe.src = 'https://www.youtube.com/embed/'+ytId+'?autoplay=1&rel=0&modestbranding=1';
+  iframe.allow = 'autoplay; encrypted-media';
+  iframe.allowFullscreen = true;
+  wrap.appendChild(iframe);
+}
 
 // Magnetic divider scroll trigger
 const magObs=new IntersectionObserver(entries=>{entries.forEach(e=>{e.target.classList.toggle('in-view',e.isIntersecting)})},{threshold:.5});
