@@ -377,7 +377,12 @@ footer{padding:60px 0 40px;border-top:1px solid var(--brd)}
   .vid{padding:60px 0 40px}
   .vid-layout{grid-template-columns:1fr;gap:40px}
   .vid-col{flex-direction:row;flex-wrap:wrap;gap:20px}
-  .phone-shell{max-width:340px;margin:0 auto}
+  /* Mobile phone frame — simplified, no glow overflow */
+  .phone-shell{width:280px;margin:0 auto}
+  .phone-glow{display:none}
+  .phone-frame{box-shadow:0 0 30px rgba(201,164,74,.15)}
+  /* Explicit height fallback for older iOS that ignores aspect-ratio */
+  .vid-wrap{aspect-ratio:9/16;min-height:420px}
   .vid-play{width:52px;height:52px}
   .vid-play svg{width:18px;height:18px}
 }
