@@ -190,37 +190,38 @@ nav .container{display:flex;align-items:center;justify-content:space-between}
 .vid{padding:100px 0 80px;text-align:center}
 .vid-hd{margin-bottom:56px}
 .vid-hd .st{margin-bottom:12px}
-/* Phone mockup shell */
+/* VIDEO / TABLET MOCKUP */
 .phone-shell{position:relative;display:inline-block;margin:0 auto}
-.phone-frame{position:relative;width:300px;border-radius:44px;background:linear-gradient(145deg,#1a1a1a,#0d0d0d);border:2px solid rgba(201,164,74,.5);box-shadow:0 0 0 1px rgba(201,164,74,.1),0 0 60px rgba(201,164,74,.12),0 40px 80px rgba(0,0,0,.7),inset 0 1px 0 rgba(255,255,255,.06);padding:14px;transition:box-shadow .4s}
-.phone-frame:hover{box-shadow:0 0 0 1px rgba(201,164,74,.2),0 0 80px rgba(201,164,74,.22),0 40px 80px rgba(0,0,0,.7),inset 0 1px 0 rgba(255,255,255,.06)}
-/* Notch / Dynamic Island */
-.phone-notch{position:absolute;top:18px;left:50%;transform:translateX(-50%);width:88px;height:26px;background:#000;border-radius:20px;z-index:20;display:flex;align-items:center;justify-content:center;gap:8px}
-.phone-notch::after{content:'';width:8px;height:8px;border-radius:50%;background:rgba(201,164,74,.25);box-shadow:0 0 6px rgba(201,164,74,.4)}
-/* Side buttons */
-.phone-btn-r{position:absolute;right:-3px;top:80px;width:3px;height:56px;background:rgba(201,164,74,.3);border-radius:0 2px 2px 0}
-.phone-btn-l1{position:absolute;left:-3px;top:72px;width:3px;height:32px;background:rgba(201,164,74,.2);border-radius:2px 0 0 2px}
-.phone-btn-l2{position:absolute;left:-3px;top:116px;width:3px;height:32px;background:rgba(201,164,74,.2);border-radius:2px 0 0 2px}
+/* Tablet frame — portrait iPad Pro style */
+.phone-frame{position:relative;width:420px;border-radius:32px;background:linear-gradient(145deg,#1c1c1c,#0d0d0d);border:2px solid rgba(201,164,74,.45);box-shadow:0 0 0 1px rgba(201,164,74,.1),0 0 80px rgba(201,164,74,.14),0 60px 120px rgba(0,0,0,.8),inset 0 1px 0 rgba(255,255,255,.05);padding:22px 20px 28px;transition:box-shadow .4s}
+.phone-frame:hover{box-shadow:0 0 0 1px rgba(201,164,74,.2),0 0 100px rgba(201,164,74,.22),0 60px 120px rgba(0,0,0,.8),inset 0 1px 0 rgba(255,255,255,.05)}
+/* Tablet top bar — camera dot centered */
+.phone-notch{position:absolute;top:10px;left:50%;transform:translateX(-50%);width:8px;height:8px;background:rgba(201,164,74,.3);border-radius:50%;box-shadow:0 0 6px rgba(201,164,74,.4);z-index:20}
+/* Side power button */
+.phone-btn-r{position:absolute;right:-3px;top:100px;width:3px;height:48px;background:rgba(201,164,74,.25);border-radius:0 2px 2px 0}
+/* Volume buttons */
+.phone-btn-l1{position:absolute;left:-3px;top:90px;width:3px;height:36px;background:rgba(201,164,74,.2);border-radius:2px 0 0 2px}
+.phone-btn-l2{position:absolute;left:-3px;top:140px;width:3px;height:36px;background:rgba(201,164,74,.2);border-radius:2px 0 0 2px}
 /* Home indicator */
-.phone-home{position:absolute;bottom:10px;left:50%;transform:translateX(-50%);width:80px;height:4px;background:rgba(201,164,74,.25);border-radius:2px}
-/* The actual video screen */
-.vid-wrap{position:relative;width:100%;aspect-ratio:9/16;border-radius:32px;overflow:hidden;background:#080808;cursor:pointer}
+.phone-home{position:absolute;bottom:10px;left:50%;transform:translateX(-50%);width:100px;height:4px;background:rgba(201,164,74,.2);border-radius:2px}
+/* The video screen */
+.vid-wrap{position:relative;width:100%;aspect-ratio:9/16;border-radius:16px;overflow:hidden;background:#080808;cursor:pointer}
 /* Heartbeat line on thumbnail */
 .vid-pulse{position:absolute;bottom:36%;left:0;width:100%;height:50px;opacity:.2;pointer-events:none}
 .vid-pulse polyline{fill:none;stroke:var(--gold);stroke-width:1.5;stroke-linecap:round;filter:drop-shadow(0 0 4px rgba(201,164,74,.5))}
 /* Play button */
-.vid-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:64px;height:64px;border-radius:50%;background:rgba(201,164,74,.15);border:2px solid var(--gold);display:flex;align-items:center;justify-content:center;transition:all .4s;backdrop-filter:blur(8px)}
-.phone-frame:hover .vid-play{background:rgba(201,164,74,.3);transform:translate(-50%,-50%) scale(1.1);box-shadow:0 0 32px rgba(201,164,74,.4)}
-.vid-play svg{width:22px;height:22px;fill:var(--gold);margin-left:3px}
+.vid-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:72px;height:72px;border-radius:50%;background:rgba(201,164,74,.15);border:2px solid var(--gold);display:flex;align-items:center;justify-content:center;transition:all .4s;backdrop-filter:blur(8px)}
+.phone-frame:hover .vid-play{background:rgba(201,164,74,.3);transform:translate(-50%,-50%) scale(1.1);box-shadow:0 0 40px rgba(201,164,74,.4)}
+.vid-play svg{width:24px;height:24px;fill:var(--gold);margin-left:4px}
 /* Overlay text on thumbnail */
-.vid-tagline{position:absolute;bottom:16%;left:0;width:100%;font-family:var(--fd);font-size:18px;font-weight:300;color:var(--tx);letter-spacing:1.5px;text-shadow:0 2px 16px rgba(0,0,0,.9);pointer-events:none}
-.vid-sub{position:absolute;bottom:9%;left:0;width:100%;font-size:10px;color:var(--tx2);letter-spacing:2.5px;text-transform:uppercase;pointer-events:none}
+.vid-tagline{position:absolute;bottom:16%;left:0;width:100%;font-family:var(--fd);font-size:20px;font-weight:300;color:var(--tx);letter-spacing:1.5px;text-shadow:0 2px 16px rgba(0,0,0,.9);pointer-events:none}
+.vid-sub{position:absolute;bottom:9%;left:0;width:100%;font-size:11px;color:var(--tx2);letter-spacing:2.5px;text-transform:uppercase;pointer-events:none}
 /* Scan lines */
 .vid-scanline{position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;background:repeating-linear-gradient(0deg,transparent,transparent 3px,rgba(201,164,74,.012) 3px,rgba(201,164,74,.012) 4px);opacity:.5}
 /* YouTube iframe */
 .vid-wrap iframe{position:absolute;inset:0;width:100%;height:100%;border:none;z-index:10}
-/* Glow ring behind phone */
-.phone-glow{position:absolute;inset:-40px;border-radius:80px;background:radial-gradient(ellipse at center,rgba(201,164,74,.08) 0%,transparent 70%);pointer-events:none;z-index:-1}
+/* Glow behind tablet */
+.phone-glow{position:absolute;inset:-60px;border-radius:100px;background:radial-gradient(ellipse at center,rgba(201,164,74,.09) 0%,transparent 70%);pointer-events:none;z-index:-1}
 
 /* HOW */
 .how{padding:120px 0}
@@ -362,7 +363,7 @@ footer{padding:60px 0 40px;border-top:1px solid var(--brd)}
   .dvr-ph{width:220px}
   .mag-div.in-view .mag-wire{width:40%}
   .vid{padding:60px 0 40px}
-  .phone-frame{width:240px}
+  .phone-frame{width:300px}
   .vid-play{width:52px;height:52px}
   .vid-play svg{width:18px;height:18px}
 }
