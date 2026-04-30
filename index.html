@@ -741,80 +741,60 @@ footer{padding:60px 0 40px;border-top:1px solid var(--brd)}
   <div class="ti"><div class="tn-num">48hr</div><div class="tn-txt">Score delivery<span>from first message</span></div></div>
 </div></section>
 
-<!-- ═══ VIDEO EXPLAINER ═══ -->
-<section class="vid" id="video"><div class="container">
-  <div class="vid-hd">
-    <div class="sl">See It In Action</div>
-    <h2 class="st">79 seconds to understand</h2>
-    <p class="ss" style="margin:0 auto">Watch how we audit your clinic's digital presence — from WhatsApp to Google Maps — and turn blind spots into revenue.</p>
-  </div>
-  <div class="vid-layout">
-    <!-- Left column: What we audit -->
-    <div class="vid-col">
-      <div class="vid-item">
+<!-- ═══ VIDEO EXPLAINER (v2 — diagnostic-led cinematic narrative) ═══ -->
+<section class="vid-v2" id="video">
+  <div class="container">
+    <div class="vid-hd">
+      <div class="sl">The Vaydin Story</div>
+      <h2 class="st">Diagnose. Heal. Grow.</h2>
+      <p class="ss" style="margin:0 auto">One minute. Sound recommended.</p>
+    </div>
+    <div class="vid-frame-v2">
+      <video id="vaydinVideo" controls preload="metadata" playsinline poster="">
+        <source src="vaydin_explainer.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    </div>
+    <!-- Below-video audit context (kept from previous, condensed) -->
+    <div class="vid-audit-grid">
+      <div class="vid-audit-item">
         <div class="vid-icon">💬</div>
-        <div class="vid-item-tx">
-          <h4>WhatsApp Response</h4>
-          <p>We message your clinic as a real patient and score speed, tone, and follow-through.</p>
-        </div>
+        <h4>WhatsApp Response</h4>
+        <p>We message your clinic as a real patient and score speed, tone, and follow-through.</p>
       </div>
-      <div class="vid-item">
+      <div class="vid-audit-item">
         <div class="vid-icon">📍</div>
-        <div class="vid-item-tx">
-          <h4>Google Maps Presence</h4>
-          <p>Rating, review count, photo quality, and how you compare to nearby competitors.</p>
-        </div>
+        <h4>Google Maps Presence</h4>
+        <p>Rating, review count, photo quality, and how you compare to nearby competitors.</p>
       </div>
-    </div>
-    <!-- Center: Phone mockup -->
-    <div class="phone-shell">
-      <div class="phone-glow"></div>
-      <div class="phone-frame">
-        <div class="phone-notch"></div>
-        <div class="phone-btn-r"></div>
-        <div class="phone-btn-l1"></div>
-        <div class="phone-btn-l2"></div>
-        <div class="vid-wrap" id="vidWrap">
-          <!-- Video (autoplays muted on scroll, click to unmute) -->
-          <video id="dvrVideo" src="dvr_explainer.mp4" muted autoplay playsinline loop controls controlsList="nodownload noremoteplayback"></video>
-          <!-- Thumbnail overlay (hidden once video loads) -->
-          <div id="vidThumb">
-            <svg class="vid-pulse" viewBox="0 0 300 50" preserveAspectRatio="none">
-              <polyline points="0,25 60,25 70,25 78,6 86,44 94,16 102,28 110,25 170,25 178,25 186,6 194,44 202,16 210,28 218,25 300,25">
-                <animate attributeName="points" dur="3s" repeatCount="indefinite"
-                  values="0,25 60,25 70,25 78,6 86,44 94,16 102,28 110,25 170,25 178,25 186,6 194,44 202,16 210,28 218,25 300,25;
-                          0,25 60,25 72,25 80,10 88,40 96,18 104,26 112,25 170,25 180,25 188,10 196,40 204,18 212,26 220,25 300,25;
-                          0,25 60,25 70,25 78,6 86,44 94,16 102,28 110,25 170,25 178,25 186,6 194,44 202,16 210,28 218,25 300,25"/>
-              </polyline>
-            </svg>
-            <div class="vid-scanline"></div>
-            <div class="vid-play"><svg viewBox="0 0 24 24"><polygon points="6,3 20,12 6,21"/></svg></div>
-            <div class="vid-tagline">Your clinic is being tested</div>
-            <div class="vid-sub">Vaydin Intelligence</div>
-          </div>
-        </div>
-        <div class="phone-home"></div>
-      </div>
-    </div>
-    <!-- Right column: What you get -->
-    <div class="vid-col">
-      <div class="vid-item">
+      <div class="vid-audit-item">
         <div class="vid-icon">📸</div>
-        <div class="vid-item-tx">
-          <h4>Instagram Audit</h4>
-          <p>Posting frequency, content quality, engagement rate, and profile completeness.</p>
-        </div>
+        <h4>Instagram Audit</h4>
+        <p>Posting frequency, content quality, engagement rate, and profile completeness.</p>
       </div>
-      <div class="vid-item">
+      <div class="vid-audit-item">
         <div class="vid-icon">🌐</div>
-        <div class="vid-item-tx">
-          <h4>Website Experience</h4>
-          <p>Booking flow, load speed, mobile experience, and trust signals checked end-to-end.</p>
-        </div>
+        <h4>Website Experience</h4>
+        <p>Booking flow, load speed, mobile experience, and trust signals checked end-to-end.</p>
       </div>
     </div>
   </div>
-</div></section>
+</section>
+
+<style>
+.vid-v2{padding:120px 24px;background:#0a0a0a;position:relative;overflow:hidden}
+.vid-v2::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:80%;max-width:900px;height:1px;background:linear-gradient(90deg,transparent,rgba(201,164,74,.3),transparent)}
+.vid-v2 .vid-hd{text-align:center;margin-bottom:56px}
+.vid-frame-v2{max-width:1100px;margin:0 auto 80px;border-radius:16px;overflow:hidden;box-shadow:0 30px 80px rgba(201,164,74,.12),0 0 0 1px rgba(201,164,74,.08);background:#000}
+.vid-frame-v2 video{width:100%;height:auto;display:block;aspect-ratio:16/9;object-fit:cover}
+.vid-audit-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:32px;max-width:1200px;margin:0 auto;padding-top:48px;border-top:1px solid rgba(201,164,74,.12)}
+.vid-audit-item{text-align:center;padding:0 8px}
+.vid-audit-item .vid-icon{font-size:32px;margin-bottom:16px;opacity:.85}
+.vid-audit-item h4{font-family:var(--fd);font-size:18px;font-weight:400;margin-bottom:10px;color:#e8e3d9;letter-spacing:.3px}
+.vid-audit-item p{font-size:14px;line-height:1.55;color:rgba(232,227,217,.62);margin:0}
+@media(max-width:900px){.vid-audit-grid{grid-template-columns:repeat(2,1fr);gap:24px}}
+@media(max-width:540px){.vid-audit-grid{grid-template-columns:1fr;gap:20px}.vid-v2{padding:80px 20px}}
+</style>
 
 <!-- ═══ MAGNETIC DIVIDER ═══ -->
 <div class="mag-div" data-mag>
