@@ -171,13 +171,6 @@ nav .container{display:flex;align-items:center;justify-content:space-between}
 .wm-o{background:#005c4b;color:#e4e4e4;margin-left:auto;border-bottom-right-radius:3px}
 .wm-t{font-size:9px;color:#6b7280;text-align:right;margin-top:3px}
 
-/* TRUST */
-.trust{padding:40px 0;text-align:center;border-bottom:1px solid var(--brd)}
-.trust .container{display:flex;align-items:center;justify-content:center;gap:48px;flex-wrap:wrap}
-.ti{display:flex;align-items:center;gap:12px}
-.tn-num{font-family:var(--fd);font-size:32px;font-weight:300;color:var(--gold);line-height:1;text-shadow:0 0 20px rgba(201,164,74,.2)}
-.tn-txt{text-align:left;line-height:1.3;font-size:14px;color:var(--tx2)}
-.tn-txt span{display:block;font-size:11px;color:var(--tx3);letter-spacing:1px;text-transform:uppercase}
 
 /* STATS */
 .stats-row{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;padding:80px 0 0}
@@ -255,23 +248,6 @@ nav .container{display:flex;align-items:center;justify-content:space-between}
 .rs{margin-top:20px;padding:14px;border-radius:10px;display:flex;align-items:center;gap:10px;font-size:13px;font-weight:500}
 .rs-b{background:rgba(248,113,113,.06);border:1px solid rgba(248,113,113,.15);color:var(--red)}
 .rs-g{background:rgba(74,222,128,.06);border:1px solid rgba(74,222,128,.15);color:var(--grn)}
-
-/* CALC */
-.calc{padding:120px 0}
-.calc-hd{text-align:center;margin-bottom:60px}
-.calc-hd .ss{margin:0 auto}
-.calc-bx{max-width:760px;margin:0 auto;background:var(--bgc);border:1px solid var(--brd);border-radius:24px;padding:48px;position:relative;overflow:hidden}
-.calc-bx::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
-.cr{display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px;margin-bottom:40px}
-.cf label{display:block;font-size:12px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;color:var(--tx2);margin-bottom:10px}
-.cf input{width:100%;background:var(--bg);border:1px solid var(--brd);border-radius:12px;padding:16px;font-family:var(--fb);font-size:20px;font-weight:500;color:var(--tx);text-align:center;outline:none;transition:border-color .3s,box-shadow .3s}
-.cf input:focus{border-color:var(--gold);box-shadow:0 0 16px rgba(201,164,74,.15)}
-.cf .u{font-size:12px;color:var(--tx3);text-align:center;margin-top:6px}
-.cres{background:linear-gradient(135deg,rgba(201,164,74,.08),rgba(201,164,74,.02));border:1px solid rgba(201,164,74,.2);border-radius:16px;padding:32px;text-align:center}
-.cres-l{font-size:13px;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:var(--tx2);margin-bottom:8px}
-.cres-v{font-family:var(--fd);font-size:56px;font-weight:300;color:var(--gold);line-height:1.2;text-shadow:0 0 30px rgba(201,164,74,.3)}
-.cres-s{font-size:14px;color:var(--tx3);margin-top:8px}
-.cfm{text-align:center;margin-top:20px;font-size:13px;color:var(--tx3)}
 
 /* DVR */
 .dvr{padding:120px 0}
@@ -388,8 +364,6 @@ footer{padding:60px 0 40px;border-top:1px solid var(--brd)}
   .ag-grid{grid-template-columns:1fr;max-width:400px}
   .stats-row{grid-template-columns:1fr;max-width:320px;margin:0 auto}
   .nav-links{display:none}
-  .calc-bx{padding:28px 18px}
-  .trust .container{flex-direction:column;gap:24px}
   .fti{flex-direction:column;text-align:center}
   .ftinf{flex-direction:column;gap:12px}
   .dvr-ph{width:220px}
@@ -735,12 +709,6 @@ footer{padding:60px 0 40px;border-top:1px solid var(--brd)}
   </div>
 </section>
 
-<section class="trust"><div class="container">
-  <div class="ti"><div class="tn-num">50+</div><div class="tn-txt">Clinics audited<span>across Dubai & UAE</span></div></div>
-  <div class="ti"><div class="tn-num">AED 2M+</div><div class="tn-txt">Revenue leaks identified<span>in the first 90 days</span></div></div>
-  <div class="ti"><div class="tn-num">48hr</div><div class="tn-txt">Score delivery<span>from first message</span></div></div>
-</div></section>
-
 <!-- ═══════════════════════════════════════════════════════════════
      HOW VAYDIN WORKS — 5-layer narrative walkthrough
      Replaces the old video section (2026-05-04). Tells the same story
@@ -976,21 +944,6 @@ footer{padding:60px 0 40px;border-top:1px solid var(--brd)}
       <div class="cs"><div class="cb cb-i">Hi, how much is Botox for forehead lines? Do you have any slots this Thursday?</div><div class="ctg">⚡ 47 seconds later</div><div class="cb cb-o">Hi! 👋 Forehead Botox starts from AED 750 (15-20 units). We have 2 slots Thursday — 11AM and 3PM. Want me to lock one in? 🔗</div></div>
       <div class="rs rs-g"><span>✓</span><span>Price given · Slots offered · Booking link · Patient booked</span></div>
     </div>
-  </div>
-</div></section>
-
-<div class="mag-div" data-mag><div class="mag-wire mag-wire-l"></div><div class="mag-wire mag-wire-r"></div><div class="mag-field"><div class="mag-ring mr1"></div><div class="mag-ring mr2"></div><div class="mag-ring mr3"></div><div class="mag-ring mr4"></div><div class="mag-ring mr5"></div></div><div class="mag-node"></div><div class="spark-p sp1"></div><div class="spark-p sp2"></div><div class="spark-p sp3"></div><div class="spark-p sp4"></div><div class="spark-p sp5"></div><div class="spark-p sp6"></div></div>
-
-<section class="calc" id="calculator"><div class="container">
-  <div class="calc-hd"><div class="sl">Revenue Calculator</div><h2 class="st">How much is your clinic<br>leaving on the table?</h2><p class="ss">Plug in your numbers. The math doesn't lie.</p></div>
-  <div class="calc-bx">
-    <div class="cr">
-      <div class="cf"><label>Avg. Treatment Price</label><input type="number" id="cP" value="800" min="0"><div class="u">AED per treatment</div></div>
-      <div class="cf"><label>Monthly Inquiries</label><input type="number" id="cI" value="200" min="0"><div class="u">via WhatsApp</div></div>
-      <div class="cf"><label>No-Reply Rate</label><input type="number" id="cR" value="40" min="0" max="100"><div class="u">% ignored</div></div>
-    </div>
-    <div class="cres"><div class="cres-l">Estimated Monthly Revenue Lost</div><div class="cres-v" id="cO">AED 64,000</div><div class="cres-s">That's <span id="cY">AED 768,000</span> per year walking out the door</div></div>
-    <div class="cfm">Formula: (inquiries × no-reply rate) × avg. price = revenue lost</div>
   </div>
 </div></section>
 
@@ -1956,11 +1909,6 @@ const nav=document.getElementById('mainNav');
 window.addEventListener('scroll',()=>{nav.classList.toggle('scrolled',window.scrollY>60)});
 
 // Calculator
-function calc(){const p=parseFloat(document.getElementById('cP').value)||0,i=parseFloat(document.getElementById('cI').value)||0,r=parseFloat(document.getElementById('cR').value)||0,m=Math.round(i*(r/100)*p);document.getElementById('cO').textContent='AED '+m.toLocaleString();document.getElementById('cY').textContent='AED '+(m*12).toLocaleString()}
-document.getElementById('cP').addEventListener('input',calc);
-document.getElementById('cI').addEventListener('input',calc);
-document.getElementById('cR').addEventListener('input',calc);
-
 // Smooth scroll
 document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{e.preventDefault();const t=document.querySelector(a.getAttribute('href'));if(t)t.scrollIntoView({behavior:'smooth',block:'start'})})});
 
