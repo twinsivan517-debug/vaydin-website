@@ -177,7 +177,9 @@ nav,section,footer,.mag-div{position:relative;z-index:2}
 nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:20px 0;transition:all .4s;background:transparent}
 nav.scrolled{background:rgba(10,10,10,.95);backdrop-filter:blur(20px);border-bottom:1px solid var(--brd);padding:14px 0}
 nav .container{display:flex;align-items:center;justify-content:space-between}
-.nav-logo img{height:56px;width:auto;opacity:.95}
+.nav-logo{display:inline-flex;flex-direction:column;align-items:center;gap:3px;text-decoration:none;line-height:1}
+.nav-logo img{height:38px;width:auto;opacity:.95;display:block;filter:drop-shadow(0 0 6px rgba(201,164,74,.18))}
+.nav-logo-name{font-family:'Cormorant Garamond',Georgia,serif;font-size:13px;font-weight:600;letter-spacing:.32em;background:linear-gradient(135deg,#8a6d1b 0%,#c9a44a 35%,#e8d48b 50%,#c9a44a 65%,#8a6d1b 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;text-shadow:0 0 10px rgba(201,164,74,.15)}
 .nav-links{display:flex;gap:28px;align-items:center}
 .nav-links a{font-size:12px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;color:var(--tx2);text-decoration:none;transition:color .3s}
 .nav-links a:hover{color:var(--gold)}
@@ -775,7 +777,7 @@ footer{padding:60px 0 40px;border-top:1px solid var(--brd)}
 </div>
 
 <nav id="mainNav"><div class="container">
-  <a href="#" class="nav-logo"><img src="vaydin-logo-nav.png" alt="Vaydin"></a>
+  <a href="#" class="nav-logo"><img src="vaydin-icon-mark.png" alt=""><span class="nav-logo-name">VAYDIN</span></a>
   <div class="nav-links"><a href="#how">How It Works</a><a href="#dvr">Intelligence</a><a href="#operating-system">Operating System</a><a href="#revenue-engine">Revenue Engine</a><a href="#performance-marketing">Acquisition</a><a href="#thirty-day">30-Day Difference</a><a href="#contact" class="nav-cta">Free Clinic Score</a></div>
 </div></nav>
 
