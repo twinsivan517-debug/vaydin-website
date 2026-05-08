@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+# Public marketing site — nothing blocked.
+# Per-clinic dashboards live on reports.vaydin.agency (separate origin, token-gated).
+
+Sitemap: https://vaydin.agency/sitemap.xml
