@@ -2,3 +2,9 @@
 video_assets/
 *.capcut
 .DS_Store
+
+# Unreferenced heavy media (kept local, not deployed)
+dvr_explainer.mp4
+vaydin_explainer.mp4
+os-banner.jpg
+vaydin-icon-1024.png

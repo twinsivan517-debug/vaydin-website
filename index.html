@@ -40,7 +40,7 @@
   "@type": "Organization",
   "name": "Vaydin",
   "alternateName": "VAYDIN PARTNERS INVESTMENTS - FZCO",
-  "telephone": "+97154583 6955",
+  "telephone": "+971545836955",
   "address": {"@type": "PostalAddress", "streetAddress": "DSO-IFZA, IFZA Properties", "addressLocality": "Dubai Silicon Oasis", "addressRegion": "Dubai", "addressCountry": "AE"},
   "url": "https://vaydin.agency/",
   "logo": "https://vaydin.agency/vaydin-icon-512.png",
@@ -63,6 +63,10 @@
 :root{--gold:#c9a44a;--gl:#e8d48b;--gb:#f5d978;--gd:#8a6d1b;--bg:#0a0a0a;--bgc:#111;--tx:#f0ece2;--tx2:#8a8578;--tx3:#5a5549;--brd:#222218;--grn:#4ade80;--red:#f87171;--fd:'Cormorant Garamond',Georgia,serif;--fb:'DM Sans',sans-serif}
 html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--tx);font-family:var(--fb);line-height:1.6;overflow-x:hidden}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+}
 .container{max-width:1200px;margin:0 auto;padding:0 24px}
 nav,section,footer,.mag-div{position:relative;z-index:2}
 .sl{font-size:11px;font-weight:600;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:16px}
@@ -78,7 +82,7 @@ nav,section,footer,.mag-div{position:relative;z-index:2}
 .wire-glow{fill:none;stroke:rgba(201,164,74,.12);stroke-width:1.5;filter:blur(2px)}
 
 /* Animated current pulses traveling along wires */
-.pulse-line{fill:none;stroke:var(--gold);stroke-width:1;stroke-dasharray:30 200;opacity:.4;filter:drop-shadow(0 0 4px rgba(201,164,74,.6))}
+.pulse-line{fill:none;stroke:var(--gold);stroke-width:1;stroke-dasharray:30 200;opacity:.4}
 .pl1{animation:pulse-travel 8s linear infinite}
 .pl2{animation:pulse-travel 12s linear infinite;animation-delay:-3s;stroke-dasharray:20 250}
 .pl3{animation:pulse-travel 10s linear infinite;animation-delay:-6s;stroke-dasharray:40 180}
@@ -227,52 +231,6 @@ nav .container{display:flex;align-items:center;justify-content:space-between}
 .sc:hover{transform:translateY(-4px);border-color:rgba(201,164,74,.2)}
 .sc-n{font-family:var(--fd);font-size:40px;font-weight:300;color:var(--gold);line-height:1;margin-bottom:8px;text-shadow:0 0 20px rgba(201,164,74,.2)}
 .sc-l{font-size:13px;color:var(--tx2)}
-
-/* VIDEO SECTION */
-.vid{padding:100px 0 80px}
-.vid-hd{text-align:center;margin-bottom:64px}
-.vid-hd .st{margin-bottom:12px}
-/* 3-column layout: text | phone | text */
-.vid-layout{display:grid;grid-template-columns:1fr 400px 1fr;gap:40px;align-items:center;max-width:1160px;margin:0 auto}
-/* Left & right content columns */
-.vid-col{display:flex;flex-direction:column;gap:28px}
-.vid-item{display:flex;align-items:flex-start;gap:14px}
-.vid-icon{width:40px;height:40px;border-radius:10px;background:rgba(201,164,74,.08);border:1px solid rgba(201,164,74,.2);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:18px}
-.vid-item-tx h4{font-size:13px;font-weight:600;color:var(--tx);margin-bottom:4px;letter-spacing:.5px}
-.vid-item-tx p{font-size:12px;color:var(--tx2);line-height:1.6}
-/* Phone mockup */
-.phone-shell{position:relative}
-.phone-frame{position:relative;border-radius:44px;background:linear-gradient(160deg,#1e1e1e,#0d0d0d);border:2px solid rgba(201,164,74,.5);box-shadow:0 0 0 1px rgba(201,164,74,.1),0 0 60px rgba(201,164,74,.15),0 40px 80px rgba(0,0,0,.7),inset 0 1px 0 rgba(255,255,255,.06);padding:16px;transition:box-shadow .4s}
-.phone-frame:hover{box-shadow:0 0 0 1px rgba(201,164,74,.2),0 0 90px rgba(201,164,74,.25),0 40px 80px rgba(0,0,0,.7),inset 0 1px 0 rgba(255,255,255,.06)}
-.phone-notch{position:absolute;top:18px;left:50%;transform:translateX(-50%);width:70px;height:22px;background:#000;border-radius:20px;z-index:20}
-.phone-notch::after{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:7px;height:7px;border-radius:50%;background:rgba(201,164,74,.3);box-shadow:0 0 5px rgba(201,164,74,.4)}
-.phone-btn-r{position:absolute;right:-3px;top:90px;width:3px;height:52px;background:rgba(201,164,74,.25);border-radius:0 2px 2px 0}
-.phone-btn-l1{position:absolute;left:-3px;top:80px;width:3px;height:30px;background:rgba(201,164,74,.2);border-radius:2px 0 0 2px}
-.phone-btn-l2{position:absolute;left:-3px;top:122px;width:3px;height:30px;background:rgba(201,164,74,.2);border-radius:2px 0 0 2px}
-.phone-home{position:absolute;bottom:10px;left:50%;transform:translateX(-50%);width:72px;height:4px;background:rgba(201,164,74,.22);border-radius:2px}
-.phone-glow{position:absolute;inset:-50px;border-radius:80px;background:radial-gradient(ellipse at center,rgba(201,164,74,.1) 0%,transparent 70%);pointer-events:none;z-index:-1}
-/* Video screen inside phone */
-.vid-wrap{position:relative;width:100%;aspect-ratio:9/16;border-radius:30px;overflow:hidden;background:#080808;cursor:pointer}
-.vid-pulse{position:absolute;bottom:36%;left:0;width:100%;height:50px;opacity:.2;pointer-events:none}
-.vid-pulse polyline{fill:none;stroke:var(--gold);stroke-width:1.5;stroke-linecap:round;filter:drop-shadow(0 0 4px rgba(201,164,74,.5))}
-.vid-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:64px;height:64px;border-radius:50%;background:rgba(201,164,74,.15);border:2px solid var(--gold);display:flex;align-items:center;justify-content:center;transition:all .4s;backdrop-filter:blur(8px)}
-.phone-frame:hover .vid-play{background:rgba(201,164,74,.3);transform:translate(-50%,-50%) scale(1.1);box-shadow:0 0 36px rgba(201,164,74,.4)}
-.vid-play svg{width:22px;height:22px;fill:var(--gold);margin-left:3px}
-.vid-tagline{position:absolute;bottom:16%;left:0;width:100%;font-family:var(--fd);font-size:16px;font-weight:300;color:var(--tx);letter-spacing:1.5px;text-shadow:0 2px 16px rgba(0,0,0,.9);pointer-events:none}
-.vid-sub{position:absolute;bottom:9%;left:0;width:100%;font-size:9px;color:var(--tx2);letter-spacing:2.5px;text-transform:uppercase;pointer-events:none}
-.vid-scanline{position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;background:repeating-linear-gradient(0deg,transparent,transparent 3px,rgba(201,164,74,.012) 3px,rgba(201,164,74,.012) 4px);opacity:.5}
-.vid-wrap video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:10}
-/* Style native video controls to blend with dark theme */
-.vid-wrap video::-webkit-media-controls-panel{background:linear-gradient(transparent,rgba(0,0,0,.7))}
-.vid-wrap video::-webkit-media-controls{border-radius:0 0 30px 30px}
-/* Fullscreen: show full video, no cropping */
-.vid-wrap video:-webkit-full-screen{object-fit:contain;background:#000}
-.vid-wrap video:-moz-full-screen{object-fit:contain;background:#000}
-.vid-wrap video:fullscreen{object-fit:contain;background:#000}
-/* Thumbnail overlay — hidden on mobile, fade out on desktop when video loads */
-#vidThumb{position:absolute;inset:0;z-index:11;transition:opacity .6s}
-#vidThumb.hidden{opacity:0;pointer-events:none}
-@media(max-width:900px){#vidThumb{display:none}}
 
 /* HOW */
 .how{padding:120px 0}
@@ -458,22 +416,13 @@ footer{padding:60px 0 40px;border-top:1px solid var(--brd)}
   .cr{grid-template-columns:1fr}
   .ag-grid{grid-template-columns:1fr;max-width:400px}
   .stats-row{grid-template-columns:1fr;max-width:320px;margin:0 auto}
-  .nav-links{display:none}
+  .nav-links a:not(.nav-cta){display:none}
+  .nav-links{gap:0}
+  .nav-cta{padding:9px 18px;font-size:11px}
   .fti{flex-direction:column;text-align:center}
   .ftinf{flex-direction:column;gap:12px}
   .dvr-ph{width:220px}
   .mag-div.in-view .mag-wire{width:40%}
-  .vid{padding:60px 0 40px}
-  .vid-layout{grid-template-columns:1fr;gap:40px}
-  .vid-col{flex-direction:row;flex-wrap:wrap;gap:20px}
-  /* Mobile phone frame — simplified, no glow overflow */
-  .phone-shell{width:280px;margin:0 auto}
-  .phone-glow{display:none}
-  .phone-frame{box-shadow:0 0 30px rgba(201,164,74,.15)}
-  /* Explicit height fallback for older iOS that ignores aspect-ratio */
-  .vid-wrap{aspect-ratio:9/16;min-height:420px}
-  .vid-play{width:52px;height:52px}
-  .vid-play svg{width:18px;height:18px}
 }
 
 /* ═══════════ THE VAYDIN DIFFERENCE ═══════════ */
@@ -774,8 +723,8 @@ footer{padding:60px 0 40px;border-top:1px solid var(--brd)}
 </div>
 
 <nav id="mainNav"><div class="container">
-  <a href="#" class="nav-logo"><img src="vaydin-icon-mark.png" alt=""><span class="nav-logo-name">VAYDIN</span></a>
-  <div class="nav-links"><a href="#how">How It Works</a><a href="#dvr">Intelligence</a><a href="#operating-system">Operating System</a><a href="#revenue-engine">Revenue Engine</a><a href="#performance-marketing">Acquisition</a><a href="#thirty-day">30-Day Difference</a><a href="#contact" class="nav-cta">Free Clinic Score</a></div>
+  <a href="#hero" class="nav-logo"><img src="vaydin-icon-mark.png" alt=""><span class="nav-logo-name">VAYDIN</span></a>
+  <div class="nav-links"><a href="#how">How It Works</a><a href="#dvr">Intelligence</a><a href="#revenue-engine">Revenue Engine</a><a href="#performance-marketing">Acquisition</a><a href="#operating-system">Operating System</a><a href="#thirty-day">30-Day Difference</a><a href="#contact" class="nav-cta">Free Clinic Score</a></div>
 </div></nav>
 
 <section class="hero" id="hero">
@@ -1024,8 +973,7 @@ footer{padding:60px 0 40px;border-top:1px solid var(--brd)}
     </div>
 
     <div class="story-close">
-      <h3 class="story-close-h">Other agencies sell you a service.<br><em>Vaydin runs your operating system.</em></h3>
-      <div class="story-close-meta">Designed in Dubai · Built for MENA · Operated for you</div>
+      <h3 class="story-close-h">It all starts with one diagnostic.<br><em>Here's what we usually find.</em></h3>
     </div>
 
   </div>
@@ -1229,241 +1177,6 @@ footer{padding:60px 0 40px;border-top:1px solid var(--brd)}
     </div>
 
   </div>
-</div></section>
-
-<div class="mag-div" data-mag><div class="mag-wire mag-wire-l"></div><div class="mag-wire mag-wire-r"></div><div class="mag-field"><div class="mag-ring mr1"></div><div class="mag-ring mr2"></div><div class="mag-ring mr3"></div><div class="mag-ring mr4"></div><div class="mag-ring mr5"></div></div><div class="mag-node"></div><div class="spark-p sp1"></div><div class="spark-p sp2"></div><div class="spark-p sp3"></div><div class="spark-p sp4"></div><div class="spark-p sp5"></div><div class="spark-p sp6"></div></div>
-
-<!-- ═══════════════════════════════════════════════════════════════
-     THE VAYDIN OPERATING SYSTEM
-     Capability theater — 5-layer stack visualization.
-     Shows what Vaydin DOES (capability), not what's deployed (status).
-     ═══════════════════════════════════════════════════════════════ -->
-<style>
-.os{padding:120px 0;position:relative}
-.os-hd{text-align:center;max-width:720px;margin:0 auto 56px}
-.os-hd .ss{margin:0 auto 0}
-.os-banner{
-  position:relative;
-  max-width:1100px;
-  margin:0 auto 60px;
-  border-radius:18px;
-  overflow:hidden;
-  box-shadow:0 30px 80px rgba(0,0,0,.5),0 0 0 1px rgba(201,164,74,.18),0 0 60px rgba(201,164,74,.06);
-  transition:box-shadow .6s;
-}
-.os-banner:hover{
-  box-shadow:0 40px 100px rgba(0,0,0,.6),0 0 0 1px rgba(201,164,74,.32),0 0 80px rgba(201,164,74,.12);
-}
-.os-banner img{display:block;width:100%;height:auto}
-.os-banner::before{
-  content:'';position:absolute;inset:0;
-  background:linear-gradient(180deg,rgba(10,10,10,.3) 0%,transparent 25%,transparent 70%,rgba(10,10,10,.55) 100%);
-  pointer-events:none;
-}
-.os-banner::after{
-  content:'';position:absolute;inset:0;
-  background:radial-gradient(ellipse at center,transparent 50%,rgba(10,10,10,.4) 100%);
-  pointer-events:none;
-}
-.os-stack{max-width:1040px;margin:0 auto;display:flex;flex-direction:column;gap:14px;position:relative}
-.os-stack::before{content:'';position:absolute;left:50%;top:-30px;bottom:-30px;width:1px;background:linear-gradient(180deg,transparent,rgba(201,164,74,.2),rgba(201,164,74,.2),transparent);pointer-events:none;z-index:0}
-.os-layer{
-  position:relative;z-index:1;
-  display:grid;grid-template-columns:88px 1fr auto;gap:28px;align-items:center;
-  background:var(--bgc);
-  border:1px solid var(--brd);
-  border-radius:16px;
-  padding:24px 28px;
-  transition:all .55s cubic-bezier(.22,1,.36,1);
-  overflow:hidden;
-}
-.os-layer::before{
-  content:'';position:absolute;left:0;top:0;bottom:0;width:3px;
-  background:linear-gradient(180deg,transparent,var(--gold),transparent);
-  opacity:0;transition:opacity .5s;
-}
-.os-layer::after{
-  content:'';position:absolute;inset:0;
-  background:radial-gradient(circle at 0% 50%,rgba(201,164,74,.06),transparent 50%);
-  opacity:0;transition:opacity .55s;pointer-events:none;
-}
-.os-layer:hover{
-  border-color:rgba(201,164,74,.34);
-  transform:translateX(4px);
-  box-shadow:0 22px 60px rgba(0,0,0,.5),0 0 32px rgba(201,164,74,.06);
-}
-.os-layer:hover::before{opacity:1}
-.os-layer:hover::after{opacity:1}
-
-/* Layer number badge */
-.os-num{
-  display:flex;align-items:baseline;justify-content:flex-start;gap:4px;
-  font-family:var(--fb);
-  color:var(--gold);
-  line-height:1;
-  font-feature-settings:"lnum","tnum";
-}
-.os-num-l{font-size:14px;font-weight:600;opacity:.6;letter-spacing:2px;text-transform:uppercase}
-.os-num-d{font-family:var(--fd);font-size:50px;font-weight:500;text-shadow:0 0 24px rgba(201,164,74,.25);letter-spacing:-1px;font-feature-settings:"lnum","tnum"}
-.os-tier{
-  font-size:9px;letter-spacing:2.4px;text-transform:uppercase;font-weight:600;
-  color:var(--tx3);margin-top:4px;
-}
-
-/* Body */
-.os-body{display:flex;flex-direction:column;gap:6px;min-width:0}
-.os-name{
-  font-family:var(--fd);
-  font-size:24px;font-weight:400;line-height:1.2;
-  color:var(--tx);
-  letter-spacing:.5px;
-}
-.os-desc{
-  font-size:13.5px;line-height:1.55;color:var(--tx2);
-  max-width:540px;
-}
-
-/* Tags */
-.os-tags{display:flex;flex-wrap:wrap;gap:6px;justify-content:flex-end;max-width:280px}
-.os-tag{
-  display:inline-block;
-  font-size:10px;font-weight:600;letter-spacing:1.4px;text-transform:uppercase;
-  color:var(--tx2);
-  background:rgba(201,164,74,.06);
-  border:1px solid rgba(201,164,74,.18);
-  padding:5px 10px;border-radius:100px;
-  white-space:nowrap;
-  transition:all .4s;
-}
-.os-layer:hover .os-tag{
-  color:var(--gold);
-  border-color:rgba(201,164,74,.4);
-  background:rgba(201,164,74,.1);
-}
-
-/* Closing punch line */
-.os-close{
-  text-align:center;margin-top:64px;
-  font-family:var(--fd);
-  font-size:clamp(22px,2.6vw,30px);font-weight:300;line-height:1.4;
-  color:var(--tx);
-  max-width:780px;margin-left:auto;margin-right:auto;
-  letter-spacing:.5px;
-}
-.os-close em{
-  font-style:normal;
-  background:linear-gradient(135deg,var(--gl),var(--gold),var(--gd));
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
-}
-.os-close-sub{
-  margin-top:18px;font-size:13px;color:var(--tx3);letter-spacing:1.5px;text-transform:uppercase;font-weight:600;
-}
-
-@media (max-width:820px){
-  .os{padding:80px 0}
-  .os-hd{margin-bottom:48px}
-  .os-stack::before{display:none}
-  .os-layer{grid-template-columns:1fr;gap:14px;padding:20px 22px}
-  .os-num{flex-direction:row;align-items:baseline;gap:8px}
-  .os-num-d{font-size:34px}
-  .os-tier{margin-top:0;align-self:center}
-  .os-name{font-size:20px}
-  .os-tags{justify-content:flex-start;max-width:none}
-  .os-close{margin-top:48px;font-size:20px}
-}
-</style>
-
-<section class="os" id="operating-system"><div class="container">
-  <div class="os-hd">
-    <div class="sl">The Full Picture</div>
-    <h2 class="st">Not a tool. <em style="font-style:normal;background:linear-gradient(135deg,var(--gl),var(--gold),var(--gd));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">An operating system.</em></h2>
-    <p class="ss">Five layers. One mission. Built to operate, not just measure.</p>
-  </div>
-
-  <div class="os-banner">
-    <img src="os-banner.jpg" alt="Vaydin Operating System — five-layer luminous architecture" loading="lazy">
-  </div>
-
-  <div class="os-stack">
-
-    <div class="os-layer">
-      <div class="os-num">
-        <span class="os-num-l">L</span><span class="os-num-d">5</span>
-      </div>
-      <div class="os-body">
-        <div class="os-name">Geographic Reach</div>
-        <div class="os-desc">UAE-headquartered. Saudi, Egypt and the wider MENA region sequenced. Built for the languages, payment rails, and patient flows that exist here, not somewhere else.</div>
-      </div>
-      <div class="os-tags">
-        <span class="os-tag">MENA-Native</span>
-        <span class="os-tag">Regional Sequenced</span>
-      </div>
-    </div>
-
-    <div class="os-layer">
-      <div class="os-num">
-        <span class="os-num-l">L</span><span class="os-num-d">4</span>
-      </div>
-      <div class="os-body">
-        <div class="os-name">Cross-Vertical Engine</div>
-        <div class="os-desc">The diagnostic + operating engine is designed to extend across appointment-based services — aesthetic clinics first, premium retail and adjacent verticals next as the system matures. Same engine, different vertical.</div>
-      </div>
-      <div class="os-tags">
-        <span class="os-tag">Multi-Vertical</span>
-        <span class="os-tag">Service Businesses</span>
-      </div>
-    </div>
-
-    <div class="os-layer">
-      <div class="os-num">
-        <span class="os-num-l">L</span><span class="os-num-d">3</span>
-      </div>
-      <div class="os-body">
-        <div class="os-name">Acquisition Engine</div>
-        <div class="os-desc">Performance marketing tied to operational outcomes. Paid demand testing before retail commitment. Every spend traced to a real booking, a real visit, a real revenue event.</div>
-      </div>
-      <div class="os-tags">
-        <span class="os-tag">Paid Demand</span>
-        <span class="os-tag">Attribution</span>
-      </div>
-    </div>
-
-    <div class="os-layer">
-      <div class="os-num">
-        <span class="os-num-l">L</span><span class="os-num-d">2</span>
-      </div>
-      <div class="os-body">
-        <div class="os-name">Revenue Engine</div>
-        <div class="os-desc">Seven installed components — intake, booking integration, consult conversion, show-up optimization, dormant recovery, KPI dashboard, cross-sell. Operated for you, not handed over.</div>
-      </div>
-      <div class="os-tags">
-        <span class="os-tag">7 Components</span>
-        <span class="os-tag">Operated, Not Advised</span>
-      </div>
-    </div>
-
-    <div class="os-layer">
-      <div class="os-num">
-        <span class="os-num-l">L</span><span class="os-num-d">1</span>
-      </div>
-      <div class="os-body">
-        <div class="os-name">Intelligence</div>
-        <div class="os-desc">Mystery shop. Daily intelligence pulse. Live dashboards with real Dubai benchmarks. Every data point sourced and labeled. The diagnostic that tells you what's actually broken.</div>
-      </div>
-      <div class="os-tags">
-        <span class="os-tag">Mystery Shop AI</span>
-        <span class="os-tag">Live Dashboards</span>
-      </div>
-    </div>
-
-  </div>
-
-  <div class="os-close">
-    Other agencies sell you a service.<br>
-    <em>Vaydin runs an operating system.</em>
-    <div class="os-close-sub">Designed in Dubai. Built for MENA. Operated for you.</div>
-  </div>
-
 </div></section>
 
 <div class="mag-div" data-mag><div class="mag-wire mag-wire-l"></div><div class="mag-wire mag-wire-r"></div><div class="mag-field"><div class="mag-ring mr1"></div><div class="mag-ring mr2"></div><div class="mag-ring mr3"></div><div class="mag-ring mr4"></div><div class="mag-ring mr5"></div></div><div class="mag-node"></div><div class="spark-p sp1"></div><div class="spark-p sp2"></div><div class="spark-p sp3"></div><div class="spark-p sp4"></div><div class="spark-p sp5"></div><div class="spark-p sp6"></div></div>
@@ -1707,6 +1420,241 @@ footer{padding:60px 0 40px;border-top:1px solid var(--brd)}
     <h3 class="pm-moat-h">US tools optimize for clicks.<br><em>We optimize for treatments booked.</em></h3>
     <p class="pm-moat-d">Arabic creative, WhatsApp-first conversion behavior, GCC nationality patterns — operating data that US-funded competitors cannot replicate without operating clinics here. The structural advantage we are building toward as the system matures.</p>
     <div class="pm-moat-meta">Designed in Dubai · Built for MENA · Operated for you</div>
+  </div>
+
+</div></section>
+
+<div class="mag-div" data-mag><div class="mag-wire mag-wire-l"></div><div class="mag-wire mag-wire-r"></div><div class="mag-field"><div class="mag-ring mr1"></div><div class="mag-ring mr2"></div><div class="mag-ring mr3"></div><div class="mag-ring mr4"></div><div class="mag-ring mr5"></div></div><div class="mag-node"></div><div class="spark-p sp1"></div><div class="spark-p sp2"></div><div class="spark-p sp3"></div><div class="spark-p sp4"></div><div class="spark-p sp5"></div><div class="spark-p sp6"></div></div>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     THE VAYDIN OPERATING SYSTEM
+     Capability theater — 5-layer stack visualization.
+     Shows what Vaydin DOES (capability), not what's deployed (status).
+     ═══════════════════════════════════════════════════════════════ -->
+<style>
+.os{padding:120px 0;position:relative}
+.os-hd{text-align:center;max-width:720px;margin:0 auto 56px}
+.os-hd .ss{margin:0 auto 0}
+.os-banner{
+  position:relative;
+  max-width:1100px;
+  margin:0 auto 60px;
+  border-radius:18px;
+  overflow:hidden;
+  box-shadow:0 30px 80px rgba(0,0,0,.5),0 0 0 1px rgba(201,164,74,.18),0 0 60px rgba(201,164,74,.06);
+  transition:box-shadow .6s;
+}
+.os-banner:hover{
+  box-shadow:0 40px 100px rgba(0,0,0,.6),0 0 0 1px rgba(201,164,74,.32),0 0 80px rgba(201,164,74,.12);
+}
+.os-banner img{display:block;width:100%;height:auto}
+.os-banner::before{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(10,10,10,.3) 0%,transparent 25%,transparent 70%,rgba(10,10,10,.55) 100%);
+  pointer-events:none;
+}
+.os-banner::after{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse at center,transparent 50%,rgba(10,10,10,.4) 100%);
+  pointer-events:none;
+}
+.os-stack{max-width:1040px;margin:0 auto;display:flex;flex-direction:column;gap:14px;position:relative}
+.os-stack::before{content:'';position:absolute;left:50%;top:-30px;bottom:-30px;width:1px;background:linear-gradient(180deg,transparent,rgba(201,164,74,.2),rgba(201,164,74,.2),transparent);pointer-events:none;z-index:0}
+.os-layer{
+  position:relative;z-index:1;
+  display:grid;grid-template-columns:88px 1fr auto;gap:28px;align-items:center;
+  background:var(--bgc);
+  border:1px solid var(--brd);
+  border-radius:16px;
+  padding:24px 28px;
+  transition:all .55s cubic-bezier(.22,1,.36,1);
+  overflow:hidden;
+}
+.os-layer::before{
+  content:'';position:absolute;left:0;top:0;bottom:0;width:3px;
+  background:linear-gradient(180deg,transparent,var(--gold),transparent);
+  opacity:0;transition:opacity .5s;
+}
+.os-layer::after{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(circle at 0% 50%,rgba(201,164,74,.06),transparent 50%);
+  opacity:0;transition:opacity .55s;pointer-events:none;
+}
+.os-layer:hover{
+  border-color:rgba(201,164,74,.34);
+  transform:translateX(4px);
+  box-shadow:0 22px 60px rgba(0,0,0,.5),0 0 32px rgba(201,164,74,.06);
+}
+.os-layer:hover::before{opacity:1}
+.os-layer:hover::after{opacity:1}
+
+/* Layer number badge */
+.os-num{
+  display:flex;align-items:baseline;justify-content:flex-start;gap:4px;
+  font-family:var(--fb);
+  color:var(--gold);
+  line-height:1;
+  font-feature-settings:"lnum","tnum";
+}
+.os-num-l{font-size:14px;font-weight:600;opacity:.6;letter-spacing:2px;text-transform:uppercase}
+.os-num-d{font-family:var(--fd);font-size:50px;font-weight:500;text-shadow:0 0 24px rgba(201,164,74,.25);letter-spacing:-1px;font-feature-settings:"lnum","tnum"}
+.os-tier{
+  font-size:9px;letter-spacing:2.4px;text-transform:uppercase;font-weight:600;
+  color:var(--tx3);margin-top:4px;
+}
+
+/* Body */
+.os-body{display:flex;flex-direction:column;gap:6px;min-width:0}
+.os-name{
+  font-family:var(--fd);
+  font-size:24px;font-weight:400;line-height:1.2;
+  color:var(--tx);
+  letter-spacing:.5px;
+}
+.os-desc{
+  font-size:13.5px;line-height:1.55;color:var(--tx2);
+  max-width:540px;
+}
+
+/* Tags */
+.os-tags{display:flex;flex-wrap:wrap;gap:6px;justify-content:flex-end;max-width:280px}
+.os-tag{
+  display:inline-block;
+  font-size:10px;font-weight:600;letter-spacing:1.4px;text-transform:uppercase;
+  color:var(--tx2);
+  background:rgba(201,164,74,.06);
+  border:1px solid rgba(201,164,74,.18);
+  padding:5px 10px;border-radius:100px;
+  white-space:nowrap;
+  transition:all .4s;
+}
+.os-layer:hover .os-tag{
+  color:var(--gold);
+  border-color:rgba(201,164,74,.4);
+  background:rgba(201,164,74,.1);
+}
+
+/* Closing punch line */
+.os-close{
+  text-align:center;margin-top:64px;
+  font-family:var(--fd);
+  font-size:clamp(22px,2.6vw,30px);font-weight:300;line-height:1.4;
+  color:var(--tx);
+  max-width:780px;margin-left:auto;margin-right:auto;
+  letter-spacing:.5px;
+}
+.os-close em{
+  font-style:normal;
+  background:linear-gradient(135deg,var(--gl),var(--gold),var(--gd));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+.os-close-sub{
+  margin-top:18px;font-size:13px;color:var(--tx3);letter-spacing:1.5px;text-transform:uppercase;font-weight:600;
+}
+
+@media (max-width:820px){
+  .os{padding:80px 0}
+  .os-hd{margin-bottom:48px}
+  .os-stack::before{display:none}
+  .os-layer{grid-template-columns:1fr;gap:14px;padding:20px 22px}
+  .os-num{flex-direction:row;align-items:baseline;gap:8px}
+  .os-num-d{font-size:34px}
+  .os-tier{margin-top:0;align-self:center}
+  .os-name{font-size:20px}
+  .os-tags{justify-content:flex-start;max-width:none}
+  .os-close{margin-top:48px;font-size:20px}
+}
+</style>
+
+<section class="os" id="operating-system"><div class="container">
+  <div class="os-hd">
+    <div class="sl">The Full Picture</div>
+    <h2 class="st">Not a tool. <em style="font-style:normal;background:linear-gradient(135deg,var(--gl),var(--gold),var(--gd));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">An operating system.</em></h2>
+    <p class="ss">Five layers. One mission. Built to operate, not just measure.</p>
+  </div>
+
+  <div class="os-banner">
+    <img src="os-banner.webp" alt="Vaydin Operating System — five-layer luminous architecture" loading="lazy">
+  </div>
+
+  <div class="os-stack">
+
+    <div class="os-layer">
+      <div class="os-num">
+        <span class="os-num-l">L</span><span class="os-num-d">5</span>
+      </div>
+      <div class="os-body">
+        <div class="os-name">Geographic Reach</div>
+        <div class="os-desc">UAE-headquartered. Saudi, Egypt and the wider MENA region sequenced. Built for the languages, payment rails, and patient flows that exist here, not somewhere else.</div>
+      </div>
+      <div class="os-tags">
+        <span class="os-tag">MENA-Native</span>
+        <span class="os-tag">Regional Sequenced</span>
+      </div>
+    </div>
+
+    <div class="os-layer">
+      <div class="os-num">
+        <span class="os-num-l">L</span><span class="os-num-d">4</span>
+      </div>
+      <div class="os-body">
+        <div class="os-name">Cross-Vertical Engine</div>
+        <div class="os-desc">The diagnostic + operating engine is designed to extend across appointment-based services — aesthetic clinics first, premium retail and adjacent verticals next as the system matures. Same engine, different vertical.</div>
+      </div>
+      <div class="os-tags">
+        <span class="os-tag">Multi-Vertical</span>
+        <span class="os-tag">Service Businesses</span>
+      </div>
+    </div>
+
+    <div class="os-layer">
+      <div class="os-num">
+        <span class="os-num-l">L</span><span class="os-num-d">3</span>
+      </div>
+      <div class="os-body">
+        <div class="os-name">Acquisition Engine</div>
+        <div class="os-desc">Performance marketing tied to operational outcomes. Paid demand testing before retail commitment. Every spend traced to a real booking, a real visit, a real revenue event.</div>
+      </div>
+      <div class="os-tags">
+        <span class="os-tag">Paid Demand</span>
+        <span class="os-tag">Attribution</span>
+      </div>
+    </div>
+
+    <div class="os-layer">
+      <div class="os-num">
+        <span class="os-num-l">L</span><span class="os-num-d">2</span>
+      </div>
+      <div class="os-body">
+        <div class="os-name">Revenue Engine</div>
+        <div class="os-desc">Seven installed components — intake, booking integration, consult conversion, show-up optimization, dormant recovery, KPI dashboard, cross-sell. Operated for you, not handed over.</div>
+      </div>
+      <div class="os-tags">
+        <span class="os-tag">7 Components</span>
+        <span class="os-tag">Operated, Not Advised</span>
+      </div>
+    </div>
+
+    <div class="os-layer">
+      <div class="os-num">
+        <span class="os-num-l">L</span><span class="os-num-d">1</span>
+      </div>
+      <div class="os-body">
+        <div class="os-name">Intelligence</div>
+        <div class="os-desc">Mystery shop. Daily intelligence pulse. Live dashboards with real Dubai benchmarks. Every data point sourced and labeled. The diagnostic that tells you what's actually broken.</div>
+      </div>
+      <div class="os-tags">
+        <span class="os-tag">Mystery Shop AI</span>
+        <span class="os-tag">Live Dashboards</span>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="os-close">
+    Other agencies sell you a service.<br>
+    <em>Vaydin runs an operating system.</em>
+    <div class="os-close-sub">Designed in Dubai. Built for MENA. Operated for you.</div>
   </div>
 
 </div></section>
@@ -2072,7 +2020,7 @@ footer{padding:60px 0 40px;border-top:1px solid var(--brd)}
   </div>
 </div></section>
 
-<a href="https://wa.me/918527952239?text=Hi%2C%20I%27d%20like%20to%20learn%20more%20about%20Vaydin%20Intelligence%20for%20my%20clinic." class="waf" target="_blank"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
+<a href="https://wa.me/918527952239?text=Hi%2C%20I%27d%20like%20to%20learn%20more%20about%20Vaydin%20Intelligence%20for%20my%20clinic." class="waf" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
 <div class="wal">Chat with us</div>
 
 <footer><div class="container">
@@ -2094,26 +2042,8 @@ footer{padding:60px 0 40px;border-top:1px solid var(--brd)}
 const nav=document.getElementById('mainNav');
 window.addEventListener('scroll',()=>{nav.classList.toggle('scrolled',window.scrollY>60)});
 
-// Calculator
 // Smooth scroll
-document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{e.preventDefault();const t=document.querySelector(a.getAttribute('href'));if(t)t.scrollIntoView({behavior:'smooth',block:'start'})})});
-
-// Native video autoplay (only fires if video element exists — section
-// removed 2026-05-04 in favor of the 5-layer Story walkthrough)
-const dvrVideo = document.getElementById('dvrVideo');
-const vidThumb = document.getElementById('vidThumb');
-if (dvrVideo) {
-  if (vidThumb) {
-    dvrVideo.addEventListener('canplay', () => vidThumb.classList.add('hidden'));
-  }
-  const vidObs = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (e.isIntersecting) { dvrVideo.play().catch(() => {}); }
-      else { dvrVideo.pause(); }
-    });
-  }, { threshold: 0.4 });
-  vidObs.observe(dvrVideo);
-}
+document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{const h=a.getAttribute('href');if(!h||h.length<2)return;e.preventDefault();const t=document.querySelector(h);if(t)t.scrollIntoView({behavior:'smooth',block:'start'})})});
 
 // Magnetic divider scroll trigger
 const magObs=new IntersectionObserver(entries=>{entries.forEach(e=>{e.target.classList.toggle('in-view',e.isIntersecting)})},{threshold:.5});
@@ -2130,10 +2060,15 @@ async function submitForm(){
   const btn=document.querySelector('.fsub');
   btn.textContent='Sending...';btn.disabled=true;
   try{
-    await fetch('https://web-production-b1b12.up.railway.app/contact',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name:n,clinic:c,phone:p,email:e})});
-  }catch(err){}
-  btn.textContent='Request Sent — expect your results in 1-2 days!';btn.style.background='#25D366';btn.disabled=false;
-  setTimeout(()=>{btn.textContent='Get My Free Digital Health Check';btn.style.background=''},6000);
+    const res=await fetch('https://web-production-b1b12.up.railway.app/contact',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name:n,clinic:c,phone:p,email:e})});
+    if(!res.ok)throw new Error('send failed');
+    btn.textContent='Request Sent — expect your results in 1-2 days!';btn.style.background='#25D366';
+    setTimeout(()=>{btn.textContent='Get My Free Digital Health Check';btn.style.background=''},6000);
+  }catch(err){
+    btn.textContent="Couldn't send — please email hello@vaydin.agency";btn.style.background='#a04545';
+    setTimeout(()=>{btn.textContent='Get My Free Digital Health Check';btn.style.background=''},9000);
+  }
+  btn.disabled=false;
 }
 
 // Cal.com embed (EU instance) — powers the "Book 15-min Intro" button
