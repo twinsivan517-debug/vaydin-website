@@ -2081,7 +2081,7 @@ async function submitForm(){
   const btn=document.querySelector('.fsub');
   btn.textContent='Sending...';btn.disabled=true;
   try{
-    const res=await fetch('https://web-production-b1b12.up.railway.app/contact',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name:n,clinic:c,phone:p,email:e})});
+    const res=await fetch('https://reports.vaydin.agency/contact',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name:n,clinic:c,phone:p,email:e})});
     if(!res.ok)throw new Error('send failed');
     btn.textContent='Request Sent — expect your results in 1-2 days!';btn.style.background='#25D366';
     setTimeout(()=>{btn.textContent='Get My Free Digital Health Check';btn.style.background=''},6000);
