@@ -37,17 +37,24 @@
   button{font-family:inherit}
 
   /* ---------- nav (canonical bar) ---------- */
-  nav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;justify-content:space-between;align-items:center;
-      padding:18px 48px;background:linear-gradient(180deg, rgba(7,11,13,0.94), rgba(7,11,13,0));backdrop-filter:blur(6px)}
-  .brand{display:flex;align-items:center;gap:14px}
-  .brand img{width:34px;height:34px}
-  .wordmark{font-family:var(--display);font-size:21px;letter-spacing:0.32em;color:var(--gold-light)}
-  .nav-links{display:flex;gap:32px;align-items:center;font-size:13.5px;color:var(--tx-muted)}
-  .nav-links a{color:var(--tx-muted)}
-  .nav-links a:hover{color:var(--tx)}
-  .nav-cta{background:var(--gold);color:var(--bg) !important;font-weight:700;padding:10px 22px;font-size:13px;letter-spacing:0.02em;transition:background .3s var(--ease)}
+  nav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;gap:34px;
+      padding:13px 40px;background:rgba(19,13,8,0.93);backdrop-filter:blur(12px);
+      border-bottom:1px solid rgba(201,164,74,0.30)}
+  .brand{display:flex;align-items:center;gap:13px}
+  .brand img{width:32px;height:32px}
+  .wordmark{font-family:var(--display);font-size:20px;letter-spacing:0.32em;color:var(--gold-light)}
+  .nav-links{display:flex;gap:13px;align-items:center;font-size:13px}
+  .nav-links a{padding:9px 20px;color:#b9b0a2;letter-spacing:0.04em;
+    box-shadow:inset 0 0 0 1px var(--chip);transition:color .3s, box-shadow .3s, background .3s}
+  .nav-links a:hover{color:#f5f1e8;box-shadow:inset 0 0 0 1.5px var(--chip-hi);background:var(--chip-bg)}
+  .nav-links a.nav-here{color:#f5f1e8;box-shadow:inset 0 0 0 1.5px var(--chip-hi);background:var(--chip-bg)}
+  .nav-right{margin-left:auto;display:flex;align-items:center;gap:26px}
+  .nav-contact{display:flex;flex-direction:column;align-items:flex-end;gap:4px;font-family:var(--mono);font-size:10.5px;letter-spacing:0.08em;line-height:1}
+  .nav-contact a{color:#8f8672;transition:color .3s}
+  .nav-contact a:hover{color:#f5f1e8}
+  .nav-cta{background:var(--gold);color:#0b0906 !important;font-weight:700;padding:11px 24px;font-size:13px;letter-spacing:0.02em;transition:background .3s var(--ease)}
   .nav-cta:hover{background:var(--gold-light)}
-  .nav-here{color:var(--tx) !important}
+  .nav-here{color:#f5f1e8}
 
   /* ---------- the stage ---------- */
   .stage{position:relative;height:100vh;min-height:680px;overflow:hidden}
@@ -179,7 +186,7 @@
   }
   @media (max-width: 900px){
     nav{padding:14px 22px}
-    .nav-links{display:none}
+    .nav-links,.nav-contact{display:none}
     .stage{height:auto;min-height:0;padding:110px 22px 40px}
     #field, .stage-shade, .ticker{display:none}
     .console{position:static;transform:none;max-width:none;padding:0}
@@ -205,9 +212,15 @@
     <div class="wordmark">VAYDIN</div>
   </a>
   <div class="nav-links">
-    <a href="diagnose.html">Diagnose</a>
-    <a href="fix.html">Fix</a>
-    <a href="engine.html" class="nav-here">Engine</a>
+    <a href="diagnose.html" style="--chip:rgba(248,113,113,0.35);--chip-hi:#f87171;--chip-bg:rgba(248,113,113,0.08)">Diagnose</a>
+    <a href="fix.html" style="--chip:rgba(232,212,139,0.30);--chip-hi:#e8d48b;--chip-bg:rgba(232,212,139,0.07)">Fix</a>
+    <a href="engine.html" class="nav-here" style="--chip:rgba(52,227,240,0.30);--chip-hi:#34e3f0;--chip-bg:rgba(52,227,240,0.07)">Engine</a>
+  </div>
+  <div class="nav-right">
+    <div class="nav-contact">
+      <a href="tel:+971505553148">+971 50 555 3148</a>
+      <a href="mailto:hello@vaydin.agency">hello@vaydin.agency</a>
+    </div>
     <a href="pricing.html" class="nav-cta">Build your plan</a>
   </div>
 </nav>
