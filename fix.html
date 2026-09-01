@@ -72,22 +72,22 @@
   .reveal.in{opacity:1;transform:none}
 
   /* ================= HUD DECK ================= */
-  .deck{position:relative;height:660px;scroll-margin-top:90px}
+  .deck{position:relative;height:800px;scroll-margin-top:90px}
   .deckhud{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:18px;font-family:var(--mono)}
   .deckhud .dn{font-size:11px;letter-spacing:0.22em;color:var(--volt)}
   .deckhud .dc{font-size:11px;letter-spacing:0.18em;color:var(--tx-faint)}
   .deckhud .dc b{color:var(--tx);font-weight:500}
-  .stage{position:relative;height:600px}
-  .dcard{position:absolute;top:0;left:50%;width:min(820px, 92%);height:600px;margin-left:min(-410px, -46%);
+  .stage{position:relative;height:740px}
+  .dcard{position:absolute;top:0;left:50%;width:min(640px, 92%);height:740px;margin-left:max(-320px, -46%);
     transition:transform .8s var(--ease), opacity .8s var(--ease), filter .8s var(--ease);
     overflow:hidden;cursor:default}
-  .dcard .bgimg{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0.42;transform:scale(1.04);transition:opacity .8s}
-  .dcard .grad{position:absolute;inset:0;background:linear-gradient(180deg, rgba(14,10,6,0.30) 0%, rgba(14,10,6,0.55) 45%, rgba(14,10,6,0.94) 100%)}
+  .dcard .bgimg{position:absolute;inset:0;background-size:cover;background-position:center 32%;opacity:0.68;transform:scale(1.04);transition:opacity .8s}
+  .dcard .grad{position:absolute;inset:0;background:linear-gradient(180deg, rgba(14,10,6,0.20) 0%, rgba(14,10,6,0.30) 45%, rgba(14,10,6,0.90) 100%)}
   .dcard::before{content:'';position:absolute;inset:0;box-shadow:inset 0 0 0 1px rgba(255,255,255,0.10);pointer-events:none;z-index:4}
   .dcard.center{transform:translateX(0) scale(1);opacity:1;z-index:3;box-shadow:0 50px 110px rgba(0,0,0,0.65)}
   .dcard.left, .dcard.right{opacity:0.28;z-index:2;filter:blur(1.5px) brightness(0.65);cursor:pointer}
-  .dcard.left{transform:translateX(-76%) scale(0.84)}
-  .dcard.right{transform:translateX(76%) scale(0.84)}
+  .dcard.left{transform:translateX(-92%) scale(0.84)}
+  .dcard.right{transform:translateX(92%) scale(0.84)}
   .dcard.off{opacity:0;transform:scale(0.7);z-index:1;pointer-events:none}
 
   .inner{position:absolute;left:50%;bottom:34px;transform:translateX(-50%);width:88%;z-index:5;
@@ -113,8 +113,20 @@
     background:rgba(14,10,6,0.75);backdrop-filter:blur(6px);box-shadow:inset 0 0 0 1.5px var(--volt-deep);
     color:var(--volt);font-size:20px;transition:all .3s var(--ease)}
   .darrow:hover{box-shadow:inset 0 0 0 1.5px var(--volt), 0 0 24px rgba(52,227,240,0.35);color:#fff}
-  .darrow.prev{left:2%}
-  .darrow.next{right:2%}
+  .darrow.prev{left:4%}
+  .darrow.next{right:4%}
+
+  /* summary dashboard under each deck */
+  .sumboard{margin-top:44px;background:var(--bg-card);box-shadow:0 0 0 1px var(--border);padding:36px 42px}
+  .sumboard .sbh{font-family:var(--mono);font-size:10.5px;letter-spacing:0.24em;color:var(--gold);margin-bottom:22px}
+  .sumcols{display:grid;grid-template-columns:1fr 1fr;gap:0 48px}
+  .sumcols h5{font-family:var(--mono);font-size:10px;letter-spacing:0.2em;margin:0 0 14px}
+  .sumcols .inc h5{color:var(--ok)} .sumcols .gone h5{color:var(--critical)}
+  .sumrow{display:flex;gap:12px;align-items:baseline;padding:8px 0;border-bottom:1px solid var(--border);font-size:13.5px;color:var(--tx-muted)}
+  .sumrow:last-child{border-bottom:none}
+  .sumrow .m{font-weight:800;font-size:14px;flex-shrink:0;width:16px}
+  .inc .sumrow .m{color:var(--ok)} .gone .sumrow .m{color:var(--critical)}
+  .sumrow b{color:var(--tx);font-weight:700}
 
   /* trust table */
   .trustwrap{max-width:1240px;margin:0 auto;padding:110px 48px 0}
@@ -142,9 +154,11 @@
     .nav-links{display:none}
     .hero-inner{padding:0 22px 52px}
     section{padding:72px 20px 0}
-    .deck{height:640px}
-    .stage{height:580px}
-    .dcard{height:580px}
+    .deck{height:760px}
+    .stage{height:700px}
+    .dcard{height:700px}
+    .sumboard{padding:26px 22px}
+    .sumcols{grid-template-columns:1fr;gap:22px}
     .dcard.left, .dcard.right{opacity:0}
     .darrow.prev{left:6px} .darrow.next{right:6px}
     .inner{width:92%;padding:20px 20px 18px;bottom:20px}
@@ -286,6 +300,32 @@
       <div class="darrow next" data-deck="engine">›</div>
     </div>
   </div>
+
+  <div class="sumboard reveal">
+    <div class="sbh">◈ THE ENGINE — EVERYTHING INSIDE, AT A GLANCE</div>
+    <div class="sumcols">
+      <div class="inc">
+        <h5>✓ WHAT YOU GET</h5>
+        <div class="sumrow"><span class="m">✓</span><span><b>24/7 answering</b> — WhatsApp, Instagram, email, in minutes</span></div>
+        <div class="sumrow"><span class="m">✓</span><span><b>Real bookings</b> — the offered slot becomes a confirmed visit</span></div>
+        <div class="sumrow"><span class="m">✓</span><span><b>Consult preparation</b> — patients arrive ready, not cold</span></div>
+        <div class="sumrow"><span class="m">✓</span><span><b>Reminders &amp; reschedules</b> — timed to human behaviour</span></div>
+        <div class="sumrow"><span class="m">✓</span><span><b>Dormant revival</b> — the quiet list re-invited, politely</span></div>
+        <div class="sumrow"><span class="m">✓</span><span><b>Next-treatment offers</b> — your protocols, the right moment</span></div>
+        <div class="sumrow"><span class="m">✓</span><span><b>Live counted dashboard</b> — scored by next month's mystery shop</span></div>
+      </div>
+      <div class="gone">
+        <h5>✗ WHAT DISAPPEARS</h5>
+        <div class="sumrow"><span class="m">✗</span><span>The 2am message nobody ever saw</span></div>
+        <div class="sumrow"><span class="m">✗</span><span>"Someone will call you back" — and nobody does</span></div>
+        <div class="sumrow"><span class="m">✗</span><span>Price-shocked patients walking out of consults</span></div>
+        <div class="sumrow"><span class="m">✗</span><span>Silent no-shows and blocked doctor hours</span></div>
+        <div class="sumrow"><span class="m">✗</span><span>Your best patients going cold in a spreadsheet</span></div>
+        <div class="sumrow"><span class="m">✗</span><span>Next visits left to chance</span></div>
+        <div class="sumrow"><span class="m">✗</span><span>"How's marketing going?" — nobody truly knows</span></div>
+      </div>
+    </div>
+  </div>
 </section>
 
 <section id="estate">
@@ -377,6 +417,30 @@
 
       <div class="darrow prev" data-deck="estate">‹</div>
       <div class="darrow next" data-deck="estate">›</div>
+    </div>
+  </div>
+
+  <div class="sumboard reveal">
+    <div class="sbh">◈ THE ESTATE — EVERYTHING INSIDE, AT A GLANCE</div>
+    <div class="sumcols">
+      <div class="inc">
+        <h5>✓ WHAT YOU GET</h5>
+        <div class="sumrow"><span class="m">✓</span><span><b>Google profile managed</b> — checked and worked weekly</span></div>
+        <div class="sumrow"><span class="m">✓</span><span><b>Every review answered</b> — &lt;24h, your voice, healthcare-safe</span></div>
+        <div class="sumrow"><span class="m">✓</span><span><b>Review growth</b> — happy patients asked at the right moment</span></div>
+        <div class="sumrow"><span class="m">✓</span><span><b>Email connected</b> — the inbox joins the engine</span></div>
+        <div class="sumrow"><span class="m">✓</span><span><b>Instagram DMs booked</b> — the front door, finally answered</span></div>
+        <div class="sumrow"><span class="m">✓</span><span><b>Website concierge</b> — any change live within 48 hours</span></div>
+      </div>
+      <div class="gone">
+        <h5>✗ WHAT DISAPPEARS</h5>
+        <div class="sumrow"><span class="m">✗</span><span>Wrong hours and dead photos on the map result</span></div>
+        <div class="sumrow"><span class="m">✗</span><span>The angry review sitting unanswered for weeks</span></div>
+        <div class="sumrow"><span class="m">✗</span><span>A rating sinking because only angry people write</span></div>
+        <div class="sumrow"><span class="m">✗</span><span>The inbox graveyard checked "when someone has time"</span></div>
+        <div class="sumrow"><span class="m">✗</span><span>DMs buried under the notifications</span></div>
+        <div class="sumrow"><span class="m">✗</span><span>The site still showing Ramadan hours in November</span></div>
+      </div>
     </div>
   </div>
 </section>
