@@ -98,41 +98,69 @@
   .reveal{opacity:0;transform:translateY(28px);transition:opacity 1s var(--ease), transform 1s var(--ease)}
   .reveal.in{opacity:1;transform:none}
 
-  /* ---------- layer dashboard frames ---------- */
-  .lframes{display:flex;flex-direction:column;gap:56px}
-  .lframe{position:relative;display:grid;grid-template-columns:1.05fr 1fr;gap:0;background:rgba(16,10,8,0.72);
+  /* ---------- layer dashboard frames v2 ---------- */
+  .lframes{display:flex;flex-direction:column;gap:60px}
+  .lframe{position:relative;background:rgba(15,10,8,0.78);backdrop-filter:blur(6px);
     box-shadow:0 34px 80px rgba(0,0,0,0.5), 0 0 0 1px var(--border);
     opacity:0;transform:translateY(34px);transition:opacity 1s var(--ease), transform 1s var(--ease)}
   .lframe.in{opacity:1;transform:none}
-  .lframe .bk{position:absolute;width:20px;height:20px;border:1.5px solid var(--lc);opacity:0.75;z-index:3}
+  .lframe .bk{position:absolute;width:20px;height:20px;border:1.5px solid var(--lc);opacity:0.8;z-index:3}
   .lframe .bk.tl{top:-1px;left:-1px;border-right:0;border-bottom:0}
   .lframe .bk.tr{top:-1px;right:-1px;border-left:0;border-bottom:0}
   .lframe .bk.bl{bottom:-1px;left:-1px;border-right:0;border-top:0}
   .lframe .bk.br{bottom:-1px;right:-1px;border-left:0;border-top:0}
-  .lframe .lcopy{padding:44px 46px 40px;display:flex;flex-direction:column;justify-content:center}
-  .lframe .lstep{font-family:var(--mono);font-size:10.5px;letter-spacing:0.26em;color:var(--lc);margin-bottom:14px;display:flex;align-items:center;gap:12px}
-  .lframe .lstep::after{content:'';flex:1;border-top:1px solid var(--lc);opacity:0.25}
-  .lframe h3{font-family:var(--display);font-weight:400;font-size:clamp(24px,2.4vw,32px);margin:0 0 12px;color:var(--tx)}
-  .lframe .lp{color:var(--tx-muted);font-size:15px;max-width:460px;margin:0 0 26px}
-  .lframe .lp b{color:var(--tx);font-weight:600}
-  .lframe .enter-field{align-self:flex-start}
-  .lframe .linstr{position:relative;min-height:360px;display:flex;flex-direction:column;align-items:center;justify-content:center;
-    border-left:1px solid var(--border);padding:30px;overflow:hidden}
-  .lframe:nth-child(even){grid-template-columns:1fr 1.05fr}
-  .lframe:nth-child(even) .lcopy{order:2}
-  .lframe:nth-child(even) .linstr{order:1;border-left:0;border-right:1px solid var(--border)}
-  .linstr .iglow{position:absolute;inset:0;background:radial-gradient(circle at 50% 50%, var(--lg), transparent 70%);pointer-events:none}
-  .linstr canvas{position:relative}
-  .instr-line{position:relative;font-family:var(--mono);font-size:10px;letter-spacing:0.14em;color:var(--tx-faint);margin-top:14px;min-height:15px;text-align:center}
-  .instr-line .hot{color:var(--lc)}
-  .ticks{position:relative;display:flex;flex-direction:column;gap:8px;margin-top:16px;min-height:66px}
-  .tick{display:flex;gap:10px;font-family:var(--mono);font-size:10.5px;letter-spacing:0.12em;color:var(--tx-faint);opacity:0;transform:translateY(8px);transition:opacity .5s var(--ease), transform .5s var(--ease)}
-  .tick.on{opacity:1;transform:none}
-  .tick .tm{color:var(--ok)}
-  .gbars{position:relative;display:flex;align-items:flex-end;gap:14px;height:150px}
-  .gbar{width:34px;background:linear-gradient(180deg, rgba(167,139,250,0.85), rgba(167,139,250,0.25));height:8%;transition:height 1.2s var(--ease)}
-  .lockchip{position:absolute;z-index:4;display:flex;align-items:center;gap:10px;font-family:var(--mono);font-size:10px;letter-spacing:0.18em;
-    color:var(--gold-light);background:rgba(16,10,8,0.9);border:1px dashed var(--gold-deep);padding:10px 16px}
+  .fhead{display:flex;align-items:center;gap:16px;padding:13px 24px;border-bottom:1px solid var(--border);font-family:var(--mono)}
+  .fhead .fh-step{font-size:10px;letter-spacing:0.24em;color:var(--lc);border:1px solid var(--lc);padding:5px 10px}
+  .fhead .fh-name{font-size:10px;letter-spacing:0.22em;color:var(--tx-muted)}
+  .fhead .fh-live{margin-left:auto;display:flex;align-items:center;gap:8px;font-size:8.5px;letter-spacing:0.18em;color:var(--tx-faint)}
+  .fhead .dotp{width:6px;height:6px;border-radius:50%;background:var(--lc);animation:pulse 2.2s infinite}
+  .fbody{display:grid;grid-template-columns:1.02fr 1fr}
+  .lframe:nth-child(even) .fbody .lcopy{order:2}
+  .lframe:nth-child(even) .fbody .linstr{order:1;border-left:0;border-right:1px solid var(--border)}
+  .lcopy{padding:36px 40px 34px;display:flex;flex-direction:column;justify-content:center;gap:20px}
+  .hpanel{border-left:3px solid var(--lc);background:rgba(255,255,255,0.02);padding:14px 20px}
+  .hpanel h3{font-family:var(--display);font-weight:400;font-size:clamp(23px,2.2vw,29px);margin:0;color:var(--tx)}
+  .lp{color:var(--tx-muted);font-size:14.5px;max-width:470px;margin:0}
+  .lp b{color:var(--tx);font-weight:600}
+  .lcopy .enter-field{align-self:flex-start}
+  .linstr{position:relative;display:flex;flex-direction:column;justify-content:center;gap:14px;
+    border-left:1px solid var(--border);padding:26px;overflow:hidden}
+  .linstr .iglow{position:absolute;inset:0;background:radial-gradient(circle at 50% 45%, var(--lg), transparent 72%);pointer-events:none}
+
+  .ipanel{position:relative;box-shadow:0 0 0 1px rgba(255,255,255,0.08);background:rgba(10,7,6,0.55)}
+  .pnl-h{display:flex;align-items:center;gap:10px;padding:8px 14px;border-bottom:1px solid rgba(255,255,255,0.07);
+    font-family:var(--mono);font-size:8.5px;letter-spacing:0.2em;color:var(--pc)}
+  .pnl-h .pnl-tag{margin-left:auto;color:var(--tx-faint);letter-spacing:0.12em}
+  .ipad{padding:14px}
+
+  .irow{display:flex;align-items:center;gap:18px;padding:12px}
+  .dimlist{display:flex;flex-direction:column;gap:5px;font-family:var(--mono);font-size:9.5px;letter-spacing:0.1em;min-width:150px}
+  .dimrow{display:flex;justify-content:space-between;gap:12px;padding:4px 8px;color:var(--tx-faint);transition:background .3s, color .3s}
+  .dimrow.hot{background:rgba(255,255,255,0.05);color:var(--tx)}
+  .dimrow .dv{font-weight:500}
+
+  .find-line{font-family:var(--mono);font-size:10px;letter-spacing:0.1em;min-height:16px;padding:12px 14px;
+    color:var(--critical);transition:opacity .5s var(--ease)}
+  .find-line.fade{opacity:0}
+
+  .chiprow{display:flex;flex-wrap:wrap;gap:8px;padding:12px 14px}
+  .chch{font-family:var(--mono);font-size:8.5px;letter-spacing:0.14em;padding:5px 10px;color:var(--cc);box-shadow:inset 0 0 0 1px var(--cc);opacity:0.85}
+  .ops{display:flex;flex-direction:column;gap:7px;padding:12px 14px;min-height:88px}
+  .op{display:flex;align-items:baseline;gap:10px;font-family:var(--mono);font-size:9.5px;letter-spacing:0.08em;color:var(--tx-muted);
+    opacity:0;transform:translateY(7px);transition:opacity .45s var(--ease), transform .45s var(--ease)}
+  .op.on{opacity:1;transform:none}
+  .op .oc{font-size:8px;letter-spacing:0.14em;padding:2px 7px;box-shadow:inset 0 0 0 1px var(--oc);color:var(--oc);flex-shrink:0}
+  .op .otm{margin-left:auto;color:var(--tx-faint);font-size:8.5px}
+
+  .gpanels{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .gbars{display:flex;align-items:flex-end;gap:9px;height:104px;padding:14px 14px 10px}
+  .gbar{flex:1;background:linear-gradient(180deg, rgba(167,139,250,0.85), rgba(167,139,250,0.20));height:8%;transition:height 1.1s var(--ease)}
+  .gcount{font-family:var(--mono);font-size:9px;letter-spacing:0.12em;color:var(--tx-faint);padding:0 14px 12px}
+  .gcount b{color:#a78bfa;font-weight:500}
+  #igspark{display:block;margin:10px 14px 4px}
+  .igline{font-family:var(--mono);font-size:9px;letter-spacing:0.12em;color:var(--tx-faint);padding:0 14px 12px}
+  .igline b{color:#E1306C;font-weight:500}
+  .runline{font-family:var(--mono);font-size:9px;letter-spacing:0.2em;color:var(--tx-faint);text-align:center}
 
   /* ---------- score (simple, with proper header) ---------- */
   .score-simple{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
@@ -195,10 +223,12 @@
     .nav-links,.nav-contact{display:none}
     .hero-inner{padding:100px 22px 48px}
     section{padding:80px 22px 0}
-    .lframe, .lframe:nth-child(even){grid-template-columns:1fr}
-    .lframe:nth-child(even) .lcopy{order:0}
-    .lframe:nth-child(even) .linstr{order:1;border-right:0}
+    .fbody{grid-template-columns:1fr}
+    .lframe:nth-child(even) .fbody .lcopy{order:0}
+    .lframe:nth-child(even) .fbody .linstr{order:1;border-right:0}
     .linstr{border-left:0;border-top:1px solid var(--border)}
+    .gpanels{grid-template-columns:1fr}
+    .irow{flex-wrap:wrap;justify-content:center}
     .score-simple{grid-template-columns:1fr;gap:36px}
     .estate-grid{grid-template-columns:1fr}
     .loop-wrap{grid-template-columns:1fr}
@@ -249,52 +279,92 @@
   <p class="section-sub">Vaydin is an AI operations partner for aesthetic clinics. We <b>measure</b> your clinic from the outside — the way a patient meets it. We <b>run</b> what leaks. And the same measurement keeps <b>proving</b> the gain, month after month. Measured, not promised.</p></div>
 
   <div class="lframes">
+
     <div class="lframe" id="diagnose" style="--lc:#f87171;--lg:rgba(248,113,113,0.10)">
       <span class="bk tl"></span><span class="bk tr"></span><span class="bk bl"></span><span class="bk br"></span>
-      <div class="lcopy">
-        <div class="lstep">STEP 01 — DIAGNOSE</div>
-        <h3>First, we see what your patients see.</h3>
-        <p class="lp">A monthly mystery shop of your own clinic — WhatsApp, Instagram, Google — scored across <b>six dimensions</b>, with the evidence to prove every finding.</p>
-        <a class="enter-field" href="diagnose.html">See what we measure <span class="arr">→</span></a>
-      </div>
-      <div class="linstr"><div class="iglow"></div>
-        <canvas id="mini-radar" width="280" height="280" aria-label="Sample score radar"></canvas>
-        <div class="instr-line"><span class="hot">FINDING</span> — EVENING INQUIRY: NO PRICE, NO BOOKING OFFERED</div>
+      <div class="fhead"><span class="fh-step">STEP 01</span><span class="fh-name">DIAGNOSE — THE MYSTERY SHOP</span><span class="fh-live"><span class="dotp"></span>SAMPLE DATA — LIVE VIEW</span></div>
+      <div class="fbody">
+        <div class="lcopy">
+          <div class="hpanel"><h3>First, we see what your patients see.</h3></div>
+          <p class="lp">A monthly mystery shop of your own clinic — WhatsApp, Instagram, Google — scored across <b>six dimensions</b>, with the evidence to prove every finding.</p>
+          <div class="ipanel" style="--pc:#fbbf24">
+            <div class="pnl-h">LATEST FINDINGS<span class="pnl-tag">ROTATING · SAMPLE</span></div>
+            <div class="find-line" id="find-line"></div>
+          </div>
+          <a class="enter-field" href="diagnose.html">See what we measure <span class="arr">→</span></a>
+        </div>
+        <div class="linstr"><div class="iglow"></div>
+          <div class="ipanel" style="--pc:#34e3f0">
+            <div class="pnl-h">SCORE RADAR<span class="pnl-tag" id="radar-tag">— /100 SAMPLE</span></div>
+            <div class="irow">
+              <canvas id="mini-radar" width="230" height="230" aria-label="Sample score radar"></canvas>
+              <div class="dimlist" id="dimlist"></div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 
     <div class="lframe" id="fix" style="--lc:#e8d48b;--lg:rgba(232,212,139,0.08)">
       <span class="bk tl"></span><span class="bk tr"></span><span class="bk bl"></span><span class="bk br"></span>
-      <div class="lcopy">
-        <div class="lstep">STEP 02 — FIX &amp; RUN</div>
-        <h3>Then we fix it — and run it.</h3>
-        <p class="lp">The Vaydin engine takes over your digital front door: every inquiry <b>answered in minutes, booked, reminded, revived</b> — 13 fields, one vendor, your clinic's own voice and number.</p>
-        <a class="enter-field" href="fix.html">The 13 fields we run <span class="arr">→</span></a>
-      </div>
-      <div class="linstr"><div class="iglow"></div>
-        <canvas id="mini-engine" width="280" height="200" aria-label="The engine, breathing"></canvas>
-        <div class="ticks">
-          <div class="tick"><span class="tm">✓</span>INQUIRY ANSWERED — 21:14, IN ARABIC</div>
-          <div class="tick"><span class="tm">✓</span>CONSULT BOOKED — THURSDAY 16:30</div>
-          <div class="tick"><span class="tm">✓</span>QUIET PATIENT REVIVED — REBOOKED</div>
+      <div class="fhead"><span class="fh-step">STEP 02</span><span class="fh-name">FIX &amp; RUN — THE ENGINE &amp; THE ESTATE</span><span class="fh-live"><span class="dotp" style="background:#4ade80"></span>ILLUSTRATION — ENGINE RUNNING</span></div>
+      <div class="fbody">
+        <div class="lcopy">
+          <div class="hpanel"><h3>Then we fix it — and run it.</h3></div>
+          <p class="lp">The Vaydin engine takes over your digital front door: every inquiry <b>answered in minutes, booked, reminded, revived</b> — 13 fields, one vendor, your clinic's own voice and number.</p>
+          <div class="ipanel" style="--pc:#4ade80">
+            <div class="pnl-h">LIVE OPERATIONS<span class="pnl-tag">ROTATING · ILLUSTRATION</span></div>
+            <div class="ops" id="ops"></div>
+          </div>
+          <a class="enter-field" href="fix.html">The 13 fields we run <span class="arr">→</span></a>
+        </div>
+        <div class="linstr"><div class="iglow"></div>
+          <div class="ipanel" style="--pc:#34e3f0">
+            <div class="pnl-h">THE ENGINE<span class="pnl-tag">EVERY CHANNEL · ONE SYSTEM</span></div>
+            <canvas id="mini-engine" width="290" height="190" aria-label="The engine, breathing"></canvas>
+          </div>
+          <div class="ipanel" style="--pc:#b9b0a2">
+            <div class="pnl-h">CHANNELS CARRIED</div>
+            <div class="chiprow">
+              <span class="chch" style="--cc:#25D366">WHATSAPP</span>
+              <span class="chch" style="--cc:#E1306C">INSTAGRAM</span>
+              <span class="chch" style="--cc:#4285F4">GOOGLE</span>
+              <span class="chch" style="--cc:#fbbf24">REVIEWS</span>
+              <span class="chch" style="--cc:#60a5fa">EMAIL</span>
+              <span class="chch" style="--cc:#34e3f0">WEBSITE</span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
 
     <div class="lframe" id="grow" style="--lc:#a78bfa;--lg:rgba(167,139,250,0.09)">
       <span class="bk tl"></span><span class="bk tr"></span><span class="bk bl"></span><span class="bk br"></span>
-      <div class="lcopy">
-        <div class="lstep">STEP 03 — GROW</div>
-        <h3>Then, and only then — fuel.</h3>
-        <p class="lp">Paid patient demand and Instagram-first presence, offered <b>only once the engine runs</b> — so every dirham lands in a machine that converts it, counted on the same dashboard.</p>
-        <a class="enter-field" href="pricing.html">Demand &amp; presence <span class="arr">→</span></a>
-      </div>
-      <div class="linstr"><div class="iglow"></div>
-        <div class="gbars" id="gbars"><div class="gbar"></div><div class="gbar"></div><div class="gbar"></div><div class="gbar"></div><div class="gbar"></div><div class="gbar"></div></div>
-        <div class="lockchip">🔒 UNLOCKS WITH STEP 02</div>
-        <div class="instr-line">FUEL ONLY INTO AN ENGINE WE RUN</div>
+      <div class="fhead"><span class="fh-step">STEP 03</span><span class="fh-name">GROW — DEMAND &amp; PRESENCE</span><span class="fh-live"><span class="dotp"></span>ILLUSTRATION</span></div>
+      <div class="fbody">
+        <div class="lcopy">
+          <div class="hpanel"><h3>Everything fixed? Time to spread.</h3></div>
+          <p class="lp">Once the engine runs your clinic, we pour fuel on it: <b>paid patient demand</b> that lands in a machine built to convert it, and an <b>Instagram presence run like a channel</b> — where your patients actually look. Every dirham counted on the same dashboard.</p>
+          <a class="enter-field" href="pricing.html">Demand &amp; presence <span class="arr">→</span></a>
+        </div>
+        <div class="linstr"><div class="iglow"></div>
+          <div class="gpanels">
+            <div class="ipanel" style="--pc:#a78bfa">
+              <div class="pnl-h">PATIENT DEMAND<span class="pnl-tag">SAMPLE</span></div>
+              <div class="gbars" id="gbars"><div class="gbar"></div><div class="gbar"></div><div class="gbar"></div><div class="gbar"></div><div class="gbar"></div><div class="gbar"></div></div>
+              <div class="gcount">CAMPAIGN → INQUIRY → <b>BOOKED, COUNTED</b></div>
+            </div>
+            <div class="ipanel" style="--pc:#E1306C">
+              <div class="pnl-h">INSTAGRAM PRESENCE<span class="pnl-tag">SAMPLE</span></div>
+              <canvas id="igspark" width="230" height="104" aria-label="Reach growing"></canvas>
+              <div class="igline">REACH GROWING · <b>DMs → BOOKINGS</b></div>
+            </div>
+          </div>
+          <div class="runline">RUNS ON TOP OF THE ENGINE — STEP 02 COMES FIRST</div>
+        </div>
       </div>
     </div>
+
   </div>
 </section>
 
@@ -446,64 +516,147 @@
   document.querySelectorAll('[data-count]').forEach(function(el){ cio.observe(el); });
 
 
-  /* ---------- layer frame instruments ---------- */
+  /* ---------- layer frame instruments v2 ---------- */
   function startWhenVisible(el, fn){
     if(!el) return;
     var o = new IntersectionObserver(function(es){
       es.forEach(function(e){ if(e.isIntersecting){ fn(); o.unobserve(el); } });
-    }, {threshold: 0.35});
+    }, {threshold: 0.3});
     o.observe(el);
   }
 
-  /* mini radar */
+  var DIMS = [
+    {k:'RESPONSE', v:38, c:'#f87171'},
+    {k:'BOOKING',  v:52, c:'#fbbf24'},
+    {k:'FOLLOW-UP',v:44, c:'#f87171'},
+    {k:'GOOGLE',   v:74, c:'#4ade80'},
+    {k:'REVIEWS',  v:70, c:'#4ade80'},
+    {k:'WEBSITE',  v:88, c:'#4ade80'}
+  ];
+
+  /* dimension readout list */
+  var dl = document.getElementById('dimlist');
+  if(dl){
+    DIMS.forEach(function(d){
+      var r = document.createElement('div');
+      r.className = 'dimrow';
+      r.innerHTML = '<span>' + d.k + '</span><span class="dv" style="color:' + d.c + '">' + d.v + '</span>';
+      dl.appendChild(r);
+    });
+  }
+
+  /* mini radar + rotating hot dimension */
   var mr = document.getElementById('mini-radar');
   if(mr && mr.getContext){
     startWhenVisible(mr, function(){
-      var ctx = mr.getContext('2d'), W = 280, H = 280, cx = W/2, cy = H/2;
-      var vals = [38,52,44,74,70,88], cols = ['#f87171','#fbbf24','#f87171','#4ade80','#4ade80','#4ade80'];
-      var t = 0, ease = 0;
+      var ctx = mr.getContext('2d'), W = 230, H = 230, cx = W/2, cy = H/2;
+      var t = 0, ease = 0, rows = dl ? dl.querySelectorAll('.dimrow') : [];
+      var rtag = document.getElementById('radar-tag');
       function ax(i){ return -Math.PI/2 + i*Math.PI/3; }
       (function fr(){
         t += 0.008; if(ease < 1) ease = Math.min(1, ease + 0.012);
-        var e2 = 1 - Math.pow(1-ease, 3), maxR = 96;
+        var e2 = 1 - Math.pow(1-ease, 3), maxR = 76;
         ctx.clearRect(0,0,W,H);
         for(var g=1; g<=3; g++){
           ctx.beginPath();
           for(var i=0;i<=6;i++){ var a=ax(i%6), r=maxR*g/3; var x=cx+Math.cos(a)*r, y=cy+Math.sin(a)*r; i?ctx.lineTo(x,y):ctx.moveTo(x,y); }
-          ctx.strokeStyle='rgba(122,38,34,'+(g===3?0.5:0.22)+')'; ctx.lineWidth=g===3?1:0.6; ctx.stroke();
+          ctx.strokeStyle='rgba(122,38,34,'+(g===3?0.55:0.24)+')'; ctx.lineWidth=g===3?1:0.6; ctx.stroke();
         }
         var pts=[];
-        for(var i=0;i<6;i++){ var a=ax(i), r=maxR*(vals[i]/100)*e2; pts.push([cx+Math.cos(a)*r, cy+Math.sin(a)*r]); }
+        for(var i=0;i<6;i++){ var a=ax(i), r=maxR*(DIMS[i].v/100)*e2; pts.push([cx+Math.cos(a)*r, cy+Math.sin(a)*r]); }
+        var grad = ctx.createRadialGradient(cx,cy,4,cx,cy,maxR);
+        grad.addColorStop(0,'rgba(248,113,113,0.20)'); grad.addColorStop(1,'rgba(248,113,113,0.04)');
         ctx.beginPath(); pts.forEach(function(p,i){ i?ctx.lineTo(p[0],p[1]):ctx.moveTo(p[0],p[1]); }); ctx.closePath();
-        ctx.fillStyle='rgba(248,113,113,0.10)'; ctx.fill();
+        ctx.fillStyle=grad; ctx.fill();
         ctx.save(); ctx.shadowColor='#e8d48b'; ctx.shadowBlur=6; ctx.strokeStyle='rgba(232,212,139,0.85)'; ctx.lineWidth=1.2; ctx.stroke(); ctx.restore();
         var sw = t*0.9;
+        var hot = Math.floor((((sw + Math.PI/2) % (Math.PI*2)) + Math.PI*2) % (Math.PI*2) / (Math.PI/3)) % 6;
+        rows.forEach(function(r,i){ r.classList.toggle('hot', i === hot); });
         for(var i=0;i<6;i++){
-          var da = Math.abs(((ax(i)-sw+Math.PI*3)%(Math.PI*2))-Math.PI), near = Math.max(0,1-da/0.5);
-          ctx.save(); ctx.shadowColor=cols[i]; ctx.shadowBlur=4+near*10; ctx.fillStyle=cols[i];
-          ctx.beginPath(); ctx.arc(pts[i][0],pts[i][1],2.5+near*2,0,7); ctx.fill(); ctx.restore();
+          var a = ax(i);
+          var lx = cx+Math.cos(a)*(maxR+15), ly = cy+Math.sin(a)*(maxR+15);
+          ctx.save(); ctx.globalAlpha = i===hot ? 1 : 0.55;
+          ctx.fillStyle = DIMS[i].c; ctx.textAlign='center'; ctx.font='600 6.5px IBM Plex Mono, monospace';
+          ctx.fillText(DIMS[i].k.slice(0,3), lx, ly+2); ctx.restore();
+          var da = Math.abs(((a-sw+Math.PI*3)%(Math.PI*2))-Math.PI), near = Math.max(0,1-da/0.5);
+          ctx.save(); ctx.shadowColor=DIMS[i].c; ctx.shadowBlur=4+near*10; ctx.fillStyle=DIMS[i].c;
+          ctx.beginPath(); ctx.arc(pts[i][0],pts[i][1],2.3+near*2,0,7); ctx.fill(); ctx.restore();
         }
         ctx.save();
-        for(var k=0;k<18;k++){ var a=sw-k*0.016;
-          ctx.strokeStyle='rgba(248,113,113,'+(0.28*(1-k/18))+')'; ctx.lineWidth=(k===0?1.3:0.8);
-          ctx.beginPath(); ctx.moveTo(cx,cy); ctx.lineTo(cx+Math.cos(a)*maxR*1.04, cy+Math.sin(a)*maxR*1.04); ctx.stroke(); }
+        for(var k=0;k<16;k++){ var a=sw-k*0.017;
+          ctx.strokeStyle='rgba(248,113,113,'+(0.30*(1-k/16))+')'; ctx.lineWidth=(k===0?1.2:0.7);
+          ctx.beginPath(); ctx.moveTo(cx,cy); ctx.lineTo(cx+Math.cos(a)*maxR, cy+Math.sin(a)*maxR); ctx.stroke(); }
         ctx.restore();
-        ctx.fillStyle='rgba(13,8,7,0.9)'; ctx.beginPath(); ctx.arc(cx,cy,26,0,7); ctx.fill();
-        ctx.strokeStyle='#e8d48b'; ctx.lineWidth=1; ctx.beginPath(); ctx.arc(cx,cy,26,0,7); ctx.stroke();
-        ctx.fillStyle='#e8d48b'; ctx.textAlign='center'; ctx.font='22px Cormorant Garamond, serif';
-        ctx.fillText(Math.round(61*e2), cx, cy+5);
-        ctx.fillStyle='rgba(179,161,150,0.8)'; ctx.font='6.5px IBM Plex Mono, monospace';
-        ctx.fillText('SAMPLE', cx, cy+16);
+        ctx.fillStyle='rgba(13,8,7,0.92)'; ctx.beginPath(); ctx.arc(cx,cy,21,0,7); ctx.fill();
+        ctx.strokeStyle='#e8d48b'; ctx.lineWidth=1; ctx.beginPath(); ctx.arc(cx,cy,21,0,7); ctx.stroke();
+        ctx.fillStyle='#e8d48b'; ctx.textAlign='center'; ctx.font='19px Cormorant Garamond, serif';
+        ctx.fillText(Math.round(61*e2), cx, cy+6);
+        if(rtag) rtag.textContent = Math.round(61*e2) + '/100 SAMPLE';
         if(!reduced) requestAnimationFrame(fr);
       })();
     });
   }
 
-  /* mini engine + tick cascade */
+  /* rotating findings */
+  var fl = document.getElementById('find-line');
+  if(fl){
+    var finds = [
+      ['#f87171', '21:14 INQUIRY \u2014 NO PRICE GIVEN, NO BOOKING OFFERED'],
+      ['#fbbf24', 'GOOGLE REVIEW \u2014 UNANSWERED FOR 9 DAYS'],
+      ['#f87171', 'INSTAGRAM DM \u2014 NEVER ANSWERED'],
+      ['#4ade80', 'IMPROVED \u2014 DM ANSWERED IN 41 MIN (LAST MONTH: NEVER)']
+    ];
+    var fi2 = 0;
+    function nextFind(){
+      fl.style.color = finds[fi2][0];
+      fl.textContent = finds[fi2][1];
+      fi2 = (fi2 + 1) % finds.length;
+    }
+    startWhenVisible(fl, function(){
+      nextFind();
+      if(!reduced) setInterval(function(){
+        fl.classList.add('fade');
+        setTimeout(function(){ nextFind(); fl.classList.remove('fade'); }, 500);
+      }, 3600);
+    });
+  }
+
+  /* live operations feed */
+  var ops = document.getElementById('ops');
+  if(ops){
+    var FEED = [
+      ['#25D366','WA','inquiry answered \u2014 in Arabic','21:14'],
+      ['#E1306C','IG','DM qualified \u2014 consult offered','21:26'],
+      ['#e8d48b','CAL','consult booked \u2014 Thursday','21:31'],
+      ['#fbbf24','REV','review answered \u2014 privacy-safe','09:02'],
+      ['#25D366','WA','no-show risk \u2014 rescheduled','10:15'],
+      ['#60a5fa','EM','email inquiry \u2014 same brain, same speed','11:40']
+    ];
+    startWhenVisible(ops, function(){
+      var idx = 0;
+      function render(){
+        ops.innerHTML = '';
+        for(var k=0;k<3;k++){
+          var e = FEED[(idx+k) % FEED.length];
+          var d = document.createElement('div');
+          d.className = 'op';
+          d.innerHTML = '<span class="oc" style="--oc:' + e[0] + '">' + e[1] + '</span><span>' + e[2] + '</span><span class="otm">' + e[3] + '</span>';
+          ops.appendChild(d);
+        }
+        var els = ops.querySelectorAll('.op');
+        els.forEach(function(el,i){ setTimeout(function(){ el.classList.add('on'); }, 60 + i*220); });
+        idx = (idx + 1) % FEED.length;
+      }
+      render();
+      if(!reduced) setInterval(render, 4200);
+    });
+  }
+
+  /* mini engine */
   var me = document.getElementById('mini-engine');
   if(me && me.getContext){
     startWhenVisible(me, function(){
-      var ctx = me.getContext('2d'), W = 280, H = 200, cx = W/2, cy = H/2;
+      var ctx = me.getContext('2d'), W = 290, H = 190, cx = W/2, cy = H/2;
       var cols = ['#25D366','#E1306C','#4285F4','#fbbf24','#60a5fa','#e8d48b','#4ade80','#fb923c'];
       var sparks = [], t = 0;
       (function fr(){
@@ -511,8 +664,8 @@
         ctx.clearRect(0,0,W,H);
         var pts = [];
         for(var i=0;i<8;i++){
-          var a = t + i*Math.PI/4, r = 78;
-          var x = cx+Math.cos(a)*r*1.35, y = cy+Math.sin(a)*r*0.72;
+          var a = t + i*Math.PI/4;
+          var x = cx+Math.cos(a)*104, y = cy+Math.sin(a)*58;
           pts.push([x,y]);
           ctx.strokeStyle='rgba(232,212,139,0.10)'; ctx.lineWidth=0.6;
           ctx.beginPath(); ctx.moveTo(x,y); ctx.lineTo(cx,cy); ctx.stroke();
@@ -525,30 +678,24 @@
           ctx.beginPath(); ctx.arc(x,y,1.8,0,7); ctx.fill(); ctx.restore(); });
         for(var i=sparks.length-1;i>=0;i--){ if(sparks[i].p>=1) sparks.splice(i,1); }
         for(var i=0;i<8;i++){
-          var fl = 0.6+Math.abs(Math.sin(t*3+i*1.9))*0.4;
-          ctx.save(); ctx.globalAlpha=fl; ctx.shadowColor=cols[i]; ctx.shadowBlur=6;
+          var fl2 = 0.6+Math.abs(Math.sin(t*3+i*1.9))*0.4;
+          ctx.save(); ctx.globalAlpha=fl2; ctx.shadowColor=cols[i]; ctx.shadowBlur=6;
           ctx.fillStyle=cols[i]; ctx.beginPath(); ctx.arc(pts[i][0],pts[i][1],3,0,7); ctx.fill(); ctx.restore();
         }
         var br = 1+Math.sin(t*2.4)*0.07;
-        var g = ctx.createRadialGradient(cx,cy,2,cx,cy,44*br);
+        var g = ctx.createRadialGradient(cx,cy,2,cx,cy,40*br);
         g.addColorStop(0,'rgba(245,217,120,0.9)'); g.addColorStop(0.4,'rgba(201,164,74,0.32)'); g.addColorStop(1,'rgba(201,164,74,0)');
-        ctx.fillStyle=g; ctx.beginPath(); ctx.arc(cx,cy,44*br,0,7); ctx.fill();
-        ctx.fillStyle='#0d0807'; ctx.beginPath(); ctx.arc(cx,cy,19*br,0,7); ctx.fill();
-        ctx.strokeStyle='#e8d48b'; ctx.lineWidth=1; ctx.beginPath(); ctx.arc(cx,cy,19*br,0,7); ctx.stroke();
-        ctx.fillStyle='#e8d48b'; ctx.textAlign='center'; ctx.font='7px IBM Plex Mono, monospace';
+        ctx.fillStyle=g; ctx.beginPath(); ctx.arc(cx,cy,40*br,0,7); ctx.fill();
+        ctx.fillStyle='#0d0807'; ctx.beginPath(); ctx.arc(cx,cy,17*br,0,7); ctx.fill();
+        ctx.strokeStyle='#e8d48b'; ctx.lineWidth=1; ctx.beginPath(); ctx.arc(cx,cy,17*br,0,7); ctx.stroke();
+        ctx.fillStyle='#e8d48b'; ctx.textAlign='center'; ctx.font='6.5px IBM Plex Mono, monospace';
         ctx.fillText('VAYDIN', cx, cy+2.5);
         if(!reduced) requestAnimationFrame(fr);
       })();
-      var ticks = document.querySelectorAll('#fix .tick');
-      function cycle(){
-        ticks.forEach(function(tk,i){ setTimeout(function(){ tk.classList.add('on'); }, i*700); });
-        setTimeout(function(){ ticks.forEach(function(tk){ tk.classList.remove('on'); }); setTimeout(cycle, 700); }, 5200);
-      }
-      if(reduced){ ticks.forEach(function(tk){ tk.classList.add('on'); }); } else cycle();
     });
   }
 
-  /* grow bars */
+  /* grow: demand bars + instagram sparkline */
   var gb = document.getElementById('gbars');
   if(gb){
     startWhenVisible(gb, function(){
@@ -556,9 +703,37 @@
       var hs = [22, 38, 30, 55, 70, 92];
       function set(scale){ bars.forEach(function(b,i){ b.style.height = Math.max(6, hs[i]*scale) + '%'; }); }
       if(reduced){ set(1); return; }
-      var up = true;
-      set(1);
+      var up = true; set(1);
       setInterval(function(){ up = !up; set(up ? 1 : 0.55); }, 3400);
+    });
+  }
+  var ig = document.getElementById('igspark');
+  if(ig && ig.getContext){
+    startWhenVisible(ig, function(){
+      var ctx = ig.getContext('2d'), W = 230, H = 104;
+      var base = [70, 66, 68, 60, 56, 50, 44, 40, 34, 26, 20, 14];
+      var t = 0, prog = 0;
+      (function fr(){
+        t += 0.02; if(prog < 1) prog = Math.min(1, prog + 0.008);
+        ctx.clearRect(0,0,W,H);
+        var count = Math.max(2, Math.floor(base.length * prog));
+        ctx.beginPath();
+        for(var i=0;i<count;i++){
+          var x = 14 + i*(W-28)/(base.length-1);
+          var y = 14 + base[i] * (H-28)/80 + Math.sin(t+i)*1.2;
+          i?ctx.lineTo(x,y):ctx.moveTo(x,y);
+        }
+        ctx.save(); ctx.shadowColor='#E1306C'; ctx.shadowBlur=8;
+        ctx.strokeStyle='#E1306C'; ctx.lineWidth=1.6; ctx.stroke(); ctx.restore();
+        if(count >= 2){
+          var lx = 14 + (count-1)*(W-28)/(base.length-1);
+          var ly = 14 + base[count-1]*(H-28)/80 + Math.sin(t+count-1)*1.2;
+          var pu = 1 + Math.sin(t*3)*0.4;
+          ctx.save(); ctx.shadowColor='#E1306C'; ctx.shadowBlur=10;
+          ctx.fillStyle='#E1306C'; ctx.beginPath(); ctx.arc(lx,ly,2.6*pu,0,7); ctx.fill(); ctx.restore();
+        }
+        if(!reduced) requestAnimationFrame(fr);
+      })();
     });
   }
 
