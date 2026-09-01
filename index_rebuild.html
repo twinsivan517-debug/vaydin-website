@@ -48,6 +48,9 @@
   .nav-links a:hover{color:var(--tx)}
   .nav-cta{background:var(--gold);color:var(--bg) !important;font-weight:700;padding:10px 22px;font-size:13px;letter-spacing:0.02em;transition:background .3s var(--ease)}
   .nav-cta:hover{background:var(--gold-light)}
+  .nav-soon{color:var(--tx-faint);cursor:default;white-space:nowrap}
+  .nav-soon::after{content:"SOON";font-size:8px;letter-spacing:0.14em;margin-left:5px;vertical-align:2px;opacity:0.75}
+  .nav-here{color:var(--tx) !important}
 
   /* ---------- hero ---------- */
   .hero{position:relative;min-height:94vh;display:flex;align-items:center;overflow:hidden}
@@ -216,10 +219,12 @@
     <div class="wordmark">VAYDIN</div>
   </div>
   <div class="nav-links">
-    <a href="#method">Method</a>
-    <a href="#diagnose">Diagnose</a>
-    <a href="#fix">Fix</a>
-    <a href="#grow">Grow</a>
+    <span class="nav-soon">Diagnose</span>
+    <a href="fix.html">Fix</a>
+    <span class="nav-soon">Grow</span>
+    <span class="nav-soon">Score</span>
+    <span class="nav-soon">Method</span>
+    <a href="engine.html">Engine</a>
     <a href="pricing.html" class="nav-cta">Build your plan</a>
   </div>
 </nav>

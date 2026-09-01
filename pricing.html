@@ -45,6 +45,9 @@
   .nav-links{display:flex;gap:32px;align-items:center;font-size:13.5px;color:var(--tx-muted)}
   .nav-links a{color:var(--tx-muted)}
   .nav-links a:hover{color:var(--tx)}
+  .nav-soon{color:var(--tx-faint);cursor:default;white-space:nowrap}
+  .nav-soon::after{content:"SOON";font-size:8px;letter-spacing:0.14em;margin-left:5px;vertical-align:2px;opacity:0.75}
+  .nav-here{color:var(--tx) !important}
 
   main{max-width:1240px;margin:0 auto;padding:126px 44px 90px}
   .eyebrow{font-family:var(--mono);font-size:11.5px;letter-spacing:0.26em;color:var(--volt);margin-bottom:14px}
@@ -223,10 +226,12 @@
     <div class="wordmark">VAYDIN</div>
   </a>
   <div class="nav-links">
-    <a href="index_rebuild.html#method">Method</a>
-    <a href="index_rebuild.html#diagnose">Diagnose</a>
-    <a href="index_rebuild.html#fix">Fix</a>
-    <a href="index_rebuild.html#grow">Grow</a>
+    <span class="nav-soon">Diagnose</span>
+    <a href="fix.html">Fix</a>
+    <span class="nav-soon">Grow</span>
+    <span class="nav-soon">Score</span>
+    <span class="nav-soon">Method</span>
+    <a href="engine.html">Engine</a>
   </div>
 </nav>
 
