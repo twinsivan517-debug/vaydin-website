@@ -1,0 +1,484 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vaydin — The Diagnostic</title>
+<meta name="description" content="Step 01: once a month we approach your clinic exactly the way a patient does — WhatsApp, Instagram, Google — and put what happened in front of you. Evidence, not promises.">
+<link rel="icon" href="vaydin-icon-48.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Marcellus&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=DM+Sans:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+  :root{
+    --bg:#0d0708; --bg-card:#160b0c; --bg-elevated:#1d0f10; --border:#2b1416;
+    --tx:#f7efe9; --tx-muted:#b3a196; --tx-faint:#8a7568;
+    --gold:#c9a44a; --gold-light:#e8d48b; --gold-deep:#8a6d1b; --gold-bright:#f5d978;
+    --ok:#4ade80; --warn:#fbbf24; --critical:#f87171; --crit-deep:#7a2622;
+    --volt:#34e3f0; --volt-deep:#19a7b8;
+    --display:'Marcellus', Georgia, serif;
+    --serif:'Cormorant Garamond', Georgia, serif;
+    --sans:'DM Sans', system-ui, sans-serif;
+    --mono:'IBM Plex Mono', Consolas, monospace;
+    --ease:cubic-bezier(0.16,1,0.3,1);
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;color:var(--tx);font-family:var(--sans);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;
+    background:
+      radial-gradient(1100px 750px at 85% 6%, rgba(110,26,22,0.26), transparent 62%),
+      radial-gradient(950px 700px at 5% 85%, rgba(84,20,18,0.20), transparent 60%),
+      radial-gradient(760px 560px at 55% 45%, rgba(64,22,14,0.12), transparent 65%),
+      var(--bg);
+    background-attachment:fixed}
+  a{color:var(--gold);text-decoration:none}
+  a:hover{color:var(--gold-light)}
+  img{max-width:100%;display:block}
+
+  /* ---------- nav (canonical bar) ---------- */
+  nav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;justify-content:space-between;align-items:center;
+      padding:18px 48px;background:linear-gradient(180deg, rgba(13,7,8,0.94), rgba(13,7,8,0));backdrop-filter:blur(6px)}
+  .brand{display:flex;align-items:center;gap:14px}
+  .brand img{width:34px;height:34px}
+  .wordmark{font-family:var(--display);font-size:21px;letter-spacing:0.32em;color:var(--gold-light)}
+  .nav-links{display:flex;gap:32px;align-items:center;font-size:13.5px;color:var(--tx-muted)}
+  .nav-links a{color:var(--tx-muted)}
+  .nav-links a:hover{color:var(--tx)}
+  .nav-cta{background:var(--gold);color:var(--bg) !important;font-weight:700;padding:10px 22px;font-size:13px;letter-spacing:0.02em;transition:background .3s var(--ease)}
+  .nav-cta:hover{background:var(--gold-light)}
+  .nav-soon{color:var(--tx-faint);cursor:default;white-space:nowrap}
+  .nav-soon::after{content:"SOON";font-size:8px;letter-spacing:0.14em;margin-left:5px;vertical-align:2px;opacity:0.75}
+  .nav-here{color:var(--tx) !important}
+
+  /* ---------- hero ---------- */
+  .hero{position:relative;min-height:88vh;display:flex;align-items:center;overflow:hidden}
+  .hero-img{position:absolute;inset:0;background:url('assets/img/layer-diagnose.webp') center/cover no-repeat;
+            transform:scale(1.06);animation:heroSettle 3.4s var(--ease) forwards}
+  @keyframes heroSettle{to{transform:scale(1.0)}}
+  .hero-shade{position:absolute;inset:0;background:
+    linear-gradient(100deg, rgba(13,7,8,0.95) 0%, rgba(13,7,8,0.78) 45%, rgba(13,7,8,0.45) 70%, rgba(13,7,8,0.82) 100%),
+    linear-gradient(180deg, rgba(13,7,8,0.35) 0%, rgba(13,7,8,0.1) 50%, var(--bg) 100%)}
+  .hero-inner{position:relative;z-index:2;width:100%;max-width:1240px;margin:0 auto;padding:120px 48px 70px}
+  .live-line{display:flex;align-items:center;gap:10px;font-family:var(--mono);font-size:11.5px;letter-spacing:0.22em;color:var(--tx-muted);margin-bottom:24px}
+  .pulse{width:8px;height:8px;border-radius:50%;background:var(--critical);animation:pulse 2.2s infinite}
+  @keyframes pulse{0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(248,113,113,0.4)}50%{opacity:.45;box-shadow:0 0 0 6px rgba(248,113,113,0)}}
+  h1{font-family:var(--display);font-weight:400;font-size:clamp(36px,4.2vw,60px);line-height:1.12;margin:0 0 24px;max-width:820px;text-wrap:balance}
+  .red{color:var(--critical)} .green{color:var(--ok)} .goldtx{color:var(--gold-light)}
+  .grad-text{background:linear-gradient(100deg, #f7efe9 0%, #f7efe9 28%, #f5d978 46%, #c9a44a 60%, #e8d48b 72%, #f7efe9 100%);
+    background-size:220% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;
+    animation:sheen 8s ease-in-out infinite}
+  @keyframes sheen{0%,100%{background-position:0% 0}50%{background-position:100% 0}}
+  .grad-text .red{-webkit-text-fill-color:var(--critical)}
+  .grad-text .green{-webkit-text-fill-color:var(--ok)}
+  .grad-text .goldtx{-webkit-text-fill-color:var(--gold-light)}
+  .hero-sub{font-size:17px;color:var(--tx-muted);max-width:560px;margin:0 0 36px}
+  .hero-sub b{color:var(--tx);font-weight:600}
+  .cta-row{display:flex;gap:16px;flex-wrap:wrap;align-items:center}
+  .btn{display:inline-block;background:var(--gold);color:var(--bg);font-weight:700;font-size:15px;padding:16px 32px;letter-spacing:0.02em;transition:transform .4s var(--ease), background .3s}
+  .btn:hover{background:var(--gold-light);color:var(--bg);transform:translateY(-2px)}
+  .btn-ghost{display:inline-block;border:1px solid var(--border);color:var(--tx-muted);font-size:14.5px;padding:15px 26px;transition:border-color .3s, color .3s}
+  .btn-ghost:hover{border-color:var(--gold-deep);color:var(--tx)}
+
+  /* ---------- shared section ---------- */
+  section{max-width:1240px;margin:0 auto;padding:110px 48px 0;position:relative;z-index:1}
+  .eyebrow{font-family:var(--mono);font-size:11.5px;letter-spacing:0.26em;color:var(--critical);margin-bottom:14px}
+  h2{font-family:var(--display);font-weight:400;font-size:clamp(28px,3.3vw,44px);line-height:1.15;margin:0 0 14px;max-width:760px;text-wrap:balance}
+  .section-sub{color:var(--tx-muted);max-width:620px;margin:0 0 52px;font-size:16.5px}
+  .section-sub b{color:var(--tx);font-weight:600}
+  .reveal{opacity:0;transform:translateY(28px);transition:opacity 1s var(--ease), transform 1s var(--ease)}
+  .reveal.in{opacity:1;transform:none}
+
+  /* ---------- the shop: three doors ---------- */
+  .shop-wrap{display:grid;grid-template-columns:1fr 1.1fr;gap:64px;align-items:center}
+  .doors{display:flex;flex-direction:column;gap:26px}
+  .door{padding:4px 0}
+  .door .dh{display:flex;align-items:center;gap:12px;margin-bottom:6px}
+  .door .dh .dn{font-family:var(--mono);font-size:10px;letter-spacing:0.22em;color:var(--tx-faint)}
+  .door h3{font-family:var(--display);font-weight:400;font-size:23px;margin:0 0 6px;color:var(--tx)}
+  .door p{font-size:14.5px;color:var(--tx-muted);max-width:440px;margin:0}
+  .door p b{color:var(--tx);font-weight:600}
+
+  /* chat mock */
+  .chat-frame{position:relative;background:rgba(16,9,10,0.85);box-shadow:0 40px 80px rgba(0,0,0,0.5), 0 0 0 1px var(--border);padding:30px 30px 24px}
+  .chat-frame .bk{position:absolute;width:18px;height:18px;border:1.5px solid var(--crit-deep);z-index:2}
+  .chat-frame .bk.tl{top:-1px;left:-1px;border-right:0;border-bottom:0}
+  .chat-frame .bk.tr{top:-1px;right:-1px;border-left:0;border-bottom:0}
+  .chat-frame .bk.bl{bottom:-1px;left:-1px;border-right:0;border-top:0}
+  .chat-frame .bk.br{bottom:-1px;right:-1px;border-left:0;border-top:0}
+  .chat-label{font-family:var(--mono);font-size:8.5px;letter-spacing:0.2em;color:var(--tx-faint);margin-bottom:18px}
+  .bubble{max-width:78%;padding:12px 16px;font-size:14px;line-height:1.55;margin-bottom:6px;opacity:0;transform:translateY(14px);transition:opacity .7s var(--ease), transform .7s var(--ease)}
+  .bubble.in{opacity:1;transform:none}
+  .bubble .bt{display:block;font-family:var(--mono);font-size:9px;letter-spacing:0.12em;margin-top:8px}
+  .bubble.patient{background:#1d1114;box-shadow:0 0 0 1px #33191c;margin-right:auto}
+  .bubble.patient .bt{color:var(--tx-faint)}
+  .bubble.clinic{background:#101b13;box-shadow:0 0 0 1px #1d3a26;margin-left:auto}
+  .bubble.clinic .bt{color:var(--tx-faint)}
+  .gapline{display:flex;align-items:center;gap:12px;margin:16px 0;opacity:0;transition:opacity .8s var(--ease)}
+  .gapline.in{opacity:1}
+  .gapline .gl{flex:1;border-top:1px dashed var(--crit-deep)}
+  .gapline .gt{font-family:var(--mono);font-size:10px;letter-spacing:0.18em;color:var(--critical);white-space:nowrap}
+  .chat-verdict{margin-top:18px;padding-top:16px;border-top:1px solid var(--border);font-family:var(--mono);font-size:11px;letter-spacing:0.1em;color:var(--tx-muted);line-height:1.8}
+  .chat-verdict .red{color:var(--critical)}
+
+  /* ---------- what we measure ---------- */
+  .frame-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);box-shadow:0 0 0 1px var(--border);margin-bottom:56px}
+  .fs{background:var(--bg-card);padding:24px 24px 22px}
+  .fs .n{font-family:var(--mono);font-size:9.5px;letter-spacing:0.2em;color:var(--critical);margin-bottom:10px}
+  .fs h4{font-family:var(--display);font-weight:400;font-size:19px;margin:0 0 6px;color:var(--tx)}
+  .fs p{font-size:13px;color:var(--tx-muted);margin:0}
+  .dims{display:grid;grid-template-columns:repeat(3,1fr);gap:34px}
+  .dim{opacity:0;transform:translateY(30px);transition:opacity .9s var(--ease), transform .9s var(--ease)}
+  .dim.in{opacity:1;transform:none}
+  .dim .ic{font-size:20px;margin-bottom:12px;display:flex;align-items:center;gap:10px}
+  .dim .ic svg{width:26px;height:26px;stroke:var(--critical);fill:none;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round}
+  .dim h3{font-family:var(--display);font-weight:400;font-size:21px;margin:0 0 8px;color:var(--tx)}
+  .dim p{font-size:14px;color:var(--tx-muted);margin:0}
+  .dim p b{color:var(--tx);font-weight:600}
+
+  /* ---------- the desk: living report preview ---------- */
+  .desk-wrap{display:grid;grid-template-columns:1.1fr 1fr;gap:64px;align-items:center}
+  .report-stage{position:relative;min-height:520px;perspective:1400px}
+  .stage-bg{position:absolute;inset:0;background:url('assets/img/score-room.webp') center/cover no-repeat;opacity:0.22;
+    box-shadow:0 0 0 1px var(--border)}
+  .stage-bg::after{content:'';position:absolute;inset:0;background:radial-gradient(circle at 50% 45%, transparent 20%, rgba(13,7,8,0.85) 100%)}
+  .rp-card{position:absolute;background:rgba(16,9,10,0.92);backdrop-filter:blur(8px);box-shadow:0 24px 50px rgba(0,0,0,0.55), 0 0 0 1px var(--border);
+    padding:20px 22px;opacity:0;transform:translateY(26px) rotateY(-6deg);transition:opacity .9s var(--ease), transform .9s var(--ease)}
+  .rp-card.in{opacity:1;transform:rotateY(-6deg) rotateX(1.5deg)}
+  .rp-card:hover{transform:none !important;transition:transform .5s var(--ease)}
+  .rp-mono{font-family:var(--mono);font-size:8.5px;letter-spacing:0.2em;color:var(--tx-faint);margin-bottom:10px}
+  .verdict-card{top:26px;left:26px;width:min(300px, 60%)}
+  .verdict-card .vn{display:flex;align-items:baseline;gap:14px}
+  .verdict-card .num{font-family:var(--serif);font-size:64px;line-height:1;color:var(--gold-light)}
+  .verdict-card .of{font-family:var(--mono);font-size:10px;color:var(--tx-faint)}
+  .verdict-card .vline{margin-top:10px;font-size:12.5px;color:var(--tx-muted);line-height:1.7}
+  .verdict-card .vline .red{color:var(--critical)} .verdict-card .vline .gr{color:var(--ok)}
+  .compete-card{bottom:88px;left:56px;width:min(340px, 68%);transition-delay:.25s}
+  .cbar{margin-bottom:12px}
+  .cbar .cl{display:flex;justify-content:space-between;font-family:var(--mono);font-size:9px;letter-spacing:0.14em;margin-bottom:5px}
+  .cbar.you .cl{color:var(--critical)} .cbar.win .cl{color:var(--ok)}
+  .cbar .track{height:5px;background:rgba(255,255,255,0.05)}
+  .cbar .fill{height:100%;width:0;transition:width 1.4s var(--ease) .6s}
+  .cbar.you .fill{background:var(--critical)} .cbar.win .fill{background:var(--ok)}
+  .rp-card.in .cbar.you .fill{width:92%} .rp-card.in .cbar.win .fill{width:7%}
+  .toast{position:absolute;right:0;width:min(280px, 56%);background:rgba(16,9,10,0.94);backdrop-filter:blur(8px);
+    box-shadow:0 16px 36px rgba(0,0,0,0.5), 0 0 0 1px var(--border);padding:13px 16px;font-size:12px;color:var(--tx-muted);line-height:1.55;
+    opacity:0;transform:translateX(30px);transition:opacity .6s var(--ease), transform .6s var(--ease)}
+  .toast.show{opacity:1;transform:none}
+  .toast .th{font-family:var(--mono);font-size:8px;letter-spacing:0.18em;margin-bottom:4px}
+  .toast.t-red{border-left:2px solid var(--critical)} .toast.t-red .th{color:var(--critical)}
+  .toast.t-amber{border-left:2px solid var(--warn)} .toast.t-amber .th{color:var(--warn)}
+  .toast.t-green{border-left:2px solid var(--ok)} .toast.t-green .th{color:var(--ok)}
+  .toast.p1{top:44px} .toast.p2{top:150px} .toast.p3{top:256px}
+  .stage-mark{position:absolute;left:0;right:0;bottom:0;padding:12px 20px;background:rgba(13,7,8,0.88);
+    font-family:var(--mono);font-size:8.5px;letter-spacing:0.16em;color:var(--tx-faint);text-align:center}
+  .desk-list{display:flex;flex-direction:column;gap:0}
+  .dl{display:flex;gap:16px;padding:16px 0;border-top:1px solid rgba(43,20,22,0.7);font-size:15px;color:var(--tx-muted)}
+  .dl:first-child{border-top:0}
+  .dl .dot{width:7px;height:7px;border-radius:50%;background:var(--gold);flex-shrink:0;margin-top:8px}
+  .dl b{color:var(--tx);font-weight:600}
+  .integrity{margin-top:24px;padding:16px 20px;box-shadow:0 0 0 1px var(--border);font-family:var(--mono);font-size:10.5px;letter-spacing:0.1em;color:var(--tx-faint);line-height:1.9}
+  .integrity .gr{color:var(--ok)}
+
+  /* ---------- the loop / L2 connection ---------- */
+  .connect-wrap{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+  .connect-copy p{color:var(--tx-muted);font-size:15.5px;max-width:480px;margin:0 0 18px}
+  .connect-copy p b{color:var(--tx);font-weight:600}
+  .connect-copy .kill{font-family:var(--serif);font-style:italic;font-size:24px;line-height:1.45;color:var(--tx);margin:26px 0 26px;max-width:460px}
+  .enter-field{display:inline-flex;align-items:center;gap:12px;border:1px solid var(--border);padding:14px 22px;
+    font-size:14px;color:var(--tx);transition:border-color .4s, background .4s, transform .4s var(--ease)}
+  .enter-field:hover{border-color:var(--gold-deep);background:rgba(201,164,74,0.06);transform:translateX(4px);color:var(--tx)}
+  .enter-field .arr{color:var(--gold);transition:transform .4s var(--ease)}
+  .enter-field:hover .arr{transform:translateX(4px)}
+  .connect-visual{position:relative;perspective:1400px}
+  .connect-frame{position:relative;transform:rotateY(7deg) rotateX(2.5deg);transition:transform .9s var(--ease);
+    box-shadow:30px 50px 80px rgba(0,0,0,0.55), 0 0 0 1px var(--border)}
+  .connect-visual:hover .connect-frame{transform:none}
+  .connect-frame::after{content:'';position:absolute;inset:0;background:linear-gradient(120deg, rgba(245,217,120,0.10) 0%, transparent 30%, transparent 75%, rgba(245,217,120,0.06) 100%);pointer-events:none}
+
+  /* ---------- cta band ---------- */
+  .band{margin:130px auto 0;background:linear-gradient(180deg, transparent 0%, rgba(22,11,12,0.8) 50%, transparent 100%);
+    border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:96px 48px;text-align:center}
+  .band h2{margin:0 auto 14px;max-width:none}
+  .band p{color:var(--tx-muted);max-width:540px;margin:0 auto 36px}
+
+  footer{max-width:1240px;margin:0 auto;padding:56px 48px 48px;display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;font-size:12px;color:var(--tx-faint);letter-spacing:0.05em}
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation:none !important;transition:none !important}
+    .reveal,.dim,.bubble,.gapline{opacity:1 !important;transform:none !important}
+  }
+  @media (max-width: 1060px){
+    .shop-wrap,.desk-wrap,.connect-wrap{grid-template-columns:1fr;gap:44px}
+    .dims{grid-template-columns:1fr 1fr}
+  }
+  @media (max-width: 900px){
+    nav{padding:14px 22px}
+    .nav-links{display:none}
+    .hero-inner{padding:110px 22px 48px}
+    section{padding:80px 22px 0}
+    .frame-strip{grid-template-columns:1fr 1fr}
+    .dims{grid-template-columns:1fr}
+    .band{padding:72px 22px}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="brand" href="index_rebuild.html">
+    <img src="vaydin-icon-mark.png" alt="Vaydin mark">
+    <div class="wordmark">VAYDIN</div>
+  </a>
+  <div class="nav-links">
+    <a href="diagnose.html" class="nav-here">Diagnose</a>
+    <a href="fix.html">Fix</a>
+    <span class="nav-soon">Grow</span>
+    <span class="nav-soon">Score</span>
+    <span class="nav-soon">Method</span>
+    <a href="engine.html">Engine</a>
+    <a href="pricing.html" class="nav-cta">Build your plan</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="hero-img"></div>
+  <div class="hero-shade"></div>
+  <div class="hero-inner">
+    <div class="live-line"><span class="pulse"></span>STEP 01 — VAYDIN INTELLIGENCE · EVERY PLAN STARTS HERE</div>
+    <h1 class="grad-text">Before we fix anything,<br>we meet your clinic <span class="red">the way a patient does</span>.</h1>
+    <p class="hero-sub">Once a month, a trained shopper approaches your clinic like any new patient would — a WhatsApp message at night, an Instagram DM, a Google search. Then we put <b>what actually happened</b> in front of you. Evidence, not opinions.</p>
+    <div class="cta-row">
+      <a class="btn" href="pricing.html">Get your diagnostic</a>
+      <a class="btn-ghost" href="#doors">See how it works</a>
+    </div>
+  </div>
+</header>
+
+<section id="doors">
+  <div class="reveal">
+    <div class="eyebrow">THE MYSTERY SHOP · THREE DOORS</div>
+    <h2 class="grad-text">Your patients test you every day.<br>Now someone reports the results.</h2>
+    <p class="section-sub">Every new patient walks through one of three doors — and forms a verdict long before anyone greets them. We walk through all three, the same way, every month.</p>
+  </div>
+
+  <div class="shop-wrap">
+    <div class="doors reveal">
+      <div class="door">
+        <div class="dh"><span class="dn">DOOR 01</span></div>
+        <h3>The message</h3>
+        <p>We write to your clinic as a patient — WhatsApp first, because that's where Dubai books. We ask what real patients ask: the treatment, the price, the availability. Then we record <b>what your clinic said, and when.</b></p>
+      </div>
+      <div class="door">
+        <div class="dh"><span class="dn">DOOR 02</span></div>
+        <h3>The profile</h3>
+        <p>Before messaging, a patient has already seen your Google profile, your rating, your latest reviews, your Instagram. We review what they see — <b>the verdict formed before you ever knew they existed.</b></p>
+      </div>
+      <div class="door">
+        <div class="dh"><span class="dn">DOOR 03</span></div>
+        <h3>The follow-through</h3>
+        <p>Most clinics answer once. The real test is what happens after — was a booking offered, did anyone follow up, what happened when we went quiet. <b>That's where revenue leaks, silently.</b></p>
+      </div>
+    </div>
+
+    <div class="chat-frame reveal">
+      <span class="bk tl"></span><span class="bk tr"></span><span class="bk bl"></span><span class="bk br"></span>
+      <div class="chat-label">ILLUSTRATION — A TYPICAL FIRST TEST</div>
+      <div class="bubble patient">Hi, I'm interested in a consultation for skin treatment. Is the doctor available this week? What would it cost?<span class="bt">PATIENT — 21:14</span></div>
+      <div class="gapline"><span class="gl"></span><span class="gt">12 HOURS, 24 MINUTES PASS</span><span class="gl"></span></div>
+      <div class="bubble clinic">Hello dear, yes we have availability. Please call us to discuss.<span class="bt">CLINIC — 09:38 NEXT MORNING</span></div>
+      <div class="chat-verdict">
+        WHAT WE RECORD: <span class="red">RESPONSE TIME</span> · <span class="red">NO PRICE GIVEN</span> · <span class="red">NO BOOKING OFFERED</span> · <span class="red">PATIENT ASKED TO CALL</span><br>
+        WHAT A REAL PATIENT DOES BY 09:38 — BOOKS THE CLINIC THAT ANSWERED AT 21:20.
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="measure">
+  <div class="reveal">
+    <div class="eyebrow">WHAT WE MEASURE</div>
+    <h2 class="grad-text">Every finding comes with its evidence.</h2>
+    <p class="section-sub">No scores from a black box. For everything we measure, you get the same four things — so you can check us, challenge us, and act on it.</p>
+  </div>
+
+  <div class="frame-strip reveal">
+    <div class="fs"><div class="n">01 — TESTED</div><h4>What we tested</h4><p>The exact approach we made, dated and recorded.</p></div>
+    <div class="fs"><div class="n">02 — FOUND</div><h4>What we found</h4><p>What your clinic actually said and did. Verbatim.</p></div>
+    <div class="fs"><div class="n">03 — BENCHMARK</div><h4>What good looks like</h4><p>How the winning clinic handles the same moment.</p></div>
+    <div class="fs"><div class="n">04 — ACTION</div><h4>What to do</h4><p>The specific change, in plain language. Or we do it for you — that's Step 02.</p></div>
+  </div>
+
+  <div class="dims">
+    <div class="dim">
+      <div class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></div>
+      <h3>First response</h3>
+      <p>How fast a new inquiry is answered — and whether the answer <b>helps or deflects</b>. Speed and substance, both recorded.</p>
+    </div>
+    <div class="dim">
+      <div class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="1"/><path d="M3 10h18M8 3v4M16 3v4M9 15l2 2 4-4"/></svg></div>
+      <h3>The booking push</h3>
+      <p>Did anyone actually offer a time? Or was the patient sent away to <b>"call us"</b> — the politest way to lose them.</p>
+    </div>
+    <div class="dim">
+      <div class="ic"><svg viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h9"/><path d="M18 16l2 2 3-3" /></svg></div>
+      <h3>Follow-through</h3>
+      <p>What happens when the patient goes quiet. Most clinics: nothing, forever. <b>Silence is where the money leaks.</b></p>
+    </div>
+    <div class="dim">
+      <div class="ic"><svg viewBox="0 0 24 24"><path d="M12 21c-4-3.5-7-6.6-7-10a7 7 0 0 1 14 0c0 3.4-3 6.5-7 10z"/><circle cx="12" cy="11" r="2.5"/></svg></div>
+      <h3>The Google front door</h3>
+      <p>What a searching patient sees: accuracy, photos, posts, answers. <b>The map result is a ranking</b> — and it's being judged.</p>
+    </div>
+    <div class="dim">
+      <div class="ic"><svg viewBox="0 0 24 24"><path d="M12 3l2.6 5.4 5.9.8-4.3 4.1 1 5.9L12 16.4 6.8 19.2l1-5.9L3.5 9.2l5.9-.8z"/></svg></div>
+      <h3>Reviews &amp; reputation</h3>
+      <p>Your rating, its trend, and what your replies say about you — including <b>the ones nobody answered</b>.</p>
+    </div>
+    <div class="dim">
+      <div class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><ellipse cx="12" cy="12" rx="4" ry="9"/><path d="M3 12h18"/></svg></div>
+      <h3>The website reality</h3>
+      <p>Not its design — its honesty. Are the prices current, the treatments real, the phone number right? <b>A patient checks. So do we.</b></p>
+    </div>
+  </div>
+</section>
+
+<section id="desk">
+  <div class="reveal">
+    <div class="eyebrow">THE DELIVERABLE</div>
+    <h2 class="grad-text">What lands on your desk, every month.</h2>
+  </div>
+  <div class="desk-wrap">
+    <div class="report-stage" id="report-stage">
+      <div class="stage-bg"></div>
+
+      <div class="rp-card verdict-card">
+        <div class="rp-mono">DEMO CLINIC — MONTHLY VERDICT</div>
+        <div class="vn"><span class="num">61</span><span class="of">/ 100<br>THIS MONTH</span></div>
+        <div class="vline"><span class="red">3 critical leaks</span> found · <span class="gr">2 improving</span> since last shop</div>
+      </div>
+
+      <div class="rp-card compete-card">
+        <div class="rp-mono">FIRST REPLY — THE RACE YOU'RE IN</div>
+        <div class="cbar you"><div class="cl"><span>YOUR CLINIC</span><span>12H 24M</span></div><div class="track"><div class="fill"></div></div></div>
+        <div class="cbar win"><div class="cl"><span>THE CLINIC THAT WINS</span><span>8 MIN</span></div><div class="track"><div class="fill"></div></div></div>
+      </div>
+
+      <div class="toast t-red p1"><div class="th">FINDING — CRITICAL</div>WhatsApp inquiry: no price given, no booking offered, patient asked to call.</div>
+      <div class="toast t-amber p2"><div class="th">FINDING — WATCH</div>Latest Google review unanswered for 9 days. Rating trend flat.</div>
+      <div class="toast t-green p3"><div class="th">IMPROVED — SINCE LAST SHOP</div>Instagram DM answered in 41 minutes. Last month: never.</div>
+
+      <div class="stage-mark">SAMPLE PREVIEW — FICTIONAL CLINIC · YOUR REPORT CARRIES YOUR OWN EVIDENCE</div>
+    </div>
+    <div class="desk-list reveal">
+      <div class="dl"><span class="dot"></span><div><b>The findings, ranked by severity.</b> What leaks most gets fixed first — ranked by how badly it costs you patients, not by drama.</div></div>
+      <div class="dl"><span class="dot"></span><div><b>The evidence behind each one.</b> The actual exchange, the actual timestamps, the actual profile — you see what we saw.</div></div>
+      <div class="dl"><span class="dot"></span><div><b>Your score, one number.</b> The month's health in one figure, built from the same evidence — so next month has something to beat.</div></div>
+      <div class="dl"><span class="dot"></span><div><b>What to do about it.</b> Every finding closes with the specific move — yours to make, or ours to run in Step 02.</div></div>
+      <div class="integrity">
+        OUR RULE: <span class="gr">MEASURED IS LABELED MEASURED</span> · ESTIMATED IS LABELED ESTIMATED · MISSING SAYS "NO DATA" — NEVER A NUMBER WE CANNOT SHOW THE SOURCE OF.
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="connect">
+  <div class="connect-wrap">
+    <div class="connect-copy reveal">
+      <div class="eyebrow">WHERE THE FINDINGS GO</div>
+      <h2 class="grad-text">The report doesn't end.<br>It becomes the engine.</h2>
+      <p>Every leak the diagnostic finds maps to one of the <b>13 fields</b> the Vaydin engine runs — slow replies to intake, lost bookings to booking, silent patients to revival, a stale profile to the estate.</p>
+      <p>And the loop closes honestly: after the engine is installed, <b>the same monthly shop keeps scoring the clinic — including us.</b> The diagnostic that sold you the engine becomes the audit that holds it accountable.</p>
+      <p class="kill">Anyone can score your website.<br>We score what your receptionist said to a patient at 9pm.</p>
+      <div class="cta-row">
+        <a class="enter-field" href="fix.html">Step 02 — what we fix &amp; run <span class="arr">→</span></a>
+        <a class="enter-field" href="engine.html">See the engine live <span class="arr">→</span></a>
+      </div>
+    </div>
+    <div class="connect-visual reveal">
+      <div class="connect-frame"><img src="assets/img/layer-fix.webp" alt="The reception running in calm order — where the findings go" loading="lazy"></div>
+    </div>
+  </div>
+</section>
+
+<div class="band">
+  <div class="eyebrow" style="text-align:center">STEP 01 · NO SETUP FEE · MONTH TO MONTH</div>
+  <h2 class="grad-text">Find out what your patients already know.</h2>
+  <p>The first diagnostic takes one month, start to report. No commitment beyond it — the findings either earn the next step or they don't.</p>
+  <a class="btn" href="pricing.html">Get your diagnostic →</a>
+</div>
+
+<footer>
+  <div>VAYDIN PARTNERS INVESTMENTS — FZCO · Licensed under IFZA, Dubai Silicon Oasis</div>
+  <div>The diagnostic sells the engine. The engine earns the fuel.</div>
+</footer>
+
+<script>
+(function(){
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, {threshold: 0.15});
+  document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+
+  /* dims: one-by-one */
+  var dims = Array.prototype.slice.call(document.querySelectorAll('.dim'));
+  var dio = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){
+        var idx = dims.indexOf(e.target);
+        setTimeout(function(){ e.target.classList.add('in'); }, (idx % 6) * 140);
+        dio.unobserve(e.target);
+      }
+    });
+  }, {threshold: 0.15});
+  dims.forEach(function(el){ dio.observe(el); });
+
+  /* report preview stage: cards tilt in, toasts arrive like live notifications */
+  var stage = document.getElementById('report-stage');
+  if(stage){
+    var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var cards = stage.querySelectorAll('.rp-card');
+    var toasts = Array.prototype.slice.call(stage.querySelectorAll('.toast'));
+    var sio = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(!e.isIntersecting) return;
+        cards.forEach(function(c, i){ setTimeout(function(){ c.classList.add('in'); }, i * 350); });
+        toasts.forEach(function(tt, i){ setTimeout(function(){ tt.classList.add('show'); }, 900 + i * 700); });
+        if(!reduced){
+          var ti = 0;
+          setInterval(function(){
+            var tt = toasts[ti];
+            tt.classList.remove('show');
+            setTimeout(function(){ tt.classList.add('show'); }, 520);
+            ti = (ti + 1) % toasts.length;
+          }, 4200);
+        }
+        sio.unobserve(stage);
+      });
+    }, {threshold: 0.35});
+    sio.observe(stage);
+  }
+
+  /* chat choreography: patient msg -> long gap -> late reply */
+  var chat = document.querySelector('.chat-frame');
+  if(chat){
+    var cio = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){
+          var seq = [
+            [chat.querySelector('.bubble.patient'), 300],
+            [chat.querySelector('.gapline'), 1400],
+            [chat.querySelector('.bubble.clinic'), 2300]
+          ];
+          seq.forEach(function(s){ setTimeout(function(){ s[0].classList.add('in'); }, s[1]); });
+          cio.unobserve(chat);
+        }
+      });
+    }, {threshold: 0.4});
+    cio.observe(chat);
+  }
+})();
+</script>
+</body>
+</html>
