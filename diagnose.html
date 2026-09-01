@@ -155,6 +155,14 @@
   .chat-verdict{margin-top:18px;padding-top:16px;border-top:1px solid var(--border);font-family:var(--mono);font-size:11px;letter-spacing:0.1em;color:var(--tx-muted);line-height:1.8}
   .chat-verdict .red{color:var(--critical)}
 
+  /* ---------- the speed gap (stat trio) ---------- */
+  .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);box-shadow:0 0 0 1px var(--border)}
+  .stat{background:var(--bg-card);padding:44px 36px 40px;text-align:center}
+  .stat .sn{font-family:var(--serif);font-size:clamp(44px,4.5vw,64px);line-height:1;color:var(--gold-light)}
+  .stat .sl{font-size:14px;color:var(--tx-muted);margin-top:14px;max-width:240px;margin-left:auto;margin-right:auto}
+  .stat .sl b{color:var(--tx);font-weight:600}
+  .stats-prov{margin-top:16px;font-family:var(--mono);font-size:9.5px;letter-spacing:0.16em;color:var(--tx-faint);text-align:center}
+
   /* ---------- evidence strip ---------- */
   .frame-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);box-shadow:0 0 0 1px var(--border)}
   .fs{background:var(--bg-card);padding:24px 24px 22px}
@@ -274,7 +282,6 @@
     <a href="diagnose.html" class="nav-here">Diagnose</a>
     <a href="fix.html">Fix</a>
     <span class="nav-soon">Grow</span>
-    <span class="nav-soon">Method</span>
     <a href="engine.html">Engine</a>
     <a href="pricing.html" class="nav-cta">Build your plan</a>
   </div>
@@ -358,6 +365,20 @@
       </div>
     </div>
   </div>
+</section>
+
+<section id="speed">
+  <div class="reveal">
+    <div class="sec-eyebrow">WHY IT MATTERS · THE SPEED GAP</div>
+    <h2 class="grad-text">The whole game is minutes.</h2>
+    <p class="section-sub">A patient messaging clinics tonight will book with whoever answers first and best. This is the gap the diagnostic exists to find.</p>
+  </div>
+  <div class="stats reveal">
+    <div class="stat"><div class="sn" data-count="4h 11m">0</div><div class="sl"><b>Typical first reply</b> we see when we shop a Dubai clinic that runs its own inbox.</div></div>
+    <div class="stat"><div class="sn" data-count="2">0</div><div class="sl"><b>Minutes, or less</b> — first reply once the engine answers that same inbox.</div></div>
+    <div class="stat"><div class="sn">24/7</div><div class="sl"><b>When it happens.</b> The patient writing at 11pm is answered at 11pm.</div></div>
+  </div>
+  <div class="stats-prov">MEASURED IN OUR OWN DUBAI MYSTERY SHOPS AND ENGINE LOGS — YOUR DIAGNOSTIC SHOWS YOUR OWN NUMBERS</div>
 </section>
 
 <section id="measure">
@@ -514,6 +535,35 @@
     });
   }, {threshold: 0.12});
   document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+
+  /* ================= stat trio count-up ================= */
+  function animateCount(el){
+    var target = el.getAttribute('data-count');
+    if(!target) return;
+    if(reduced){ el.textContent = target; return; }
+    var m = target.match(/^(\d+)h\s+(\d+)m$/);
+    var start = null, dur = 1600;
+    function frame(ts){
+      if(!start) start = ts;
+      var p = Math.min((ts - start) / dur, 1);
+      p = 1 - Math.pow(1 - p, 3);
+      if(m){
+        var totalMin = (parseInt(m[1]) * 60 + parseInt(m[2])) * p;
+        el.textContent = Math.floor(totalMin / 60) + 'h ' + Math.floor(totalMin % 60) + 'm';
+      } else {
+        el.textContent = Math.round(parseInt(target) * p);
+      }
+      if(p < 1) requestAnimationFrame(frame);
+      else el.textContent = target;
+    }
+    requestAnimationFrame(frame);
+  }
+  var counters = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ animateCount(e.target); counters.unobserve(e.target); }
+    });
+  }, {threshold: 0.5});
+  document.querySelectorAll('[data-count]').forEach(function(el){ counters.observe(el); });
 
   /* ================= chat choreography: patient msg -> long gap -> late reply ================= */
   var chat = document.querySelector('.chat-frame');
