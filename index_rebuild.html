@@ -59,14 +59,12 @@
 
   /* ---------- hero ---------- */
   .hero{position:relative;min-height:94vh;display:flex;align-items:center;overflow:hidden}
-  .hero-img{position:absolute;inset:0;background:url('assets/img/hero.webp') center/cover no-repeat;
-            transform:scale(1.06);animation:heroSettle 3.4s var(--ease) forwards}
-  @keyframes heroSettle{to{transform:scale(1.0)}}
+  .hero-vid{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
   .hero-shade{position:absolute;inset:0;background:
     linear-gradient(100deg, rgba(13,8,7,0.94) 0%, rgba(13,8,7,0.72) 42%, rgba(13,8,7,0.42) 68%, rgba(13,8,7,0.80) 100%),
     linear-gradient(180deg, rgba(13,8,7,0.3) 0%, rgba(13,8,7,0.1) 50%, var(--bg) 100%)}
   .hero-inner{position:relative;z-index:2;width:100%;max-width:1320px;margin:0 auto;padding:110px 48px 60px;
-              display:grid;grid-template-columns:1.1fr 0.9fr;gap:48px;align-items:center}
+              display:flex;align-items:center}
   .live-line{display:flex;align-items:center;gap:10px;font-family:var(--mono);font-size:11.5px;letter-spacing:0.22em;color:var(--tx-muted);margin-bottom:24px}
   .pulse{width:8px;height:8px;border-radius:50%;background:var(--ok);animation:pulse 2.2s infinite}
   @keyframes pulse{0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(74,222,128,0.4)}50%{opacity:.45;box-shadow:0 0 0 6px rgba(74,222,128,0)}}
@@ -85,26 +83,6 @@
   .btn:hover{background:var(--gold-light);color:var(--bg);transform:translateY(-2px)}
   .btn-ghost{display:inline-block;border:1px solid var(--border);color:var(--tx-muted);font-size:14.5px;padding:15px 26px;transition:border-color .3s, color .3s}
   .btn-ghost:hover{border-color:var(--gold-deep);color:var(--tx)}
-  .viz-wrap{position:relative;display:flex;align-items:center;justify-content:center;
-    border:1px solid transparent;padding:18px;cursor:pointer;
-    transition:border-color .6s var(--ease)}
-  .viz-wrap::before{content:'';position:absolute;inset:18px;
-    background:radial-gradient(circle, rgba(13,8,7,0.85) 0%, rgba(13,8,7,0.5) 55%, transparent 78%)}
-  #systemviz{position:relative;width:100%;max-width:560px;height:auto}
-  .viz-caption{position:absolute;bottom:10px;left:50%;transform:translateX(-50%);font-family:var(--mono);
-    font-size:10px;letter-spacing:0.26em;color:var(--tx-faint);white-space:nowrap;transition:opacity .5s}
-  .viz-overlay{position:absolute;inset:0;z-index:3;display:flex;flex-direction:column;align-items:center;justify-content:center;
-    gap:16px;text-align:center;padding:40px;opacity:0;transition:opacity .7s var(--ease);
-    background:radial-gradient(circle at 50% 45%, rgba(10,22,26,0.55) 0%, rgba(10,22,26,0.85) 100%)}
-  .viz-overlay .ve{font-family:var(--mono);font-size:11px;letter-spacing:0.26em;color:var(--volt)}
-  .viz-overlay h3{font-family:var(--display);font-weight:400;font-size:28px;margin:0;color:var(--tx);max-width:360px}
-  .viz-overlay p{font-size:14px;color:var(--tx-muted);max-width:340px;margin:0}
-  .viz-overlay .enter-field{margin-top:6px}
-  @media (hover:hover){
-    .viz-wrap:hover{border-color:var(--volt-deep)}
-    .viz-wrap:hover .viz-overlay{opacity:1}
-    .viz-wrap:hover .viz-caption{opacity:0}
-  }
 
   /* ---------- shared section ---------- */
   section{max-width:1240px;margin:0 auto;padding:110px 48px 0}
@@ -199,7 +177,6 @@
   }
   @media (max-width: 1060px){
     .hero-inner{grid-template-columns:1fr;padding-top:110px}
-    .viz-wrap{display:none}
   }
   @media (max-width: 960px){
     nav{padding:14px 22px}
@@ -238,10 +215,12 @@
 </nav>
 
 <header class="hero">
-  <div class="hero-img"></div>
+  <video class="hero-vid" autoplay muted loop playsinline poster="assets/img/hero.webp" aria-hidden="true">
+    <source src="assets/video/hero.mp4" type="video/mp4">
+  </video>
   <div class="hero-shade"></div>
   <div class="hero-inner">
-    <div>
+    <div style="max-width:760px">
       <div class="live-line"><span class="pulse"></span>MEASURING DUBAI CLINICS — LIVE</div>
       <h1 class="grad-text">Your clinic is losing patients <span class="red">you never saw</span>.<br>
           We find them. <span class="green">We book them.</span></h1>
@@ -251,16 +230,6 @@
         <a class="btn-ghost" href="#method">How we measure</a>
       </div>
     </div>
-    <a class="viz-wrap" href="engine.html" aria-label="Enter the Vaydin engine">
-      <canvas id="systemviz" width="580" height="580" aria-label="The Vaydin system: three layers and every channel, working as one engine"></canvas>
-      <div class="viz-caption">THE VAYDIN ENGINE — EVERY SIGNAL, ONE SYSTEM</div>
-      <div class="viz-overlay">
-        <div class="ve">LIVE — THE VAYDIN ENGINE</div>
-        <h3>Every channel. One system. Working while you sleep.</h3>
-        <p>WhatsApp, Instagram, Google, reviews, email — every signal flows through one engine that answers, books, and learns. This is what runs your clinic's digital life.</p>
-        <span class="enter-field">Enter the engine <span class="arr">→</span></span>
-      </div>
-    </a>
   </div>
 </header>
 
@@ -395,6 +364,9 @@
 (function(){
   var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+  var hv = document.querySelector('.hero-vid');
+  if(hv && reduced){ hv.removeAttribute('autoplay'); hv.pause(); }
+
   /* reveal on scroll */
   var io = new IntersectionObserver(function(entries){
     entries.forEach(function(e){
@@ -473,232 +445,6 @@
     })();
   }
 
-  /* ---------- THE VAYDIN ENGINE — electric system graph ---------- */
-  var canvas = document.getElementById('systemviz');
-  if(canvas && canvas.getContext){
-    var ctx = canvas.getContext('2d');
-    var W = 580, H = 580, cx = W/2, cy = H/2;
-    var VOLT = '#34e3f0', VOLTD = '#19a7b8';
-    var layers = [
-      {label:'DIAGNOSE', color:'#f87171', a:0},
-      {label:'FIX',      color:'#e8d48b', a:2*Math.PI/3},
-      {label:'GROW',     color:'#4ade80', a:4*Math.PI/3}
-    ];
-    var sats = [
-      {label:'WHATSAPP',  color:'#25D366', icon:'chat'},
-      {label:'INSTAGRAM', color:'#E1306C', icon:'camera'},
-      {label:'GOOGLE',    color:'#4285F4', icon:'pin'},
-      {label:'REVIEWS',   color:'#fbbf24', icon:'star'},
-      {label:'EMAIL',     color:'#60a5fa', icon:'mail'},
-      {label:'BOOKING',   color:'#e8d48b', icon:'cal'},
-      {label:'SHOW-UP',   color:'#4ade80', icon:'check'},
-      {label:'RECOVERY',  color:'#fb923c', icon:'refresh'},
-      {label:'WEBSITE',   color:'#34e3f0', icon:'globe'},
-      {label:'ADS',       color:'#a78bfa', icon:'mega'}
-    ];
-    var sparks = [], bolts = [];
-    var t = 0;
-
-    function drawIcon(type, x, y, color, s){
-      ctx.save();
-      ctx.strokeStyle = color; ctx.fillStyle = color; ctx.lineWidth = 1.1;
-      ctx.lineJoin = 'round'; ctx.lineCap = 'round';
-      ctx.translate(x, y);
-      switch(type){
-        case 'chat':
-          ctx.beginPath();
-          ctx.arc(0, 0, s*0.55, 0.6, 6.1);
-          ctx.lineTo(-s*0.55, s*0.62);
-          ctx.closePath(); ctx.stroke();
-          break;
-        case 'camera':
-          ctx.strokeRect(-s*0.55, -s*0.45, s*1.1, s*0.9);
-          ctx.beginPath(); ctx.arc(0, 0, s*0.22, 0, 7); ctx.stroke();
-          ctx.beginPath(); ctx.arc(s*0.32, -s*0.24, s*0.06, 0, 7); ctx.fill();
-          break;
-        case 'pin':
-          ctx.beginPath();
-          ctx.arc(0, -s*0.15, s*0.38, Math.PI*0.9, Math.PI*2.1);
-          ctx.lineTo(0, s*0.55); ctx.closePath(); ctx.stroke();
-          ctx.beginPath(); ctx.arc(0, -s*0.15, s*0.12, 0, 7); ctx.fill();
-          break;
-        case 'star':
-          ctx.beginPath();
-          for(var k=0;k<5;k++){
-            var a1 = -Math.PI/2 + k*2*Math.PI/5, a2 = a1 + Math.PI/5;
-            var m = k ? ctx.lineTo : ctx.moveTo;
-            ctx.lineTo(Math.cos(a1)*s*0.55, Math.sin(a1)*s*0.55);
-            ctx.lineTo(Math.cos(a2)*s*0.24, Math.sin(a2)*s*0.24);
-          }
-          ctx.closePath(); ctx.fill();
-          break;
-        case 'mail':
-          ctx.strokeRect(-s*0.55, -s*0.38, s*1.1, s*0.76);
-          ctx.beginPath(); ctx.moveTo(-s*0.55, -s*0.38); ctx.lineTo(0, s*0.08); ctx.lineTo(s*0.55, -s*0.38); ctx.stroke();
-          break;
-        case 'cal':
-          ctx.strokeRect(-s*0.5, -s*0.4, s*1.0, s*0.85);
-          ctx.beginPath(); ctx.moveTo(-s*0.5, -s*0.12); ctx.lineTo(s*0.5, -s*0.12); ctx.stroke();
-          ctx.beginPath(); ctx.moveTo(-s*0.22, -s*0.55); ctx.lineTo(-s*0.22, -s*0.28); ctx.moveTo(s*0.22, -s*0.55); ctx.lineTo(s*0.22, -s*0.28); ctx.stroke();
-          break;
-        case 'check':
-          ctx.beginPath(); ctx.moveTo(-s*0.45, 0.05*s); ctx.lineTo(-s*0.1, s*0.4); ctx.lineTo(s*0.5, -s*0.4); ctx.stroke();
-          break;
-        case 'refresh':
-          ctx.beginPath(); ctx.arc(0, 0, s*0.45, -0.4, 4.6); ctx.stroke();
-          ctx.beginPath(); ctx.moveTo(s*0.55, -s*0.35); ctx.lineTo(s*0.42, -s*0.05); ctx.lineTo(s*0.15, -s*0.32); ctx.closePath(); ctx.fill();
-          break;
-        case 'globe':
-          ctx.beginPath(); ctx.arc(0, 0, s*0.5, 0, 7); ctx.stroke();
-          ctx.beginPath(); ctx.ellipse(0, 0, s*0.22, s*0.5, 0, 0, 7); ctx.stroke();
-          ctx.beginPath(); ctx.moveTo(-s*0.5, 0); ctx.lineTo(s*0.5, 0); ctx.stroke();
-          break;
-        case 'mega':
-          ctx.beginPath();
-          ctx.moveTo(-s*0.5, -s*0.15); ctx.lineTo(s*0.15, -s*0.45); ctx.lineTo(s*0.15, s*0.45); ctx.lineTo(-s*0.5, s*0.15);
-          ctx.closePath(); ctx.stroke();
-          ctx.beginPath(); ctx.moveTo(s*0.28, -s*0.2); ctx.arc(s*0.28, 0, s*0.28, -0.9, 0.9); ctx.stroke();
-          break;
-      }
-      ctx.restore();
-    }
-
-    function jag(x1,y1,x2,y2,jit,segs){
-      var pts = [[x1,y1]];
-      var dx = x2-x1, dy = y2-y1, len = Math.sqrt(dx*dx+dy*dy);
-      var nx = -dy/len, ny = dx/len;
-      for(var i=1;i<segs;i++){
-        var f = i/segs;
-        var off = (Math.random()-0.5) * jit;
-        pts.push([x1+dx*f+nx*off, y1+dy*f+ny*off]);
-      }
-      pts.push([x2,y2]);
-      return pts;
-    }
-    function strokePts(pts){
-      ctx.beginPath(); ctx.moveTo(pts[0][0], pts[0][1]);
-      for(var i=1;i<pts.length;i++) ctx.lineTo(pts[i][0], pts[i][1]);
-      ctx.stroke();
-    }
-
-    function draw(){
-      t += 0.004;
-      ctx.clearRect(0,0,W,H);
-
-      var satPts = [], layPts = [];
-      for(var i=0;i<sats.length;i++){
-        var a = t*0.35 + i * 2*Math.PI/sats.length;
-        satPts.push([cx + Math.cos(a)*242, cy + Math.sin(a)*242, a]);
-      }
-      for(var i=0;i<3;i++){
-        var a = -t*0.55 + layers[i].a;
-        layPts.push([cx + Math.cos(a)*120, cy + Math.sin(a)*120]);
-      }
-
-      /* electric web: jittering filaments */
-      ctx.lineWidth = 0.7;
-      for(var i=0;i<satPts.length;i++){
-        var L = layPts[i % 3];
-        ctx.strokeStyle = 'rgba(25,167,184,0.16)';
-        strokePts(jag(satPts[i][0], satPts[i][1], L[0], L[1], 7, 6));
-      }
-      for(var i=0;i<3;i++){
-        ctx.strokeStyle = 'rgba(52,227,240,0.30)';
-        ctx.lineWidth = 0.9;
-        strokePts(jag(layPts[i][0], layPts[i][1], cx, cy, 5, 5));
-      }
-
-      /* big discharges: full bolt satellite -> centre */
-      if(Math.random() < 0.012 && bolts.length < 2){
-        bolts.push({from: Math.floor(Math.random()*satPts.length), life: 1});
-      }
-      bolts.forEach(function(b){
-        b.life -= 0.05;
-        var S = satPts[b.from];
-        ctx.save();
-        ctx.shadowColor = VOLT; ctx.shadowBlur = 12;
-        ctx.strokeStyle = 'rgba(52,227,240,' + Math.max(b.life,0) * 0.85 + ')';
-        ctx.lineWidth = 1.6;
-        strokePts(jag(S[0], S[1], cx, cy, 14, 9));
-        ctx.restore();
-      });
-      for(var i=bolts.length-1;i>=0;i--){ if(bolts[i].life <= 0) bolts.splice(i,1); }
-
-      /* travelling sparks */
-      if(Math.random() < 0.06 && sparks.length < 7){
-        sparks.push({from: Math.floor(Math.random()*satPts.length), p:0});
-      }
-      sparks.forEach(function(sp){
-        sp.p += 0.018;
-        var S = satPts[sp.from], L = layPts[sp.from % 3];
-        var x, y;
-        if(sp.p < 0.5){ var q = sp.p*2; x = S[0]+(L[0]-S[0])*q; y = S[1]+(L[1]-S[1])*q; }
-        else { var q = (sp.p-0.5)*2; x = L[0]+(cx-L[0])*q; y = L[1]+(cy-L[1])*q; }
-        ctx.save();
-        ctx.shadowColor = VOLT; ctx.shadowBlur = 8;
-        ctx.fillStyle = 'rgba(52,227,240,' + (1 - sp.p*0.5) + ')';
-        ctx.beginPath(); ctx.arc(x, y, 2.2, 0, 7); ctx.fill();
-        ctx.restore();
-      });
-      for(var i=sparks.length-1;i>=0;i--){ if(sparks[i].p >= 1) sparks.splice(i,1); }
-
-      /* satellites: icon + name ARE the node */
-      ctx.textAlign = 'center';
-      for(var i=0;i<satPts.length;i++){
-        var col = sats[i].color;
-        var flick = 0.72 + Math.abs(Math.sin(t*3 + i*1.7)) * 0.28;
-        var lx = satPts[i][0], ly = satPts[i][1];
-        ctx.save(); ctx.globalAlpha = flick;
-        ctx.shadowColor = col; ctx.shadowBlur = 7;
-        ctx.font = '600 10px IBM Plex Mono, monospace';
-        var tw = ctx.measureText(sats[i].label).width;
-        drawIcon(sats[i].icon, lx - tw/2 - 10, ly - 1, col, 10);
-        ctx.fillStyle = col;
-        ctx.fillText(sats[i].label, lx + 5, ly + 3);
-        ctx.restore();
-      }
-
-      /* layer nodes: glowing cores */
-      for(var i=0;i<3;i++){
-        var P = layPts[i];
-        ctx.save();
-        ctx.shadowColor = layers[i].color; ctx.shadowBlur = 16;
-        ctx.fillStyle = '#120c09';
-        ctx.strokeStyle = layers[i].color; ctx.lineWidth = 1.5;
-        ctx.beginPath(); ctx.arc(P[0], P[1], 27, 0, 7); ctx.fill(); ctx.stroke();
-        ctx.restore();
-        ctx.strokeStyle = 'rgba(52,227,240,0.35)'; ctx.lineWidth = 0.8;
-        ctx.beginPath(); ctx.arc(P[0], P[1], 33, t*2 + i, t*2 + i + 1.4); ctx.stroke();
-        ctx.fillStyle = layers[i].color; ctx.font = '9px IBM Plex Mono, monospace';
-        ctx.fillText(layers[i].label, P[0], P[1] + 3);
-      }
-
-      /* breathing centre + rotating volt arcs */
-      var breath = 1 + Math.sin(t*2.2) * 0.06;
-      var g2 = ctx.createRadialGradient(cx, cy, 4, cx, cy, 78*breath);
-      g2.addColorStop(0, 'rgba(245,217,120,0.9)');
-      g2.addColorStop(0.35, 'rgba(201,164,74,0.35)');
-      g2.addColorStop(1, 'rgba(201,164,74,0)');
-      ctx.fillStyle = g2;
-      ctx.beginPath(); ctx.arc(cx, cy, 78*breath, 0, 7); ctx.fill();
-      ctx.fillStyle = '#0d0807';
-      ctx.beginPath(); ctx.arc(cx, cy, 34*breath, 0, 7); ctx.fill();
-      ctx.strokeStyle = '#e8d48b'; ctx.lineWidth = 1.2;
-      ctx.beginPath(); ctx.arc(cx, cy, 34*breath, 0, 7); ctx.stroke();
-      ctx.save();
-      ctx.shadowColor = VOLT; ctx.shadowBlur = 10;
-      ctx.strokeStyle = 'rgba(52,227,240,0.85)'; ctx.lineWidth = 1.8;
-      ctx.beginPath(); ctx.arc(cx, cy, 46, t*1.6, t*1.6 + 1.3); ctx.stroke();
-      ctx.strokeStyle = 'rgba(52,227,240,0.35)'; ctx.lineWidth = 1;
-      ctx.beginPath(); ctx.arc(cx, cy, 56, -t*1.1, -t*1.1 + 0.9); ctx.stroke();
-      ctx.restore();
-      ctx.fillStyle = '#e8d48b'; ctx.font = '10px IBM Plex Mono, monospace';
-      ctx.fillText('VAYDIN', cx, cy + 3.5);
-
-      if(!reduced) requestAnimationFrame(draw);
-    }
-    draw();
-  }
 })();
 </script>
 </body>
