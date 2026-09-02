@@ -6,6 +6,20 @@
 <title>Vaydin — Grow</title>
 <meta name="description" content="Step 03: once the engine runs your clinic, we pour fuel on it — paid patient demand and an Instagram presence run like a channel. Every dirham counted on the same dashboard.">
 <link rel="icon" href="vaydin-icon-48.png">
+<link rel="apple-touch-icon" href="vaydin-icon-192.png">
+<link rel="canonical" href="https://vaydin.agency/grow.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Vaydin">
+<meta property="og:title" content="Vaydin — Grow">
+<meta property="og:description" content="Step 03: once the engine runs your clinic, we pour fuel on it — paid patient demand and an Instagram presence run like a channel. Every dirham counted on the same dashboard.">
+<meta property="og:url" content="https://vaydin.agency/grow.html">
+<meta property="og:image" content="https://vaydin.agency/vaydin-og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Vaydin — Grow">
+<meta name="twitter:description" content="Step 03: once the engine runs your clinic, we pour fuel on it — paid patient demand and an Instagram presence run like a channel. Every dirham counted on the same dashboard.">
+<meta name="twitter:image" content="https://vaydin.agency/vaydin-og.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Marcellus&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=DM+Sans:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
@@ -184,6 +198,10 @@
     .nav-burger{display:flex}
     .nav-cta{white-space:nowrap;padding:10px 15px;font-size:12.5px}
     nav{gap:14px}
+  }
+  @media (max-width: 380px){
+    .wordmark{display:none}
+    .nav-right{gap:12px}
     .wordmark{font-size:16px;letter-spacing:0.2em}
     .brand{gap:9px}
     .brand img{width:28px;height:28px}
@@ -366,7 +384,7 @@
     startWhenVisible(ig, function(){
       var ctx = ig.getContext('2d'), W = 360, H = 96;
       var base = [72, 69, 70, 63, 60, 54, 50, 44, 40, 33, 27, 20, 14];
-      var t = 0, prog = 0;
+      var t = 0, prog = reduced ? 1 : 0;
       (function fr(){
         t += 0.02; if(prog < 1) prog = Math.min(1, prog + 0.008);
         ctx.clearRect(0,0,W,H);

@@ -6,6 +6,20 @@
 <title>Vaydin — The Diagnostic</title>
 <meta name="description" content="Step 01: once a month we approach your clinic exactly the way a patient does — WhatsApp, Instagram, Google — and score what happened across six dimensions. Evidence, not promises.">
 <link rel="icon" href="vaydin-icon-48.png">
+<link rel="apple-touch-icon" href="vaydin-icon-192.png">
+<link rel="canonical" href="https://vaydin.agency/diagnose.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Vaydin">
+<meta property="og:title" content="Vaydin — The Diagnostic">
+<meta property="og:description" content="Step 01: once a month we approach your clinic exactly the way a patient does — WhatsApp, Instagram, Google — and score what happened across six dimensions. Evidence, not promises.">
+<meta property="og:url" content="https://vaydin.agency/diagnose.html">
+<meta property="og:image" content="https://vaydin.agency/vaydin-og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Vaydin — The Diagnostic">
+<meta name="twitter:description" content="Step 01: once a month we approach your clinic exactly the way a patient does — WhatsApp, Instagram, Google — and score what happened across six dimensions. Evidence, not promises.">
+<meta name="twitter:image" content="https://vaydin.agency/vaydin-og.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Marcellus&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=DM+Sans:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
@@ -275,6 +289,10 @@
     .nav-burger{display:flex}
     .nav-cta{white-space:nowrap;padding:10px 15px;font-size:12.5px}
     nav{gap:14px}
+  }
+  @media (max-width: 380px){
+    .wordmark{display:none}
+    .nav-right{gap:12px}
     .wordmark{font-size:16px;letter-spacing:0.2em}
     .brand{gap:9px}
     .brand img{width:28px;height:28px}
@@ -406,7 +424,7 @@
     <p class="section-sub">A patient messaging clinics tonight will book with whoever answers first and best. This is the gap the diagnostic exists to find.</p>
   </div>
   <div class="stats reveal">
-    <div class="stat"><div class="sn" data-count="4h 11m">0</div><div class="sl"><b>A first reply we have seen</b> when we shop a Dubai clinic that runs its own inbox.</div></div>
+    <div class="stat"><div class="sn" data-count="4h 11m">0</div><div class="sl"><b>Hours to a first reply</b> is common when a clinic runs its own inbox (illustration).</div></div>
     <div class="stat"><div class="sn" data-count="2">0</div><div class="sl"><b>Minutes</b> — first reply once the engine answers that same inbox.</div></div>
     <div class="stat"><div class="sn">24/7</div><div class="sl"><b>When it happens.</b> The patient writing at 11pm is answered at 11pm.</div></div>
   </div>
@@ -685,7 +703,7 @@
     });
   });
 
-  if(!canvasLive) return;
+  if(!canvasLive){ var relight = function(){ if(canvas && canvas.offsetParent !== null){ window.removeEventListener('resize', relight); location.reload(); } }; window.addEventListener('resize', relight); return; }
   var ctx = canvas.getContext('2d');
   var W, H, cx, cy, R;
   function size(){
@@ -716,7 +734,7 @@
     /* sweep motion: free rotation, or ease toward locked axis */
     if(lockAxis >= 0){
       var target = axisAngle(lockAxis);
-      var d = ((target - sweep + Math.PI*3) % (Math.PI*2)) - Math.PI;
+      var d = ((((target - sweep + Math.PI*3) % (Math.PI*2)) + Math.PI*2) % (Math.PI*2)) - Math.PI;
       sweep += d * 0.12;
     } else {
       sweep += 0.0075;
@@ -781,7 +799,7 @@
     for(var i=0;i<6;i++){
       var D = DIMS[ORDER[i]];
       var a = axisAngle(i);
-      var da = Math.abs(((a - sweep + Math.PI*3) % (Math.PI*2)) - Math.PI);
+      var da = Math.abs(((((a - sweep + Math.PI*3) % (Math.PI*2)) + Math.PI*2) % (Math.PI*2)) - Math.PI);
       var near = Math.max(0, 1 - da/0.5);
       ctx.save();
       ctx.shadowColor = D.color; ctx.shadowBlur = 6 + near*14;

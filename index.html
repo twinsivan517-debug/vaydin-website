@@ -6,6 +6,42 @@
 <title>Vaydin — We find the patients your clinic never saw</title>
 <meta name="description" content="Vaydin measures your clinic the way a patient meets it, fixes what leaks, and runs your digital front door. Dubai aesthetic clinics. Measured, not promised.">
 <link rel="icon" href="vaydin-icon-48.png">
+<link rel="apple-touch-icon" href="vaydin-icon-192.png">
+<link rel="canonical" href="https://vaydin.agency/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Vaydin">
+<meta property="og:title" content="Vaydin — We find the patients your clinic never saw">
+<meta property="og:description" content="Vaydin measures your clinic the way a patient meets it, fixes what leaks, and runs your digital front door. Dubai aesthetic clinics. Measured, not promised.">
+<meta property="og:url" content="https://vaydin.agency/">
+<meta property="og:image" content="https://vaydin.agency/vaydin-og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Vaydin — We find the patients your clinic never saw">
+<meta name="twitter:description" content="Vaydin measures your clinic the way a patient meets it, fixes what leaks, and runs your digital front door. Dubai aesthetic clinics. Measured, not promised.">
+<meta name="twitter:image" content="https://vaydin.agency/vaydin-og.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Vaydin",
+  "alternateName": "VAYDIN PARTNERS INVESTMENTS - FZCO",
+  "telephone": "+971505553148",
+  "address": {"@type": "PostalAddress", "streetAddress": "DSO-IFZA, IFZA Properties", "addressLocality": "Dubai Silicon Oasis", "addressRegion": "Dubai", "addressCountry": "AE"},
+  "url": "https://vaydin.agency/",
+  "logo": "https://vaydin.agency/vaydin-icon-512.png",
+  "image": "https://vaydin.agency/vaydin-og.png",
+  "description": "Vaydin builds the operating system for aesthetic clinics — diagnostic-led mystery shopping, AI response bots, booking integration, attribution-tracked acquisition. Designed in Dubai. Built for MENA. Operated for you.",
+  "sameAs": [
+    "https://reports.vaydin.agency/"
+  ],
+  "areaServed": {
+    "@type": "Place",
+    "name": "MENA"
+  },
+  "email": "hello@vaydin.agency"
+}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Marcellus&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=DM+Sans:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
@@ -119,7 +155,7 @@
   .wm-o{background:#005c4b;margin-left:auto;border-bottom-right-radius:3px}
   .wm-t{font-size:9px;color:#8a93a0;text-align:right;margin-top:3px;font-family:var(--mono)}
   .wm-faded{opacity:.55}
-  .hr-typing{display:flex;gap:4px;width:fit-content;padding:11px 14px}
+  .hr-typing{display:none;gap:4px;width:fit-content;padding:11px 14px}
   .hr-typing span{width:5px;height:5px;border-radius:50%;background:#8a93a0;animation:tdot 1.2s ease-in-out infinite}
   .hr-typing span:nth-child(2){animation-delay:.2s} .hr-typing span:nth-child(3){animation-delay:.4s}
   @keyframes tdot{0%,60%,100%{opacity:.3;transform:translateY(0)}30%{opacity:1;transform:translateY(-3px)}}
@@ -290,6 +326,10 @@
     .nav-burger{display:flex}
     .nav-cta{white-space:nowrap;padding:10px 15px;font-size:12.5px}
     nav{gap:14px}
+  }
+  @media (max-width: 380px){
+    .wordmark{display:none}
+    .nav-right{gap:12px}
     .wordmark{font-size:16px;letter-spacing:0.2em}
     .brand{gap:9px}
     .brand img{width:28px;height:28px}
@@ -716,7 +756,7 @@
   if(mr && mr.getContext){
     startWhenVisible(mr, function(){
       var ctx = mr.getContext('2d'), W = 230, H = 230, cx = W/2, cy = H/2;
-      var t = 0, ease = 0, rows = dl ? dl.querySelectorAll('.dimrow') : [];
+      var t = 0, ease = reduced ? 1 : 0, rows = dl ? dl.querySelectorAll('.dimrow') : [];
       var rtag = document.getElementById('radar-tag');
       function ax(i){ return -Math.PI/2 + i*Math.PI/3; }
       (function fr(){
@@ -744,7 +784,7 @@
           ctx.save(); ctx.globalAlpha = i===hot ? 1 : 0.55;
           ctx.fillStyle = DIMS[i].c; ctx.textAlign='center'; ctx.font='600 6.5px IBM Plex Mono, monospace';
           ctx.fillText(DIMS[i].k.slice(0,3), lx, ly+2); ctx.restore();
-          var da = Math.abs(((a-sw+Math.PI*3)%(Math.PI*2))-Math.PI), near = Math.max(0,1-da/0.5);
+          var da = Math.abs(((((a-sw+Math.PI*3)%(Math.PI*2))+Math.PI*2)%(Math.PI*2))-Math.PI), near = Math.max(0,1-da/0.5);
           ctx.save(); ctx.shadowColor=DIMS[i].c; ctx.shadowBlur=4+near*10; ctx.fillStyle=DIMS[i].c;
           ctx.beginPath(); ctx.arc(pts[i][0],pts[i][1],2.3+near*2,0,7); ctx.fill(); ctx.restore();
         }
@@ -882,7 +922,7 @@
     startWhenVisible(ig, function(){
       var ctx = ig.getContext('2d'), W = 230, H = 104;
       var base = [70, 66, 68, 60, 56, 50, 44, 40, 34, 26, 20, 14];
-      var t = 0, prog = 0;
+      var t = 0, prog = reduced ? 1 : 0;
       (function fr(){
         t += 0.02; if(prog < 1) prog = Math.min(1, prog + 0.008);
         ctx.clearRect(0,0,W,H);
