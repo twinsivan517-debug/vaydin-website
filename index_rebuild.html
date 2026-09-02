@@ -78,7 +78,7 @@
     background:rgba(13,8,7,0.74);padding:4px 9px;box-shadow:inset 0 0 0 1px rgba(232,212,139,0.38)}
   .pin.lit svg{animation:pinglow 1.9s ease-in-out infinite}
   .pin.lit .lbl{color:#fff4d0;box-shadow:inset 0 0 0 1px rgba(245,217,120,0.85)}
-  @keyframes pinglow{0%,100%{filter:drop-shadow(0 0 5px rgba(245,217,120,0.55))}50%{filter:drop-shadow(0 0 16px rgba(245,217,120,1))}}
+  @keyframes pinglow{0%,100%{filter:drop-shadow(0 0 3px rgba(245,217,120,0.35))}50%{filter:drop-shadow(0 0 8px rgba(245,217,120,0.65))}}
   .pin.fade{transition:opacity 1.2s var(--ease);opacity:0}
   .pins-legend{position:absolute;left:48px;bottom:26px;font-family:var(--mono);font-size:8.5px;letter-spacing:0.26em;color:var(--tx-faint)}
   @media (max-width: 960px){ .hero-pins{display:none} }
@@ -590,9 +590,9 @@
         var allDown = litCount === PINS.length, tAll = t - (T0 + PINS.length*STEP);
         for(var j=0;j<litCount;j++){
           var P = anchor(j), br = allDown ? 0.55 + Math.sin(tAll*2.2 + j*0.7)*0.45 : 0.35 + Math.sin(t*3 + j)*0.15;
-          var R = 22 + br*26;
+          var R = 18 + br*20;
           var g = pctx.createRadialGradient(P[0],P[1],1,P[0],P[1],R);
-          g.addColorStop(0,'rgba(245,217,120,' + (0.30 + br*0.35) + ')'); g.addColorStop(1,'rgba(245,217,120,0)');
+          g.addColorStop(0,'rgba(245,217,120,' + (0.16 + br*0.20) + ')'); g.addColorStop(1,'rgba(245,217,120,0)');
           pctx.fillStyle = g; pctx.beginPath(); pctx.arc(P[0],P[1],R,0,7); pctx.fill();
         }
         if(allDown && !faded){
