@@ -345,7 +345,7 @@
           <span class="tick">✓</span>
           <div class="tiername">Vaydin Intelligence</div>
           <div class="pricereveal" id="priceReveal">
-            <span class="p-list">AED 2,500</span><span class="p-found">AED 1,500</span><span class="p-per">/ month</span>
+            <span class="p-list">AED 2,500</span><span class="p-found">AED 1,800</span><span class="p-per">/ month</span>
           </div>
           <div class="pricepill" id="diagPill">LIST PRICE · PER LOCATION</div>
           <p class="tierdesc">A monthly mystery shop of your own clinic — measured from the outside, exactly the way a patient meets you. The truth, scored and delivered.</p>
@@ -527,7 +527,7 @@
   /* Numbers mirror CLAUDE_BUSINESS.md (locked 2026-09-02). Founding Intelligence rate shown as the price;
      list 2,500 shown beside it. Engine: monthly 20,000 + 5,000 install, or annual 18,000 with install waived.
      Presence kits: 2 / 4 / 8 reels = 3,000 / 4,500 / 7,500. Demand: 15% of spend, min 2,500 (not in the total). */
-  var P = { diagFounding: 1500, diagList: 2500, fixMonthly: 20000, fixAnnual: 18000, install: 5000, presence: [0, 3000, 4500, 7500] };
+  var P = { diagFounding: 1800, diagList: 2500, fixMonthly: 20000, fixAnnual: 18000, install: 5000, presence: [0, 3000, 4500, 7500] };
   var state = { loc: 1, fix: false, annual: false, demand: false, presence: false, kit: 1, step: 0, revealed: false };
   var fmt = function(n){ return Math.round(n).toLocaleString('en-US'); };
   var el = function(id){ return document.getElementById(id); };
