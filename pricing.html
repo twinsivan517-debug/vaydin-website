@@ -123,8 +123,16 @@
   .pricepill{display:inline-block;font-family:var(--mono);font-size:11px;letter-spacing:0.08em;color:var(--volt-bright);
     background:var(--volt-soft);border:1px solid rgba(47,216,234,0.35);border-radius:5px;padding:4px 11px;margin-bottom:14px}
   .tierdesc{font-size:14.5px;color:var(--tx-muted);margin:0 0 18px;max-width:560px}
-  .foundchip{display:inline-block;font-family:var(--mono);font-size:9.5px;letter-spacing:0.14em;color:var(--gold-light);
-    box-shadow:inset 0 0 0 1px rgba(232,212,139,0.45);background:rgba(232,212,139,0.06);padding:6px 10px;margin:0 0 14px}
+  .pricereveal{display:flex;align-items:baseline;gap:14px;margin:2px 0 10px;font-family:var(--sans);font-weight:800;line-height:1}
+  .pricereveal .p-list{position:relative;font-size:34px;color:var(--tx);transition:color .5s var(--ease) .35s}
+  .pricereveal .p-list::after{content:'';position:absolute;left:-2px;right:-2px;top:54%;height:2.5px;background:var(--critical);
+    transform:scaleX(0);transform-origin:left;transition:transform .55s var(--ease) .3s}
+  .pricereveal .p-found{font-size:34px;color:var(--gold-light);opacity:0;transform:translateY(10px);
+    transition:opacity .5s var(--ease) .85s, transform .5s var(--ease) .85s;filter:drop-shadow(0 0 18px rgba(232,212,139,0.35))}
+  .pricereveal .p-per{font-size:13px;font-weight:500;color:var(--tx-faint)}
+  .revealed .pricereveal .p-list{color:var(--tx-faint)}
+  .revealed .pricereveal .p-list::after{transform:scaleX(1)}
+  .revealed .pricereveal .p-found{opacity:1;transform:none}
   .termrow{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 14px}
   .term{font-family:var(--mono);font-size:9.5px;letter-spacing:0.12em;padding:7px 11px;cursor:pointer;color:var(--tx-faint);
     box-shadow:inset 0 0 0 1px rgba(255,255,255,0.14);transition:color .3s, box-shadow .3s, background .3s}
@@ -322,7 +330,7 @@
               <div class="sbtn plus" id="locPlus">+</div>
             </div>
             <div class="loclbl" id="locLbl">LOCATION</div>
-            <div class="locmoney">Intelligence runs at <b>AED 2,500 / month per location</b> — founding <b>AED 1,500</b> for your first 3 months</div>
+            <div class="locmoney">Intelligence runs at <b>AED 2,500 / month per location</b></div>
           </div>
         </div>
         <div class="wiznav"><span></span><span class="wbtn next" data-go="1">Next Step</span></div>
@@ -333,8 +341,10 @@
         <div class="tiercard selected">
           <span class="tick">✓</span>
           <div class="tiername">Vaydin Intelligence</div>
-          <div class="pricepill" id="diagPill">FOUNDING AED 1,500/MO · LIST AED 2,500 · PER LOCATION</div>
-          <div class="foundchip">FOUNDING · 5 PLACES · AED 1,500 FOR YOUR FIRST 3 MONTHS, THEN 2,500 · WRITTEN INTO YOUR AGREEMENT</div>
+          <div class="pricereveal" id="priceReveal">
+            <span class="p-list">AED 2,500</span><span class="p-found">AED 1,500</span><span class="p-per">/ month</span>
+          </div>
+          <div class="pricepill" id="diagPill">LIST PRICE · PER LOCATION</div>
           <p class="tierdesc">A monthly mystery shop of your own clinic — measured from the outside, exactly the way a patient meets you. The truth, scored and delivered.</p>
           <div class="feats">
             <div class="feat"><span class="fchk"><svg width="10" height="10" viewBox="0 0 16 16" fill="none"><path d="M2.5 8.5 L6.5 12.5 L13.5 4" stroke="#34d97b" stroke-width="2"/></svg></span>
@@ -432,7 +442,7 @@
       <div class="railcard">
         <div class="rail-top">
           <div class="rl">YOUR MONTHLY COST</div>
-          <div class="total"><div class="amt" id="totalAmt">1,500</div><div class="per">AED /mo</div></div>
+          <div class="total"><div class="amt" id="totalAmt">2,500</div><div class="per">AED /mo</div></div>
           <div class="mtm" id="mtm">month-to-month</div>
           <div class="suffix" id="suffix"></div>
           <div class="onetime" id="onetime"></div>
@@ -503,7 +513,7 @@
 
 <div class="mobilebar">
   <div>
-    <div class="mt" id="mTotal">1,500</div>
+    <div class="mt" id="mTotal">2,500</div>
     <div class="ml" id="mLabel">INTELLIGENCE</div>
   </div>
   <button class="btn" id="waBtnM">Get this plan</button>
@@ -515,13 +525,13 @@
      list 2,500 shown beside it. Engine: monthly 20,000 + 5,000 install, or annual 18,000 with install waived.
      Presence kits: 2 / 4 / 8 reels = 3,000 / 4,500 / 7,500. Demand: 15% of spend, min 2,500 (not in the total). */
   var P = { diagFounding: 1500, diagList: 2500, fixMonthly: 20000, fixAnnual: 18000, install: 5000, presence: [0, 3000, 4500, 7500] };
-  var state = { loc: 1, fix: false, annual: false, demand: false, presence: false, kit: 1, step: 0 };
+  var state = { loc: 1, fix: false, annual: false, demand: false, presence: false, kit: 1, step: 0, revealed: false };
   var fmt = function(n){ return Math.round(n).toLocaleString('en-US'); };
   var el = function(id){ return document.getElementById(id); };
 
   function prices(){
     return {
-      diag: P.diagFounding,
+      diag: state.revealed ? P.diagFounding : P.diagList,
       diagList: P.diagList,
       fixM: (state.annual ? P.fixAnnual : P.fixMonthly),
       fixSetup: (state.annual ? 0 : P.install),
@@ -531,6 +541,9 @@
 
   function goStep(n){
     state.step = n;
+    if(n === 1 && !state.revealed){
+      setTimeout(function(){ state.revealed = true; var c = el('priceReveal').closest('.tiercard'); if(c) c.classList.add('revealed'); render(); }, 420);
+    }
     document.querySelectorAll('.pane').forEach(function(p){
       p.classList.toggle('active', parseInt(p.getAttribute('data-pane')) === n);
     });
@@ -545,7 +558,7 @@
 
     el('locNum').textContent = state.loc;
     el('locLbl').textContent = state.loc === 1 ? 'LOCATION' : 'LOCATIONS';
-    el('diagPill').textContent = 'FOUNDING AED ' + fmt(p.diag) + '/MO · LIST AED ' + fmt(p.diagList) + ' · PER LOCATION';
+    el('diagPill').textContent = state.revealed ? 'FOUNDING · 5 PLACES · FIRST 3 MONTHS, THEN AED ' + fmt(p.diagList) + ' · PER LOCATION · WRITTEN INTO YOUR AGREEMENT' : 'LIST PRICE · PER LOCATION';
     el('fixPill').textContent = state.annual
       ? 'AED ' + fmt(p.fixM) + '/MO · ANNUAL · INSTALL WAIVED'
       : 'AED ' + fmt(p.fixM) + '/MO + AED ' + fmt(p.fixSetup) + ' ONE-TIME INSTALL';
@@ -573,7 +586,7 @@
       setTimeout(function(){ amtEl.classList.remove('bump'); }, 320);
     }
     var sfx = [];
-    if(!state.fix) sfx.push('founding rate · first 3 months, then AED ' + fmt(p.diagList));
+    if(!state.fix && state.revealed) sfx.push('founding rate · first 3 months, then AED ' + fmt(p.diagList));
     if(state.demand) sfx.push('+ 15% of ad spend (min AED 2,500)');
     if(state.loc > 1) sfx.push(state.loc + ' branches · multi-branch pricing confirmed on your call');
     el('mtm').textContent = state.fix ? (state.annual ? '12-month plan' : '3-month minimum, then monthly') : 'month-to-month';
@@ -587,7 +600,7 @@
       lines.push({l:'Vaydin Intelligence', s:'included in the engine', v:'INCLUDED', inc:true});
       lines.push({l:'Revenue Engine + Estate', s: 'per location' + (state.annual ? ' · annual' : ' · monthly'), v:'AED ' + fmt(p.fixM) + '/mo'});
     } else {
-      lines.push({l:'Vaydin Intelligence', s: 'per location' + ' · founding rate', v:'AED ' + fmt(p.diag) + '/mo'});
+      lines.push({l:'Vaydin Intelligence', s: 'per location' + (state.revealed ? ' · founding rate' : ' · list price'), v:'AED ' + fmt(p.diag) + '/mo'});
     }
     if(state.demand) lines.push({l:'Performance Marketing', s:'IG · FB · Google · min 2,500', v:'15% of spend'});
     if(state.presence) lines.push({l:'Instagram Presence', s: kitName, v:'AED ' + fmt(p.pres) + '/mo'});
@@ -615,7 +628,7 @@
   function waLink(){
     var p = prices();
     var parts = ['Hello Vaydin, I built my plan:'];
-    parts.push('• Vaydin Intelligence' + (state.fix ? ' (included)' : ' — AED ' + fmt(p.diag) + '/mo founding, then ' + fmt(p.diagList)));
+    parts.push('• Vaydin Intelligence' + (state.fix ? ' (included)' : (state.revealed ? ' - AED ' + fmt(p.diag) + '/mo founding, then ' + fmt(p.diagList) : ' - AED ' + fmt(p.diag) + '/mo')));
     if(state.fix) parts.push('• Revenue Engine + Estate — AED ' + fmt(p.fixM) + '/mo' + (state.annual ? ' (annual, install waived)' : ' + AED ' + fmt(p.fixSetup) + ' install'));
     if(state.demand) parts.push('• Performance Marketing (15% of ad spend, min AED 2,500)');
     if(state.presence) parts.push('• Instagram Presence — ' + ['', '2', '4', '8'][state.kit] + ' reels kit, AED ' + fmt(p.pres) + '/mo');
