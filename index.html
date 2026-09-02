@@ -1,2177 +1,1002 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Vaydin — Digital Intelligence for Aesthetic Clinics</title>
-<meta name="description" content="The operating system for aesthetic clinics in Dubai. Diagnostic-led mystery shopping, AI response bots, booking integration. Operated by us — not advised, installed.">
-<meta name="theme-color" content="#0a0a0a">
-<link rel="canonical" href="https://vaydin.agency/">
-
-<!-- Favicons -->
-<link rel="icon" type="image/png" sizes="512x512" href="vaydin-icon-512.png">
-<link rel="icon" type="image/png" sizes="192x192" href="vaydin-icon-192.png">
-<link rel="icon" type="image/png" sizes="48x48" href="vaydin-icon-48.png">
-<link rel="apple-touch-icon" href="vaydin-icon-192.png">
-
-<!-- Open Graph (Facebook, LinkedIn, WhatsApp, Slack, Discord) -->
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="Vaydin">
-<meta property="og:title" content="Vaydin — Digital Intelligence for Aesthetic Clinics">
-<meta property="og:description" content="Vaydin runs the operating system for aesthetic clinics. We mystery-shop your clinic, install the fixes — WhatsApp response, booking integration, consult conversion, dormant recovery — and run it ourselves. Designed in Dubai. Built for MENA.">
-<meta property="og:url" content="https://vaydin.agency/">
-<meta property="og:image" content="https://vaydin.agency/vaydin-og.png">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="VAYDIN — Intelligence. Engineered.">
-<meta property="og:locale" content="en_US">
-
-<!-- Twitter Card -->
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Vaydin — Digital Intelligence for Aesthetic Clinics">
-<meta name="twitter:description" content="The operating system for aesthetic clinics. Mystery-shop, install the fixes, operate it. Built for Dubai and MENA.">
-<meta name="twitter:image" content="https://vaydin.agency/vaydin-og.png">
-<meta name="twitter:image:alt" content="VAYDIN — Intelligence. Engineered.">
-
-<!-- Schema.org Organization (drives Google Knowledge Panel logo + rich results) -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  "name": "Vaydin",
-  "alternateName": "VAYDIN PARTNERS INVESTMENTS - FZCO",
-  "telephone": "+971505553148",
-  "address": {"@type": "PostalAddress", "streetAddress": "DSO-IFZA, IFZA Properties", "addressLocality": "Dubai Silicon Oasis", "addressRegion": "Dubai", "addressCountry": "AE"},
-  "url": "https://vaydin.agency/",
-  "logo": "https://vaydin.agency/vaydin-icon-512.png",
-  "image": "https://vaydin.agency/vaydin-og.png",
-  "description": "Vaydin builds the operating system for aesthetic clinics — diagnostic-led mystery shopping, AI response bots, booking integration, attribution-tracked acquisition. Designed in Dubai. Built for MENA. Operated for you.",
-  "sameAs": [
-    "https://reports.vaydin.agency/"
-  ],
-  "areaServed": {
-    "@type": "Place",
-    "name": "MENA"
-  },
-  "email": "hello@vaydin.agency"
-}
-</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vaydin — We find the patients your clinic never saw</title>
+<meta name="description" content="Vaydin measures your clinic the way a patient meets it, fixes what leaks, and runs your digital front door. Dubai aesthetic clinics. Measured, not promised.">
+<link rel="icon" href="vaydin-icon-48.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300;1,9..40,400&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Marcellus&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=DM+Sans:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <style>
-*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-:root{--gold:#c9a44a;--gl:#e8d48b;--gb:#f5d978;--gd:#8a6d1b;--bg:#0a0a0a;--bgc:#111;--tx:#f0ece2;--tx2:#8a8578;--tx3:#5a5549;--brd:#222218;--grn:#4ade80;--red:#f87171;--fd:'Cormorant Garamond',Georgia,serif;--fb:'DM Sans',sans-serif}
-html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--tx);font-family:var(--fb);line-height:1.6;overflow-x:hidden}
-@media (prefers-reduced-motion:reduce){
-  html{scroll-behavior:auto}
-  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
-}
-.container{max-width:1200px;margin:0 auto;padding:0 24px}
-nav,section,footer,.mag-div{position:relative;z-index:2}
-.sl{font-size:11px;font-weight:600;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:16px}
-.st{font-family:var(--fd);font-size:clamp(32px,5vw,52px);font-weight:300;line-height:1.15;margin-bottom:20px}
-.ss{font-size:16px;color:var(--tx2);max-width:560px;line-height:1.7}
+  :root{
+    --bg:#0d0807; --bg-card:#161009; --bg-elevated:#1d1510; --border:#2b2014;
+    --tx:#f7f2e7; --tx-muted:#b3a88f; --tx-faint:#8a7f68;
+    --gold:#c9a44a; --gold-light:#e8d48b; --gold-deep:#8a6d1b; --gold-bright:#f5d978;
+    --ok:#4ade80; --warn:#fbbf24; --critical:#f87171;
+    --volt:#34e3f0; --volt-deep:#19a7b8;
+    --display:'Marcellus', Georgia, serif;
+    --serif:'Cormorant Garamond', Georgia, serif;
+    --sans:'DM Sans', system-ui, sans-serif;
+    --mono:'IBM Plex Mono', Consolas, monospace;
+    --ease:cubic-bezier(0.16,1,0.3,1);
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;color:var(--tx);font-family:var(--sans);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;
+    background:
+      radial-gradient(1100px 750px at 88% 8%, rgba(96,26,18,0.22), transparent 62%),
+      radial-gradient(950px 700px at 6% 90%, rgba(76,22,15,0.18), transparent 60%),
+      radial-gradient(800px 600px at 50% 45%, rgba(60,30,12,0.10), transparent 65%),
+      var(--bg);
+    background-attachment:fixed}
+  a{color:var(--gold);text-decoration:none}
+  a:hover{color:var(--gold-light)}
+  img{max-width:100%;display:block}
+  #embers{position:fixed;inset:0;z-index:0;pointer-events:none}
+  nav, .hero, section, .band, footer{position:relative;z-index:1}
 
-/* ═══════════ FULL-PAGE ELECTRIC FIELD BACKGROUND ═══════════ */
-.elec-bg{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
-.elec-bg svg{position:absolute;width:100%;height:100%}
+  /* ---------- nav ---------- */
+  nav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;gap:34px;
+      padding:13px 40px;background:rgba(19,13,8,0.93);backdrop-filter:blur(12px);
+      border-bottom:1px solid rgba(201,164,74,0.30)}
+  .brand{display:flex;align-items:center;gap:13px}
+  .brand img{width:32px;height:32px}
+  .wordmark{font-family:var(--display);font-size:20px;letter-spacing:0.32em;color:var(--gold-light)}
+  .nav-links{display:flex;gap:36px;align-items:center;font-size:15px}
+  .nav-links a{position:relative;padding:8px 1px;color:var(--chip-hi);letter-spacing:0.05em;font-weight:500;opacity:0.84;
+    transition:opacity .3s, color .3s}
+  .nav-links a::after{content:'';position:absolute;left:0;right:0;bottom:1px;height:1.5px;background:var(--chip-hi);
+    transform:scaleX(0);transform-origin:left;transition:transform .45s var(--ease)}
+  .nav-links a:hover{opacity:1}
+  .nav-links a:hover::after{transform:scaleX(1)}
+  .nav-links a.nav-here{opacity:1;color:#f5f1e8}
+  .nav-links a.nav-here::after{transform:scaleX(1)}
+  .nav-right{margin-left:auto;display:flex;align-items:center;gap:26px}
+  .nav-contact{display:flex;flex-direction:column;align-items:flex-end;gap:4px;font-family:var(--mono);font-size:10.5px;letter-spacing:0.08em;line-height:1}
+  .nav-contact a{color:#8f8672;transition:color .3s}
+  .nav-contact a:hover{color:#f5f1e8}
+  .nav-cta{background:var(--gold);color:#0b0906 !important;font-weight:700;padding:11px 24px;font-size:13px;letter-spacing:0.02em;transition:background .3s var(--ease)}
+  .nav-cta:hover{background:var(--gold-light)}
+  .nav-here{color:#f5f1e8}
+  .nav-burger{display:none;width:40px;height:40px;align-items:center;justify-content:center;cursor:pointer;background:none;border:0;
+    color:var(--gold-light);box-shadow:inset 0 0 0 1px rgba(201,164,74,0.45);margin-left:6px;padding:0}
+  .nav-burger svg{width:18px;height:14px;display:block}
 
-/* Horizontal wire grid */
-.wire{fill:none;stroke:rgba(201,164,74,.06);stroke-width:.5}
-.wire-glow{fill:none;stroke:rgba(201,164,74,.12);stroke-width:1.5;filter:blur(2px)}
+  /* ---------- hero ---------- */
+  .hero{position:relative;min-height:94vh;display:flex;align-items:center;overflow:hidden}
+  .hero-vid{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(1.22) saturate(1.05)}
+  .hero-shade{position:absolute;inset:0;background:
+    linear-gradient(100deg, rgba(13,8,7,0.80) 0%, rgba(13,8,7,0.50) 40%, rgba(13,8,7,0.18) 66%, rgba(13,8,7,0.42) 100%),
+    linear-gradient(180deg, rgba(13,8,7,0.22) 0%, rgba(13,8,7,0.02) 45%, var(--bg) 100%)}
+  .hero-inner{position:relative;z-index:2;width:100%;max-width:1320px;margin:0 auto;padding:110px 48px 60px;
+              display:grid;grid-template-columns:minmax(0,1.12fr) minmax(0,0.88fr);gap:48px;align-items:center}
 
-/* Animated current pulses traveling along wires */
-.pulse-line{fill:none;stroke:var(--gold);stroke-width:1;stroke-dasharray:30 200;opacity:.4}
-.pl1{animation:pulse-travel 8s linear infinite}
-.pl2{animation:pulse-travel 12s linear infinite;animation-delay:-3s;stroke-dasharray:20 250}
-.pl3{animation:pulse-travel 10s linear infinite;animation-delay:-6s;stroke-dasharray:40 180}
-.pl4{animation:pulse-travel 15s linear infinite;animation-delay:-2s;stroke-dasharray:15 300;opacity:.25}
-.pl5{animation:pulse-travel 9s linear infinite;animation-delay:-5s;stroke-dasharray:25 220;opacity:.35}
-.pl6{animation:pulse-travel 11s linear infinite;animation-delay:-8s;stroke-dasharray:35 190;opacity:.3}
+  /* ---------- hero map pins (the story over the film) ---------- */
+  .hero-pins{position:absolute;inset:0;z-index:1;pointer-events:none;overflow:hidden}
+  .hero-cv{position:absolute;inset:0;width:100%;height:100%}
+  .pin{position:absolute;display:flex;flex-direction:column;align-items:center;gap:7px;opacity:0;
+    transform:translate(-50%,-100%)}
+  .pin.drop{animation:pindrop .75s var(--ease) forwards}
+  @keyframes pindrop{0%{opacity:0;transform:translate(-50%,-170%) scale(.55)}62%{opacity:1;transform:translate(-50%,-95%) scale(1.07)}100%{opacity:1;transform:translate(-50%,-100%) scale(1)}}
+  .pin svg{width:24px;height:32px;filter:drop-shadow(0 5px 10px rgba(0,0,0,0.65))}
+  .pin .lbl{font-family:var(--mono);font-size:9px;letter-spacing:0.16em;color:var(--gold-light);white-space:nowrap;
+    background:rgba(13,8,7,0.74);padding:4px 9px;box-shadow:inset 0 0 0 1px rgba(232,212,139,0.38)}
+  .pin.lit svg{animation:pinglow 1.9s ease-in-out infinite}
+  .pin.lit .lbl{color:#fff4d0;box-shadow:inset 0 0 0 1px rgba(245,217,120,0.85)}
+  @keyframes pinglow{0%,100%{filter:drop-shadow(0 0 3px rgba(245,217,120,0.35))}50%{filter:drop-shadow(0 0 8px rgba(245,217,120,0.65))}}
+  .pin.fade{transition:opacity 1.2s var(--ease);opacity:0}
+  .pins-legend{position:absolute;left:48px;bottom:26px;font-family:var(--mono);font-size:8.5px;letter-spacing:0.26em;color:var(--tx-faint)}
+  @media (max-width: 960px){ .hero-pins{display:none} }
 
-@keyframes pulse-travel{0%{stroke-dashoffset:800}100%{stroke-dashoffset:-800}}
+  /* ---------- hero phone (3D) ---------- */
+  @property --sweep{syntax:'<angle>';inherits:false;initial-value:0deg}
+  .hero-visual{perspective:1500px;display:flex;justify-content:center;align-items:center;min-height:520px}
+  .phone{position:relative;width:296px;transform-style:preserve-3d;
+    transform:rotateX(var(--rx,10deg)) rotateY(var(--ry,-16deg)) rotateZ(1.5deg);
+    transition:transform .9s var(--ease);animation:phfloat 7.5s ease-in-out infinite;will-change:transform}
+  @keyframes phfloat{0%,100%{translate:0 0}50%{translate:0 -12px}}
+  .ph-rim{position:absolute;inset:-1.5px;border-radius:40px;z-index:0;pointer-events:none;
+    background:conic-gradient(from var(--sweep), transparent 0deg, transparent 300deg, rgba(245,217,120,0.95) 330deg, transparent 360deg);
+    animation:rimsweep 6s linear infinite;filter:blur(0.4px)}
+  @keyframes rimsweep{to{--sweep:360deg}}
+  .ph-fr{position:relative;z-index:1;background:#15100e;border-radius:38px;padding:11px;
+    box-shadow:0 0 0 1px rgba(201,164,74,0.22), 0 46px 90px rgba(0,0,0,0.65), 0 0 120px rgba(201,164,74,0.10), inset 0 1px 0 rgba(255,255,255,0.06)}
+  .ph-n{width:96px;height:22px;background:#0b0806;border-radius:0 0 14px 14px;margin:0 auto 6px}
+  .ph-s{position:relative;background:#0b0f14;border-radius:28px;padding:14px;min-height:440px;overflow:hidden}
+  .ph-s::after{content:'';position:absolute;inset:0;pointer-events:none;
+    background:linear-gradient(115deg, rgba(255,255,255,0.05) 0%, transparent 38%, transparent 62%, rgba(245,217,120,0.05) 100%)}
+  .ph-shadow{position:absolute;left:12%;right:12%;bottom:-38px;height:40px;border-radius:50%;
+    background:radial-gradient(ellipse at center, rgba(0,0,0,0.6), transparent 70%);filter:blur(6px);z-index:0}
+  .wa-hd{display:flex;align-items:center;gap:9px;padding-bottom:10px;border-bottom:1px solid #182230;margin-bottom:12px}
+  .wa-av{width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--gold-deep));
+    display:flex;align-items:center;justify-content:center;font-weight:700;font-size:11px;color:#0b0906;flex-shrink:0}
+  .wa-nm{font-size:12.5px;font-weight:600;color:#e6e2d8;line-height:1.2}
+  .wa-st{font-size:10px;color:#6b7280;font-family:var(--mono)}
+  .wm{max-width:88%;padding:8px 12px;border-radius:10px;margin-bottom:6px;font-size:12px;line-height:1.45;color:#e6e2d8}
+  .wm-i{background:#1a2332;border-bottom-left-radius:3px}
+  .wm-o{background:#005c4b;margin-left:auto;border-bottom-right-radius:3px}
+  .wm-t{font-size:9px;color:#8a93a0;text-align:right;margin-top:3px;font-family:var(--mono)}
+  .wm-faded{opacity:.55}
+  .hr-typing{display:flex;gap:4px;width:fit-content;padding:11px 14px}
+  .hr-typing span{width:5px;height:5px;border-radius:50%;background:#8a93a0;animation:tdot 1.2s ease-in-out infinite}
+  .hr-typing span:nth-child(2){animation-delay:.2s} .hr-typing span:nth-child(3){animation-delay:.4s}
+  @keyframes tdot{0%,60%,100%{opacity:.3;transform:translateY(0)}30%{opacity:1;transform:translateY(-3px)}}
+  .hr-wait{display:block;width:fit-content;margin:6px auto;font-family:var(--mono);font-size:10px;letter-spacing:0.06em;color:var(--critical);
+    padding:5px 11px;background:rgba(248,113,113,0.08);border-radius:100px}
+  .hr-stamp{text-align:center;margin-top:12px}
+  .hr-stamp span{font-family:var(--mono);font-size:9.5px;letter-spacing:0.16em;color:var(--critical);
+    background:rgba(248,113,113,0.10);box-shadow:inset 0 0 0 1px rgba(248,113,113,0.35);padding:5px 12px;display:inline-block}
+  .hr-anim .hr-step{opacity:0;transform:translateY(6px);transition:opacity .45s var(--ease), transform .45s var(--ease)}
+  .hr-anim .hr-step.on{opacity:1;transform:none}
+  .hr-anim .hr-typing{display:none} .hr-anim .hr-typing.on{display:flex}
+  .live-line{display:inline-flex;align-items:center;gap:11px;font-family:var(--mono);font-size:12px;letter-spacing:0.24em;color:var(--tx);margin-bottom:26px;
+    padding:9px 16px;box-shadow:inset 0 0 0 1px rgba(74,222,128,0.45);background:rgba(74,222,128,0.05)}
+  .pulse{width:8px;height:8px;border-radius:50%;background:var(--ok);animation:pulse 2.2s infinite}
+  @keyframes pulse{0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(74,222,128,0.4)}50%{opacity:.45;box-shadow:0 0 0 6px rgba(74,222,128,0)}}
+  h1{font-family:var(--display);font-weight:400;font-size:clamp(36px, 4.4vw, 62px);line-height:1.12;margin:0 0 24px;text-wrap:balance}
+  .red{color:var(--critical)} .green{color:var(--ok)} .goldtx{color:var(--gold-light)}
+  .grad-text{background:linear-gradient(100deg, #f7f2e7 0%, #f7f2e7 28%, #f5d978 46%, #c9a44a 60%, #e8d48b 72%, #f7f2e7 100%);
+    background-size:220% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;
+    animation:sheen 8s ease-in-out infinite}
+  @keyframes sheen{0%,100%{background-position:0% 0}50%{background-position:100% 0}}
+  .grad-text .red{-webkit-text-fill-color:var(--critical)}
+  .grad-text .green{-webkit-text-fill-color:var(--ok)}
+  .grad-text .goldtx{-webkit-text-fill-color:var(--gold-light)}
+  .cta-row{display:flex;gap:16px;flex-wrap:wrap;align-items:center}
+  .btn{display:inline-block;background:var(--gold);color:var(--bg);font-weight:700;font-size:15px;padding:16px 32px;letter-spacing:0.02em;transition:transform .4s var(--ease), background .3s}
+  .btn:hover{background:var(--gold-light);color:var(--bg);transform:translateY(-2px)}
+  .btn-ghost{display:inline-block;border:1px solid var(--border);color:var(--tx-muted);font-size:14.5px;padding:15px 26px;transition:border-color .3s, color .3s}
+  .btn-ghost:hover{border-color:var(--gold-deep);color:var(--tx)}
 
-/* Vertical sparks */
-.v-spark{position:absolute;width:1px;background:linear-gradient(180deg,transparent,rgba(201,164,74,.4),var(--gold),rgba(201,164,74,.4),transparent);opacity:0;animation:spark-fall linear infinite}
-.vs1{left:8%;height:120px;animation-duration:4s;animation-delay:0s}
-.vs2{left:23%;height:80px;animation-duration:3.5s;animation-delay:1.2s}
-.vs3{left:45%;height:150px;animation-duration:5s;animation-delay:2.8s}
-.vs4{left:67%;height:90px;animation-duration:3.8s;animation-delay:.5s}
-.vs5{left:82%;height:110px;animation-duration:4.5s;animation-delay:3.5s}
-.vs6{left:95%;height:70px;animation-duration:3.2s;animation-delay:1.8s}
-.vs7{left:15%;height:100px;animation-duration:6s;animation-delay:4s}
-.vs8{left:55%;height:130px;animation-duration:4.2s;animation-delay:2s}
-.vs9{left:75%;height:60px;animation-duration:3s;animation-delay:5s}
-.vs10{left:35%;height:95px;animation-duration:5.5s;animation-delay:3s}
+  .hero-panel{position:relative;max-width:640px;padding:38px 44px 40px;background:rgba(13,8,7,0.52);backdrop-filter:blur(9px);
+    box-shadow:0 30px 70px rgba(0,0,0,0.45), 0 0 0 1px rgba(255,255,255,0.06)}
+  .hero-panel::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;
+    background:linear-gradient(180deg,#f87171 0%,#e8d48b 50%,#a78bfa 100%)}
+  .hero-panel .bkc{position:absolute;width:18px;height:18px;border:1.5px solid rgba(232,212,139,0.55)}
+  .hero-panel .bkc.tr{top:-1px;right:-1px;border-left:0;border-bottom:0}
+  .hero-panel .bkc.bl{bottom:-1px;left:-1px;border-right:0;border-top:0}
+  .hero-panel h1{font-size:clamp(28px,3vw,44px);text-wrap:initial}
+  .tri-text{background:linear-gradient(96deg,#f87171 0%,#f0a08a 22%,#e8d48b 44%,#e8d48b 56%,#c9b0e8 78%,#a78bfa 100%);
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+    filter:drop-shadow(0 4px 24px rgba(0,0,0,0.55))}
+  .scroll-cue{position:absolute;left:50%;bottom:30px;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:10px;
+    font-family:var(--mono);font-size:9px;letter-spacing:0.3em;color:var(--tx-faint)}
+  .scroll-cue:hover{color:var(--tx-muted)}
+  .scroll-cue span{width:1px;height:34px;background:linear-gradient(180deg, transparent, var(--gold-deep));position:relative;overflow:hidden}
+  .scroll-cue span::after{content:'';position:absolute;left:0;top:-10px;width:1px;height:10px;background:var(--gold-light);animation:cuedrop 2.2s var(--ease) infinite}
+  @keyframes cuedrop{to{top:44px}}
 
-@keyframes spark-fall{
-  0%{opacity:0;transform:translateY(-100vh)}
-  5%{opacity:.6}
-  50%{opacity:.3}
-  95%{opacity:.5}
-  100%{opacity:0;transform:translateY(100vh)}
-}
+  /* ---------- shared section ---------- */
+  section{max-width:1240px;margin:0 auto;padding:110px 48px 0}
+  .eyebrow{font-family:var(--mono);font-size:11.5px;letter-spacing:0.26em;color:var(--gold);margin-bottom:14px}
+  h2{font-family:var(--display);font-weight:400;font-size:clamp(28px,3.3vw,44px);line-height:1.15;margin:0 0 14px;max-width:720px;text-wrap:balance}
+  .section-sub{color:var(--tx-muted);max-width:600px;margin:0 0 52px;font-size:16.5px}
+  .reveal{opacity:0;transform:translateY(28px);transition:opacity 1s var(--ease), transform 1s var(--ease)}
+  .reveal.in{opacity:1;transform:none}
 
-/* Floating orb nodes */
-.orb{position:absolute;border-radius:50%;background:radial-gradient(circle,rgba(201,164,74,.15),transparent);animation:orb-pulse 4s ease-in-out infinite}
-.orb::after{content:'';position:absolute;top:50%;left:50%;width:4px;height:4px;margin:-2px;border-radius:50%;background:var(--gold);box-shadow:0 0 8px var(--gold),0 0 20px rgba(201,164,74,.3)}
-.o1{width:80px;height:80px;top:15%;left:5%;animation-delay:0s}
-.o2{width:60px;height:60px;top:35%;right:8%;animation-delay:1.5s}
-.o3{width:100px;height:100px;top:55%;left:12%;animation-delay:3s}
-.o4{width:50px;height:50px;top:75%;right:15%;animation-delay:.8s}
-.o5{width:70px;height:70px;top:90%;left:40%;animation-delay:2.2s}
-.o6{width:90px;height:90px;top:25%;right:25%;animation-delay:4s}
+  /* ---------- layer dashboard frames v2 ---------- */
+  .lframes{display:flex;flex-direction:column;gap:60px}
+  .lframe{position:relative;background:rgba(15,10,8,0.78);backdrop-filter:blur(6px);
+    box-shadow:0 34px 80px rgba(0,0,0,0.5), 0 0 0 1px var(--border);
+    opacity:0;transform:translateY(34px);transition:opacity 1s var(--ease), transform 1s var(--ease)}
+  .lframe.in{opacity:1;transform:none}
+  .lframe .bk{position:absolute;width:20px;height:20px;border:1.5px solid var(--lc);opacity:0.8;z-index:3}
+  .lframe .bk.tl{top:-1px;left:-1px;border-right:0;border-bottom:0}
+  .lframe .bk.tr{top:-1px;right:-1px;border-left:0;border-bottom:0}
+  .lframe .bk.bl{bottom:-1px;left:-1px;border-right:0;border-top:0}
+  .lframe .bk.br{bottom:-1px;right:-1px;border-left:0;border-top:0}
+  .enter-field{display:inline-flex;align-items:center;gap:12px;border:1px solid var(--border);padding:14px 22px;
+    font-size:14px;color:var(--tx);transition:background .4s, transform .4s var(--ease);align-self:flex-start}
+  .lframe .enter-field{border:1px solid var(--lc);color:var(--tx)}
+  .lframe .enter-field .arr{color:var(--lc)}
+  .lframe .enter-field:hover{border-color:var(--lc);background:rgba(255,255,255,0.045);transform:translateX(4px)}
+  .lthunder{position:absolute;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;opacity:0.5}
+  .fhead,.fbody{position:relative;z-index:1}
+  .fhead{display:flex;align-items:center;gap:16px;padding:13px 24px;border-bottom:1px solid var(--border);font-family:var(--mono)}
+  .fhead .fh-step{font-size:10px;letter-spacing:0.24em;color:var(--lc);border:1px solid var(--lc);padding:5px 10px}
+  .fhead .fh-name{font-size:10px;letter-spacing:0.22em;color:var(--tx-muted)}
+  .fhead .fh-live{margin-left:auto;display:flex;align-items:center;gap:8px;font-size:8.5px;letter-spacing:0.18em;color:var(--tx-faint)}
+  .fhead .dotp{width:6px;height:6px;border-radius:50%;background:var(--lc);animation:pulse 2.2s infinite}
+  .fbody{display:grid;grid-template-columns:1.02fr 1fr}
+  .lframe:nth-child(even) .fbody .lcopy{order:2}
+  .lframe:nth-child(even) .fbody .linstr{order:1;border-left:0;border-right:1px solid var(--border)}
+  .lcopy{padding:36px 40px 34px;display:flex;flex-direction:column;justify-content:center;gap:20px}
+  .hpanel{border-left:3px solid var(--lc);background:rgba(255,255,255,0.02);padding:14px 20px}
+  .hpanel h3{font-family:var(--display);font-weight:400;font-size:clamp(23px,2.2vw,29px);margin:0;color:var(--tx)}
+  .lp{color:var(--tx-muted);font-size:14.5px;max-width:470px;margin:0}
+  .lp b{color:var(--tx);font-weight:600}
+  .lcopy .enter-field{align-self:flex-start}
+  .linstr{position:relative;display:flex;flex-direction:column;justify-content:center;gap:14px;
+    border-left:1px solid var(--border);padding:26px;overflow:hidden}
+  .linstr .iglow{position:absolute;inset:0;background:radial-gradient(circle at 50% 45%, var(--lg), transparent 72%);pointer-events:none}
 
-@keyframes orb-pulse{0%,100%{transform:scale(1);opacity:.5}50%{transform:scale(1.3);opacity:.8}}
+  .ipanel{position:relative;box-shadow:0 0 0 1px rgba(255,255,255,0.08);background:rgba(10,7,6,0.55)}
+  .pnl-h{display:flex;align-items:center;gap:10px;padding:8px 14px;border-bottom:1px solid rgba(255,255,255,0.07);
+    font-family:var(--mono);font-size:8.5px;letter-spacing:0.2em;color:var(--pc)}
+  .pnl-h .pnl-tag{margin-left:auto;color:var(--tx-faint);letter-spacing:0.12em}
+  .ipad{padding:14px}
 
-/* ═══════════ MAGNETIC SECTION DIVIDERS ═══════════ */
-.mag-div{height:100px;display:flex;align-items:center;justify-content:center;overflow:visible;position:relative}
-.mag-div::before{content:'';position:absolute;left:50%;top:50%;width:0;height:0;border-radius:50%;background:radial-gradient(circle,rgba(201,164,74,.15),transparent);transform:translate(-50%,-50%);transition:all .6s cubic-bezier(.22,1,.36,1)}
-.mag-div.in-view::before{width:600px;height:200px}
+  .irow{display:flex;align-items:center;gap:18px;padding:12px}
+  .dimlist{display:flex;flex-direction:column;gap:5px;font-family:var(--mono);font-size:9.5px;letter-spacing:0.1em;min-width:150px}
+  .dimrow{display:flex;justify-content:space-between;gap:12px;padding:4px 8px;color:var(--tx-faint);transition:background .3s, color .3s}
+  .dimrow.hot{background:rgba(255,255,255,0.05);color:var(--tx)}
+  .dimrow .dv{font-weight:500}
 
-/* Center node */
-.mag-node{width:12px;height:12px;border-radius:50%;background:var(--gold);position:relative;z-index:3;box-shadow:0 0 12px var(--gold),0 0 30px rgba(201,164,74,.3);transition:all .5s}
-.mag-div.in-view .mag-node{box-shadow:0 0 20px var(--gold),0 0 60px rgba(201,164,74,.5),0 0 100px rgba(201,164,74,.2);transform:scale(1.5)}
+  .find-line{font-family:var(--mono);font-size:10px;letter-spacing:0.1em;min-height:16px;padding:12px 14px;
+    color:var(--critical);transition:opacity .5s var(--ease)}
+  .find-line.fade{opacity:0}
 
-/* Magnetic field lines */
-.mag-field{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none}
-.mag-ring{position:absolute;border:1px solid rgba(201,164,74,.08);border-radius:50%;transition:all .8s cubic-bezier(.22,1,.36,1)}
-.mr1{width:40px;height:40px;transition-delay:.05s}
-.mr2{width:80px;height:80px;transition-delay:.1s}
-.mr3{width:140px;height:140px;transition-delay:.15s}
-.mr4{width:220px;height:220px;transition-delay:.2s}
-.mr5{width:320px;height:320px;transition-delay:.25s}
-.mag-div.in-view .mr1{width:60px;height:60px;border-color:rgba(201,164,74,.25)}
-.mag-div.in-view .mr2{width:120px;height:120px;border-color:rgba(201,164,74,.18)}
-.mag-div.in-view .mr3{width:200px;height:200px;border-color:rgba(201,164,74,.12)}
-.mag-div.in-view .mr4{width:300px;height:300px;border-color:rgba(201,164,74,.07)}
-.mag-div.in-view .mr5{width:420px;height:420px;border-color:rgba(201,164,74,.04)}
+  .chiprow{display:flex;flex-wrap:wrap;gap:8px;padding:12px 14px}
+  .chch{font-family:var(--mono);font-size:8.5px;letter-spacing:0.14em;padding:5px 10px;color:var(--cc);box-shadow:inset 0 0 0 1px var(--cc);opacity:0.85}
+  .ops{display:flex;flex-direction:column;gap:7px;padding:12px 14px;min-height:88px}
+  .op{display:flex;align-items:baseline;gap:10px;font-family:var(--mono);font-size:9.5px;letter-spacing:0.08em;color:var(--tx-muted);
+    opacity:0;transform:translateY(7px);transition:opacity .45s var(--ease), transform .45s var(--ease)}
+  .op.on{opacity:1;transform:none}
+  .op .oc{font-size:8px;letter-spacing:0.14em;padding:2px 7px;box-shadow:inset 0 0 0 1px var(--oc);color:var(--oc);flex-shrink:0}
+  .op .otm{margin-left:auto;color:var(--tx-faint);font-size:8.5px}
 
-/* Spark particles on divider */
-.spark-p{position:absolute;width:3px;height:3px;border-radius:50%;background:var(--gold);opacity:0;transition:all .6s}
-.mag-div.in-view .spark-p{opacity:1}
-.sp1{transition-delay:.1s}.mag-div.in-view .sp1{transform:translate(-80px,-30px);opacity:.8}
-.sp2{transition-delay:.15s}.mag-div.in-view .sp2{transform:translate(90px,25px);opacity:.6}
-.sp3{transition-delay:.2s}.mag-div.in-view .sp3{transform:translate(-50px,40px);opacity:.7}
-.sp4{transition-delay:.25s}.mag-div.in-view .sp4{transform:translate(70px,-35px);opacity:.5}
-.sp5{transition-delay:.12s}.mag-div.in-view .sp5{transform:translate(-120px,10px);opacity:.4}
-.sp6{transition-delay:.18s}.mag-div.in-view .sp6{transform:translate(130px,-15px);opacity:.3}
-
-/* Left/right wire connections */
-.mag-wire{position:absolute;top:50%;height:1px;background:linear-gradient(90deg,transparent,rgba(201,164,74,.3),var(--gold),rgba(201,164,74,.3),transparent);transition:width .8s cubic-bezier(.22,1,.36,1);width:0}
-.mag-wire-l{right:50%;transform-origin:right}
-.mag-wire-r{left:50%;transform-origin:left}
-.mag-div.in-view .mag-wire{width:50%}
-
-/* ═══════════ ANIMATIONS ═══════════ */
-@keyframes fadeUp{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:translateY(0)}}
-@keyframes fadeIn{from{opacity:0}to{opacity:1}}
-@keyframes shimmer{0%{background-position:-200% center}100%{background-position:200% center}}
-@keyframes float{0%,100%{transform:translateY(0) rotateX(12deg) rotateY(-8deg)}50%{transform:translateY(-12px) rotateX(12deg) rotateY(-8deg)}}
-@keyframes float2{0%,100%{transform:translateY(0) rotateX(8deg) rotateY(6deg)}50%{transform:translateY(-10px) rotateX(8deg) rotateY(6deg)}}
-@keyframes float3{0%,100%{transform:translateY(0) rotateX(5deg) rotateY(-5deg)}50%{transform:translateY(-8px) rotateX(5deg) rotateY(-5deg)}}
-@keyframes pulse{0%,100%{box-shadow:0 0 20px rgba(201,164,74,.15)}50%{box-shadow:0 0 40px rgba(201,164,74,.3)}}
-@keyframes wa-bounce{0%,100%{transform:scale(1)}50%{transform:scale(1.08)}}
-
-/* NAV */
-nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:20px 0;transition:all .4s;background:transparent}
-nav.scrolled{background:rgba(10,10,10,.95);backdrop-filter:blur(20px);border-bottom:1px solid var(--brd);padding:14px 0}
-nav .container{display:flex;align-items:center;justify-content:space-between}
-.nav-logo{display:inline-flex;flex-direction:column;align-items:center;gap:3px;text-decoration:none;line-height:1}
-.nav-logo img{height:38px;width:auto;opacity:.95;display:block;filter:drop-shadow(0 0 6px rgba(201,164,74,.18))}
-.nav-logo-name{font-family:'Cormorant Garamond',Georgia,serif;font-size:13px;font-weight:600;letter-spacing:.32em;background:linear-gradient(135deg,#8a6d1b 0%,#c9a44a 35%,#e8d48b 50%,#c9a44a 65%,#8a6d1b 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;text-shadow:0 0 10px rgba(201,164,74,.15)}
-.nav-links{display:flex;gap:28px;align-items:center}
-.nav-links a{font-size:12px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;color:var(--tx2);text-decoration:none;transition:color .3s}
-.nav-links a:hover{color:var(--gold)}
-.nav-cta{background:linear-gradient(135deg,var(--gold),var(--gd))!important;color:var(--bg)!important;padding:10px 22px;border-radius:6px;font-weight:600!important;transition:transform .3s,box-shadow .3s!important}
-.nav-cta:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(201,164,74,.3)}
-
-/* HERO */
-.hero{min-height:100vh;display:flex;align-items:center;overflow:hidden;padding-top:80px}
-.hero::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:radial-gradient(ellipse at 30% 50%,rgba(201,164,74,.06) 0%,transparent 50%),radial-gradient(ellipse at 70% 30%,rgba(201,164,74,.04) 0%,transparent 40%);pointer-events:none}
-.hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;position:relative;z-index:2}
-.hero-content{animation:fadeUp 1s ease-out}
-.hbadge{display:inline-flex;align-items:center;gap:8px;background:rgba(201,164,74,.1);border:1px solid rgba(201,164,74,.2);padding:8px 16px;border-radius:100px;font-size:12px;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:32px}
-.hbadge::before{content:'';width:6px;height:6px;background:var(--gold);border-radius:50%;animation:pulse 2s infinite}
-.hero h1{font-family:var(--fd);font-size:clamp(40px,5.5vw,68px);font-weight:300;line-height:1.08;margin-bottom:24px}
-.hero h1 em{font-style:italic;background:linear-gradient(135deg,var(--gl),var(--gold),var(--gd));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.hero-desc{font-size:17px;color:var(--tx2);max-width:480px;line-height:1.75;margin-bottom:40px}
-.cta-btn{display:inline-flex;align-items:center;gap:12px;background:linear-gradient(135deg,var(--gold),var(--gd));color:var(--bg);padding:18px 40px;border-radius:8px;font-size:15px;font-weight:600;letter-spacing:1px;text-transform:uppercase;text-decoration:none;border:none;cursor:pointer;transition:all .4s;position:relative;overflow:hidden}
-.cta-btn::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(255,255,255,.2),transparent);background-size:200% 100%;animation:shimmer 3s infinite}
-.cta-btn:hover{transform:translateY(-3px);box-shadow:0 16px 48px rgba(201,164,74,.35)}
-.cta-btn svg,.cta-btn span{position:relative;z-index:1}
-.cta-btn svg{width:18px;height:18px}
-
-/* 3D PHONE */
-.hero-visual{perspective:1200px;animation:fadeIn 1.2s ease-out .3s both}
-.phone{margin:0 auto;transform-style:preserve-3d}
-.pf1{animation:float 6s ease-in-out infinite;transform:rotateX(12deg) rotateY(-8deg)}
-.pf2{animation:float2 7s ease-in-out infinite;transform:rotateX(8deg) rotateY(6deg)}
-.pf3{animation:float3 6.5s ease-in-out infinite;transform:rotateX(5deg) rotateY(-5deg)}
-.ph-fr{background:#1a1a1a;border-radius:36px;padding:12px;box-shadow:0 0 0 1px rgba(201,164,74,.15),0 25px 60px rgba(0,0,0,.6),0 0 100px rgba(201,164,74,.08),inset 0 1px 0 rgba(255,255,255,.05)}
-.ph-sm .ph-fr{border-radius:28px;padding:8px}
-.ph-n{width:100px;height:24px;background:#0a0a0a;border-radius:0 0 14px 14px;margin:0 auto 6px}
-.ph-sm .ph-n{width:70px;height:18px;border-radius:0 0 10px 10px;margin:0 auto 4px}
-.ph-s{background:#0d1117;border-radius:24px;padding:14px;overflow:hidden}
-.ph-sm .ph-s{border-radius:20px;padding:10px}
-.wa-hd{display:flex;align-items:center;gap:8px;padding-bottom:10px;border-bottom:1px solid #1a2332;margin-bottom:12px}
-.wa-av{width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--gd));display:flex;align-items:center;justify-content:center;font-weight:700;font-size:12px;color:var(--bg);flex-shrink:0}
-.wa-nm{font-size:13px;font-weight:600;color:#e4e4e4}
-.wa-st{font-size:10px;color:#6b7280}
-.wm{max-width:88%;padding:8px 12px;border-radius:10px;margin-bottom:6px;font-size:12px;line-height:1.45}
-.wm-i{background:#1a2332;color:#e4e4e4;border-bottom-left-radius:3px}
-.wm-o{background:#005c4b;color:#e4e4e4;margin-left:auto;border-bottom-right-radius:3px}
-.wm-t{font-size:9px;color:#6b7280;text-align:right;margin-top:3px}
-.wm-faded{opacity:.5}
-
-/* ═══════════ HERO LIVE REPLAY + DATA WAKE-UP (JS adds .hr-anim / .dvr-anim / .cs-anim; no-JS + reduced-motion stay static) ═══════════ */
-.hr-typing{display:none;width:fit-content;padding:11px 14px}
-.hr-anim .hr-typing{display:block}
-.hr-typing span{display:inline-block;width:6px;height:6px;border-radius:50%;background:#8a9aa8;margin:0 2px;animation:hrDot 1.2s infinite}
-.hr-typing span:nth-child(2){animation-delay:.2s}
-.hr-typing span:nth-child(3){animation-delay:.4s}
-@keyframes hrDot{0%,60%,100%{opacity:.25;transform:translateY(0)}30%{opacity:1;transform:translateY(-3px)}}
-.hr-anim .hr-step{opacity:0;transform:translateY(10px);transition:opacity .45s cubic-bezier(.22,1,.36,1),transform .45s cubic-bezier(.22,1,.36,1)}
-.hr-anim .hr-step.on{opacity:1;transform:none}
-.hr-anim .hr-step.wm-faded.on{opacity:.5}
-.hr-anim .hr-stamp.on span{animation:hrStampIn .55s cubic-bezier(.22,1,.36,1)}
-@keyframes hrStampIn{0%{transform:scale(1.7);opacity:0}55%{transform:scale(.94)}100%{transform:scale(1);opacity:1}}
-.dvr-anim .dash-gauge-n,.dvr-anim .dash-gauge-side,.dvr-anim .dash-dim-n,.dvr-anim .dash-action,.dvr-anim .dash-badge{opacity:0;transition:opacity .7s ease}
-.dvr-anim .dash-gauge-side{transition-delay:1.1s}
-.dvr-anim .dash-dim-n{transition-delay:.7s}
-.dvr-anim .dash-action{transition-delay:1.3s}
-.dvr-anim .dash-badge{transition-delay:1.6s}
-.dvr-anim.dvr-on .dash-gauge-n,.dvr-anim.dvr-on .dash-gauge-side,.dvr-anim.dvr-on .dash-dim-n,.dvr-anim.dvr-on .dash-action,.dvr-anim.dvr-on .dash-badge{opacity:1}
-.dvr-anim #dvrArc{stroke-dashoffset:226.2;transition:stroke-dashoffset 1.5s cubic-bezier(.22,1,.36,1) .25s}
-.dvr-anim.dvr-on #dvrArc{stroke-dashoffset:149.3}
-.cs-anim .cb,.cs-anim .ctb,.cs-anim .ctg{opacity:0;transform:translateY(8px);transition:opacity .4s cubic-bezier(.22,1,.36,1),transform .4s cubic-bezier(.22,1,.36,1)}
-.cs-anim .cb.on,.cs-anim .ctb.on,.cs-anim .ctg.on{opacity:1;transform:none}
+  .gpanels{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .gbars{display:flex;align-items:flex-end;gap:9px;height:104px;padding:14px 14px 10px}
+  .gbar{flex:1;background:linear-gradient(180deg, rgba(167,139,250,0.85), rgba(167,139,250,0.20));height:8%;transition:height 1.1s var(--ease)}
+  .gcount{font-family:var(--mono);font-size:9px;letter-spacing:0.12em;color:var(--tx-faint);padding:0 14px 12px}
+  .gcount b{color:#a78bfa;font-weight:500}
+  #igspark{display:block;margin:10px 14px 4px}
+  .igline{font-family:var(--mono);font-size:9px;letter-spacing:0.12em;color:var(--tx-faint);padding:0 14px 12px}
+  .igline b{color:#E1306C;font-weight:500}
+  .runline{font-family:var(--mono);font-size:9px;letter-spacing:0.2em;color:var(--tx-faint);text-align:center}
 
 
-/* STATS */
-.stats-row{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;padding:80px 0 0}
-.sc{background:var(--bgc);border:1px solid var(--brd);border-radius:16px;padding:28px;text-align:center;transition:all .4s}
-.sc:hover{transform:translateY(-4px);border-color:rgba(201,164,74,.2)}
-.sc-n{font-family:var(--fd);font-size:40px;font-weight:300;color:var(--gold);line-height:1;margin-bottom:8px;text-shadow:0 0 20px rgba(201,164,74,.2)}
-.sc-l{font-size:13px;color:var(--tx2)}
 
-/* HOW */
-.how{padding:120px 0}
-.how-hd{text-align:center;margin-bottom:80px}
-.how-hd .ss{margin:0 auto}
-.cg{display:grid;grid-template-columns:1fr 60px 1fr;gap:0;align-items:start}
-.cc{background:var(--bgc);border-radius:20px;padding:36px 28px;border:1px solid var(--brd);transition:all .5s;position:relative;overflow:hidden}
-.cc::before{content:'';position:absolute;top:0;left:0;right:0;height:3px}
-.cc-b::before{background:linear-gradient(90deg,var(--red),transparent)}.cc-b:hover{border-color:rgba(248,113,113,.3)}
-.cc-g::before{background:linear-gradient(90deg,var(--grn),transparent)}.cc-g:hover{border-color:rgba(74,222,128,.3)}
-.ct{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;padding:6px 14px;border-radius:100px;margin-bottom:20px}
-.ct-b{color:var(--red);background:rgba(248,113,113,.1)}.ct-g{color:var(--grn);background:rgba(74,222,128,.1)}
-.ctt{font-family:var(--fd);font-size:22px;font-weight:400;margin-bottom:20px}
-.cs{background:#0d1117;border-radius:14px;padding:16px}
-.cb{max-width:85%;padding:8px 12px;border-radius:10px;margin-bottom:6px;font-size:12px;line-height:1.45}
-.cb-i{background:#1a2332;color:#e4e4e4;border-bottom-left-radius:3px}
-.cb-o{background:#005c4b;color:#e4e4e4;margin-left:auto;border-bottom-right-radius:3px}
-.ctb{font-size:10px;color:var(--red);margin:10px 0 6px;text-align:center}
-.ctg{font-size:10px;color:var(--grn);margin:10px 0 6px;text-align:center}
-.vs{display:flex;align-items:center;justify-content:center;align-self:center}
-.vsb{width:48px;height:48px;border-radius:50%;background:var(--bgc);border:2px solid var(--gold);display:flex;align-items:center;justify-content:center;font-family:var(--fd);font-size:16px;font-weight:600;color:var(--gold);box-shadow:0 0 20px rgba(201,164,74,.2)}
-.rs{margin-top:20px;padding:14px;border-radius:10px;display:flex;align-items:center;gap:10px;font-size:13px;font-weight:500}
-.rs-b{background:rgba(248,113,113,.06);border:1px solid rgba(248,113,113,.15);color:var(--red)}
-.rs-g{background:rgba(74,222,128,.06);border:1px solid rgba(74,222,128,.15);color:var(--grn)}
+  /* ---------- loop ---------- */
+  .loop-wrap{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center}
+  .loop-copy p{color:var(--tx-muted);font-size:15.5px;max-width:460px}
+  .loop-copy .kill{font-family:var(--serif);font-style:italic;font-size:24px;line-height:1.45;color:var(--tx);margin:26px 0 0;max-width:460px}
+  #loop-ring{transform-origin:220px 220px;animation:spin 46s linear infinite}
+  @keyframes spin{to{transform:rotate(360deg)}}
 
-/* DVR */
-.dvr{padding:120px 0}
-.dvr-hd{text-align:center;margin-bottom:60px}
-.dvr-hd .ss{margin:0 auto}
-.dvr-g{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start;max-width:1000px;margin:0 auto}
-.dvr-col{perspective:800px}
-.dvr-lb{text-align:center;margin-bottom:20px;font-size:12px;font-weight:600;letter-spacing:2px;text-transform:uppercase}
-.dvr-lb-b{color:var(--red)}.dvr-lb-g{color:var(--grn)}
-.dvr-ph{width:260px;margin:0 auto;position:relative}
-.dvr-ph-rich{margin-top:0}
+  /* ---------- finale (the owner film lives here now) ---------- */
+  .finale{position:relative;overflow:hidden;margin:140px auto 0;border-top:1px solid var(--border);padding:150px 48px 120px;text-align:center;min-height:78vh;
+    display:flex;flex-direction:column;justify-content:center;align-items:center}
+  .fin-vid{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
+  .fin-shade{position:absolute;inset:0;z-index:1;background:
+    linear-gradient(180deg, var(--bg) 0%, rgba(13,8,7,0.55) 22%, rgba(13,8,7,0.42) 55%, rgba(13,8,7,0.88) 100%),
+    radial-gradient(60% 55% at 50% 52%, rgba(13,8,7,0.55), transparent 100%)}
+  .fin-line,.fin-contacts{position:relative;z-index:2}
+  .fin-line{font-family:var(--serif);font-size:clamp(24px,2.6vw,36px);line-height:1.5;color:var(--tx);max-width:820px;margin:0 auto 44px;
+    text-shadow:0 2px 24px rgba(0,0,0,0.6)}
+  .fin-line em{color:var(--gold-light)}
+  .fin-contacts{display:flex;gap:18px;justify-content:center;flex-wrap:wrap}
+  .fchip{display:inline-flex;align-items:center;gap:10px;font-family:var(--mono);font-size:12px;letter-spacing:0.08em;
+    padding:14px 24px;color:var(--tx-muted);box-shadow:inset 0 0 0 1px var(--fc);transition:color .3s, background .3s, transform .3s var(--ease)}
+  .fchip:hover{color:var(--tx);background:rgba(255,255,255,0.04);transform:translateY(-2px)}
 
-/* Dashboard score gauge */
-.dash-gauge{position:relative;display:flex;justify-content:center;align-items:center;margin:14px 0 10px;padding:8px 0;height:96px}
-.dash-gauge-c{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);text-align:center;line-height:1}
-.dash-gauge-n{font-family:var(--fd);font-size:26px;font-weight:500;color:var(--gold);text-shadow:0 0 12px rgba(201,164,74,.4);font-feature-settings:"lnum","tnum"}
-.dash-gauge-l{font-size:9px;color:var(--tx3);letter-spacing:.5px;margin-top:2px}
-.dash-gauge-empty .dash-gauge-n{text-shadow:none}
-.dash-gauge-side{position:absolute;right:6px;top:14px;text-align:right;line-height:1.2}
-.dash-trend{font-family:var(--fd);font-size:13px;font-weight:500;font-feature-settings:"lnum","tnum"}
-.dash-trend-d{color:#f87171}
-.dash-trend-l{font-size:8px;color:var(--tx3);letter-spacing:.3px;margin-top:1px}
+  footer{max-width:1240px;margin:0 auto;padding:56px 48px 48px;display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;font-size:12px;color:var(--tx-faint);letter-spacing:0.05em}
 
-/* 6-dimension bars */
-.dash-dims{display:flex;flex-direction:column;gap:5px;margin:10px 0 8px;padding:8px 4px;background:rgba(255,255,255,.015);border-radius:6px}
-.dash-dim{display:grid;grid-template-columns:62px 1fr 18px;align-items:center;gap:6px;font-size:9px}
-.dash-dim>span{color:var(--tx2);letter-spacing:.2px}
-.dash-bar{height:4px;background:rgba(255,255,255,.04);border-radius:2px;overflow:hidden;position:relative}
-.dash-bar-f{height:100%;background:linear-gradient(90deg,var(--gd),var(--gold));border-radius:2px;box-shadow:0 0 6px rgba(201,164,74,.3);transition:width .8s cubic-bezier(.22,1,.36,1)}
-.dash-dim-n{font-size:9px;color:var(--gold);font-weight:600;text-align:right;font-feature-settings:"lnum","tnum"}
-
-/* Priority action card */
-.dash-action{margin-top:8px;padding:8px 10px;background:linear-gradient(135deg,rgba(74,222,128,.08),rgba(74,222,128,.02));border:1px solid rgba(74,222,128,.2);border-radius:6px;border-left:2px solid var(--grn)}
-.dash-action-tag{font-size:8px;letter-spacing:1.2px;color:var(--grn);font-weight:700;margin-bottom:3px}
-.dash-action-h{font-size:11px;color:var(--tx);font-weight:600;line-height:1.3}
-.dash-action-d{font-size:9px;color:var(--tx2);margin-top:3px;line-height:1.4}
-
-/* Floating insight badges around the With phone */
-.dash-badge{position:absolute;min-width:128px;background:linear-gradient(135deg,rgba(15,15,15,.95),rgba(8,8,8,.95));border:1px solid rgba(201,164,74,.25);border-radius:8px;padding:10px 14px;backdrop-filter:blur(8px);box-shadow:0 12px 30px rgba(0,0,0,.6),0 0 0 1px rgba(201,164,74,.05) inset;z-index:5;animation:dashBadgeFloat 4s ease-in-out infinite;white-space:nowrap}
-.dash-badge::before{content:'';position:absolute;top:-1px;left:-1px;right:-1px;height:1px;background:linear-gradient(90deg,transparent,rgba(201,164,74,.4),transparent)}
-.dash-badge-l{font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:var(--tx3);font-weight:600;margin-bottom:2px}
-.dash-badge-v{font-family:var(--fd);font-size:15px;font-weight:500;color:var(--gold);font-feature-settings:"lnum","tnum";line-height:1.1}
-.dash-badge-u{font-size:9px;color:var(--tx3);font-family:var(--fb);font-weight:400;margin-left:1px}
-.dash-badge-tr{top:18%;left:calc(100% + 14px);right:auto;animation-delay:.4s}
-.dash-badge-bl{bottom:22%;right:calc(100% + 14px);left:auto;animation-delay:.9s}
-@keyframes dashBadgeFloat{
-  0%,100%{transform:translateY(0)}
-  50%{transform:translateY(-4px)}
-}
-@media(max-width:1100px){
-  .dash-badge-tr{left:auto;right:0;top:-46px;animation-delay:.4s}
-  .dash-badge-bl{right:auto;left:0;bottom:-46px;animation-delay:.9s}
-}
-@media(max-width:820px){
-  .dash-badge{display:none}
-}
-/* Book a 15-min call strip — Cal.com popup trigger */
-.bk-strip{padding:68px 0;background:linear-gradient(180deg,transparent,rgba(201,164,74,.03),transparent);border-top:1px solid rgba(201,164,74,.1);border-bottom:1px solid rgba(201,164,74,.1);text-align:center;position:relative}
-.bk-strip-in{max-width:720px;margin:0 auto;padding:0 24px}
-.bk-strip .sl{margin-bottom:14px}
-.bk-strip-ttl{font-family:var(--fd);font-size:clamp(28px,4vw,42px);font-weight:300;line-height:1.2;margin-bottom:14px;color:var(--tx)}
-.bk-strip-sub{font-size:15px;color:var(--tx2);max-width:540px;margin:0 auto 28px;line-height:1.65}
-.bk-cta{display:inline-flex;align-items:center;gap:10px;padding:16px 36px;background:linear-gradient(135deg,var(--gold),var(--gl));color:#0a0a0a;font-family:var(--fb);font-weight:600;font-size:15px;letter-spacing:.3px;border:0;border-radius:100px;cursor:pointer;text-decoration:none;transition:all .25s;box-shadow:0 10px 30px -10px rgba(201,164,74,.4)}
-.bk-cta:hover{transform:translateY(-2px);box-shadow:0 14px 40px -10px rgba(201,164,74,.6)}
-.bk-cta svg{width:16px;height:16px}
-.bk-meta{margin-top:16px;font-size:11px;color:var(--tx3);letter-spacing:1px;text-transform:uppercase}
-
-.vi-pricing-wrap{max-width:680px;margin:48px auto 0;text-align:center}
-.vi-pricing{margin-top:0 !important;text-align:left;background:linear-gradient(145deg,rgba(201,164,74,.04),var(--bgc) 40%);border:1px solid rgba(201,164,74,.28) !important;box-shadow:0 14px 50px -20px rgba(201,164,74,.2)}
-.vi-pricing .dvr-pr{font-size:40px}
-.vi-pricing .dvr-pr span{font-size:13px;display:block;margin-top:2px;letter-spacing:.3px}
-.vi-pricing .dvr-ft li{font-size:14px;padding:9px 0}
-.vi-layer2{margin-top:22px;padding:18px 22px;background:rgba(201,164,74,.05);border:1px solid rgba(201,164,74,.14);border-radius:12px;font-size:13px;color:var(--tx2);line-height:1.6;text-align:left}
-.vi-layer2 strong{color:var(--tx);font-weight:600}
-.vi-layer2 a{color:var(--gold);text-decoration:none;font-weight:500;margin-left:4px}
-.vi-layer2 a:hover{color:var(--gl)}
-.dvr-inf{margin-top:32px;background:var(--bgc);border:1px solid var(--brd);border-radius:16px;padding:28px;position:relative;overflow:hidden}
-.dvr-inf::before{content:'';position:absolute;top:0;left:0;right:0;height:2px}
-.di-e::before{background:linear-gradient(90deg,transparent,var(--gold),transparent)}
-.di-i::before{background:linear-gradient(90deg,transparent,var(--grn),transparent)}
-.dvr-tg{display:inline-block;font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--gold);background:rgba(201,164,74,.1);padding:4px 12px;border-radius:100px;margin-bottom:12px}
-.dvr-tp{background:rgba(74,222,128,.1);color:var(--grn)}
-.dvr-nm{font-family:var(--fd);font-size:24px;font-weight:400;margin-bottom:4px}
-.dvr-pr{font-family:var(--fd);font-size:36px;font-weight:300;color:var(--gold);margin-bottom:2px}
-.dvr-pr span{font-size:14px;color:var(--tx2);font-family:var(--fb)}
-.dvr-per{font-size:12px;color:var(--tx3);margin-bottom:20px}
-.dvr-ft{list-style:none}
-.dvr-ft li{padding:7px 0;font-size:13px;color:var(--tx2);display:flex;align-items:flex-start;gap:10px;border-bottom:1px solid rgba(255,255,255,.03)}
-.dvr-ft li:last-child{border-bottom:none}
-.dvr-ck{color:var(--gold);font-size:12px;margin-top:2px;flex-shrink:0}
-.dvr-bt{display:block;text-align:center;padding:14px;border-radius:10px;font-size:13px;font-weight:600;letter-spacing:1px;text-transform:uppercase;text-decoration:none;transition:all .3s;cursor:pointer;border:none;width:100%;margin-top:20px}
-.dvr-bo{background:transparent;border:1px solid var(--brd);color:var(--tx)}.dvr-bo:hover{border-color:var(--gold);color:var(--gold)}
-.dvr-bg{background:linear-gradient(135deg,var(--gold),var(--gd));color:var(--bg)}.dvr-bg:hover{box-shadow:0 8px 32px rgba(201,164,74,.3);transform:translateY(-2px)}
-
-/* AGENCY */
-.agency{padding:120px 0}
-.ag-hd{text-align:center;margin-bottom:60px}
-.ag-hd .ss{margin:0 auto}
-.ag-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;max-width:900px;margin:0 auto;perspective:1200px}
-.ag-c{background:var(--bgc);border:1px solid var(--brd);border-radius:20px;padding:32px 28px;position:relative;overflow:hidden;transition:all .5s cubic-bezier(.22,1,.36,1);display:flex;flex-direction:column}
-.ag-c:hover{transform:translateY(-8px) rotateX(2deg);border-color:rgba(201,164,74,.3);box-shadow:0 30px 60px rgba(0,0,0,.5),0 0 40px rgba(201,164,74,.06)}
-.ag-c.ft{border-color:rgba(201,164,74,.4);background:linear-gradient(180deg,rgba(201,164,74,.06),var(--bgc))}
-.ag-c.ft::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--gd),var(--gold),var(--gd))}
-.ag-pop{position:absolute;top:14px;right:14px;font-size:9px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--gold);background:rgba(201,164,74,.12);padding:4px 10px;border-radius:100px}
-.ag-ic{width:48px;height:48px;border-radius:14px;display:flex;align-items:center;justify-content:center;margin-bottom:16px;font-size:22px}
-.ag-i1{background:rgba(201,164,74,.1)}.ag-i2{background:rgba(74,222,128,.1)}.ag-i3{background:rgba(96,165,250,.1)}.ag-i4{background:rgba(168,85,247,.1)}
-.ag-nm{font-family:var(--fd);font-size:22px;font-weight:400;margin-bottom:6px}
-.ag-pr{font-family:var(--fd);font-size:32px;font-weight:300;color:var(--gold)}
-.ag-pr span{font-size:13px;color:var(--tx2);font-family:var(--fb)}
-.ag-per{font-size:12px;color:var(--tx3);margin-bottom:20px}
-.ag-ft{list-style:none;margin-bottom:24px;flex-grow:1}
-.ag-ft li{padding:6px 0;font-size:13px;color:var(--tx2);display:flex;align-items:flex-start;gap:8px}
-.ag-ft li::before{content:'✦';color:var(--gold);font-size:10px;margin-top:3px;flex-shrink:0}
-.ag-bt{display:block;text-align:center;padding:13px;border-radius:10px;font-size:13px;font-weight:600;letter-spacing:1px;text-transform:uppercase;text-decoration:none;transition:all .3s;cursor:pointer;border:none;width:100%}
-.ag-bo{background:transparent;border:1px solid var(--brd);color:var(--tx)}.ag-bo:hover{border-color:var(--gold);color:var(--gold)}
-.ag-bgg{background:linear-gradient(135deg,var(--gold),var(--gd));color:var(--bg)}.ag-bgg:hover{box-shadow:0 8px 32px rgba(201,164,74,.3);transform:translateY(-2px)}
-.fnote{text-align:center;margin-top:32px;font-size:14px;color:var(--gold);font-style:italic;opacity:.8}
-
-/* CONTACT */
-.contact{padding:120px 0}
-.contact-g{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;max-width:1000px;margin:0 auto}
-.contact-l .ss{margin-bottom:32px}
-.cp{list-style:none;display:flex;flex-direction:column;gap:14px}
-.cp li{display:flex;align-items:center;gap:12px;font-size:15px;color:var(--tx2)}
-.cp li svg{width:20px;height:20px;color:var(--gold);flex-shrink:0}
-.cfrm{background:var(--bgc);border:1px solid var(--brd);border-radius:24px;padding:36px;position:relative;overflow:hidden}
-.cfrm::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
-.fg{margin-bottom:18px}
-.fg label{display:block;font-size:11px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;color:var(--tx2);margin-bottom:6px}
-.fg input{width:100%;background:var(--bg);border:1px solid var(--brd);border-radius:10px;padding:13px 16px;font-family:var(--fb);font-size:14px;color:var(--tx);outline:none;transition:border-color .3s,box-shadow .3s}
-.fg input:focus{border-color:var(--gold);box-shadow:0 0 16px rgba(201,164,74,.12)}
-.fg input::placeholder{color:var(--tx3)}
-.fsub{width:100%;padding:15px;background:linear-gradient(135deg,var(--gold),var(--gd));color:var(--bg);border:none;border-radius:10px;font-family:var(--fb);font-size:14px;font-weight:600;letter-spacing:1px;text-transform:uppercase;cursor:pointer;transition:all .3s;margin-top:6px}
-.fsub:hover{box-shadow:0 8px 32px rgba(201,164,74,.3);transform:translateY(-2px)}
-.fnot{text-align:center;font-size:11px;color:var(--tx3);margin-top:10px}
-
-/* WA FLOAT */
-.waf{position:fixed;bottom:28px;right:28px;z-index:200;width:60px;height:60px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,.4);cursor:pointer;transition:all .3s;text-decoration:none;animation:wa-bounce 3s ease-in-out infinite}
-.waf:hover{transform:scale(1.1);box-shadow:0 6px 28px rgba(37,211,102,.5)}
-.waf svg{width:32px;height:32px;fill:#fff}
-.wal{position:fixed;bottom:36px;right:100px;z-index:200;background:var(--bgc);border:1px solid var(--brd);border-radius:12px;padding:10px 16px;font-size:13px;color:var(--tx);white-space:nowrap;box-shadow:0 8px 24px rgba(0,0,0,.4);opacity:0;transform:translateX(10px);transition:all .3s;pointer-events:none}
-.waf:hover+.wal{opacity:1;transform:translateX(0)}
-
-/* FOOTER */
-footer{padding:60px 0 40px;border-top:1px solid var(--brd)}
-.fti{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:20px}
-.ftl img{height:36px;opacity:.7}
-.ftinf{display:flex;align-items:center;gap:32px;font-size:14px;color:var(--tx2)}
-.ftinf a{color:var(--tx2);text-decoration:none;transition:color .3s}.ftinf a:hover{color:var(--gold)}
-.ftc{width:100%;text-align:center;margin-top:40px;padding-top:24px;border-top:1px solid var(--brd);font-size:12px;color:var(--tx3)}
-
-@media(max-width:900px){
-  /* Kill expensive background animations on mobile for smooth scrolling */
-  .elec-bg,.v-spark,.pulse-line,.mag-div{display:none}
-  .pl1,.pl2,.pl3,.pl4,.pl5,.pl6,.vs1,.vs2,.vs3,.vs4,.vs5{animation:none}
-  .hero-grid,.dvr-g,.contact-g{grid-template-columns:1fr;gap:40px;text-align:center}
-  .hero-desc{margin:0 auto 40px}
-  .cg{grid-template-columns:1fr;gap:20px}.vs{transform:rotate(90deg)}
-  .cr{grid-template-columns:1fr}
-  .ag-grid{grid-template-columns:1fr;max-width:400px}
-  .stats-row{grid-template-columns:1fr;max-width:320px;margin:0 auto}
-  .nav-links a:not(.nav-cta){display:none}
-  .nav-links{gap:0}
-  .nav-cta{padding:9px 18px;font-size:11px}
-  .fti{flex-direction:column;text-align:center}
-  .ftinf{flex-direction:column;gap:12px}
-  .dvr-ph{width:220px}
-  .mag-div.in-view .mag-wire{width:40%}
-}
-
-/* ═══════════ THE VAYDIN DIFFERENCE ═══════════ */
-.why{padding:110px 0}
-.why-hd{text-align:center;margin-bottom:60px}
-.why-hd .ss{margin:0 auto}
-.why-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;max-width:1040px;margin:0 auto}
-.why-card{
-  background:var(--bgc);
-  border:1px solid var(--brd);
-  border-radius:18px;
-  padding:30px 28px;
-  position:relative;
-  overflow:hidden;
-  transition:all .6s cubic-bezier(.22,1,.36,1);
-}
-.why-card::before{
-  content:'';position:absolute;left:0;top:0;bottom:0;width:2px;
-  background:linear-gradient(180deg,transparent,var(--gold),transparent);
-  opacity:.4;transition:opacity .5s;
-}
-.why-card:hover{border-color:rgba(201,164,74,.3);transform:translateY(-4px);box-shadow:0 20px 40px rgba(0,0,0,.4),0 0 30px rgba(201,164,74,.05)}
-.why-card:hover::before{opacity:1}
-.why-icon{
-  width:44px;height:44px;border-radius:12px;
-  background:rgba(201,164,74,.1);
-  display:flex;align-items:center;justify-content:center;
-  color:var(--gold);
-  margin-bottom:20px;
-}
-.why-icon svg{width:22px;height:22px}
-.why-title{
-  font-family:var(--fd);
-  font-size:22px;font-weight:400;line-height:1.3;
-  color:var(--tx);margin-bottom:20px;
-}
-.why-compare{display:flex;flex-direction:column;gap:12px}
-.why-side{padding:14px 16px;border-radius:10px}
-.why-old{background:rgba(138,133,120,.05);border:1px solid rgba(138,133,120,.15)}
-.why-new{background:rgba(201,164,74,.06);border:1px solid rgba(201,164,74,.22)}
-.why-tag{
-  display:inline-block;
-  font-size:9px;letter-spacing:1.8px;text-transform:uppercase;font-weight:600;
-  padding:3px 8px;border-radius:4px;margin-bottom:7px;
-}
-.why-tag-old{background:rgba(138,133,120,.15);color:var(--tx3)}
-.why-tag-new{background:rgba(201,164,74,.18);color:var(--gold)}
-.why-side p{font-size:13px;line-height:1.55;color:var(--tx2);margin:0}
-.why-new p{color:var(--tx)}
-
-@media (max-width:820px){
-  .why{padding:70px 0}
-  .why-grid{grid-template-columns:1fr;gap:14px}
-  .why-card{padding:24px 22px}
-}
-
-/* ═══════════ REVENUE ENGINE — LAYER 2 HERO ═══════════ */
-.re{padding:110px 0;position:relative}
-.re-hd{text-align:center;margin-bottom:50px}
-.re-hd .ss{margin:0 auto}
-
-.re-hero{
-  position:relative;
-  max-width:1040px;margin:0 auto;
-  padding:42px 46px;
-  background:linear-gradient(135deg,rgba(201,164,74,.09) 0%,rgba(201,164,74,.025) 40%,var(--bgc) 75%);
-  border:1px solid rgba(201,164,74,.26);
-  border-radius:24px;
-  overflow:hidden;
-}
-.re-hero::before{
-  content:'';position:absolute;inset:0;
-  background:
-    radial-gradient(circle at 15% 20%,rgba(201,164,74,.08) 0%,transparent 50%),
-    radial-gradient(circle at 85% 80%,rgba(201,164,74,.05) 0%,transparent 45%);
-  pointer-events:none;animation:reMeshDrift 18s ease-in-out infinite alternate;
-}
-@keyframes reMeshDrift{
-  0%{transform:translate(0,0) scale(1)}
-  100%{transform:translate(-3%,-2%) scale(1.08)}
-}
-.re-hero::after{
-  content:'';position:absolute;top:0;left:0;right:0;height:2px;
-  background:linear-gradient(90deg,transparent,var(--gold),var(--gb),var(--gold),transparent);
-  pointer-events:none;
-}
-
-.re-pill{
-  display:inline-flex;align-items:center;gap:8px;
-  font-size:10px;letter-spacing:2.5px;text-transform:uppercase;font-weight:600;
-  color:var(--gold);
-  padding:6px 14px;border-radius:100px;
-  background:rgba(201,164,74,.1);border:1px solid rgba(201,164,74,.22);
-  margin-bottom:26px;
-  position:relative;z-index:2;
-}
-.re-pill::before{
-  content:'';width:6px;height:6px;border-radius:50%;background:var(--gold);
-  box-shadow:0 0 10px rgba(201,164,74,.8);
-  animation:rePillPulse 2.4s ease-in-out infinite;
-}
-@keyframes rePillPulse{0%,100%{opacity:.85;transform:scale(1)}50%{opacity:1;transform:scale(1.3)}}
-
-.re-grid{
-  position:relative;z-index:2;
-  display:grid;grid-template-columns:1fr 1fr;gap:48px;
-  align-items:start;
-}
-.re-left{}
-.re-price-main{
-  display:grid;grid-template-columns:1fr auto 1fr;gap:18px;
-  align-items:end;
-  padding-bottom:24px;
-  border-bottom:1px solid rgba(201,164,74,.15);
-  margin-bottom:24px;
-}
-.re-price-setup,.re-price-monthly{display:flex;flex-direction:column}
-.re-price-small{
-  font-size:10px;letter-spacing:1.5px;text-transform:uppercase;
-  color:var(--tx3);font-weight:600;margin-bottom:10px;
-}
-.re-price-big{
-  font-family:var(--fd);
-  font-size:clamp(28px,4vw,40px);
-  font-weight:500;
-  color:var(--gold);
-  line-height:1;
-  font-variant-numeric:tabular-nums;
-  letter-spacing:-.5px;
-}
-.re-aed{font-size:.55em;color:var(--gl);margin-right:5px;vertical-align:.25em;letter-spacing:1px;font-weight:600}
-.re-price-sep{
-  font-family:var(--fd);
-  font-size:28px;color:var(--gold);opacity:.4;
-  line-height:1;padding-bottom:6px;
-}
-
-.re-included{
-  display:flex;align-items:center;gap:10px;
-  padding:13px 16px;
-  background:rgba(74,222,128,.06);
-  border:1px solid rgba(74,222,128,.22);
-  border-radius:10px;
-  font-size:12px;color:var(--tx);line-height:1.5;
-  margin-bottom:22px;
-}
-.re-included strong{color:var(--tx);font-weight:600}
-.re-included-dot{
-  width:16px;height:16px;border-radius:50%;
-  background:var(--grn);
-  display:flex;align-items:center;justify-content:center;
-  flex-shrink:0;position:relative;
-}
-.re-included-dot::after{
-  content:'';width:4px;height:8px;
-  border:solid #0a0a0a;border-width:0 2px 2px 0;
-  transform:rotate(45deg);
-  position:absolute;top:2px;left:6px;
-}
-
-.re-cta{
-  display:flex;align-items:center;justify-content:center;gap:10px;
-  width:100%;
-  padding:16px 24px;
-  background:var(--gold);color:#0a0a0a;
-  text-decoration:none;font-weight:600;
-  font-size:14px;letter-spacing:.3px;
-  border-radius:10px;
-  transition:all .3s cubic-bezier(.22,1,.36,1);
-  border:1px solid var(--gold);
-  margin-bottom:20px;
-}
-.re-cta:hover{background:var(--gl);border-color:var(--gl);transform:translateY(-2px);box-shadow:0 14px 35px rgba(201,164,74,.28)}
-.re-cta svg{width:17px;height:17px;transition:transform .3s}
-.re-cta:hover svg{transform:translateX(4px)}
-
-.re-rates{
-  display:grid;grid-template-columns:1fr 1fr;gap:12px;
-}
-.re-rate{
-  padding:14px 16px;
-  background:rgba(255,255,255,.015);
-  border:1px solid var(--brd);
-  border-radius:10px;
-}
-.re-rate-label{
-  font-size:9px;letter-spacing:1.5px;text-transform:uppercase;
-  color:var(--gold);font-weight:600;
-  margin-bottom:6px;
-}
-.re-rate-val{
-  font-family:var(--fd);font-size:15px;font-weight:500;
-  color:var(--tx);margin-bottom:4px;
-}
-.re-rate-note{
-  font-size:10px;color:var(--tx3);line-height:1.5;
-}
-
-.re-right{}
-.re-components-hd{
-  font-size:10px;letter-spacing:2px;text-transform:uppercase;
-  color:var(--gold);font-weight:600;
-  margin-bottom:18px;
-}
-.re-components{position:relative;padding-left:14px}
-.re-components::before{
-  content:'';position:absolute;left:4px;top:6px;bottom:6px;width:1px;
-  background:linear-gradient(180deg,var(--gold),rgba(201,164,74,.25));
-}
-.re-comp{
-  position:relative;
-  display:flex;gap:14px;
-  padding:9px 0 9px 2px;
-}
-.re-comp::before{
-  content:'';position:absolute;left:-14px;top:13px;
-  width:9px;height:9px;border-radius:50%;
-  background:var(--bg);
-  border:2px solid var(--gold);
-}
-.re-comp-included::before{
-  background:var(--gold);
-  box-shadow:0 0 10px rgba(201,164,74,.6);
-}
-.re-comp-num{
-  font-family:var(--fd);font-size:14px;font-weight:500;
-  color:var(--gold);
-  font-variant-numeric:tabular-nums;
-  min-width:22px;padding-top:1px;
-}
-.re-comp-body{flex:1}
-.re-comp-title{
-  font-size:13px;color:var(--tx);line-height:1.45;font-weight:500;
-}
-.re-comp-status{
-  font-size:10px;letter-spacing:1.2px;text-transform:uppercase;
-  color:var(--grn);font-weight:600;
-  margin-top:4px;
-}
-
-.re-fnote{
-  text-align:center;
-  font-size:11px;color:var(--tx3);font-style:italic;
-  margin-top:30px;
-}
-
-@media (max-width:820px){
-  .re{padding:70px 0}
-  .re-hero{padding:30px 24px;border-radius:18px}
-  .re-grid{grid-template-columns:1fr;gap:36px}
-  .re-price-main{grid-template-columns:1fr;gap:18px;text-align:center}
-  .re-price-sep{display:none}
-  .re-rates{grid-template-columns:1fr 1fr}
-}
-@media (max-width:480px){
-  .re-rates{grid-template-columns:1fr}
-}
+  @media (prefers-reduced-motion: reduce){
+    *{animation:none !important;transition:none !important}
+    .reveal,.lframe,.est-chip,.op,.find-line{opacity:1 !important;transform:none !important}
+  }
+  @media (max-width: 1060px){
+    .hero-inner{grid-template-columns:1fr;gap:40px;padding-top:110px}
+    .hero-visual{min-height:0;padding-bottom:30px}
+    .phone{width:262px;--rx:6deg;--ry:-9deg}
+    .ph-s{min-height:400px}
+  }
+  @media (max-width: 960px){
+    nav{padding:14px 22px}
+    .nav-contact{display:none}
+    .nav-burger{display:flex}
+    .nav-cta{white-space:nowrap;padding:10px 15px;font-size:12.5px}
+    nav{gap:14px}
+    .wordmark{font-size:16px;letter-spacing:0.2em}
+    .brand{gap:9px}
+    .brand img{width:28px;height:28px}
+    .nav-links{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;align-items:stretch;gap:0;
+      background:rgba(17,12,8,0.995);border-bottom:1px solid rgba(201,164,74,0.30);padding:6px 22px 12px;box-shadow:0 24px 40px rgba(0,0,0,0.5)}
+    .nav-links.open{display:flex}
+    .nav-links a{padding:13px 2px;font-size:17px;border-bottom:1px solid rgba(255,255,255,0.05)}
+    .nav-links a:last-child{border-bottom:0}
+    .nav-links a::after{bottom:8px;right:auto;width:28px}
+    .hero-inner{padding:100px 22px 48px}
+    section{padding:80px 22px 0}
+    .fbody{grid-template-columns:1fr}
+    .lframe:nth-child(even) .fbody .lcopy{order:0}
+    .lframe:nth-child(even) .fbody .linstr{order:1;border-right:0}
+    .linstr{border-left:0;border-top:1px solid var(--border)}
+    .gpanels{grid-template-columns:1fr}
+    .irow{flex-wrap:wrap;justify-content:center}
+    .score-simple{grid-template-columns:1fr;gap:36px}
+    .estate-grid{grid-template-columns:1fr}
+    .loop-wrap{grid-template-columns:1fr}
+    .band{padding:72px 22px}
+  }
 </style>
 </head>
 <body>
+<canvas id="embers"></canvas>
 
-<!-- ═══ FULL-PAGE ELECTRIC FIELD BACKGROUND ═══ -->
-<div class="elec-bg">
-  <svg viewBox="0 0 1400 4000" preserveAspectRatio="none">
-    <!-- Static wire grid -->
-    <path class="wire" d="M0,100 Q350,80 700,120 T1400,90"/>
-    <path class="wire" d="M0,300 Q350,320 700,280 T1400,310"/>
-    <path class="wire" d="M0,500 Q350,480 700,520 T1400,490"/>
-    <path class="wire" d="M0,800 Q350,820 700,780 T1400,810"/>
-    <path class="wire" d="M0,1100 Q350,1080 700,1120 T1400,1090"/>
-    <path class="wire" d="M0,1400 Q350,1420 700,1380 T1400,1410"/>
-    <path class="wire" d="M0,1800 Q350,1780 700,1820 T1400,1790"/>
-    <path class="wire" d="M0,2200 Q350,2220 700,2180 T1400,2210"/>
-    <path class="wire" d="M0,2600 Q350,2580 700,2620 T1400,2590"/>
-    <path class="wire" d="M0,3000 Q350,3020 700,2980 T1400,3010"/>
-    <path class="wire" d="M0,3400 Q350,3380 700,3420 T1400,3390"/>
-    <!-- Animated current pulses -->
-    <path class="pulse-line pl1" d="M0,100 Q350,80 700,120 T1400,90"/>
-    <path class="pulse-line pl2" d="M0,500 Q350,480 700,520 T1400,490"/>
-    <path class="pulse-line pl3" d="M0,1100 Q350,1080 700,1120 T1400,1090"/>
-    <path class="pulse-line pl4" d="M0,1800 Q350,1780 700,1820 T1400,1790"/>
-    <path class="pulse-line pl5" d="M0,2600 Q350,2580 700,2620 T1400,2590"/>
-    <path class="pulse-line pl6" d="M0,3400 Q350,3380 700,3420 T1400,3390"/>
-    <!-- Glow wires -->
-    <path class="wire-glow" d="M0,300 Q350,320 700,280 T1400,310"/>
-    <path class="wire-glow" d="M0,800 Q350,820 700,780 T1400,810"/>
-    <path class="wire-glow" d="M0,1400 Q350,1420 700,1380 T1400,1410"/>
-    <path class="wire-glow" d="M0,2200 Q350,2220 700,2180 T1400,2210"/>
-    <path class="wire-glow" d="M0,3000 Q350,3020 700,2980 T1400,3010"/>
-  </svg>
-  <!-- Vertical sparks -->
-  <div class="v-spark vs1"></div><div class="v-spark vs2"></div><div class="v-spark vs3"></div>
-  <div class="v-spark vs4"></div><div class="v-spark vs5"></div><div class="v-spark vs6"></div>
-  <div class="v-spark vs7"></div><div class="v-spark vs8"></div><div class="v-spark vs9"></div><div class="v-spark vs10"></div>
-  <!-- Floating orbs -->
-  <div class="orb o1"></div><div class="orb o2"></div><div class="orb o3"></div>
-  <div class="orb o4"></div><div class="orb o5"></div><div class="orb o6"></div>
+<nav>
+  <a class="brand" href="index.html">
+    <img src="vaydin-icon-mark.png" alt="Vaydin mark">
+    <div class="wordmark">VAYDIN</div>
+  </a>
+  <div class="nav-links">
+    <a href="diagnose.html" style="--chip:rgba(248,113,113,0.35);--chip-hi:#f87171;--chip-bg:rgba(248,113,113,0.08)">Diagnose</a>
+    <a href="fix.html" style="--chip:rgba(232,212,139,0.30);--chip-hi:#e8d48b;--chip-bg:rgba(232,212,139,0.07)">Fix</a>
+    <a href="grow.html" style="--chip:rgba(167,139,250,0.32);--chip-hi:#a78bfa;--chip-bg:rgba(167,139,250,0.08)">Grow</a>
+    <a href="engine.html" style="--chip:rgba(52,227,240,0.30);--chip-hi:#34e3f0;--chip-bg:rgba(52,227,240,0.07)">Engine</a>
+  </div>
+  <div class="nav-right">
+    <div class="nav-contact">
+      <a href="tel:+971505553148">+971 50 555 3148</a>
+      <a href="mailto:hello@vaydin.agency">hello@vaydin.agency</a>
+    </div>
+    <a href="pricing.html" class="nav-cta">Build your plan</a>
+    <button class="nav-burger" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 18 14" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M0 1h18M0 7h18M0 13h18"/></svg></button>
+  </div>
+</nav>
+<script>(function(){var b=document.querySelector(".nav-burger"),l=document.querySelector(".nav-links");if(b&&l){b.addEventListener("click",function(){var o=l.classList.toggle("open");b.setAttribute("aria-expanded",o?"true":"false");});l.addEventListener("click",function(e){if(e.target.tagName==="A"){l.classList.remove("open");b.setAttribute("aria-expanded","false");}});}})();</script>
+
+<header class="hero">
+  <video class="hero-vid" autoplay muted loop playsinline poster="assets/img/hero-map.webp" aria-hidden="true">
+    <source src="assets/video/hero-map.mp4" type="video/mp4">
+  </video>
+  <div class="hero-shade"></div>
+  <div class="hero-pins" id="hero-pins" aria-hidden="true">
+    <canvas class="hero-cv" id="hero-cv"></canvas>
+    <div class="pins-legend">SAMPLE CLINICS · ILLUSTRATION</div>
+  </div>
+  <div class="hero-inner">
+    <div class="hero-panel">
+      <span class="bkc tr"></span><span class="bkc bl"></span>
+      <div class="live-line"><span class="pulse"></span>MEASURING DUBAI CLINICS — LIVE</div>
+      <h1 class="tri-text">Your clinic is losing<br>patients you never saw.<br>We find them.<br>We book them.</h1>
+    </div>
+    <div class="hero-visual" id="hero-visual" aria-label="A patient inquiry that was lost">
+      <div class="phone" id="phone">
+        <div class="ph-rim"></div>
+        <div class="ph-shadow"></div>
+        <div class="ph-fr"><div class="ph-n"></div><div class="ph-s" id="heroChat">
+          <div class="wa-hd"><div class="wa-av">AC</div><div><div class="wa-nm">Sample clinic · Jumeirah</div><div class="wa-st">ILLUSTRATION · last seen 3h ago</div></div></div>
+          <div class="wm wm-i hr-typing hr-step" aria-hidden="true"><span></span><span></span><span></span></div>
+          <div class="wm wm-i hr-step hr-m1">Hi, I'd like to book a consultation for lip filler this week. Do you have Thursday evening?<div class="wm-t">6:48 PM</div></div>
+          <div class="hr-step hr-wait">⏱ 3 hours later...</div>
+          <div class="wm wm-o hr-step hr-m2">Good evening, please call us tomorrow during working hours to book.<div class="wm-t">9:52 PM</div></div>
+          <div class="wm wm-i wm-faded hr-step hr-m3">No worries, I found another clinic. Thanks.<div class="wm-t">9:55 PM</div></div>
+          <div class="hr-step hr-stamp"><span>PATIENT LOST · NEVER SEEN</span></div>
+        </div></div>
+      </div>
+    </div>
+    <a class="scroll-cue" href="#layers" aria-label="Scroll to the story"><span></span>SCROLL</a>
+  </div>
+</header>
+
+<section id="layers">
+  <div class="reveal"><div class="eyebrow">WHAT VAYDIN IS · ONE ENGINE, THREE STEPS</div>
+  <h2 class="grad-text">Three steps. Each one earns the next.</h2>
+  <p class="section-sub">Vaydin is an AI operations partner for aesthetic clinics. We <b>measure</b> everything public about your clinic — how it answers, how it looks on Google and Instagram, and the competition around it. We <b>run</b> what leaks. And the same measurement keeps <b>proving</b> the gain, month after month. Measured, not promised.</p></div>
+
+  <div class="lframes">
+
+    <div class="lframe" id="diagnose" style="--lc:#f87171;--lg:rgba(248,113,113,0.10)">
+      <canvas class="lthunder" id="th-1" width="920" height="430" aria-hidden="true"></canvas>
+      <span class="bk tl"></span><span class="bk tr"></span><span class="bk bl"></span><span class="bk br"></span>
+      <div class="fhead"><span class="fh-step">STEP 01</span><span class="fh-name">DIAGNOSE — THE MYSTERY SHOP</span><span class="fh-live"><span class="dotp"></span>SAMPLE DATA · ILLUSTRATION</span></div>
+      <div class="fbody">
+        <div class="lcopy">
+          <div class="hpanel"><h3>First, we see what your patients see.</h3></div>
+          <p class="lp">A monthly mystery shop of your own clinic, plus a sweep of everything a patient can find — your Google presence, your reviews, your prices, <b>the competitors around you</b> — scored across six dimensions, with evidence for every finding.</p>
+          <div class="ipanel" style="--pc:#fbbf24">
+            <div class="pnl-h">LATEST FINDINGS<span class="pnl-tag">ROTATING · SAMPLE</span></div>
+            <div class="find-line" id="find-line"></div>
+          </div>
+          <a class="enter-field" href="diagnose.html">See what we measure <span class="arr">→</span></a>
+        </div>
+        <div class="linstr"><div class="iglow"></div>
+          <div class="ipanel" style="--pc:#34e3f0">
+            <div class="pnl-h">SCORE RADAR<span class="pnl-tag" id="radar-tag">— /100 SAMPLE</span></div>
+            <div class="irow">
+              <canvas id="mini-radar" width="230" height="230" aria-label="Sample score radar"></canvas>
+              <div class="dimlist" id="dimlist"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="lframe" id="fix" style="--lc:#e8d48b;--lg:rgba(232,212,139,0.08)">
+      <canvas class="lthunder" id="th-2" width="920" height="430" aria-hidden="true"></canvas>
+      <span class="bk tl"></span><span class="bk tr"></span><span class="bk bl"></span><span class="bk br"></span>
+      <div class="fhead"><span class="fh-step">STEP 02</span><span class="fh-name">FIX &amp; RUN — THE ENGINE &amp; THE ESTATE</span><span class="fh-live"><span class="dotp" style="background:#4ade80"></span>ILLUSTRATION — ENGINE RUNNING</span></div>
+      <div class="fbody">
+        <div class="lcopy">
+          <div class="hpanel"><h3>Then we fix it — and run it.</h3></div>
+          <p class="lp">The Vaydin engine takes over your digital front door: every inquiry <b>answered in minutes, booked, reminded, revived</b> — 13 fields, one vendor, your clinic's own voice and number. And nothing runs in the dark: <b>you're notified of what matters</b>, on one dashboard.</p>
+          <div class="ipanel" style="--pc:#4ade80">
+            <div class="pnl-h">LIVE OPERATIONS<span class="pnl-tag">ROTATING · ILLUSTRATION</span></div>
+            <div class="ops" id="ops"></div>
+          </div>
+          <a class="enter-field" href="fix.html">The 13 fields we run <span class="arr">→</span></a>
+        </div>
+        <div class="linstr"><div class="iglow"></div>
+          <div class="ipanel" style="--pc:#34e3f0">
+            <div class="pnl-h">THE ENGINE<span class="pnl-tag">EVERY CHANNEL · ONE SYSTEM</span></div>
+            <canvas id="mini-engine" width="290" height="190" aria-label="The engine, breathing"></canvas>
+          </div>
+          <div class="ipanel" style="--pc:#b9b0a2">
+            <div class="pnl-h">CHANNELS CARRIED</div>
+            <div class="chiprow">
+              <span class="chch" style="--cc:#25D366">WHATSAPP</span>
+              <span class="chch" style="--cc:#E1306C">INSTAGRAM</span>
+              <span class="chch" style="--cc:#4285F4">GOOGLE</span>
+              <span class="chch" style="--cc:#fbbf24">REVIEWS</span>
+              <span class="chch" style="--cc:#60a5fa">EMAIL</span>
+              <span class="chch" style="--cc:#34e3f0">WEBSITE</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="lframe" id="grow" style="--lc:#a78bfa;--lg:rgba(167,139,250,0.09)">
+      <canvas class="lthunder" id="th-3" width="920" height="430" aria-hidden="true"></canvas>
+      <span class="bk tl"></span><span class="bk tr"></span><span class="bk bl"></span><span class="bk br"></span>
+      <div class="fhead"><span class="fh-step">STEP 03</span><span class="fh-name">GROW — DEMAND &amp; PRESENCE</span><span class="fh-live"><span class="dotp"></span>ILLUSTRATION</span></div>
+      <div class="fbody">
+        <div class="lcopy">
+          <div class="hpanel"><h3>Everything fixed? Time to spread.</h3></div>
+          <p class="lp">Once the engine runs your clinic, we pour fuel on it: <b>paid patient demand</b> that lands in a machine built to convert it, and an <b>Instagram presence run like a channel</b> — where your patients actually look. Every dirham counted on the same dashboard.</p>
+          <a class="enter-field" href="grow.html">Demand &amp; presence <span class="arr">→</span></a>
+        </div>
+        <div class="linstr"><div class="iglow"></div>
+          <div class="gpanels">
+            <div class="ipanel" style="--pc:#a78bfa">
+              <div class="pnl-h">PATIENT DEMAND<span class="pnl-tag">SAMPLE</span></div>
+              <div class="gbars" id="gbars"><div class="gbar"></div><div class="gbar"></div><div class="gbar"></div><div class="gbar"></div><div class="gbar"></div><div class="gbar"></div></div>
+              <div class="gcount">CAMPAIGN → INQUIRY → <b>BOOKED, COUNTED</b></div>
+            </div>
+            <div class="ipanel" style="--pc:#E1306C">
+              <div class="pnl-h">INSTAGRAM PRESENCE<span class="pnl-tag">SAMPLE</span></div>
+              <canvas id="igspark" width="230" height="104" aria-label="Reach growing"></canvas>
+              <div class="igline">REACH GROWING · <b>DMs → BOOKINGS</b></div>
+            </div>
+          </div>
+          <div class="runline">RUNS ON TOP OF THE ENGINE — STEP 02 COMES FIRST</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section id="method">
+  <div class="loop-wrap">
+    <div class="reveal">
+      <svg viewBox="0 0 440 440" width="100%" aria-label="The Vaydin loop: diagnose, fix, measure">
+        <defs>
+          <radialGradient id="ember" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#c9a44a" stop-opacity="0.20"/>
+            <stop offset="100%" stop-color="#c9a44a" stop-opacity="0"/>
+          </radialGradient>
+          <marker id="arr" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6" fill="none" stroke="#c9a44a" stroke-width="1.2"/></marker>
+        </defs>
+        <circle cx="220" cy="220" r="150" fill="url(#ember)"/>
+        <g id="loop-ring"><circle cx="220" cy="220" r="150" fill="none" stroke="#8a6d1b" stroke-width="1.2" stroke-dasharray="3 9" opacity="0.7"/></g>
+        <circle r="4" fill="#f5d978">
+          <animateMotion dur="9s" repeatCount="indefinite" path="M 220 70 A 150 150 0 1 1 219.9 70"/>
+        </circle>
+        <circle r="2.5" fill="#34e3f0" opacity="0.9">
+          <animateMotion dur="9s" begin="-4.5s" repeatCount="indefinite" path="M 220 70 A 150 150 0 1 1 219.9 70"/>
+        </circle>
+        <path d="M 266 88 A 150 150 0 0 1 370 250" fill="none" stroke="#8a6d1b" stroke-width="1.5" marker-end="url(#arr)"/>
+        <path d="M 305 330 A 150 150 0 0 1 136 330" fill="none" stroke="#8a6d1b" stroke-width="1.5" marker-end="url(#arr)"/>
+        <path d="M 71 251 A 150 150 0 0 1 175 88" fill="none" stroke="#8a6d1b" stroke-width="1.5" marker-end="url(#arr)"/>
+        <circle cx="220" cy="70" r="47" fill="#161009" stroke="#f87171" stroke-width="1.6"/>
+        <circle cx="90" cy="295" r="47" fill="#161009" stroke="#c9a44a" stroke-width="1.6"/>
+        <circle cx="350" cy="295" r="47" fill="#161009" stroke="#4ade80" stroke-width="1.6"/>
+        <text x="220" y="66" text-anchor="middle" fill="#f87171" font-family="IBM Plex Mono, monospace" font-size="12" letter-spacing="2">DIAGNOSE</text>
+        <text x="220" y="84" text-anchor="middle" fill="#8a7f68" font-family="IBM Plex Mono, monospace" font-size="8" letter-spacing="1">FINDS WHAT LEAKS</text>
+        <text x="90" y="291" text-anchor="middle" fill="#e8d48b" font-family="IBM Plex Mono, monospace" font-size="12" letter-spacing="2">FIX</text>
+        <text x="90" y="309" text-anchor="middle" fill="#8a7f68" font-family="IBM Plex Mono, monospace" font-size="8" letter-spacing="1">VAYDIN OPERATES</text>
+        <text x="350" y="291" text-anchor="middle" fill="#4ade80" font-family="IBM Plex Mono, monospace" font-size="12" letter-spacing="2">MEASURE</text>
+        <text x="350" y="309" text-anchor="middle" fill="#8a7f68" font-family="IBM Plex Mono, monospace" font-size="8" letter-spacing="1">PROVES THE GAIN</text>
+        <text x="220" y="212" text-anchor="middle" fill="#f7f2e7" font-family="Cormorant Garamond, serif" font-size="26">every month</text>
+        <text x="220" y="244" text-anchor="middle" fill="#c9a44a" font-family="Cormorant Garamond, serif" font-size="26" font-style="italic">smarter</text>
+      </svg>
+    </div>
+    <div class="loop-copy reveal">
+      <div class="eyebrow">THE LOOP · WHY THIS WORKS</div>
+      <h2 class="grad-text">The diagnostic never stops.</h2>
+      <p><span class="red">Red finds the leak.</span> <span class="goldtx">Gold fixes and runs it.</span> <span class="green">Green proves the gain.</span> Whatever we fix, next month's mystery shop scores it again — us included — against your own last month and the clinics around you.</p>
+      <p class="kill">Anyone can score your website.<br>We score what your receptionist said to a patient at 9pm.</p>
+    </div>
+  </div>
+</section>
+
+<div class="finale">
+  <video class="fin-vid" muted loop playsinline preload="none" poster="assets/img/hero.webp" aria-hidden="true">
+    <source src="assets/video/hero.mp4" type="video/mp4">
+  </video>
+  <div class="fin-shade"></div>
+  <p class="fin-line">Somewhere in Dubai tonight, a patient is choosing a clinic.<br>Your name is on the list. <em>Vaydin makes sure it's the one that answered.</em></p>
+  <div class="fin-contacts">
+    <a class="fchip" style="--fc:#25D366" href="https://wa.me/971505553148">WhatsApp · +971 50 555 3148</a>
+    <a class="fchip" style="--fc:#e8d48b" href="mailto:hello@vaydin.agency">hello@vaydin.agency</a>
+  </div>
 </div>
 
-<nav id="mainNav"><div class="container">
-  <a href="#hero" class="nav-logo"><img src="vaydin-icon-mark.png" alt=""><span class="nav-logo-name">VAYDIN</span></a>
-  <div class="nav-links"><a href="#how">How It Works</a><a href="#dvr">Intelligence</a><a href="#revenue-engine">Revenue Engine</a><a href="#performance-marketing">Acquisition</a><a href="#operating-system">Operating System</a><a href="#thirty-day">30-Day Difference</a><a href="#contact" class="nav-cta">Free Clinic Score</a></div>
-</div></nav>
+<footer>
+  <div>VAYDIN PARTNERS INVESTMENTS — FZCO · Licensed under IFZA, Dubai Silicon Oasis</div>
+  <div>The diagnostic sells the engine. The engine earns the fuel.</div>
+  <div><a href="/privacy/">Privacy</a> · <a href="/terms/">Terms</a> · <a href="/data-deletion/">Data deletion</a></div>
+</footer>
 
-<section class="hero" id="hero">
-  <div class="container">
-    <div class="hero-grid">
-      <div class="hero-content">
-        <div class="hbadge">Dubai Aesthetic Clinics</div>
-        <h1>Your clinic is losing<br>patients <em>right now</em></h1>
-        <p class="hero-desc">Slow WhatsApp replies. No booking link. Every unanswered inquiry is revenue walking out the door. We built the operating system that fixes it — diagnostic-led, operated by us, built for the way patients book in Dubai.</p>
-        <a href="#contact" class="cta-btn"><span>Get Your Free Clinic Score</span><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg></a>
-      </div>
-      <div class="hero-visual"><div class="phone pf1" style="width:300px"><div class="ph-fr"><div class="ph-n"></div><div class="ph-s" id="heroChat" style="min-height:400px">
-        <div class="wa-hd"><div class="wa-av">LC</div><div><div class="wa-nm">Luxury Clinic Dubai</div><div class="wa-st">last seen 4h ago</div></div></div>
-        <div class="wm wm-i hr-typing hr-step" aria-hidden="true"><span></span><span></span><span></span></div>
-        <div class="wm wm-i hr-step hr-m1">Hi! I'm interested in Botox. How much does it cost and do you have availability this week?<div class="wm-t">10:22 AM</div></div>
-        <div class="hr-step hr-wait" style="text-align:center;font-size:11px;color:#f87171;padding:5px 10px;background:rgba(248,113,113,.08);border-radius:100px;display:inline-block;margin:6px auto;width:fit-content">⏱ 4 hours later...</div>
-        <div class="wm wm-o hr-step hr-m2">Hello, thank you for reaching out. Prices depend on the area. Please visit our clinic for a consultation.<div class="wm-t">2:17 PM</div></div>
-        <div class="wm wm-i wm-faded hr-step hr-m3">I already booked somewhere else. Thanks.<div class="wm-t">2:19 PM</div></div>
-        <div class="hr-step hr-stamp" style="text-align:center;margin-top:10px"><span style="font-size:11px;color:#f87171;background:rgba(248,113,113,.1);padding:4px 12px;border-radius:100px;display:inline-block">💸 AED 800+ lost</span></div>
-      </div></div></div></div>
-    </div>
-    <div class="stats-row">
-      <div class="sc"><div class="sc-n">67%</div><div class="sc-l">of clinics reply after 1 hour</div></div>
-      <div class="sc"><div class="sc-n">42%</div><div class="sc-l">of inquiries never get a reply</div></div>
-      <div class="sc"><div class="sc-n">3 min</div><div class="sc-l">is all it takes to lose a patient</div></div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════════════════════════════════════
-     HOW VAYDIN WORKS — 5-layer narrative walkthrough
-     Replaces the old video section (2026-05-04). Tells the same story
-     the script narrates: reframe → 5 layers → close. Scroll-reveals
-     each layer. L1 absorbs the 4 audit categories that used to live
-     under the video.
-     ═══════════════════════════════════════════════════════════════ -->
-<style>
-.story{padding:120px 0;position:relative;overflow:hidden}
-.story::before{
-  content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);
-  width:80%;max-width:900px;height:1px;
-  background:linear-gradient(90deg,transparent,rgba(201,164,74,.3),transparent);
-}
-.story::after{
-  content:'';position:absolute;inset:0;pointer-events:none;
-  background:radial-gradient(ellipse at 50% 30%,rgba(201,164,74,.04) 0%,transparent 60%);
-}
-
-.story-hd{text-align:center;max-width:760px;margin:0 auto 88px;position:relative;z-index:2}
-.story-hd .ss{margin:0 auto}
-.story-hd .st em{
-  font-style:normal;
-  background:linear-gradient(135deg,var(--gl),var(--gold),var(--gd));
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
-}
-
-.story-stack{
-  position:relative;max-width:980px;margin:0 auto;
-  display:flex;flex-direction:column;gap:32px;
-  z-index:2;
-}
-/* Vertical thread connecting layers */
-.story-stack::before{
-  content:'';position:absolute;left:48px;top:0;bottom:0;width:1px;
-  background:linear-gradient(180deg,
-    transparent 0%,
-    rgba(201,164,74,.3) 12%,
-    rgba(201,164,74,.5) 50%,
-    rgba(201,164,74,.3) 88%,
-    transparent 100%);
-}
-
-.story-layer{
-  position:relative;display:grid;grid-template-columns:96px 1fr;gap:32px;
-  padding:32px 40px 32px 0;
-  opacity:0;transform:translateY(30px);
-  transition:opacity .9s cubic-bezier(.22,1,.36,1),transform .9s cubic-bezier(.22,1,.36,1);
-}
-.story-layer.in-view{opacity:1;transform:translateY(0)}
-.story-layer:nth-child(2){transition-delay:.08s}
-.story-layer:nth-child(3){transition-delay:.16s}
-.story-layer:nth-child(4){transition-delay:.24s}
-
-.story-num{
-  position:relative;z-index:2;
-  width:96px;display:flex;align-items:flex-start;justify-content:center;padding-top:6px;
-}
-.story-num-inner{
-  font-family:var(--fd);font-size:34px;font-weight:500;
-  color:var(--gold);letter-spacing:1px;
-  font-feature-settings:"lnum","tnum";
-  background:var(--bg);padding:0 14px;
-  text-shadow:0 0 24px rgba(201,164,74,.3);
-}
-.story-layer.in-view .story-num-inner{
-  animation:storyNumGlow 1.4s cubic-bezier(.22,1,.36,1) .2s both;
-}
-@keyframes storyNumGlow{
-  0%{text-shadow:0 0 12px rgba(201,164,74,.1)}
-  50%{text-shadow:0 0 36px rgba(201,164,74,.55),0 0 60px rgba(201,164,74,.25)}
-  100%{text-shadow:0 0 24px rgba(201,164,74,.3)}
-}
-
-.story-body{position:relative}
-.story-pill{
-  display:inline-block;
-  font-size:11px;letter-spacing:2.5px;text-transform:uppercase;font-weight:600;
-  color:var(--gold);margin-bottom:14px;
-  padding:5px 12px;border-radius:24px;
-  background:rgba(201,164,74,.08);border:1px solid rgba(201,164,74,.2);
-}
-.story-h{
-  font-family:var(--fd);font-size:clamp(22px,3vw,30px);font-weight:300;line-height:1.25;
-  color:var(--tx);margin-bottom:14px;
-}
-.story-h em{
-  font-style:normal;
-  background:linear-gradient(135deg,var(--gl),var(--gold));
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
-}
-.story-d{
-  font-size:15px;line-height:1.7;color:var(--tx2);margin-bottom:18px;
-}
-.story-out{
-  font-size:13px;letter-spacing:.5px;color:var(--gl);
-  padding:12px 16px;
-  background:rgba(201,164,74,.05);
-  border-left:2px solid var(--gold);
-  border-radius:3px;
-}
-.story-audit{
-  display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px;
-}
-.story-audit span{
-  font-size:11px;letter-spacing:1.5px;text-transform:uppercase;font-weight:600;
-  padding:6px 12px;border-radius:4px;
-  color:var(--tx2);
-  background:rgba(201,164,74,.06);
-  border:1px solid rgba(201,164,74,.15);
-}
-
-.story-close{
-  max-width:760px;margin:88px auto 0;text-align:center;
-  position:relative;z-index:2;
-  padding:48px 32px 0;
-  border-top:1px solid rgba(201,164,74,.18);
-}
-.story-close-h{
-  font-family:var(--fd);font-size:clamp(22px,2.8vw,32px);font-weight:300;line-height:1.4;
-  color:var(--tx);
-}
-.story-close-h em{
-  font-style:normal;
-  background:linear-gradient(135deg,var(--gl),var(--gold),var(--gd));
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
-}
-@media (max-width:820px){
-  .story{padding:80px 0}
-  .story-hd{margin-bottom:64px}
-  .story-stack{gap:24px}
-  .story-stack::before{left:28px}
-  .story-layer{grid-template-columns:56px 1fr;gap:18px;padding:24px 4px 24px 0}
-  .story-num{width:56px}
-  .story-num-inner{font-size:24px;padding:0 8px}
-  .story-h{font-size:21px}
-  .story-d{font-size:14.5px}
-  .story-close{margin-top:64px;padding:36px 16px 0}
-}
-</style>
-
-<section class="story" id="story">
-  <div class="container">
-    <div class="story-hd">
-      <div class="sl">How Vaydin Works</div>
-      <h2 class="st">Diagnose. <em>Heal. Grow.</em></h2>
-      <p class="ss">You don't have a marketing problem. You have an operating system problem. Five layers fix it.</p>
-    </div>
-
-    <div class="story-stack">
-
-      <article class="story-layer" data-story>
-        <div class="story-num"><span class="story-num-inner">L1</span></div>
-        <div class="story-body">
-          <span class="story-pill">Intelligence</span>
-          <h3 class="story-h">First, we <em>diagnose.</em></h3>
-          <p class="story-d">Vaydin Intelligence mystery-shops your clinic the way a real patient would. We measure your reply speed, your booking flow, your reviews — and hand you the numbers.</p>
-          <div class="story-audit">
-            <span>WhatsApp Response</span>
-            <span>Google Maps Presence</span>
-            <span>Instagram Audit</span>
-            <span>Website Experience</span>
-          </div>
-          <div class="story-out">Now you know exactly where you're leaking.</div>
-        </div>
-      </article>
-
-      <article class="story-layer" data-story>
-        <div class="story-num"><span class="story-num-inner">L2</span></div>
-        <div class="story-body">
-          <span class="story-pill">Revenue Engine</span>
-          <h3 class="story-h">Then we <em>install the fixes.</em></h3>
-          <p class="story-d">Vaydin Revenue Engine is seven operational components built into your clinic — not a strategy deck, not a checklist. We log into your tools, deploy the response bot on your number, integrate your booking system, write the consult-conversion playbook your team uses every day, and run the dashboard that shows the math working week one.</p>
-          <div class="story-audit">
-            <span>Response Bot</span>
-            <span>Booking Sync</span>
-            <span>Consult Conversion</span>
-            <span>Show-Up Optimization</span>
-            <span>Dormant Recovery</span>
-            <span>KPI Dashboard</span>
-            <span>Cross-Sell</span>
-          </div>
-          <div class="story-out">Seven components. One installation. Operated by us — not advised, installed.</div>
-        </div>
-      </article>
-
-      <article class="story-layer" data-story>
-        <div class="story-num"><span class="story-num-inner">L3</span></div>
-        <div class="story-body">
-          <span class="story-pill">Acquisition Engine</span>
-          <h3 class="story-h">When the system is tight, we <em>scale the volume.</em></h3>
-          <p class="story-d">Performance marketing built for MENA, not borrowed from a Western playbook. Arabic creative variants. WhatsApp-deeplink ads that send leads straight into the response bot. Attribution that traces every dirham of ad spend to the treatment that actually booked. We generate 20-30 ad variants per week, kill the losers in 72 hours, scale the winners — built on YOUR Revenue Engine conversion data, not blind targeting.</p>
-          <div class="story-audit">
-            <span>AI Creative</span>
-            <span>Arabic Variants</span>
-            <span>WhatsApp Deeplinks</span>
-            <span>72h Kill Cycles</span>
-            <span>Treatment-level Attribution</span>
-          </div>
-          <div class="story-out">Every dirham tracked to a treatment booked.</div>
-        </div>
-      </article>
-
-      <article class="story-layer" data-story>
-        <div class="story-num"><span class="story-num-inner">L4·5</span></div>
-        <div class="story-body">
-          <span class="story-pill">Cross-Vertical · Geographic</span>
-          <h3 class="story-h">Same engine, <em>more verticals — and more borders.</em></h3>
-          <p class="story-d">Aesthetic clinics first. Premium retail and adjacent appointment-based services next. From Dubai to Saudi to Egypt — built for the languages, payment rails, and patient flows that exist here, not somewhere else.</p>
-        </div>
-      </article>
-
-    </div>
-
-    <div class="story-close">
-      <h3 class="story-close-h">It all starts with one diagnostic.<br><em>Watch it in action.</em></h3>
-    </div>
-
-  </div>
-</section>
-
-<!-- ═══ MAGNETIC DIVIDER ═══ -->
-<div class="mag-div" data-mag>
-  <div class="mag-wire mag-wire-l"></div><div class="mag-wire mag-wire-r"></div>
-  <div class="mag-field"><div class="mag-ring mr1"></div><div class="mag-ring mr2"></div><div class="mag-ring mr3"></div><div class="mag-ring mr4"></div><div class="mag-ring mr5"></div></div>
-  <div class="mag-node"></div>
-  <div class="spark-p sp1"></div><div class="spark-p sp2"></div><div class="spark-p sp3"></div><div class="spark-p sp4"></div><div class="spark-p sp5"></div><div class="spark-p sp6"></div>
-</div>
-
-<section class="how" id="how"><div class="container">
-  <div class="how-hd"><div class="sl">How It Works</div><h2 class="st">The conversation that costs<br>you thousands</h2><p class="ss">We audit your clinic the way a real patient would. Here's what we usually find.</p></div>
-  <div class="cg">
-    <div class="cc cc-b">
-      <div class="ct ct-b"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg> What We Find</div>
-      <div class="ctt">The average clinic reply</div>
-      <div class="cs"><div class="cb cb-i">Hi, how much is Botox for forehead lines? Do you have any slots this Thursday?</div><div class="ctb">⏱ 4 hours 12 minutes later</div><div class="cb cb-o">Hello dear. Thank you for your message. The price depends on the units needed. Please come in for a consultation.</div></div>
-      <div class="rs rs-b"><span>✗</span><span>No price · No booking link · No urgency · Patient gone</span></div>
-    </div>
-    <div class="vs"><div class="vsb">VS</div></div>
-    <div class="cc cc-g">
-      <div class="ct ct-g"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M9 12l2 2 4-4"/></svg> What It Should Look Like</div>
-      <div class="ctt">A revenue-ready reply</div>
-      <div class="cs"><div class="cb cb-i">Hi, how much is Botox for forehead lines? Do you have any slots this Thursday?</div><div class="ctg">⚡ 47 seconds later</div><div class="cb cb-o">Hi! 👋 Forehead Botox starts from AED 750 (15-20 units). We have 2 slots Thursday — 11AM and 3PM. Want me to lock one in? 🔗</div></div>
-      <div class="rs rs-g"><span>✓</span><span>Price given · Slots offered · Booking link · Patient booked</span></div>
-    </div>
-  </div>
-</div></section>
-
-<div class="mag-div" data-mag><div class="mag-wire mag-wire-l"></div><div class="mag-wire mag-wire-r"></div><div class="mag-field"><div class="mag-ring mr1"></div><div class="mag-ring mr2"></div><div class="mag-ring mr3"></div><div class="mag-ring mr4"></div><div class="mag-ring mr5"></div></div><div class="mag-node"></div><div class="spark-p sp1"></div><div class="spark-p sp2"></div><div class="spark-p sp3"></div><div class="spark-p sp4"></div><div class="spark-p sp5"></div><div class="spark-p sp6"></div></div>
-
-<section class="dvr" id="dvr"><div class="container">
-  <div class="dvr-hd"><div class="sl">Vaydin Intelligence</div><h2 class="st">Know exactly where you stand</h2><p class="ss">The Morning Pulse for your clinic. We audit your team's performance every month, track your digital presence daily, and benchmark you against real Dubai clinics. Always live data — never guesswork.</p></div>
-  <div class="dvr-g">
-
-    <div class="dvr-col">
-      <div class="dvr-lb dvr-lb-b">✗ Without Vaydin</div>
-      <div class="dvr-ph">
-        <div class="phone pf2 ph-sm"><div class="ph-fr"><div class="ph-n"></div><div class="ph-s" style="min-height:440px">
-          <div class="wa-hd"><div class="wa-av" style="background:#2a2a2a;color:#444">?</div><div><div class="wa-nm" style="opacity:.4">Your Clinic</div><div class="wa-st" style="color:#444">offline · no data</div></div></div>
-
-          <!-- Broken gauge -->
-          <div class="dash-gauge dash-gauge-empty">
-            <svg viewBox="0 0 88 88" width="88" height="88">
-              <circle cx="44" cy="44" r="36" fill="none" stroke="#1a1a1a" stroke-width="6"/>
-              <circle cx="44" cy="44" r="36" fill="none" stroke="#222" stroke-width="6" stroke-dasharray="3 5"/>
-            </svg>
-            <div class="dash-gauge-c">
-              <div class="dash-gauge-n" style="color:#3a3a3a">??</div>
-              <div class="dash-gauge-l" style="color:#333">/ 100</div>
-            </div>
-          </div>
-
-          <!-- Empty dimension bars -->
-          <div class="dash-dims">
-            <div class="dash-dim"><span style="color:#333">Staff</span><div class="dash-bar"><div class="dash-bar-f" style="width:0;background:#222"></div></div></div>
-            <div class="dash-dim"><span style="color:#333">Marketing</span><div class="dash-bar"><div class="dash-bar-f" style="width:0;background:#222"></div></div></div>
-            <div class="dash-dim"><span style="color:#333">Booking</span><div class="dash-bar"><div class="dash-bar-f" style="width:0;background:#222"></div></div></div>
-            <div class="dash-dim"><span style="color:#333">Reputation</span><div class="dash-bar"><div class="dash-bar-f" style="width:0;background:#222"></div></div></div>
-            <div class="dash-dim"><span style="color:#333">Competition</span><div class="dash-bar"><div class="dash-bar-f" style="width:0;background:#222"></div></div></div>
-            <div class="dash-dim"><span style="color:#333">Ops Maturity</span><div class="dash-bar"><div class="dash-bar-f" style="width:0;background:#222"></div></div></div>
-          </div>
-
-          <div style="text-align:center;margin-top:14px;padding-top:10px;border-top:1px dashed rgba(248,113,113,.15)">
-            <span style="font-size:10px;color:#f87171;background:rgba(248,113,113,.08);padding:4px 12px;border-radius:100px;letter-spacing:.5px">Flying blind</span>
-          </div>
-        </div></div></div>
-      </div>
-    </div>
-
-    <div class="dvr-col">
-      <div class="dvr-lb dvr-lb-g">✓ With Vaydin Intelligence</div>
-      <div class="dvr-ph dvr-ph-rich">
-        <div class="phone pf3 ph-sm"><div class="ph-fr"><div class="ph-n"></div><div class="ph-s" style="min-height:440px">
-          <div class="wa-hd"><div class="wa-av">V</div><div><div class="wa-nm">Vaydin Intelligence</div><div class="wa-st" style="color:var(--grn)">● Pulse delivered · 6:14 AM</div></div></div>
-
-          <!-- Live gauge -->
-          <div class="dash-gauge">
-            <svg viewBox="0 0 88 88" width="88" height="88">
-              <defs>
-                <linearGradient id="gaugeGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-                  <stop offset="0%" stop-color="#f87171"/>
-                  <stop offset="60%" stop-color="#c9a44a"/>
-                  <stop offset="100%" stop-color="#e8d48b"/>
-                </linearGradient>
-              </defs>
-              <circle cx="44" cy="44" r="36" fill="none" stroke="rgba(201,164,74,.12)" stroke-width="6"/>
-              <circle id="dvrArc" cx="44" cy="44" r="36" fill="none" stroke="url(#gaugeGrad)" stroke-width="6" stroke-linecap="round" stroke-dasharray="226.2" stroke-dashoffset="149.3" transform="rotate(-90 44 44)"/>
-            </svg>
-            <div class="dash-gauge-c">
-              <div class="dash-gauge-n">34</div>
-              <div class="dash-gauge-l">/ 100</div>
-            </div>
-            <div class="dash-gauge-side">
-              <div class="dash-trend dash-trend-d">▼ 8</div>
-              <div class="dash-trend-l">vs last month</div>
-            </div>
-          </div>
-
-          <!-- Live dimension bars -->
-          <div class="dash-dims">
-            <div class="dash-dim"><span>Staff</span><div class="dash-bar"><div class="dash-bar-f" style="width:42%"></div></div><b class="dash-dim-n">42</b></div>
-            <div class="dash-dim"><span>Marketing</span><div class="dash-bar"><div class="dash-bar-f" style="width:28%"></div></div><b class="dash-dim-n">28</b></div>
-            <div class="dash-dim"><span>Booking</span><div class="dash-bar"><div class="dash-bar-f" style="width:18%;background:linear-gradient(90deg,#f87171,#c9a44a)"></div></div><b class="dash-dim-n" style="color:#f87171">18</b></div>
-            <div class="dash-dim"><span>Reputation</span><div class="dash-bar"><div class="dash-bar-f" style="width:74%;background:linear-gradient(90deg,#c9a44a,#4ade80)"></div></div><b class="dash-dim-n" style="color:#4ade80">74</b></div>
-            <div class="dash-dim"><span>Competition</span><div class="dash-bar"><div class="dash-bar-f" style="width:31%"></div></div><b class="dash-dim-n">31</b></div>
-            <div class="dash-dim"><span>Ops Maturity</span><div class="dash-bar"><div class="dash-bar-f" style="width:38%"></div></div><b class="dash-dim-n">38</b></div>
-          </div>
-
-          <!-- Top-priority action -->
-          <div class="dash-action">
-            <div class="dash-action-tag">PRIORITY ACTION</div>
-            <div class="dash-action-h">Add booking link to bio</div>
-            <div class="dash-action-d">Recovers ~AED 12,400/mo lost to friction</div>
-          </div>
-        </div></div></div>
-
-        <!-- Floating insight badges -->
-        <div class="dash-badge dash-badge-tr">
-          <div class="dash-badge-l">Recoverable</div>
-          <div class="dash-badge-v"><span style="color:var(--grn)">+</span>AED 24,800<span class="dash-badge-u">/mo</span></div>
-        </div>
-        <div class="dash-badge dash-badge-bl">
-          <div class="dash-badge-l">Marina rank</div>
-          <div class="dash-badge-v">#11<span class="dash-badge-u"> of 47</span></div>
-        </div>
-      </div>
-    </div>
-
-  </div>
-
-  <div class="vi-pricing-wrap">
-    <div class="dvr-inf di-i vi-pricing">
-      <div class="dvr-tg dvr-tp">Founding Clients — limited spots</div>
-      <div class="dvr-nm">Vaydin Intelligence</div>
-      <div class="dvr-pr">From 1,500 <span>AED / month · months 1–3</span></div>
-      <div class="dvr-per">Then AED 2,500/month locked. One product. Everything included.</div>
-      <ul class="dvr-ft">
-        <li><span class="dvr-ck">✦</span> Morning Pulse dashboard — live clinic health every day you log in</li>
-        <li><span class="dvr-ck">✦</span> Monthly anonymous patient audit — unannounced, every month</li>
-        <li><span class="dvr-ck">✦</span> Staff Performance grades — data you can use in one-to-ones</li>
-        <li><span class="dvr-ck">✦</span> Instagram + Google Maps tracking — done for you, monthly</li>
-        <li><span class="dvr-ck">✦</span> Competitor benchmarking — your rank vs nearby Dubai clinics</li>
-        <li><span class="dvr-ck">✦</span> Action items with AED impact — upgrade to Revenue Engine and we install the fixes</li>
-      </ul>
-      <a href="#contact" class="dvr-bt dvr-bg">Book your first audit</a>
-    </div>
-    <div class="vi-layer2">
-      <strong>Then Revenue Engine installs the fixes.</strong> Intelligence diagnoses monthly · Revenue Engine rebuilds the lifecycle. One unified installation. <a href="#revenue-engine">See Revenue Engine →</a>
-    </div>
-  </div>
-</div></section>
-
-<div class="mag-div" data-mag><div class="mag-wire mag-wire-l"></div><div class="mag-wire mag-wire-r"></div><div class="mag-field"><div class="mag-ring mr1"></div><div class="mag-ring mr2"></div><div class="mag-ring mr3"></div><div class="mag-ring mr4"></div><div class="mag-ring mr5"></div></div><div class="mag-node"></div><div class="spark-p sp1"></div><div class="spark-p sp2"></div><div class="spark-p sp3"></div><div class="spark-p sp4"></div><div class="spark-p sp5"></div><div class="spark-p sp6"></div></div>
-
-<section class="why" id="why-vaydin"><div class="container">
-  <div class="why-hd">
-    <div class="sl">The Vaydin Difference</div>
-    <h2 class="st">We are not a marketing agency.</h2>
-    <p class="ss">Four reasons Dubai clinic owners switch from traditional agencies to Vaydin.</p>
-  </div>
-  <div class="why-grid">
-
-    <div class="why-card">
-      <div class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7" stroke-linecap="round"/><path d="m20 20-3-3" stroke-linecap="round"/></svg></div>
-      <h3 class="why-title">Diagnostic, not pitch deck</h3>
-      <div class="why-compare">
-        <div class="why-side why-old"><span class="why-tag why-tag-old">Traditional Agency</span><p>Sells you a retainer based on a slide deck and "case studies" that never quite match your clinic.</p></div>
-        <div class="why-side why-new"><span class="why-tag why-tag-new">Vaydin</span><p>Mystery-shops your clinic first. Hands you real leakage numbers before we ever quote a price.</p></div>
-      </div>
-    </div>
-
-    <div class="why-card">
-      <div class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2v4m0 12v4m10-10h-4M6 12H2m15.07-7.07-2.83 2.83M9.76 14.24l-2.83 2.83m0-10.14 2.83 2.83m4.48 4.48 2.83 2.83" stroke-linecap="round"/><circle cx="12" cy="12" r="3"/></svg></div>
-      <h3 class="why-title">Always-on intelligence engine</h3>
-      <div class="why-compare">
-        <div class="why-side why-old"><span class="why-tag why-tag-old">Traditional Agency</span><p>Monthly report written by a human account manager, usually 5 days late.</p></div>
-        <div class="why-side why-new"><span class="why-tag why-tag-new">Vaydin</span><p>AI intelligence engine monitors your clinic daily. Monthly audit, daily pulse, dashboard live 24/7 — even on Sundays.</p></div>
-      </div>
-    </div>
-
-    <div class="why-card">
-      <div class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 12h18M3 6h18M3 18h18" stroke-linecap="round"/><circle cx="15" cy="6" r="1.5" fill="currentColor"/><circle cx="9" cy="12" r="1.5" fill="currentColor"/><circle cx="18" cy="18" r="1.5" fill="currentColor"/></svg></div>
-      <h3 class="why-title">Dubai-real, not industry-average</h3>
-      <div class="why-compare">
-        <div class="why-side why-old"><span class="why-tag why-tag-old">Traditional Agency</span><p>Quotes you "industry benchmarks" scraped from US or UK data that doesn't apply in Dubai.</p></div>
-        <div class="why-side why-new"><span class="why-tag why-tag-new">Vaydin</span><p>Shows where you rank among Dubai clinics we've actually mystery-shopped. Real numbers, your neighbourhood.</p></div>
-      </div>
-    </div>
-
-    <div class="why-card">
-      <div class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M8 10h8M8 14h5" stroke-linecap="round"/></svg></div>
-      <h3 class="why-title">Transparent projections</h3>
-      <div class="why-compare">
-        <div class="why-side why-old"><span class="why-tag why-tag-old">Traditional Agency</span><p>Promises "3x ROI" without showing the math or explaining the assumptions.</p></div>
-        <div class="why-side why-new"><span class="why-tag why-tag-new">Vaydin</span><p>Every projection labeled ESTIMATED. Every number has its source. You see exactly how we got the figure.</p></div>
-      </div>
-    </div>
-
-  </div>
-</div></section>
-
-<div class="mag-div" data-mag><div class="mag-wire mag-wire-l"></div><div class="mag-wire mag-wire-r"></div><div class="mag-field"><div class="mag-ring mr1"></div><div class="mag-ring mr2"></div><div class="mag-ring mr3"></div><div class="mag-ring mr4"></div><div class="mag-ring mr5"></div></div><div class="mag-node"></div><div class="spark-p sp1"></div><div class="spark-p sp2"></div><div class="spark-p sp3"></div><div class="spark-p sp4"></div><div class="spark-p sp5"></div><div class="spark-p sp6"></div></div>
-
-<section class="re" id="revenue-engine"><div class="container">
-  <div class="re-hd">
-    <div class="sl">Vaydin Revenue Engine</div>
-    <h2 class="st">Intelligence finds the gaps. We install the fixes.</h2>
-    <p class="ss">One unified installation. Seven components. Intelligence dashboard included — no stacking, no separate invoices.</p>
-  </div>
-
-  <div class="re-hero">
-    <div class="re-pill">Layer 2 · Installed Infrastructure</div>
-
-    <div class="re-grid">
-      <div class="re-left">
-        <div class="re-price-main">
-          <div class="re-price-setup">
-            <span class="re-price-small">One-time setup</span>
-            <span class="re-price-big"><span class="re-aed">AED</span>15,000</span>
-          </div>
-          <div class="re-price-sep">+</div>
-          <div class="re-price-monthly">
-            <span class="re-price-small">Per month</span>
-            <span class="re-price-big"><span class="re-aed">AED</span>20,000</span>
-          </div>
-        </div>
-
-        <div class="re-included">
-          <span class="re-included-dot"></span>
-          <span><strong>Intelligence dashboard included.</strong> No stacking, no separate invoice.</span>
-        </div>
-
-        <a href="#contact" class="re-cta">
-          <span>Talk to us about Revenue Engine</span>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </a>
-
-        <div class="re-rates">
-          <div class="re-rate">
-            <div class="re-rate-label">Founding Rate</div>
-            <div class="re-rate-val">AED 10k + 15k/mo</div>
-            <div class="re-rate-note">First 2 clinics · 6 months</div>
-          </div>
-          <div class="re-rate">
-            <div class="re-rate-label">Annual Commit</div>
-            <div class="re-rate-val">AED 18k / month</div>
-            <div class="re-rate-note">12-month contract</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="re-right">
-        <div class="re-components-hd">Seven installed components</div>
-        <div class="re-components">
-          <div class="re-comp re-comp-included"><div class="re-comp-num">00</div><div class="re-comp-body"><div class="re-comp-title">Vaydin Intelligence Dashboard</div><div class="re-comp-status">Already included ✦</div></div></div>
-          <div class="re-comp"><div class="re-comp-num">01</div><div class="re-comp-body"><div class="re-comp-title">Revenue Intake &amp; Qualification architecture</div></div></div>
-          <div class="re-comp"><div class="re-comp-num">02</div><div class="re-comp-body"><div class="re-comp-title">Booking system integration (Zenoti, Fresha, Cliniko, Phorest)</div></div></div>
-          <div class="re-comp"><div class="re-comp-num">03</div><div class="re-comp-body"><div class="re-comp-title">Consultation conversion engine</div></div></div>
-          <div class="re-comp"><div class="re-comp-num">04</div><div class="re-comp-body"><div class="re-comp-title">Show-up optimization &amp; reminder flows</div></div></div>
-          <div class="re-comp"><div class="re-comp-num">05</div><div class="re-comp-body"><div class="re-comp-title">Dormant patient recovery</div></div></div>
-          <div class="re-comp"><div class="re-comp-num">06</div><div class="re-comp-body"><div class="re-comp-title">Executive KPI dashboard</div></div></div>
-          <div class="re-comp"><div class="re-comp-num">07</div><div class="re-comp-body"><div class="re-comp-title">Cross-sell &amp; upsell framework</div></div></div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="re-fnote">*Founding pricing only for first 2 Revenue Engine clients. Standard pricing applies thereafter.</div>
-</div></section>
-
-<div class="mag-div" data-mag><div class="mag-wire mag-wire-l"></div><div class="mag-wire mag-wire-r"></div><div class="mag-field"><div class="mag-ring mr1"></div><div class="mag-ring mr2"></div><div class="mag-ring mr3"></div><div class="mag-ring mr4"></div><div class="mag-ring mr5"></div></div><div class="mag-node"></div><div class="spark-p sp1"></div><div class="spark-p sp2"></div><div class="spark-p sp3"></div><div class="spark-p sp4"></div><div class="spark-p sp5"></div><div class="spark-p sp6"></div></div>
-
-<!-- ═══════════════════════════════════════════════════════════════
-     PERFORMANCE MARKETING — Layer 3
-     Acquisition built for MENA. Capability-level pitch.
-     ═══════════════════════════════════════════════════════════════ -->
-<style>
-.pm{padding:120px 0;position:relative;overflow:hidden}
-.pm::before{
-  content:'';position:absolute;inset:0;
-  background:radial-gradient(ellipse at 70% 30%,rgba(201,164,74,.05) 0%,transparent 60%);
-  pointer-events:none;
-}
-.pm-hd{text-align:center;max-width:760px;margin:0 auto 72px;position:relative;z-index:2}
-.pm-hd .ss{margin:0 auto}
-.pm-pill{
-  display:inline-flex;align-items:center;gap:10px;
-  padding:8px 18px;border-radius:24px;
-  background:linear-gradient(135deg,rgba(201,164,74,.10),rgba(138,109,27,.10));
-  border:1px solid rgba(201,164,74,.25);
-  margin-bottom:24px;
-  font-size:11px;letter-spacing:2.5px;text-transform:uppercase;font-weight:600;color:var(--gl);
-}
-.pm-pill::before{
-  content:'';width:6px;height:6px;border-radius:50%;background:var(--gold);
-  box-shadow:0 0 8px var(--gold),0 0 16px rgba(201,164,74,.5);
-}
-.pm-grid{
-  display:grid;grid-template-columns:1fr 1fr;gap:24px;
-  max-width:1080px;margin:0 auto;
-  position:relative;z-index:2;
-}
-.pm-card{
-  position:relative;padding:40px 36px 36px;
-  background:linear-gradient(180deg,rgba(20,18,12,.6) 0%,rgba(12,11,8,.6) 100%);
-  border:1px solid rgba(201,164,74,.18);
-  border-radius:14px;
-  transition:transform .4s cubic-bezier(.22,1,.36,1),border-color .4s,box-shadow .4s;
-  overflow:hidden;
-}
-.pm-card::before{
-  content:'';position:absolute;top:0;left:0;right:0;height:1px;
-  background:linear-gradient(90deg,transparent,rgba(201,164,74,.5),transparent);
-  opacity:0;transition:opacity .4s;
-}
-.pm-card:hover{
-  transform:translateY(-4px);
-  border-color:rgba(201,164,74,.4);
-  box-shadow:0 20px 60px -20px rgba(201,164,74,.18),0 0 0 1px rgba(201,164,74,.08) inset;
-}
-.pm-card:hover::before{opacity:1}
-.pm-card-num{
-  font-family:var(--fd);font-size:14px;font-weight:500;letter-spacing:3px;
-  color:var(--gold);margin-bottom:18px;
-  display:flex;align-items:center;gap:12px;
-  font-feature-settings:"lnum","tnum";
-}
-.pm-card-num::after{
-  content:'';flex:1;height:1px;
-  background:linear-gradient(90deg,rgba(201,164,74,.3) 0%,transparent 100%);
-}
-.pm-card-h{
-  font-family:var(--fd);font-size:24px;font-weight:400;line-height:1.25;
-  color:var(--tx);margin-bottom:14px;
-}
-.pm-card-h em{
-  font-style:normal;
-  background:linear-gradient(135deg,var(--gl),var(--gold));
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
-}
-.pm-card-d{
-  font-size:14.5px;line-height:1.65;color:var(--tx2);margin-bottom:22px;
-}
-.pm-card-tags{
-  display:flex;flex-wrap:wrap;gap:8px;
-}
-.pm-tag{
-  font-size:10.5px;letter-spacing:1.5px;text-transform:uppercase;font-weight:600;
-  padding:6px 12px;border-radius:4px;
-  color:var(--tx2);
-  background:rgba(201,164,74,.06);
-  border:1px solid rgba(201,164,74,.15);
-}
-
-.pm-moat{
-  max-width:780px;margin:80px auto 0;text-align:center;
-  position:relative;z-index:2;
-  padding:48px 32px;
-  border-top:1px solid rgba(201,164,74,.18);
-}
-.pm-moat-h{
-  font-family:var(--fd);font-size:clamp(22px,2.8vw,32px);font-weight:300;line-height:1.35;
-  color:var(--tx);margin-bottom:18px;
-}
-.pm-moat-h em{
-  font-style:normal;
-  background:linear-gradient(135deg,var(--gl),var(--gold),var(--gd));
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
-}
-.pm-moat-d{
-  font-size:14px;line-height:1.7;color:var(--tx2);max-width:620px;margin:0 auto;
-}
-.pm-moat-meta{
-  margin-top:24px;
-  font-size:11px;letter-spacing:2px;text-transform:uppercase;font-weight:600;color:var(--tx3);
-}
-
-@media (max-width:820px){
-  .pm{padding:80px 0}
-  .pm-hd{margin-bottom:48px}
-  .pm-grid{grid-template-columns:1fr;gap:16px}
-  .pm-card{padding:32px 26px 28px}
-  .pm-card-h{font-size:20px}
-  .pm-moat{margin-top:56px;padding:36px 16px}
-}
-</style>
-
-<section class="pm" id="performance-marketing"><div class="container">
-  <div class="pm-hd">
-    <div class="pm-pill">Layer 3 · Acquisition Engine</div>
-    <h2 class="st">When the system is tight,<br><em style="font-style:normal;background:linear-gradient(135deg,var(--gl),var(--gold),var(--gd));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">scale the volume.</em></h2>
-    <p class="ss">Performance marketing built for the way patients actually behave in MENA. Arabic-first creative, WhatsApp-deeplink conversion, AI bid optimization on bookings — not impressions.</p>
-  </div>
-
-  <div class="pm-grid">
-
-    <div class="pm-card">
-      <div class="pm-card-num">01</div>
-      <h3 class="pm-card-h">Creative that lands in <em>Arabic.</em></h3>
-      <p class="pm-card-d">Hooks, treatment names, and headlines that translate emotionally — not literally. Targeting on nationality clusters (Emirati, Saudi, Egyptian, Levantine) instead of generic "GCC region." The cultural specificity that decides whether an ad scrolls past or stops the scroll.</p>
-      <div class="pm-card-tags">
-        <span class="pm-tag">Arabic copywriting</span>
-        <span class="pm-tag">Nationality clusters</span>
-      </div>
-    </div>
-
-    <div class="pm-card">
-      <div class="pm-card-num">02</div>
-      <h3 class="pm-card-h">Ads that go straight to <em>WhatsApp.</em></h3>
-      <p class="pm-card-d">Skip the landing page entirely. Ad click opens a pre-filled WhatsApp conversation with your Revenue Engine response bot. Zero form friction. Patients book in the chat where they already are — the channel they actually use to talk to clinics in Dubai.</p>
-      <div class="pm-card-tags">
-        <span class="pm-tag">Click-to-WhatsApp</span>
-        <span class="pm-tag">Zero landing page</span>
-      </div>
-    </div>
-
-    <div class="pm-card">
-      <div class="pm-card-num">03</div>
-      <h3 class="pm-card-h">Optimization on <em>revenue,</em> not clicks.</h3>
-      <p class="pm-card-d">AI-driven creative testing across Meta, Google, TikTok. Budget reallocates automatically based on which campaigns produce booked treatments — not which produce the cheapest impressions. Bid logic tied to lead quality, all the way through to treatment value.</p>
-      <div class="pm-card-tags">
-        <span class="pm-tag">AI bid optimization</span>
-        <span class="pm-tag">Multi-platform</span>
-      </div>
-    </div>
-
-    <div class="pm-card">
-      <div class="pm-card-num">04</div>
-      <h3 class="pm-card-h">Every dirham tracked to a <em>treatment.</em></h3>
-      <p class="pm-card-d">Not lead form submitted. Not call started. Treatment booked. Every ad source attributes through the Intelligence dashboard into the Revenue Engine — so you stop guessing which campaign actually paid for itself, and start spending where the math works.</p>
-      <div class="pm-card-tags">
-        <span class="pm-tag">Full-funnel attribution</span>
-        <span class="pm-tag">ROI per channel</span>
-      </div>
-    </div>
-
-  </div>
-
-  <div class="pm-moat">
-    <h3 class="pm-moat-h">US tools optimize for clicks.<br><em>We optimize for treatments booked.</em></h3>
-    <p class="pm-moat-d">Arabic creative, WhatsApp-first conversion behavior, GCC nationality patterns — operating data that US-funded competitors cannot replicate without operating clinics here. The structural advantage we are building toward as the system matures.</p>
-    <div class="pm-moat-meta">Designed in Dubai · Built for MENA · Operated for you</div>
-  </div>
-
-</div></section>
-
-<div class="mag-div" data-mag><div class="mag-wire mag-wire-l"></div><div class="mag-wire mag-wire-r"></div><div class="mag-field"><div class="mag-ring mr1"></div><div class="mag-ring mr2"></div><div class="mag-ring mr3"></div><div class="mag-ring mr4"></div><div class="mag-ring mr5"></div></div><div class="mag-node"></div><div class="spark-p sp1"></div><div class="spark-p sp2"></div><div class="spark-p sp3"></div><div class="spark-p sp4"></div><div class="spark-p sp5"></div><div class="spark-p sp6"></div></div>
-
-<!-- ═══════════════════════════════════════════════════════════════
-     THE VAYDIN OPERATING SYSTEM
-     Capability theater — 5-layer stack visualization.
-     Shows what Vaydin DOES (capability), not what's deployed (status).
-     ═══════════════════════════════════════════════════════════════ -->
-<style>
-.os{padding:120px 0;position:relative}
-.os-hd{text-align:center;max-width:720px;margin:0 auto 56px}
-.os-hd .ss{margin:0 auto 0}
-.os-banner{
-  position:relative;
-  max-width:1100px;
-  margin:0 auto 60px;
-  border-radius:18px;
-  overflow:hidden;
-  box-shadow:0 30px 80px rgba(0,0,0,.5),0 0 0 1px rgba(201,164,74,.18),0 0 60px rgba(201,164,74,.06);
-  transition:box-shadow .6s;
-}
-.os-banner:hover{
-  box-shadow:0 40px 100px rgba(0,0,0,.6),0 0 0 1px rgba(201,164,74,.32),0 0 80px rgba(201,164,74,.12);
-}
-.os-banner img{display:block;width:100%;height:auto}
-.os-banner::before{
-  content:'';position:absolute;inset:0;
-  background:linear-gradient(180deg,rgba(10,10,10,.3) 0%,transparent 25%,transparent 70%,rgba(10,10,10,.55) 100%);
-  pointer-events:none;
-}
-.os-banner::after{
-  content:'';position:absolute;inset:0;
-  background:radial-gradient(ellipse at center,transparent 50%,rgba(10,10,10,.4) 100%);
-  pointer-events:none;
-}
-.os-stack{max-width:1040px;margin:0 auto;display:flex;flex-direction:column;gap:14px;position:relative}
-.os-stack::before{content:'';position:absolute;left:50%;top:-30px;bottom:-30px;width:1px;background:linear-gradient(180deg,transparent,rgba(201,164,74,.2),rgba(201,164,74,.2),transparent);pointer-events:none;z-index:0}
-.os-layer{
-  position:relative;z-index:1;
-  display:grid;grid-template-columns:88px 1fr auto;gap:28px;align-items:center;
-  background:var(--bgc);
-  border:1px solid var(--brd);
-  border-radius:16px;
-  padding:24px 28px;
-  transition:all .55s cubic-bezier(.22,1,.36,1);
-  overflow:hidden;
-}
-.os-layer::before{
-  content:'';position:absolute;left:0;top:0;bottom:0;width:3px;
-  background:linear-gradient(180deg,transparent,var(--gold),transparent);
-  opacity:0;transition:opacity .5s;
-}
-.os-layer::after{
-  content:'';position:absolute;inset:0;
-  background:radial-gradient(circle at 0% 50%,rgba(201,164,74,.06),transparent 50%);
-  opacity:0;transition:opacity .55s;pointer-events:none;
-}
-.os-layer:hover{
-  border-color:rgba(201,164,74,.34);
-  transform:translateX(4px);
-  box-shadow:0 22px 60px rgba(0,0,0,.5),0 0 32px rgba(201,164,74,.06);
-}
-.os-layer:hover::before{opacity:1}
-.os-layer:hover::after{opacity:1}
-
-/* Layer number badge */
-.os-num{
-  display:flex;align-items:baseline;justify-content:flex-start;gap:4px;
-  font-family:var(--fb);
-  color:var(--gold);
-  line-height:1;
-  font-feature-settings:"lnum","tnum";
-}
-.os-num-l{font-size:14px;font-weight:600;opacity:.6;letter-spacing:2px;text-transform:uppercase}
-.os-num-d{font-family:var(--fd);font-size:50px;font-weight:500;text-shadow:0 0 24px rgba(201,164,74,.25);letter-spacing:-1px;font-feature-settings:"lnum","tnum"}
-.os-tier{
-  font-size:9px;letter-spacing:2.4px;text-transform:uppercase;font-weight:600;
-  color:var(--tx3);margin-top:4px;
-}
-
-/* Body */
-.os-body{display:flex;flex-direction:column;gap:6px;min-width:0}
-.os-name{
-  font-family:var(--fd);
-  font-size:24px;font-weight:400;line-height:1.2;
-  color:var(--tx);
-  letter-spacing:.5px;
-}
-.os-desc{
-  font-size:13.5px;line-height:1.55;color:var(--tx2);
-  max-width:540px;
-}
-
-/* Tags */
-.os-tags{display:flex;flex-wrap:wrap;gap:6px;justify-content:flex-end;max-width:280px}
-.os-tag{
-  display:inline-block;
-  font-size:10px;font-weight:600;letter-spacing:1.4px;text-transform:uppercase;
-  color:var(--tx2);
-  background:rgba(201,164,74,.06);
-  border:1px solid rgba(201,164,74,.18);
-  padding:5px 10px;border-radius:100px;
-  white-space:nowrap;
-  transition:all .4s;
-}
-.os-layer:hover .os-tag{
-  color:var(--gold);
-  border-color:rgba(201,164,74,.4);
-  background:rgba(201,164,74,.1);
-}
-
-/* Closing punch line */
-.os-close{
-  text-align:center;margin-top:64px;
-  font-family:var(--fd);
-  font-size:clamp(22px,2.6vw,30px);font-weight:300;line-height:1.4;
-  color:var(--tx);
-  max-width:780px;margin-left:auto;margin-right:auto;
-  letter-spacing:.5px;
-}
-.os-close em{
-  font-style:normal;
-  background:linear-gradient(135deg,var(--gl),var(--gold),var(--gd));
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
-}
-.os-close-sub{
-  margin-top:18px;font-size:13px;color:var(--tx3);letter-spacing:1.5px;text-transform:uppercase;font-weight:600;
-}
-
-@media (max-width:820px){
-  .os{padding:80px 0}
-  .os-hd{margin-bottom:48px}
-  .os-stack::before{display:none}
-  .os-layer{grid-template-columns:1fr;gap:14px;padding:20px 22px}
-  .os-num{flex-direction:row;align-items:baseline;gap:8px}
-  .os-num-d{font-size:34px}
-  .os-tier{margin-top:0;align-self:center}
-  .os-name{font-size:20px}
-  .os-tags{justify-content:flex-start;max-width:none}
-  .os-close{margin-top:48px;font-size:20px}
-}
-</style>
-
-<section class="os" id="operating-system"><div class="container">
-  <div class="os-hd">
-    <div class="sl">The Full Picture</div>
-    <h2 class="st">Not a tool. <em style="font-style:normal;background:linear-gradient(135deg,var(--gl),var(--gold),var(--gd));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">An operating system.</em></h2>
-    <p class="ss">Five layers. One mission. Built to operate, not just measure.</p>
-  </div>
-
-  <div class="os-banner">
-    <img src="os-banner.webp" alt="Vaydin Operating System — five-layer luminous architecture" loading="lazy">
-  </div>
-
-  <div class="os-stack">
-
-    <div class="os-layer">
-      <div class="os-num">
-        <span class="os-num-l">L</span><span class="os-num-d">5</span>
-      </div>
-      <div class="os-body">
-        <div class="os-name">Geographic Reach</div>
-        <div class="os-desc">UAE-headquartered. Saudi, Egypt and the wider MENA region sequenced. Built for the languages, payment rails, and patient flows that exist here, not somewhere else.</div>
-      </div>
-      <div class="os-tags">
-        <span class="os-tag">MENA-Native</span>
-        <span class="os-tag">Regional Sequenced</span>
-      </div>
-    </div>
-
-    <div class="os-layer">
-      <div class="os-num">
-        <span class="os-num-l">L</span><span class="os-num-d">4</span>
-      </div>
-      <div class="os-body">
-        <div class="os-name">Cross-Vertical Engine</div>
-        <div class="os-desc">The diagnostic + operating engine is designed to extend across appointment-based services — aesthetic clinics first, premium retail and adjacent verticals next as the system matures. Same engine, different vertical.</div>
-      </div>
-      <div class="os-tags">
-        <span class="os-tag">Multi-Vertical</span>
-        <span class="os-tag">Service Businesses</span>
-      </div>
-    </div>
-
-    <div class="os-layer">
-      <div class="os-num">
-        <span class="os-num-l">L</span><span class="os-num-d">3</span>
-      </div>
-      <div class="os-body">
-        <div class="os-name">Acquisition Engine</div>
-        <div class="os-desc">Performance marketing tied to operational outcomes. Paid demand testing before retail commitment. Every spend traced to a real booking, a real visit, a real revenue event.</div>
-      </div>
-      <div class="os-tags">
-        <span class="os-tag">Paid Demand</span>
-        <span class="os-tag">Attribution</span>
-      </div>
-    </div>
-
-    <div class="os-layer">
-      <div class="os-num">
-        <span class="os-num-l">L</span><span class="os-num-d">2</span>
-      </div>
-      <div class="os-body">
-        <div class="os-name">Revenue Engine</div>
-        <div class="os-desc">Seven installed components — intake, booking integration, consult conversion, show-up optimization, dormant recovery, KPI dashboard, cross-sell. Operated for you, not handed over.</div>
-      </div>
-      <div class="os-tags">
-        <span class="os-tag">7 Components</span>
-        <span class="os-tag">Operated, Not Advised</span>
-      </div>
-    </div>
-
-    <div class="os-layer">
-      <div class="os-num">
-        <span class="os-num-l">L</span><span class="os-num-d">1</span>
-      </div>
-      <div class="os-body">
-        <div class="os-name">Intelligence</div>
-        <div class="os-desc">Mystery shop. Daily intelligence pulse. Live dashboards with real Dubai benchmarks. Every data point sourced and labeled. The diagnostic that tells you what's actually broken.</div>
-      </div>
-      <div class="os-tags">
-        <span class="os-tag">Mystery Shop AI</span>
-        <span class="os-tag">Live Dashboards</span>
-      </div>
-    </div>
-
-  </div>
-
-  <div class="os-close">
-    Other agencies sell you a service.<br>
-    <em>Vaydin runs an operating system.</em>
-    <div class="os-close-sub">Designed in Dubai. Built for MENA. Operated for you.</div>
-  </div>
-
-</div></section>
-
-<div class="mag-div" data-mag><div class="mag-wire mag-wire-l"></div><div class="mag-wire mag-wire-r"></div><div class="mag-field"><div class="mag-ring mr1"></div><div class="mag-ring mr2"></div><div class="mag-ring mr3"></div><div class="mag-ring mr4"></div><div class="mag-ring mr5"></div></div><div class="mag-node"></div><div class="spark-p sp1"></div><div class="spark-p sp2"></div><div class="spark-p sp3"></div><div class="spark-p sp4"></div><div class="spark-p sp5"></div><div class="spark-p sp6"></div></div>
-
-<!-- ═══════════════════════════════════════════════════════════════
-     THE 30-DAY DIFFERENCE
-     The transformation arc — what changes from sign to month-end.
-     Vertical timeline. Emotional close right before the booking CTA.
-     ═══════════════════════════════════════════════════════════════ -->
-<style>
-.td{padding:120px 0;position:relative;overflow:hidden}
-.td::before{
-  content:'';position:absolute;inset:0;
-  background:radial-gradient(ellipse at 30% 50%,rgba(201,164,74,.04) 0%,transparent 60%);
-  pointer-events:none;
-}
-.td-hd{text-align:center;max-width:720px;margin:0 auto 80px;position:relative;z-index:2}
-.td-hd .ss{margin:0 auto}
-
-.td-timeline{
-  position:relative;
-  max-width:880px;margin:0 auto;
-  padding:0 0 0 0;
-}
-
-/* The gold thread */
-.td-thread{
-  position:absolute;
-  left:88px;top:24px;bottom:24px;
-  width:2px;
-  background:linear-gradient(180deg,
-    transparent 0%,
-    var(--gold) 8%,
-    var(--gold) 92%,
-    transparent 100%);
-  opacity:.45;
-  pointer-events:none;
-}
-.td-thread::before{
-  content:'';position:absolute;inset:0;
-  background:inherit;
-  filter:blur(6px);opacity:.5;
-}
-
-/* Each milestone */
-.td-milestone{
-  position:relative;
-  display:grid;grid-template-columns:120px 1fr;gap:32px;
-  align-items:start;
-  padding:18px 0;
-  margin-bottom:18px;
-}
-.td-milestone:last-child{margin-bottom:0}
-
-.td-day{
-  text-align:right;
-  padding-right:20px;
-  position:relative;
-}
-.td-day-l{
-  font-size:10px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;
-  color:var(--tx3);
-  margin-bottom:4px;
-}
-.td-day-n{
-  font-family:var(--fd);
-  font-size:48px;font-weight:500;line-height:1;
-  color:var(--gold);
-  letter-spacing:-1px;
-  text-shadow:0 0 24px rgba(201,164,74,.2);
-  font-feature-settings:"lnum","tnum";
-}
-
-/* Node on the thread */
-.td-node{
-  position:absolute;
-  left:80px;top:32px;
-  width:18px;height:18px;border-radius:50%;
-  background:var(--bg);
-  border:2px solid var(--gold);
-  box-shadow:0 0 16px rgba(201,164,74,.4),inset 0 0 8px rgba(201,164,74,.3);
-  z-index:3;
-}
-.td-node::after{
-  content:'';position:absolute;inset:3px;
-  border-radius:50%;
-  background:var(--gold);
-  animation:tdNodePulse 3.5s ease-in-out infinite;
-}
-@keyframes tdNodePulse{
-  0%,100%{opacity:.5;transform:scale(1)}
-  50%{opacity:1;transform:scale(1.15)}
-}
-
-/* Card */
-.td-card{
-  background:var(--bgc);
-  border:1px solid var(--brd);
-  border-radius:16px;
-  padding:24px 28px;
-  margin-left:36px;
-  position:relative;
-  transition:all .55s cubic-bezier(.22,1,.36,1);
-}
-.td-card::before{
-  content:'';position:absolute;left:-9px;top:30px;
-  width:0;height:0;
-  border:9px solid transparent;
-  border-right-color:var(--brd);
-  transition:border-right-color .4s;
-}
-.td-card::after{
-  content:'';position:absolute;left:-7px;top:31px;
-  width:0;height:0;
-  border:8px solid transparent;
-  border-right-color:var(--bgc);
-}
-.td-milestone:hover .td-card{
-  border-color:rgba(201,164,74,.35);
-  transform:translateX(4px);
-  box-shadow:0 22px 60px rgba(0,0,0,.5),0 0 32px rgba(201,164,74,.06);
-}
-.td-milestone:hover .td-card::before{border-right-color:rgba(201,164,74,.35)}
-
-.td-tag{
-  display:inline-block;
-  font-size:10px;font-weight:600;letter-spacing:1.8px;text-transform:uppercase;
-  padding:4px 10px;border-radius:100px;
-  margin-bottom:12px;
-}
-.td-tag-pre{color:var(--red);background:rgba(248,113,113,.08);border:1px solid rgba(248,113,113,.18)}
-.td-tag-go{color:var(--gold);background:rgba(201,164,74,.08);border:1px solid rgba(201,164,74,.22)}
-.td-tag-win{color:var(--grn);background:rgba(74,222,128,.08);border:1px solid rgba(74,222,128,.22)}
-
-.td-headline{
-  font-family:var(--fd);
-  font-size:22px;font-weight:400;line-height:1.3;
-  color:var(--tx);
-  margin-bottom:10px;
-  letter-spacing:.3px;
-}
-.td-desc{
-  font-size:14px;line-height:1.65;color:var(--tx2);
-  margin-bottom:14px;
-}
-.td-metrics{display:flex;flex-wrap:wrap;gap:18px;padding-top:14px;border-top:1px solid rgba(255,255,255,.04)}
-.td-metric{display:flex;flex-direction:column;gap:2px}
-.td-metric-l{font-size:10px;font-weight:600;letter-spacing:1.3px;text-transform:uppercase;color:var(--tx3)}
-.td-metric-v{font-family:var(--fd);font-size:18px;font-weight:400;color:var(--gold);line-height:1}
-
-/* Pre-state milestone (different visual) */
-.td-milestone.td-pre .td-node{
-  border-color:var(--red);
-  box-shadow:0 0 16px rgba(248,113,113,.3),inset 0 0 8px rgba(248,113,113,.2);
-}
-.td-milestone.td-pre .td-node::after{background:var(--red);animation:none;opacity:.7}
-.td-milestone.td-pre .td-day-n{color:var(--red);text-shadow:0 0 24px rgba(248,113,113,.18)}
-
-/* Closing punch */
-.td-close{
-  text-align:center;margin-top:80px;
-  position:relative;z-index:2;
-}
-.td-close-line{
-  font-family:var(--fd);
-  font-size:clamp(20px,2.4vw,28px);font-weight:300;line-height:1.4;
-  color:var(--tx);max-width:720px;margin:0 auto 24px;
-}
-.td-close-line em{
-  font-style:normal;
-  background:linear-gradient(135deg,var(--gl),var(--gold),var(--gd));
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
-}
-.td-close-meta{
-  font-size:12px;letter-spacing:1.8px;text-transform:uppercase;font-weight:600;
-  color:var(--tx3);
-}
-
-@media (max-width:820px){
-  .td{padding:80px 0}
-  .td-hd{margin-bottom:56px}
-  .td-thread{left:18px}
-  .td-milestone{grid-template-columns:1fr;gap:8px;padding-left:48px}
-  .td-day{text-align:left;padding-right:0;padding-left:0}
-  .td-day-n{font-size:32px;display:inline}
-  .td-day-l{display:inline;margin-right:10px}
-  .td-node{left:10px;top:30px;width:16px;height:16px}
-  .td-card{margin-left:0;padding:20px 22px}
-  .td-card::before,.td-card::after{display:none}
-  .td-headline{font-size:18px}
-  .td-metrics{gap:14px}
-  .td-close{margin-top:56px}
-}
-</style>
-
-<section class="td" id="thirty-day"><div class="container">
-  <div class="td-hd">
-    <div class="sl">The 30-Day Difference</div>
-    <h2 class="st">From <em style="font-style:normal;background:linear-gradient(135deg,#f87171,#dc2626);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">guessing</em> to <em style="font-style:normal;background:linear-gradient(135deg,var(--gl),var(--gold),var(--gd));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">operating data</em><br>in 30 days.</h2>
-    <p class="ss">What actually changes when a clinic signs with Vaydin. Day by day.</p>
-  </div>
-
-  <div class="td-timeline">
-    <div class="td-thread"></div>
-
-    <div class="td-milestone td-pre">
-      <div class="td-day">
-        <div class="td-day-l">Before</div>
-        <div class="td-day-n">Day 0</div>
-      </div>
-      <div class="td-node"></div>
-      <div class="td-card">
-        <span class="td-tag td-tag-pre">Pre-Vaydin</span>
-        <h3 class="td-headline">You're running on instinct.</h3>
-        <p class="td-desc">WhatsApp inquiries answered hours late. Reviews monitored manually. No real visibility into your funnel — and no way to know which marketing spend actually returned a paying patient.</p>
-        <div class="td-metrics">
-          <div class="td-metric"><div class="td-metric-l">Response Time</div><div class="td-metric-v" style="color:var(--red)">Hours</div></div>
-          <div class="td-metric"><div class="td-metric-l">Attribution</div><div class="td-metric-v" style="color:var(--red)">None</div></div>
-          <div class="td-metric"><div class="td-metric-l">Visibility</div><div class="td-metric-v" style="color:var(--red)">Gut feel</div></div>
-        </div>
-      </div>
-    </div>
-
-    <div class="td-milestone">
-      <div class="td-day">
-        <div class="td-day-l">Kickoff</div>
-        <div class="td-day-n">Day 1</div>
-      </div>
-      <div class="td-node"></div>
-      <div class="td-card">
-        <span class="td-tag td-tag-go">Baseline established</span>
-        <h3 class="td-headline">Your live dashboard goes online.</h3>
-        <p class="td-desc">Vaydin's mystery-shopping engine has already audited your clinic before kickoff. On Day 1 your private dashboard at <strong style="color:var(--gold)">reports.vaydin.agency</strong> is provisioned with your scores, your benchmarks, and your top three revenue gaps — visible to you 24/7.</p>
-      </div>
-    </div>
-
-    <div class="td-milestone">
-      <div class="td-day">
-        <div class="td-day-l">Week 1</div>
-        <div class="td-day-n">Day 7</div>
-      </div>
-      <div class="td-node"></div>
-      <div class="td-card">
-        <span class="td-tag td-tag-go">Infrastructure live</span>
-        <h3 class="td-headline">Response infrastructure deployed.</h3>
-        <p class="td-desc">WhatsApp templates installed and approved. Your AI consultation funnel is live. Inquiries that took 4 hours to answer last month are answered in under 2 minutes — with real prices, real availability, and a real booking link.</p>
-        <div class="td-metrics">
-          <div class="td-metric"><div class="td-metric-l">Response Time</div><div class="td-metric-v">&lt; 2 min</div></div>
-          <div class="td-metric"><div class="td-metric-l">Coverage</div><div class="td-metric-v">24/7</div></div>
-        </div>
-      </div>
-    </div>
-
-    <div class="td-milestone">
-      <div class="td-day">
-        <div class="td-day-l">Week 2</div>
-        <div class="td-day-n">Day 14</div>
-      </div>
-      <div class="td-node"></div>
-      <div class="td-card">
-        <span class="td-tag td-tag-win">First measurable lift</span>
-        <h3 class="td-headline">Booking conversion data starts flowing.</h3>
-        <p class="td-desc">Two weeks in, every inquiry, every consult, every booking is tagged. The funnel diagnostic shows you exactly where leads still drop — and the recovered ones start showing up in revenue. The dashboard is no longer theoretical.</p>
-        <div class="td-metrics">
-          <div class="td-metric"><div class="td-metric-l">Funnel Stages</div><div class="td-metric-v">All 5 tracked</div></div>
-          <div class="td-metric"><div class="td-metric-l">Drop-off Visibility</div><div class="td-metric-v">Stage-level</div></div>
-        </div>
-      </div>
-    </div>
-
-    <div class="td-milestone">
-      <div class="td-day">
-        <div class="td-day-l">Wrap</div>
-        <div class="td-day-n">Day 30</div>
-      </div>
-      <div class="td-node"></div>
-      <div class="td-card">
-        <span class="td-tag td-tag-win">Operating, not opining</span>
-        <h3 class="td-headline">A full month of attribution data — yours.</h3>
-        <p class="td-desc">By Day 30 you have a written 30-day report: what we audited, what we installed, what moved, what's next. You see the math, source by source. The conversation shifts from "are we losing patients?" to "which of these patients should we double down on?"</p>
-        <div class="td-metrics">
-          <div class="td-metric"><div class="td-metric-l">Attribution</div><div class="td-metric-v" style="color:var(--grn)">Full funnel</div></div>
-          <div class="td-metric"><div class="td-metric-l">Decisions</div><div class="td-metric-v" style="color:var(--grn)">Data-led</div></div>
-          <div class="td-metric"><div class="td-metric-l">Phase 2</div><div class="td-metric-v" style="color:var(--grn)">On the table</div></div>
-        </div>
-      </div>
-    </div>
-
-  </div>
-
-  <div class="td-close">
-    <div class="td-close-line">
-      Day 30 isn't the finish line.<br>
-      <em>It's the day the operating data starts compounding.</em>
-    </div>
-    <div class="td-close-meta">Same dashboard URL. Same team. Same standard. Forever.</div>
-  </div>
-
-</div></section>
-
-<div class="mag-div" data-mag><div class="mag-wire mag-wire-l"></div><div class="mag-wire mag-wire-r"></div><div class="mag-field"><div class="mag-ring mr1"></div><div class="mag-ring mr2"></div><div class="mag-ring mr3"></div><div class="mag-ring mr4"></div><div class="mag-ring mr5"></div></div><div class="mag-node"></div><div class="spark-p sp1"></div><div class="spark-p sp2"></div><div class="spark-p sp3"></div><div class="spark-p sp4"></div><div class="spark-p sp5"></div><div class="spark-p sp6"></div></div>
-
-<!-- Book a 15-min call strip (Cal.com popup) -->
-<section class="bk-strip" id="book">
-  <div class="bk-strip-in">
-    <div class="sl">Ready to Talk?</div>
-    <h2 class="bk-strip-ttl">Book a 15-minute intro call</h2>
-    <p class="bk-strip-sub">No pitch. We walk through what Vaydin Intelligence does, answer your questions, and decide together if it's the right fit for your clinic.</p>
-    <button class="bk-cta" data-cal-namespace="15min" data-cal-link="vaydin/15min" data-cal-origin="https://cal.eu" data-cal-config='{"layout":"month_view","theme":"dark"}'>
-      <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
-      Book 15-min Intro
-    </button>
-    <div class="bk-meta">Free · No commitment · Google Meet link auto-sent</div>
-  </div>
-</section>
-
-<section class="contact" id="contact"><div class="container">
-  <div class="contact-g">
-    <div class="contact-l">
-      <div class="sl">Free Digital Health Check</div>
-      <h2 class="st">Find out what your clinic<br>is <span style="color:var(--gold)">really</span> losing</h2>
-      <p class="ss">Fill in your details. Within 1–2 days we audit your clinic as a real patient would — you get a free Digital Health Check with your score, your revenue gap, and exactly what to fix.</p>
-      <ul class="cp">
-        <li><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg> Real patient audit — not a generic checklist</li>
-        <li><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg> Your digital score (0–100) + revenue gap</li>
-        <li><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg> Delivered by email — free, no commitment</li>
-        <li><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg> 100% confidential</li>
-      </ul>
-      <div style="margin-top:24px;font-size:14px;color:var(--tx2)">Or email us: <a href="mailto:hello@vaydin.agency" style="color:var(--gold);text-decoration:none">hello@vaydin.agency</a></div>
-    </div>
-    <div class="cfrm">
-      <div class="fg"><label for="fN">Your Name</label><input type="text" id="fN" placeholder="e.g. Sarah Ahmed"></div>
-      <div class="fg"><label for="fC">Clinic Name</label><input type="text" id="fC" placeholder="e.g. Glow Aesthetics Dubai"></div>
-      <div class="fg"><label for="fP">Phone Number</label><input type="tel" id="fP" placeholder="+971 50 XXX XXXX"></div>
-      <div class="fg"><label for="fE">Email</label><input type="email" id="fE" placeholder="you@clinic.com"></div>
-      <button class="fsub" onclick="submitForm()">Get My Free Digital Health Check</button>
-      <p style="text-align:center;font-size:11px;color:var(--tx3);margin-top:10px;line-height:1.5">By submitting, you agree to our <a href="/privacy/" style="color:var(--tx2);text-decoration:underline">Privacy Policy</a> and <a href="/terms/" style="color:var(--tx2);text-decoration:underline">Terms of Service</a>.</p>
-      <div style="text-align:left;margin-top:20px;display:flex;flex-direction:column;gap:0">
-        <div style="display:flex;align-items:stretch;gap:0">
-          <div style="display:flex;flex-direction:column;align-items:center;width:22px;flex-shrink:0;margin-right:14px">
-            <div style="width:22px;height:22px;border-radius:50%;background:rgba(201,164,74,.15);border:1px solid rgba(201,164,74,.3);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:var(--gold);flex-shrink:0">1</div>
-            <div style="width:1px;flex:1;background:rgba(201,164,74,.2);margin:3px 0"></div>
-          </div>
-          <div style="padding-bottom:16px"><div style="font-size:12px;font-weight:600;color:var(--tx);margin-bottom:2px">We receive your request</div><div style="font-size:11px;color:var(--tx3);line-height:1.6">You'll get a confirmation email shortly.</div></div>
-        </div>
-        <div style="display:flex;align-items:stretch;gap:0">
-          <div style="display:flex;flex-direction:column;align-items:center;width:22px;flex-shrink:0;margin-right:14px">
-            <div style="width:22px;height:22px;border-radius:50%;background:rgba(201,164,74,.15);border:1px solid rgba(201,164,74,.3);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:var(--gold);flex-shrink:0">2</div>
-            <div style="width:1px;flex:1;background:rgba(201,164,74,.2);margin:3px 0"></div>
-          </div>
-          <div style="padding-bottom:16px"><div style="font-size:12px;font-weight:600;color:var(--tx);margin-bottom:2px">Audit within 1–2 days</div><div style="font-size:11px;color:var(--tx3);line-height:1.6">A Vaydin analyst contacts your clinic as a real patient — messaging, booking flow, everything.</div></div>
-        </div>
-        <div style="display:flex;align-items:flex-start;gap:0">
-          <div style="width:22px;flex-shrink:0;margin-right:14px;display:flex;justify-content:center">
-            <div style="width:22px;height:22px;border-radius:50%;background:rgba(201,164,74,.15);border:1px solid rgba(201,164,74,.3);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:var(--gold)">3</div>
-          </div>
-          <div><div style="font-size:12px;font-weight:600;color:var(--tx);margin-bottom:2px">Your Digital Health Check arrives</div><div style="font-size:11px;color:var(--tx3);line-height:1.6">Score, revenue gap, and what to fix — straight to your inbox.</div></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div></section>
-
-<a href="https://wa.me/971505553148?text=Hi%2C%20I%27d%20like%20to%20learn%20more%20about%20Vaydin%20Intelligence%20for%20my%20clinic." class="waf" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
-<div class="wal">Chat with us</div>
-
-
-<footer><div class="container">
-  <div class="fti">
-    <div class="ftl"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MDAgMTIwIiB3aWR0aD0iNjAwIiBoZWlnaHQ9IjEyMCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImdvbGRUZXh0IiB4MT0iMCUiIHkxPSIwJSIgeDI9IjEwMCUiIHkyPSIxMDAlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzZiNTUxOCIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjIwJSIgc3RvcC1jb2xvcj0iI2EwN2MyZSIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjQ1JSIgc3RvcC1jb2xvcj0iI2Q0YjQ1YyIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjU1JSIgc3RvcC1jb2xvcj0iI2U4ZDQ4YiIvPgogICAgICA8c3RvcCBvZmZzZXQ9Ijc1JSIgc3RvcC1jb2xvcj0iI2EwN2MyZSIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiM2YjU1MTgiLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImdvbGRIaWdobGlnaHQiIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMCUiIHkyPSIxMDAlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2Y1ZTZhMyIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjQwJSIgc3RvcC1jb2xvcj0iI2M5YTQ0YSIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiM2YjU1MTgiLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgICA8ZmlsdGVyIGlkPSJ0ZXh0R2xvdyIgeD0iLTIwJSIgeT0iLTQwJSIgd2lkdGg9IjE0MCUiIGhlaWdodD0iMTgwJSI+CiAgICAgIDxmZUdhdXNzaWFuQmx1ciBpbj0iU291cmNlR3JhcGhpYyIgc3RkRGV2aWF0aW9uPSIyLjUiIHJlc3VsdD0iYmx1ciIvPgogICAgICA8ZmVGbG9vZCBmbG9vZC1jb2xvcj0iI2EwN2MyZSIgZmxvb2Qtb3BhY2l0eT0iMC41IiByZXN1bHQ9ImNvbG9yIi8+CiAgICAgIDxmZUNvbXBvc2l0ZSBpbj0iY29sb3IiIGluMj0iYmx1ciIgb3BlcmF0b3I9ImluIiByZXN1bHQ9InNoYWRvdyIvPgogICAgICA8ZmVNZXJnZT48ZmVNZXJnZU5vZGUgaW49InNoYWRvdyIvPjxmZU1lcmdlTm9kZSBpbj0iU291cmNlR3JhcGhpYyIvPjwvZmVNZXJnZT4KICAgIDwvZmlsdGVyPgogICAgPGZpbHRlciBpZD0iZWxlY0dsb3ciIHg9Ii0yMCUiIHk9Ii01MCUiIHdpZHRoPSIxNDAlIiBoZWlnaHQ9IjIwMCUiPgogICAgICA8ZmVHYXVzc2lhbkJsdXIgaW49IlNvdXJjZUdyYXBoaWMiIHN0ZERldmlhdGlvbj0iMS41IiByZXN1bHQ9ImJsdXIiLz4KICAgICAgPGZlRmxvb2QgZmxvb2QtY29sb3I9IiNhMDdjMmUiIGZsb29kLW9wYWNpdHk9IjAuNiIgcmVzdWx0PSJjb2xvciIvPgogICAgICA8ZmVDb21wb3NpdGUgaW49ImNvbG9yIiBpbjI9ImJsdXIiIG9wZXJhdG9yPSJpbiIgcmVzdWx0PSJnbG93Ii8+CiAgICAgIDxmZU1lcmdlPjxmZU1lcmdlTm9kZSBpbj0iZ2xvdyIvPjxmZU1lcmdlTm9kZSBpbj0iU291cmNlR3JhcGhpYyIvPjwvZmVNZXJnZT4KICAgIDwvZmlsdGVyPgogICAgPGxpbmVhckdyYWRpZW50IGlkPSJmbG91cmlzaEdyYWQiIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjAlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2EwN2MyZSIgc3RvcC1vcGFjaXR5PSIwIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMzAlIiBzdG9wLWNvbG9yPSIjYTA3YzJlIiBzdG9wLW9wYWNpdHk9IjAuOCIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjcwJSIgc3RvcC1jb2xvcj0iI2EwN2MyZSIgc3RvcC1vcGFjaXR5PSIwLjgiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjYTA3YzJlIiBzdG9wLW9wYWNpdHk9IjAiLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImVsZWNMZWZ0IiB4MT0iMTAwJSIgeTE9IjAlIiB4Mj0iMCUiIHkyPSIwJSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiNjOWE0NGEiIHN0b3Atb3BhY2l0eT0iMSIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjYwJSIgc3RvcC1jb2xvcj0iIzhhNmQxYiIgc3RvcC1vcGFjaXR5PSIwLjciLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjNmI1NTE4IiBzdG9wLW9wYWNpdHk9IjAiLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImVsZWNSaWdodCIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMCUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjYzlhNDRhIiBzdG9wLW9wYWNpdHk9IjEiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSI2MCUiIHN0b3AtY29sb3I9IiM4YTZkMWIiIHN0b3Atb3BhY2l0eT0iMC43Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzZiNTUxOCIgc3RvcC1vcGFjaXR5PSIwIi8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogICAgPHJhZGlhbEdyYWRpZW50IGlkPSJmbGFyZTEiIGN4PSI1MCUiIGN5PSI1MCUiIHI9IjUwJSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiNmNWU2YTMiIHN0b3Atb3BhY2l0eT0iMC45Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMzAlIiBzdG9wLWNvbG9yPSIjYzlhNDRhIiBzdG9wLW9wYWNpdHk9IjAuNSIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiM4YTZkMWIiIHN0b3Atb3BhY2l0eT0iMCIvPgogICAgPC9yYWRpYWxHcmFkaWVudD4KICAgIDxyYWRpYWxHcmFkaWVudCBpZD0iZmxhcmUyIiBjeD0iNTAlIiBjeT0iNTAlIiByPSI1MCUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjZThkNDhiIiBzdG9wLW9wYWNpdHk9IjAuNyIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjQwJSIgc3RvcC1jb2xvcj0iI2EwN2MyZSIgc3RvcC1vcGFjaXR5PSIwLjMiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjNmI1NTE4IiBzdG9wLW9wYWNpdHk9IjAiLz4KICAgIDwvcmFkaWFsR3JhZGllbnQ+CiAgPC9kZWZzPgoKICA8IS0tIOKVkOKVkOKVkCBMRUZUIEVMRUNUUklDSVRZIOKVkOKVkOKVkCAtLT4KICA8ZyBmaWx0ZXI9InVybCgjZWxlY0dsb3cpIj4KICAgIDxwYXRoIGQ9Ik0xMjAsNjAgQzExMCw1OCA5NSw1MiA4Miw1NiBDNzAsNjAgNjAsNTUgNDgsNTggQzM2LDYxIDI4LDU2IDE4LDU5IEMxMCw2MSA1LDU4IDAsNjAiIAogICAgICAgICAgZmlsbD0ibm9uZSIgc3Ryb2tlPSJ1cmwoI2VsZWNMZWZ0KSIgc3Ryb2tlLXdpZHRoPSIxLjYiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgb3BhY2l0eT0iMC45Ii8+CiAgICA8cGF0aCBkPSJNMTI1LDU0IEMxMTIsNTAgOTgsNDYgODUsNTAgQzcyLDU0IDYyLDQ4IDUwLDUxIEMzOCw1NCAyOCw0OSAxNSw1MiBDOCw1NCAyLDUxIC01LDUzIiAKICAgICAgICAgIGZpbGw9Im5vbmUiIHN0cm9rZT0idXJsKCNlbGVjTGVmdCkiIHN0cm9rZS13aWR0aD0iMS4yIiBzdHJva2UtbGluZWNhcD0icm91bmQiIG9wYWNpdHk9IjAuNzUiLz4KICAgIDxwYXRoIGQ9Ik0xMTgsNjggQzEwNiw3MCA5Miw3NCA3OCw3MCBDNjUsNjYgNTUsNzIgNDIsNjkgQzMwLDY2IDIyLDcxIDEyLDY4IEM1LDY2IDAsNjkgLTUsNjciIAogICAgICAgICAgZmlsbD0ibm9uZSIgc3Ryb2tlPSJ1cmwoI2VsZWNMZWZ0KSIgc3Ryb2tlLXdpZHRoPSIxLjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgb3BhY2l0eT0iMC43NSIvPgogICAgPHBhdGggZD0iTTEzMCw0OCBDMTE4LDQ0IDEwNSw0MCA5MCw0NCBDNzgsNDcgNjUsNDIgNTIsNDUgQzQyLDQ3IDMyLDQzIDIyLDQ2IiAKICAgICAgICAgIGZpbGw9Im5vbmUiIHN0cm9rZT0idXJsKCNlbGVjTGVmdCkiIHN0cm9rZS13aWR0aD0iMC44IiBzdHJva2UtbGluZWNhcD0icm91bmQiIG9wYWNpdHk9IjAuNSIvPgogICAgPHBhdGggZD0iTTExNSw3NiBDMTA0LDc4IDkwLDgyIDc2LDc4IEM2NCw3NCA1Miw4MCA0MCw3NyBDMzAsNzQgMjAsNzggMTAsNzYiIAogICAgICAgICAgZmlsbD0ibm9uZSIgc3Ryb2tlPSJ1cmwoI2VsZWNMZWZ0KSIgc3Ryb2tlLXdpZHRoPSIwLjgiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgb3BhY2l0eT0iMC41Ii8+CiAgICA8cGF0aCBkPSJNNDgsNTggQzQ0LDU0IDQwLDU2IDQyLDYwIEM0NCw2NCA0MCw2NyAzNiw2NCIgCiAgICAgICAgICBmaWxsPSJub25lIiBzdHJva2U9InVybCgjZWxlY0xlZnQpIiBzdHJva2Utd2lkdGg9IjEuMCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBvcGFjaXR5PSIwLjY1Ii8+CiAgICA8cGF0aCBkPSJNODIsNTYgQzc4LDUwIDcyLDQ4IDY4LDUyIiAKICAgICAgICAgIGZpbGw9Im5vbmUiIHN0cm9rZT0idXJsKCNlbGVjTGVmdCkiIHN0cm9rZS13aWR0aD0iMC45IiBzdHJva2UtbGluZWNhcD0icm91bmQiIG9wYWNpdHk9IjAuNTUiLz4KICAgIDxwYXRoIGQ9Ik03OCw3MCBDNzQsNzUgNjgsNzggNjIsNzUiIAogICAgICAgICAgZmlsbD0ibm9uZSIgc3Ryb2tlPSJ1cmwoI2VsZWNMZWZ0KSIgc3Ryb2tlLXdpZHRoPSIwLjkiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgb3BhY2l0eT0iMC41NSIvPgogIDwvZz4KCiAgPCEtLSDilZDilZDilZAgUklHSFQgRUxFQ1RSSUNJVFkg4pWQ4pWQ4pWQIC0tPgogIDxnIGZpbHRlcj0idXJsKCNlbGVjR2xvdykiPgogICAgPHBhdGggZD0iTTQ4MCw2MCBDNDkwLDU4IDUwNSw1MiA1MTgsNTYgQzUzMCw2MCA1NDAsNTUgNTUyLDU4IEM1NjQsNjEgNTcyLDU2IDU4Miw1OSBDNTkwLDYxIDU5NSw1OCA2MDAsNjAiIAogICAgICAgICAgZmlsbD0ibm9uZSIgc3Ryb2tlPSJ1cmwoI2VsZWNSaWdodCkiIHN0cm9rZS13aWR0aD0iMS42IiBzdHJva2UtbGluZWNhcD0icm91bmQiIG9wYWNpdHk9IjAuOSIvPgogICAgPHBhdGggZD0iTTQ3NSw1NCBDNDg4LDUwIDUwMiw0NiA1MTUsNTAgQzUyOCw1NCA1MzgsNDggNTUwLDUxIEM1NjIsNTQgNTcyLDQ5IDU4NSw1MiBDNTkyLDU0IDU5OCw1MSA2MDUsNTMiIAogICAgICAgICAgZmlsbD0ibm9uZSIgc3Ryb2tlPSJ1cmwoI2VsZWNSaWdodCkiIHN0cm9rZS13aWR0aD0iMS4yIiBzdHJva2UtbGluZWNhcD0icm91bmQiIG9wYWNpdHk9IjAuNzUiLz4KICAgIDxwYXRoIGQ9Ik00ODIsNjggQzQ5NCw3MCA1MDgsNzQgNTIyLDcwIEM1MzUsNjYgNTQ1LDcyIDU1OCw2OSBDNTcwLDY2IDU3OCw3MSA1ODgsNjggQzU5NSw2NiA2MDAsNjkgNjA1LDY3IiAKICAgICAgICAgIGZpbGw9Im5vbmUiIHN0cm9rZT0idXJsKCNlbGVjUmlnaHQpIiBzdHJva2Utd2lkdGg9IjEuMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBvcGFjaXR5PSIwLjc1Ii8+CiAgICA8cGF0aCBkPSJNNDcwLDQ4IEM0ODIsNDQgNDk1LDQwIDUxMCw0NCBDNTIyLDQ3IDUzNSw0MiA1NDgsNDUgQzU1OCw0NyA1NjgsNDMgNTc4LDQ2IiAKICAgICAgICAgIGZpbGw9Im5vbmUiIHN0cm9rZT0idXJsKCNlbGVjUmlnaHQpIiBzdHJva2Utd2lkdGg9IjAuOCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBvcGFjaXR5PSIwLjUiLz4KICAgIDxwYXRoIGQ9Ik00ODUsNzYgQzQ5Niw3OCA1MTAsODIgNTI0LDc4IEM1MzYsNzQgNTQ4LDgwIDU2MCw3NyBDNTcwLDc0IDU4MCw3OCA1OTAsNzYiIAogICAgICAgICAgZmlsbD0ibm9uZSIgc3Ryb2tlPSJ1cmwoI2VsZWNSaWdodCkiIHN0cm9rZS13aWR0aD0iMC44IiBzdHJva2UtbGluZWNhcD0icm91bmQiIG9wYWNpdHk9IjAuNSIvPgogICAgPHBhdGggZD0iTTU1Miw1OCBDNTU2LDU0IDU2MCw1NiA1NTgsNjAgQzU1Niw2NCA1NjAsNjcgNTY0LDY0IiAKICAgICAgICAgIGZpbGw9Im5vbmUiIHN0cm9rZT0idXJsKCNlbGVjUmlnaHQpIiBzdHJva2Utd2lkdGg9IjEuMCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBvcGFjaXR5PSIwLjY1Ii8+CiAgICA8cGF0aCBkPSJNNTE4LDU2IEM1MjIsNTAgNTI4LDQ4IDUzMiw1MiIgCiAgICAgICAgICBmaWxsPSJub25lIiBzdHJva2U9InVybCgjZWxlY1JpZ2h0KSIgc3Ryb2tlLXdpZHRoPSIwLjkiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgb3BhY2l0eT0iMC41NSIvPgogICAgPHBhdGggZD0iTTUyMiw3MCBDNTI2LDc1IDUzMiw3OCA1MzgsNzUiIAogICAgICAgICAgZmlsbD0ibm9uZSIgc3Ryb2tlPSJ1cmwoI2VsZWNSaWdodCkiIHN0cm9rZS13aWR0aD0iMC45IiBzdHJva2UtbGluZWNhcD0icm91bmQiIG9wYWNpdHk9IjAuNTUiLz4KICA8L2c+CgogIDwhLS0gQWNjZW50IGxpbmUgLS0+CiAgPGxpbmUgeDE9IjE0MCIgeTE9IjgwIiB4Mj0iNDYwIiB5Mj0iODAiIHN0cm9rZT0idXJsKCNmbG91cmlzaEdyYWQpIiBzdHJva2Utd2lkdGg9IjAuNiIgb3BhY2l0eT0iMC41Ii8+CgogIDwhLS0gTGVmdCBmbGFyZSAtLT4KICA8ZWxsaXBzZSBjeD0iMTQ4IiBjeT0iNjAiIHJ4PSIyOCIgcnk9IjIyIiBmaWxsPSJ1cmwoI2ZsYXJlMikiIG9wYWNpdHk9IjAuNSIvPgogIDxlbGxpcHNlIGN4PSIxNDgiIGN5PSI2MCIgcng9IjEwIiByeT0iOCIgZmlsbD0idXJsKCNmbGFyZTEpIiBvcGFjaXR5PSIwLjYiLz4KICA8bGluZSB4MT0iMTQ4IiB5MT0iMzgiIHgyPSIxNDgiIHkyPSI4MiIgc3Ryb2tlPSIjZThkNDhiIiBzdHJva2Utd2lkdGg9IjAuNSIgb3BhY2l0eT0iMC4zNSIvPgogIDxsaW5lIHgxPSIxMjYiIHkxPSI2MCIgeDI9IjE3MCIgeTI9IjYwIiBzdHJva2U9IiNlOGQ0OGIiIHN0cm9rZS13aWR0aD0iMC41IiBvcGFjaXR5PSIwLjM1Ii8+CiAgPGxpbmUgeDE9IjEzNCIgeTE9IjQ2IiB4Mj0iMTYyIiB5Mj0iNzQiIHN0cm9rZT0iI2U4ZDQ4YiIgc3Ryb2tlLXdpZHRoPSIwLjM1IiBvcGFjaXR5PSIwLjI1Ii8+CiAgPGxpbmUgeDE9IjE2MiIgeTE9IjQ2IiB4Mj0iMTM0IiB5Mj0iNzQiIHN0cm9rZT0iI2U4ZDQ4YiIgc3Ryb2tlLXdpZHRoPSIwLjM1IiBvcGFjaXR5PSIwLjI1Ii8+CgogIDwhLS0gUmlnaHQgZmxhcmUgLS0+CiAgPGVsbGlwc2UgY3g9IjQ1MiIgY3k9IjYwIiByeD0iMjQiIHJ5PSIxOCIgZmlsbD0idXJsKCNmbGFyZTIpIiBvcGFjaXR5PSIwLjQ1Ii8+CiAgPGVsbGlwc2UgY3g9IjQ1MiIgY3k9IjYwIiByeD0iOSIgcnk9IjciIGZpbGw9InVybCgjZmxhcmUxKSIgb3BhY2l0eT0iMC41NSIvPgogIDxsaW5lIHgxPSI0NTIiIHkxPSI0MiIgeDI9IjQ1MiIgeTI9Ijc4IiBzdHJva2U9IiNlOGQ0OGIiIHN0cm9rZS13aWR0aD0iMC41IiBvcGFjaXR5PSIwLjMiLz4KICA8bGluZSB4MT0iNDMyIiB5MT0iNjAiIHgyPSI0NzIiIHkyPSI2MCIgc3Ryb2tlPSIjZThkNDhiIiBzdHJva2Utd2lkdGg9IjAuNSIgb3BhY2l0eT0iMC4zIi8+CiAgPGxpbmUgeDE9IjQ0MCIgeTE9IjQ4IiB4Mj0iNDY0IiB5Mj0iNzIiIHN0cm9rZT0iI2U4ZDQ4YiIgc3Ryb2tlLXdpZHRoPSIwLjM1IiBvcGFjaXR5PSIwLjIyIi8+CiAgPGxpbmUgeDE9IjQ2NCIgeTE9IjQ4IiB4Mj0iNDQwIiB5Mj0iNzIiIHN0cm9rZT0iI2U4ZDQ4YiIgc3Ryb2tlLXdpZHRoPSIwLjM1IiBvcGFjaXR5PSIwLjIyIi8+CgogIDwhLS0gTWFpbiB0ZXh0IC0tPgogIDx0ZXh0IHg9IjMwMCIgeT0iNzIiIHRleHQtYW5jaG9yPSJtaWRkbGUiIAogICAgICAgIGZvbnQtZmFtaWx5PSInQ29ybW9yYW50IEdhcmFtb25kJywgJ0dhcmFtb25kJywgJ0dlb3JnaWEnLCBzZXJpZiIgCiAgICAgICAgZm9udC1zaXplPSI1MiIgZm9udC13ZWlnaHQ9IjYwMCIgbGV0dGVyLXNwYWNpbmc9IjE4IgogICAgICAgIGZpbGw9InVybCgjZ29sZFRleHQpIiBmaWx0ZXI9InVybCgjdGV4dEdsb3cpIj5WQVlESU48L3RleHQ+CiAgPHRleHQgeD0iMzAwIiB5PSI3MiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgCiAgICAgICAgZm9udC1mYW1pbHk9IidDb3Jtb3JhbnQgR2FyYW1vbmQnLCAnR2FyYW1vbmQnLCAnR2VvcmdpYScsIHNlcmlmIiAKICAgICAgICBmb250LXNpemU9IjUyIiBmb250LXdlaWdodD0iNjAwIiBsZXR0ZXItc3BhY2luZz0iMTgiCiAgICAgICAgZmlsbD0idXJsKCNnb2xkSGlnaGxpZ2h0KSIgb3BhY2l0eT0iMC4xMiI+VkFZRElOPC90ZXh0Pgo8L3N2Zz4=" alt="Vaydin"></div>
-    <div class="ftinf"><a href="mailto:hello@vaydin.agency">hello@vaydin.agency</a><span>Dubai, UAE</span></div>
-  </div>
-  <div class="ftinf" style="justify-content:center;margin-top:28px;font-size:13px;gap:24px">
-    <a href="/privacy/">Privacy</a>
-    <span style="color:var(--tx3)">·</span>
-    <a href="/terms/">Terms</a>
-    <span style="color:var(--tx3)">·</span>
-    <a href="/data-deletion/">Data Deletion</a>
-  </div>
-  <div class="ftc">© 2026 Vaydin. All rights reserved. Digital intelligence for aesthetic clinics.</div>
-  <div class="ftc" style="margin-top:8px;font-size:.78em;opacity:.55;letter-spacing:.04em">VAYDIN PARTNERS INVESTMENTS - FZCO · +971 50 555 3148 · DSO-IFZA, IFZA Properties, Dubai Silicon Oasis, Dubai, UAE</div>
-</div></footer>
 <script>
-const nav=document.getElementById('mainNav');
-window.addEventListener('scroll',()=>{nav.classList.toggle('scrolled',window.scrollY>60)});
+(function(){
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-// Smooth scroll
-document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{const h=a.getAttribute('href');if(!h||h.length<2)return;e.preventDefault();const t=document.querySelector(h);if(t)t.scrollIntoView({behavior:'smooth',block:'start'})})});
+  var hv = document.querySelector('.hero-vid');
+  if(hv && reduced){ hv.removeAttribute('autoplay'); hv.pause(); }
+  /* the map loop opens dark; start mid-ignition so the first paint already glows (loop is seamless anywhere) */
+  if(hv && !reduced){ hv.addEventListener('loadedmetadata', function(){ try{ hv.currentTime = 4.5; }catch(e){} }, {once:true}); }
 
-// Magnetic divider scroll trigger
-const magObs=new IntersectionObserver(entries=>{entries.forEach(e=>{e.target.classList.toggle('in-view',e.isIntersecting)})},{threshold:.5});
-document.querySelectorAll('[data-mag]').forEach(el=>magObs.observe(el));
-
-// Story-layer reveal — fires once when card enters viewport, lower threshold so it triggers earlier
-const storyObs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in-view');storyObs.unobserve(e.target)}})},{threshold:.18,rootMargin:'0px 0px -80px 0px'});
-document.querySelectorAll('[data-story]').forEach(el=>storyObs.observe(el));
-
-// Contact form
-async function submitForm(){
-  const n=document.getElementById('fN').value.trim(),c=document.getElementById('fC').value.trim(),p=document.getElementById('fP').value.trim(),e=document.getElementById('fE').value.trim();
-  if(!n||!c||!p||!e){alert('Please fill in all fields');return}
-  const btn=document.querySelector('.fsub');
-  btn.textContent='Sending...';btn.disabled=true;
-  try{
-    const res=await fetch('https://reports.vaydin.agency/contact',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name:n,clinic:c,phone:p,email:e})});
-    if(!res.ok)throw new Error('send failed');
-    btn.textContent='Request Sent — expect your results in 1-2 days!';btn.style.background='#25D366';
-    setTimeout(()=>{btn.textContent='Get My Free Digital Health Check';btn.style.background=''},6000);
-  }catch(err){
-    btn.textContent="Couldn't send — please email hello@vaydin.agency";btn.style.background='#a04545';
-    setTimeout(()=>{btn.textContent='Get My Free Digital Health Check';btn.style.background=''},9000);
+  /* finale film: only plays when it scrolls into view (saves bandwidth, keeps the ending fresh) */
+  var fv = document.querySelector('.fin-vid');
+  if(fv && !reduced){
+    new IntersectionObserver(function(es){
+      es.forEach(function(e){ if(e.isIntersecting){ fv.play().catch(function(){}); } else { fv.pause(); } });
+    }, {threshold: 0.2}).observe(fv);
   }
-  btn.disabled=false;
-}
 
-// ── Live data animations: hero mystery-shop replay + dashboard wake-up + conversation reveal ──
-// Skipped entirely under prefers-reduced-motion (page stays static, all content visible).
-const RM = matchMedia('(prefers-reduced-motion: reduce)').matches;
-if (!RM) {
+  /* ---------- hero map pins: one clinic lights, the light jumps, the city shines ---------- */
+  var pinsWrap = document.getElementById('hero-pins'), pcv = document.getElementById('hero-cv');
+  if(pinsWrap && pcv && pcv.getContext){
+    var PINS = [
+      {x:8,  y:26, n:'MARINA · CLINIC 01'},
+      {x:26, y:21, n:'JLT · CLINIC 02'},
+      {x:45, y:19, n:'AL WASL · CLINIC 03'},
+      {x:57, y:27, n:'JUMEIRAH · CLINIC 04'},
+      {x:83, y:22, n:'DEIRA · CLINIC 05'},
+      {x:92, y:42, n:'DOWNTOWN · CLINIC 06'},
+      {x:87, y:72, n:'BUSINESS BAY · CLINIC 07'},
+      {x:57, y:87, n:'DIFC · CLINIC 08'},
+      {x:23, y:89, n:'PALM · CLINIC 09'},
+      {x:7,  y:62, n:'JBR · CLINIC 10'}
+    ];
+    var PIN_SVG = '<svg viewBox="0 0 24 32"><path d="M12 0C5.4 0 0 5.3 0 12c0 8.6 12 20 12 20s12-11.4 12-20C24 5.3 18.6 0 12 0z" fill="#e8d48b"/><circle cx="12" cy="12" r="4.6" fill="#0d0807"/></svg>';
+    var pinEls = PINS.map(function(p){
+      var d = document.createElement('div'); d.className = 'pin';
+      d.style.left = p.x + '%'; d.style.top = p.y + '%';
+      d.innerHTML = '<span class="lbl">' + p.n + '</span>' + PIN_SVG;
+      pinsWrap.appendChild(d); return d;
+    });
+    if(reduced){
+      pinEls.forEach(function(d){ d.classList.add('drop','lit'); });
+    } else {
+      var pctx = pcv.getContext('2d'), PW, PH;
+      function psize(){ PW = pcv.width = pinsWrap.clientWidth; PH = pcv.height = pinsWrap.clientHeight; }
+      psize(); window.addEventListener('resize', psize);
+      var STEP = 1.45, LEAD = 1.05, HOLD = 4.2, FADE = 1.3, T0 = 0.6;
+      var total = T0 + PINS.length*STEP + HOLD + FADE;
+      var start = performance.now(), trail = [], litCount = 0, faded = false, lastCyc = 0;
+      function anchor(i){ return [PINS[i].x/100*PW, PINS[i].y/100*PH]; }
+      (function fr(now){
+        var el = (now - start)/1000, cyc = Math.floor(el/total), t = el % total;
+        if(cyc !== lastCyc){ lastCyc = cyc; faded = false; litCount = 0; trail = []; pinEls.forEach(function(d){ d.className = 'pin'; }); }
+        pctx.clearRect(0,0,PW,PH);
+        /* pins that should be down by now */
+        var due = Math.min(PINS.length, Math.floor((t - T0)/STEP + 1));
+        for(var i = litCount; i < due; i++){ pinEls[i].classList.add('drop','lit'); litCount = i+1; }
+        /* the travelling light, from pin i-1 to pin i, arriving as pin i drops */
+        var nxt = due; /* next pin index to land */
+        if(nxt >= 1 && nxt < PINS.length){
+          var tl = T0 + nxt*STEP, p = (t - (tl - LEAD)) / LEAD;
+          if(p > 0 && p < 1){
+            var A = anchor(nxt-1), B = anchor(nxt);
+            var mx = (A[0]+B[0])/2, my = (A[1]+B[1])/2, dx = B[0]-A[0], dy = B[1]-A[1];
+            var len = Math.hypot(dx,dy) || 1, nxn = -dy/len, nyn = dx/len, bend = Math.min(140, len*0.28);
+            var cxp = mx + nxn*bend, cyp = my + nyn*bend;
+            var e = 1 - Math.pow(1-p, 2), u = 1-e;
+            var x = u*u*A[0] + 2*u*e*cxp + e*e*B[0], y = u*u*A[1] + 2*u*e*cyp + e*e*B[1];
+            trail.push([x,y]); if(trail.length > 26) trail.shift();
+            for(var k=0;k<trail.length;k++){
+              var a = k/trail.length;
+              pctx.beginPath(); pctx.fillStyle = 'rgba(245,217,120,' + (a*0.55) + ')';
+              pctx.arc(trail[k][0], trail[k][1], 1.2 + a*2.6, 0, 7); pctx.fill();
+            }
+            pctx.save(); pctx.shadowColor = '#f5d978'; pctx.shadowBlur = 18; pctx.fillStyle = '#fff4d0';
+            pctx.beginPath(); pctx.arc(x, y, 3.2, 0, 7); pctx.fill(); pctx.restore();
+          } else if(p >= 1){ trail = []; }
+        }
+        /* halos under every lit pin; the whole city breathes once all are down */
+        var allDown = litCount === PINS.length, tAll = t - (T0 + PINS.length*STEP);
+        for(var j=0;j<litCount;j++){
+          var P = anchor(j), br = allDown ? 0.55 + Math.sin(tAll*2.2 + j*0.7)*0.45 : 0.35 + Math.sin(t*3 + j)*0.15;
+          var R = 18 + br*20;
+          var g = pctx.createRadialGradient(P[0],P[1],1,P[0],P[1],R);
+          g.addColorStop(0,'rgba(245,217,120,' + (0.16 + br*0.20) + ')'); g.addColorStop(1,'rgba(245,217,120,0)');
+          pctx.fillStyle = g; pctx.beginPath(); pctx.arc(P[0],P[1],R,0,7); pctx.fill();
+        }
+        if(allDown && !faded){
+          /* golden threads between neighbours while the city shines */
+          pctx.save(); pctx.strokeStyle = 'rgba(232,212,139,' + (0.10 + Math.max(0,Math.sin(tAll*1.6))*0.18) + ')'; pctx.lineWidth = 0.8;
+          for(var q=1;q<PINS.length;q++){ var A2 = anchor(q-1), B2 = anchor(q); pctx.beginPath(); pctx.moveTo(A2[0],A2[1]); pctx.lineTo(B2[0],B2[1]); pctx.stroke(); }
+          pctx.restore();
+          if(tAll > HOLD){ faded = true; pinEls.forEach(function(d){ d.classList.add('fade'); }); }
+        }
+        requestAnimationFrame(fr);
+      })(performance.now());
+    }
+  }
 
-  // 1. Hero — the lost-patient conversation replays on loop
-  // Guard: if any step element is missing (future markup edit), stay static instead of an empty phone.
-  const chat = document.getElementById('heroChat');
-  const q = s => chat && chat.querySelector(s);
-  const steps = ['.hr-typing', '.hr-m1', '.hr-wait', '.hr-m2', '.hr-m3', '.hr-stamp'].map(q);
-  if (chat && steps.every(Boolean)) {
-    chat.classList.add('hr-anim');
-    const wait = q('.hr-wait');
-    const waitFinal = wait.textContent;
-    let heroVisible = true;
-    new IntersectionObserver(e => { heroVisible = e[0].isIntersecting }, { threshold: .25 }).observe(chat);
-    const sleep = ms => new Promise(r => setTimeout(r, ms));
-    (async function cycle() {
-      for (;;) {
-        while (!heroVisible || document.hidden) await sleep(800);
-        steps.forEach(el => el.classList.remove('on'));
-        wait.textContent = waitFinal;
-        await sleep(750);
-        q('.hr-typing').classList.add('on');
-        await sleep(1400);
-        q('.hr-typing').classList.remove('on');
-        q('.hr-m1').classList.add('on');
-        await sleep(1200);
-        wait.classList.add('on');
-        for (let h = 1; h <= 4; h++) { wait.textContent = '⏱ ' + h + (h > 1 ? ' hours' : ' hour') + ' later...'; await sleep(560); }
-        await sleep(450);
-        q('.hr-m2').classList.add('on');
-        await sleep(1600);
-        q('.hr-m3').classList.add('on');
-        await sleep(1200);
-        q('.hr-stamp').classList.add('on');
-        await sleep(5000);
+  /* ---------- hero phone: parallax tilt + the lost-patient replay ---------- */
+  var ph = document.getElementById('phone'), hvis = document.getElementById('hero-visual');
+  if(ph && hvis && !reduced && matchMedia('(pointer:fine)').matches){
+    var hero = document.querySelector('.hero');
+    hero.addEventListener('mousemove', function(ev){
+      var r = hero.getBoundingClientRect();
+      var nx = (ev.clientX - r.left) / r.width - 0.5, ny = (ev.clientY - r.top) / r.height - 0.5;
+      ph.style.setProperty('--ry', (-16 + nx * 14).toFixed(2) + 'deg');
+      ph.style.setProperty('--rx', (10 - ny * 10).toFixed(2) + 'deg');
+    });
+    hero.addEventListener('mouseleave', function(){ ph.style.removeProperty('--ry'); ph.style.removeProperty('--rx'); });
+  }
+  var chat = document.getElementById('heroChat');
+  if(chat && !reduced){
+    var q = function(s){ return chat.querySelector(s); };
+    var steps = ['.hr-typing','.hr-m1','.hr-wait','.hr-m2','.hr-m3','.hr-stamp'].map(q);
+    if(steps.every(Boolean)){
+      chat.classList.add('hr-anim');
+      var waitEl = q('.hr-wait'), waitFinal = waitEl.textContent, visible = true;
+      new IntersectionObserver(function(e){ visible = e[0].isIntersecting; }, {threshold: 0.25}).observe(chat);
+      var sleep = function(ms){ return new Promise(function(r){ setTimeout(r, ms); }); };
+      (async function cycle(){
+        for(;;){
+          while(!visible || document.hidden) await sleep(800);
+          steps.forEach(function(el){ el.classList.remove('on'); });
+          waitEl.textContent = waitFinal;
+          await sleep(900);
+          q('.hr-typing').classList.add('on'); await sleep(1500);
+          q('.hr-typing').classList.remove('on'); q('.hr-m1').classList.add('on'); await sleep(1500);
+          waitEl.classList.add('on');
+          for(var h=1; h<=3; h++){ waitEl.textContent = '⏱ ' + h + (h>1?' hours':' hour') + ' later...'; await sleep(650); }
+          await sleep(500);
+          q('.hr-m2').classList.add('on'); await sleep(1900);
+          q('.hr-m3').classList.add('on'); await sleep(1400);
+          q('.hr-stamp').classList.add('on'); await sleep(6500);
+        }
+      })();
+    }
+  }
+
+  /* reveal on scroll */
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, {threshold: 0.15});
+  document.querySelectorAll('.reveal, .lframe').forEach(function(el){ io.observe(el); });
+
+
+
+
+  /* ---------- layer frame instruments v2 ---------- */
+  function startWhenVisible(el, fn){
+    if(!el) return;
+    var o = new IntersectionObserver(function(es){
+      es.forEach(function(e){ if(e.isIntersecting){ fn(); o.unobserve(el); } });
+    }, {threshold: 0.3});
+    o.observe(el);
+  }
+
+  var DIMS = [
+    {k:'RESPONSE', v:38, c:'#f87171'},
+    {k:'BOOKING',  v:52, c:'#fbbf24'},
+    {k:'FOLLOW-UP',v:44, c:'#f87171'},
+    {k:'GOOGLE',   v:74, c:'#4ade80'},
+    {k:'REVIEWS',  v:70, c:'#4ade80'},
+    {k:'WEBSITE',  v:88, c:'#4ade80'}
+  ];
+
+  /* dimension readout list */
+  var dl = document.getElementById('dimlist');
+  if(dl){
+    DIMS.forEach(function(d){
+      var r = document.createElement('div');
+      r.className = 'dimrow';
+      r.innerHTML = '<span>' + d.k + '</span><span class="dv" style="color:' + d.c + '">' + d.v + '</span>';
+      dl.appendChild(r);
+    });
+  }
+
+  /* mini radar + rotating hot dimension */
+  var mr = document.getElementById('mini-radar');
+  if(mr && mr.getContext){
+    startWhenVisible(mr, function(){
+      var ctx = mr.getContext('2d'), W = 230, H = 230, cx = W/2, cy = H/2;
+      var t = 0, ease = 0, rows = dl ? dl.querySelectorAll('.dimrow') : [];
+      var rtag = document.getElementById('radar-tag');
+      function ax(i){ return -Math.PI/2 + i*Math.PI/3; }
+      (function fr(){
+        t += 0.008; if(ease < 1) ease = Math.min(1, ease + 0.012);
+        var e2 = 1 - Math.pow(1-ease, 3), maxR = 76;
+        ctx.clearRect(0,0,W,H);
+        for(var g=1; g<=3; g++){
+          ctx.beginPath();
+          for(var i=0;i<=6;i++){ var a=ax(i%6), r=maxR*g/3; var x=cx+Math.cos(a)*r, y=cy+Math.sin(a)*r; i?ctx.lineTo(x,y):ctx.moveTo(x,y); }
+          ctx.strokeStyle='rgba(122,38,34,'+(g===3?0.55:0.24)+')'; ctx.lineWidth=g===3?1:0.6; ctx.stroke();
+        }
+        var pts=[];
+        for(var i=0;i<6;i++){ var a=ax(i), r=maxR*(DIMS[i].v/100)*e2; pts.push([cx+Math.cos(a)*r, cy+Math.sin(a)*r]); }
+        var grad = ctx.createRadialGradient(cx,cy,4,cx,cy,maxR);
+        grad.addColorStop(0,'rgba(248,113,113,0.20)'); grad.addColorStop(1,'rgba(248,113,113,0.04)');
+        ctx.beginPath(); pts.forEach(function(p,i){ i?ctx.lineTo(p[0],p[1]):ctx.moveTo(p[0],p[1]); }); ctx.closePath();
+        ctx.fillStyle=grad; ctx.fill();
+        ctx.save(); ctx.shadowColor='#e8d48b'; ctx.shadowBlur=6; ctx.strokeStyle='rgba(232,212,139,0.85)'; ctx.lineWidth=1.2; ctx.stroke(); ctx.restore();
+        var sw = t*0.9;
+        var hot = Math.floor((((sw + Math.PI/2) % (Math.PI*2)) + Math.PI*2) % (Math.PI*2) / (Math.PI/3)) % 6;
+        rows.forEach(function(r,i){ r.classList.toggle('hot', i === hot); });
+        for(var i=0;i<6;i++){
+          var a = ax(i);
+          var lx = cx+Math.cos(a)*(maxR+15), ly = cy+Math.sin(a)*(maxR+15);
+          ctx.save(); ctx.globalAlpha = i===hot ? 1 : 0.55;
+          ctx.fillStyle = DIMS[i].c; ctx.textAlign='center'; ctx.font='600 6.5px IBM Plex Mono, monospace';
+          ctx.fillText(DIMS[i].k.slice(0,3), lx, ly+2); ctx.restore();
+          var da = Math.abs(((a-sw+Math.PI*3)%(Math.PI*2))-Math.PI), near = Math.max(0,1-da/0.5);
+          ctx.save(); ctx.shadowColor=DIMS[i].c; ctx.shadowBlur=4+near*10; ctx.fillStyle=DIMS[i].c;
+          ctx.beginPath(); ctx.arc(pts[i][0],pts[i][1],2.3+near*2,0,7); ctx.fill(); ctx.restore();
+        }
+        ctx.save();
+        for(var k=0;k<16;k++){ var a=sw-k*0.017;
+          ctx.strokeStyle='rgba(248,113,113,'+(0.30*(1-k/16))+')'; ctx.lineWidth=(k===0?1.2:0.7);
+          ctx.beginPath(); ctx.moveTo(cx,cy); ctx.lineTo(cx+Math.cos(a)*maxR, cy+Math.sin(a)*maxR); ctx.stroke(); }
+        ctx.restore();
+        ctx.fillStyle='rgba(13,8,7,0.92)'; ctx.beginPath(); ctx.arc(cx,cy,21,0,7); ctx.fill();
+        ctx.strokeStyle='#e8d48b'; ctx.lineWidth=1; ctx.beginPath(); ctx.arc(cx,cy,21,0,7); ctx.stroke();
+        ctx.fillStyle='#e8d48b'; ctx.textAlign='center'; ctx.font='19px Cormorant Garamond, serif';
+        ctx.fillText(Math.round(61*e2), cx, cy+6);
+        if(rtag) rtag.textContent = Math.round(61*e2) + '/100 SAMPLE';
+        if(!reduced) requestAnimationFrame(fr);
+      })();
+    });
+  }
+
+  /* rotating findings */
+  var fl = document.getElementById('find-line');
+  if(fl){
+    var finds = [
+      ['#f87171', '21:14 INQUIRY \u2014 NO PRICE GIVEN, NO BOOKING OFFERED'],
+      ['#fbbf24', 'GOOGLE REVIEW \u2014 UNANSWERED FOR 9 DAYS'],
+      ['#34e3f0', 'COMPETITOR 900M AWAY \u2014 REPLIES IN 8 MINUTES'],
+      ['#f87171', 'PRICES ON SITE \u2260 PRICES GIVEN IN CHAT'],
+      ['#fbbf24', 'INSTAGRAM DM \u2014 NEVER ANSWERED'],
+      ['#4ade80', 'IMPROVED \u2014 DM ANSWERED IN 41 MIN (LAST MONTH: NEVER)']
+    ];
+    var fi2 = 0;
+    function nextFind(){
+      fl.style.color = finds[fi2][0];
+      fl.textContent = finds[fi2][1];
+      fi2 = (fi2 + 1) % finds.length;
+    }
+    startWhenVisible(fl, function(){
+      nextFind();
+      if(!reduced) setInterval(function(){
+        fl.classList.add('fade');
+        setTimeout(function(){ nextFind(); fl.classList.remove('fade'); }, 500);
+      }, 3600);
+    });
+  }
+
+  /* live operations feed */
+  var ops = document.getElementById('ops');
+  if(ops){
+    var FEED = [
+      ['#25D366','WA','inquiry answered \u2014 in Arabic','21:14'],
+      ['#E1306C','IG','DM qualified \u2014 consult offered','21:26'],
+      ['#e8d48b','CAL','consult booked \u2014 Thursday','21:31'],
+      ['#4ade80','SCH','tomorrow\u2019s list confirmed \u2014 2 reminders out','08:00'],
+      ['#fbbf24','REV','review answered \u2014 privacy-safe','09:02'],
+      ['#25D366','WA','no-show risk \u2014 rescheduled','10:15'],
+      ['#60a5fa','EM','email inquiry \u2014 same brain, same speed','11:40'],
+      ['#34e3f0','YOU','owner digest sent \u2014 the week\u2019s numbers','18:00']
+    ];
+    startWhenVisible(ops, function(){
+      var idx = 0;
+      function render(){
+        ops.innerHTML = '';
+        for(var k=0;k<3;k++){
+          var e = FEED[(idx+k) % FEED.length];
+          var d = document.createElement('div');
+          d.className = 'op';
+          d.innerHTML = '<span class="oc" style="--oc:' + e[0] + '">' + e[1] + '</span><span>' + e[2] + '</span><span class="otm">' + e[3] + '</span>';
+          ops.appendChild(d);
+        }
+        var els = ops.querySelectorAll('.op');
+        els.forEach(function(el,i){ setTimeout(function(){ el.classList.add('on'); }, 60 + i*220); });
+        idx = (idx + 1) % FEED.length;
       }
+      render();
+      if(!reduced) setInterval(render, 4200);
+    });
+  }
+
+  /* mini engine */
+  var me = document.getElementById('mini-engine');
+  if(me && me.getContext){
+    startWhenVisible(me, function(){
+      var ctx = me.getContext('2d'), W = 290, H = 190, cx = W/2, cy = H/2;
+      var cols = ['#25D366','#E1306C','#4285F4','#fbbf24','#60a5fa','#e8d48b','#4ade80','#fb923c'];
+      var sparks = [], t = 0;
+      (function fr(){
+        t += 0.006;
+        ctx.clearRect(0,0,W,H);
+        var pts = [];
+        for(var i=0;i<8;i++){
+          var a = t + i*Math.PI/4;
+          var x = cx+Math.cos(a)*104, y = cy+Math.sin(a)*58;
+          pts.push([x,y]);
+          ctx.strokeStyle='rgba(232,212,139,0.10)'; ctx.lineWidth=0.6;
+          ctx.beginPath(); ctx.moveTo(x,y); ctx.lineTo(cx,cy); ctx.stroke();
+        }
+        if(Math.random()<0.05 && sparks.length<4) sparks.push({from:Math.floor(Math.random()*8), p:0});
+        sparks.forEach(function(sp){ sp.p += 0.02;
+          var S = pts[sp.from], x = S[0]+(cx-S[0])*sp.p, y = S[1]+(cy-S[1])*sp.p;
+          ctx.save(); ctx.shadowColor='#e8d48b'; ctx.shadowBlur=6;
+          ctx.fillStyle='rgba(232,212,139,'+(1-sp.p*0.5)+')';
+          ctx.beginPath(); ctx.arc(x,y,1.8,0,7); ctx.fill(); ctx.restore(); });
+        for(var i=sparks.length-1;i>=0;i--){ if(sparks[i].p>=1) sparks.splice(i,1); }
+        for(var i=0;i<8;i++){
+          var fl2 = 0.6+Math.abs(Math.sin(t*3+i*1.9))*0.4;
+          ctx.save(); ctx.globalAlpha=fl2; ctx.shadowColor=cols[i]; ctx.shadowBlur=6;
+          ctx.fillStyle=cols[i]; ctx.beginPath(); ctx.arc(pts[i][0],pts[i][1],3,0,7); ctx.fill(); ctx.restore();
+        }
+        var br = 1+Math.sin(t*2.4)*0.07;
+        var g = ctx.createRadialGradient(cx,cy,2,cx,cy,40*br);
+        g.addColorStop(0,'rgba(245,217,120,0.9)'); g.addColorStop(0.4,'rgba(201,164,74,0.32)'); g.addColorStop(1,'rgba(201,164,74,0)');
+        ctx.fillStyle=g; ctx.beginPath(); ctx.arc(cx,cy,40*br,0,7); ctx.fill();
+        ctx.fillStyle='#0d0807'; ctx.beginPath(); ctx.arc(cx,cy,17*br,0,7); ctx.fill();
+        ctx.strokeStyle='#e8d48b'; ctx.lineWidth=1; ctx.beginPath(); ctx.arc(cx,cy,17*br,0,7); ctx.stroke();
+        ctx.fillStyle='#e8d48b'; ctx.textAlign='center'; ctx.font='6.5px IBM Plex Mono, monospace';
+        ctx.fillText('VAYDIN', cx, cy+2.5);
+        if(!reduced) requestAnimationFrame(fr);
+      })();
+    });
+  }
+
+  /* grow: demand bars + instagram sparkline */
+  var gb = document.getElementById('gbars');
+  if(gb){
+    startWhenVisible(gb, function(){
+      var bars = gb.querySelectorAll('.gbar');
+      var hs = [22, 38, 30, 55, 70, 92];
+      function set(scale){ bars.forEach(function(b,i){ b.style.height = Math.max(6, hs[i]*scale) + '%'; }); }
+      if(reduced){ set(1); return; }
+      var up = true; set(1);
+      setInterval(function(){ up = !up; set(up ? 1 : 0.55); }, 3400);
+    });
+  }
+  var ig = document.getElementById('igspark');
+  if(ig && ig.getContext){
+    startWhenVisible(ig, function(){
+      var ctx = ig.getContext('2d'), W = 230, H = 104;
+      var base = [70, 66, 68, 60, 56, 50, 44, 40, 34, 26, 20, 14];
+      var t = 0, prog = 0;
+      (function fr(){
+        t += 0.02; if(prog < 1) prog = Math.min(1, prog + 0.008);
+        ctx.clearRect(0,0,W,H);
+        var count = Math.max(2, Math.floor(base.length * prog));
+        ctx.beginPath();
+        for(var i=0;i<count;i++){
+          var x = 14 + i*(W-28)/(base.length-1);
+          var y = 14 + base[i] * (H-28)/80 + Math.sin(t+i)*1.2;
+          i?ctx.lineTo(x,y):ctx.moveTo(x,y);
+        }
+        ctx.save(); ctx.shadowColor='#E1306C'; ctx.shadowBlur=8;
+        ctx.strokeStyle='#E1306C'; ctx.lineWidth=1.6; ctx.stroke(); ctx.restore();
+        if(count >= 2){
+          var lx = 14 + (count-1)*(W-28)/(base.length-1);
+          var ly = 14 + base[count-1]*(H-28)/80 + Math.sin(t+count-1)*1.2;
+          var pu = 1 + Math.sin(t*3)*0.4;
+          ctx.save(); ctx.shadowColor='#E1306C'; ctx.shadowBlur=10;
+          ctx.fillStyle='#E1306C'; ctx.beginPath(); ctx.arc(lx,ly,2.6*pu,0,7); ctx.fill(); ctx.restore();
+        }
+        if(!reduced) requestAnimationFrame(fr);
+      })();
+    });
+  }
+
+  /* ---------- frame thunder veils ---------- */
+  function thunder(id, color, rgb){
+    var cv = document.getElementById(id);
+    if(!cv || !cv.getContext) return;
+    startWhenVisible(cv, function(){
+      var ctx = cv.getContext('2d'), W = 920, H = 430;
+      var bolts = [], t = Math.random()*7;
+      var blobs = [
+        {x:0.2+Math.random()*0.2, y:0.3, r:170, sp:0.13},
+        {x:0.65+Math.random()*0.2, y:0.7, r:200, sp:0.09}
+      ];
+      function mkbolt(){
+        var x = 60 + Math.random()*(W-120), y = 20 + Math.random()*60;
+        var pts = [[x, y]];
+        var segs = 7 + Math.floor(Math.random()*5);
+        for(var i=0;i<segs;i++){
+          x += (Math.random()-0.5)*90; y += (H-80)/segs * (0.7+Math.random()*0.6);
+          pts.push([x, y]);
+        }
+        return {pts: pts, life: 1, branch: Math.random() < 0.5};
+      }
+      (function fr(){
+        t += 0.008;
+        ctx.clearRect(0,0,W,H);
+        blobs.forEach(function(b, i){
+          var bx = (b.x + Math.sin(t*b.sp*6 + i*2)*0.08) * W;
+          var by = (b.y + Math.cos(t*b.sp*5 + i)*0.07) * H;
+          var g = ctx.createRadialGradient(bx, by, 8, bx, by, b.r);
+          g.addColorStop(0, 'rgba(' + rgb + ',' + (0.10 + Math.sin(t*2+i)*0.03) + ')');
+          g.addColorStop(1, 'rgba(' + rgb + ',0)');
+          ctx.fillStyle = g;
+          ctx.beginPath(); ctx.arc(bx, by, b.r, 0, 7); ctx.fill();
+        });
+        if(Math.random() < 0.012 && bolts.length < 2) bolts.push(mkbolt());
+        bolts.forEach(function(b){
+          b.life -= 0.045;
+          var a = Math.max(b.life, 0);
+          ctx.save();
+          ctx.shadowColor = color; ctx.shadowBlur = 14;
+          ctx.strokeStyle = 'rgba(' + rgb + ',' + a*0.55 + ')';
+          ctx.lineWidth = 1.4;
+          ctx.beginPath(); ctx.moveTo(b.pts[0][0], b.pts[0][1]);
+          for(var i=1;i<b.pts.length;i++) ctx.lineTo(b.pts[i][0], b.pts[i][1]);
+          ctx.stroke();
+          if(b.branch && b.pts.length > 4){
+            var p = b.pts[3];
+            ctx.strokeStyle = 'rgba(' + rgb + ',' + a*0.3 + ')';
+            ctx.lineWidth = 0.9;
+            ctx.beginPath(); ctx.moveTo(p[0], p[1]);
+            ctx.lineTo(p[0] + 70, p[1] + 90); ctx.lineTo(p[0] + 55, p[1] + 170);
+            ctx.stroke();
+          }
+          ctx.restore();
+        });
+        for(var i=bolts.length-1;i>=0;i--){ if(bolts[i].life <= 0) bolts.splice(i,1); }
+        if(!reduced) requestAnimationFrame(fr);
+      })();
+    });
+  }
+  thunder('th-1', '#f87171', '248,113,113');
+  thunder('th-2', '#e8d48b', '232,212,139');
+  thunder('th-3', '#a78bfa', '167,139,250');
+
+  /* ---------- ambient embers ---------- */
+  var ec = document.getElementById('embers');
+  if(ec && ec.getContext && !reduced){
+    var ectx = ec.getContext('2d');
+    var EW, EH, parts = [];
+    function esize(){ EW = ec.width = window.innerWidth; EH = ec.height = window.innerHeight; }
+    esize(); window.addEventListener('resize', esize);
+    for(var i=0;i<42;i++){
+      parts.push({x:Math.random(), y:Math.random(), r:0.6+Math.random()*1.7,
+                  s:0.00012+Math.random()*0.00035, tw:Math.random()*7,
+                  red:Math.random()<0.30});
+    }
+    (function eframe(){
+      ectx.clearRect(0,0,EW,EH);
+      for(var i=0;i<parts.length;i++){
+        var p = parts[i];
+        p.y -= p.s; p.tw += 0.02;
+        if(p.y < -0.02){ p.y = 1.02; p.x = Math.random(); }
+        var a = 0.10 + Math.abs(Math.sin(p.tw)) * 0.28;
+        ectx.fillStyle = p.red ? 'rgba(248,113,113,'+a*0.8+')' : 'rgba(232,212,139,'+a+')';
+        ectx.beginPath(); ectx.arc(p.x*EW, p.y*EH, p.r, 0, 7); ectx.fill();
+      }
+      requestAnimationFrame(eframe);
     })();
   }
 
-  // 2. Intelligence dashboard wakes up on scroll — gauge sweeps, score counts, bars fill
-  const dvrPh = document.querySelector('.dvr-ph-rich');
-  const dvrNum = dvrPh && dvrPh.querySelector('.dash-gauge-n');
-  if (dvrPh && dvrNum) {
-    dvrPh.classList.add('dvr-anim');
-    const bars = [...dvrPh.querySelectorAll('.dash-bar-f')];
-    bars.forEach(b => { b.dataset.w = b.style.width; b.style.width = '0%'; });
-    const num = dvrNum;
-    const target = parseInt(num.textContent, 10) || 34;
-    new IntersectionObserver((e, o) => {
-      if (!e[0].isIntersecting) return;
-      o.disconnect();
-      dvrPh.classList.add('dvr-on');
-      bars.forEach((b, i) => setTimeout(() => { b.style.width = b.dataset.w; }, 350 + i * 140));
-      const t0 = performance.now();
-      requestAnimationFrame(function tick(now) {
-        const p = Math.min((now - t0) / 1400, 1);
-        num.textContent = Math.round(target * (1 - Math.pow(1 - p, 3)));
-        if (p < 1) requestAnimationFrame(tick);
-      });
-    }, { threshold: .35 }).observe(dvrPh);
-  }
-
-  // 3. Audit conversations reveal in sequence — slow on the failing clinic, fast on the fixed one
-  document.querySelectorAll('.cs').forEach(cs => {
-    cs.classList.add('cs-anim');
-    const items = [...cs.querySelectorAll('.cb,.ctb,.ctg')];
-    const fast = !!cs.closest('.cc-g');
-    new IntersectionObserver((e, o) => {
-      if (!e[0].isIntersecting) return;
-      o.disconnect();
-      items.forEach((el, i) => setTimeout(() => el.classList.add('on'), 300 + i * (fast ? 240 : 700)));
-    }, { threshold: .4 }).observe(cs);
-  });
-}
-
-// Cal.com embed (EU instance) — powers the "Book 15-min Intro" button
-(function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; typeof namespace === "string" ? (cal.ns[namespace] = api) && p(api, ar) : p(cal, ar); return; } p(cal, ar); }; })(window, "https://app.cal.eu/embed/embed.js", "init");
-Cal("init", "15min", {origin:"https://cal.eu"});
-Cal.ns["15min"]("ui", {"theme":"dark","styles":{"branding":{"brandColor":"#c9a44a"}},"hideEventTypeDetails":false,"layout":"month_view"});
+})();
 </script>
-</body></html>
+</body>
+</html>

@@ -259,7 +259,7 @@
 <div class="bgshade"></div>
 
 <nav>
-  <a class="brand" href="index_rebuild.html">
+  <a class="brand" href="index.html">
     <img src="vaydin-icon-mark.png" alt="Vaydin mark">
     <div class="wordmark">VAYDIN</div>
   </a>
@@ -326,13 +326,13 @@
             <div class="feat"><span class="fchk"><svg width="10" height="10" viewBox="0 0 16 16" fill="none"><path d="M2.5 8.5 L6.5 12.5 L13.5 4" stroke="#34d97b" stroke-width="2"/></svg></span>
               <span class="fbody"><b>Your Vaydin Score</b><span>One number a month — is your clinic healthier than last month?</span></span></div>
             <div class="feat"><span class="fchk"><svg width="10" height="10" viewBox="0 0 16 16" fill="none"><path d="M2.5 8.5 L6.5 12.5 L13.5 4" stroke="#34d97b" stroke-width="2"/></svg></span>
-              <span class="fbody"><b>Recommended fixes, ranked</b><span>What to fix first, and what it's costing you while it waits</span></span></div>
+              <span class="fbody"><b>Recommended fixes, ranked</b><span>What to fix first, and why it ranks first</span></span></div>
           </div>
           <div class="minilist">
             <div>Google &amp; Instagram presence audit</div>
             <div>Competitor watch</div>
             <div>No setup fee</div>
-            <div>Cancel monthly</div>
+            <div>Cancel with 30-day notice</div>
           </div>
           <div class="inclbadge">✓ INCLUDED IN EVERY PLAN</div>
         </div>
@@ -343,7 +343,7 @@
         <div class="stephead"><h2>Step 3: The Engine &amp; The Estate</h2><p class="shsub">Layer 2 — we stop reporting the leaks and start running the machine.</p></div>
         <div class="tiercard" id="fixCard">
           <span class="tick">✓</span>
-          <div class="tiername">Revenue Engine + Digital Estate</div>
+          <div class="tiername">Revenue Engine + Estate</div>
           <div class="pricepill" id="fixPill">AED 20,000/MO + AED 5,000 ONE-TIME INSTALL</div>
           <p class="tierdesc">Your entire digital front door, installed and operated by Vaydin. Every inquiry answered, booked, reminded, revived — on your own WhatsApp number. Your reception just taps ✓.</p>
           <div class="feats">
@@ -375,7 +375,7 @@
       </div>
 
       <div class="pane" data-pane="3">
-        <div class="stephead"><h2>Step 4: Growth</h2><p class="shsub">Layer 3 — Instagram presence and performance marketing. Fuel, only into an engine we run.</p></div>
+        <div class="stephead"><h2>Step 4: Grow</h2><p class="shsub">Layer 3 — paid patient demand and Instagram presence. Fuel, only into an engine we run.</p></div>
         <div class="lockmsg" id="growLockMsg"><span class="lk">✗ LOCKED</span><span>This step unlocks with the engine. We only pour fuel into a machine we operate and measure — <b style="color:var(--tx)">agencies sell posts and hope; we count</b>.</span></div>
         <div class="growfields" id="growFields" style="display:none">
           <div class="gfield" id="gDemand">
@@ -415,7 +415,7 @@
         <div class="rail-top">
           <div class="rl">YOUR MONTHLY COST</div>
           <div class="total"><div class="amt" id="totalAmt">1,500</div><div class="per">AED /mo</div></div>
-          <div class="mtm">month-to-month</div>
+          <div class="mtm" id="mtm">month-to-month</div>
           <div class="suffix" id="suffix"></div>
           <div class="onetime" id="onetime"></div>
         </div>
@@ -480,6 +480,7 @@
 <footer>
   <div>VAYDIN PARTNERS INVESTMENTS — FZCO · Licensed under IFZA, Dubai Silicon Oasis</div>
   <div>The diagnostic sells the engine. The engine earns the fuel.</div>
+  <div><a href="/privacy/">Privacy</a> · <a href="/terms/">Terms</a> · <a href="/data-deletion/">Data deletion</a></div>
 </footer>
 
 <div class="mobilebar">
@@ -502,10 +503,10 @@
 
   function prices(){
     return {
-      diag: P.diagFounding * state.loc,
-      diagList: P.diagList * state.loc,
-      fixM: (state.annual ? P.fixAnnual : P.fixMonthly) * state.loc,
-      fixSetup: (state.annual ? 0 : P.install) * state.loc,
+      diag: P.diagFounding,
+      diagList: P.diagList,
+      fixM: (state.annual ? P.fixAnnual : P.fixMonthly),
+      fixSetup: (state.annual ? 0 : P.install),
       pres: P.presence[state.kit]
     };
   }
@@ -526,7 +527,7 @@
 
     el('locNum').textContent = state.loc;
     el('locLbl').textContent = state.loc === 1 ? 'LOCATION' : 'LOCATIONS';
-    el('diagPill').textContent = 'FOUNDING AED ' + fmt(p.diag) + '/MO · LIST AED ' + fmt(p.diagList) + (state.loc > 1 ? ' · ' + state.loc + ' LOCATIONS' : ' · PER LOCATION');
+    el('diagPill').textContent = 'FOUNDING AED ' + fmt(p.diag) + '/MO · LIST AED ' + fmt(p.diagList) + ' · PER LOCATION';
     el('fixPill').textContent = state.annual
       ? 'AED ' + fmt(p.fixM) + '/MO · ANNUAL · INSTALL WAIVED'
       : 'AED ' + fmt(p.fixM) + '/MO + AED ' + fmt(p.fixSetup) + ' ONE-TIME INSTALL';
@@ -556,6 +557,8 @@
     var sfx = [];
     if(!state.fix) sfx.push('founding rate · first 3 months, then AED ' + fmt(p.diagList));
     if(state.demand) sfx.push('+ 15% of ad spend (min AED 2,500)');
+    if(state.loc > 1) sfx.push(state.loc + ' branches · multi-branch pricing confirmed on your call');
+    el('mtm').textContent = state.fix ? (state.annual ? '12-month plan' : '3-month minimum, then monthly') : 'month-to-month';
     el('suffix').textContent = sfx.join('\n');
     el('onetime').textContent = state.fix ? (state.annual ? 'install waived · 12-month plan' : '+ AED ' + fmt(p.fixSetup) + ' one-time install') : 'no setup fee';
 
@@ -563,9 +566,9 @@
     var lines = [];
     if(state.fix){
       lines.push({l:'Vaydin Intelligence', s:'included in the engine', v:'INCLUDED', inc:true});
-      lines.push({l:'Revenue Engine + Estate', s: state.loc + ' location' + (state.loc>1?'s':'') + (state.annual ? ' · annual' : ' · monthly'), v:'AED ' + fmt(p.fixM) + '/mo'});
+      lines.push({l:'Revenue Engine + Estate', s: 'per location' + (state.annual ? ' · annual' : ' · monthly'), v:'AED ' + fmt(p.fixM) + '/mo'});
     } else {
-      lines.push({l:'Vaydin Intelligence', s: state.loc + ' location' + (state.loc>1?'s':'') + ' · founding rate', v:'AED ' + fmt(p.diag) + '/mo'});
+      lines.push({l:'Vaydin Intelligence', s: 'per location' + ' · founding rate', v:'AED ' + fmt(p.diag) + '/mo'});
     }
     if(state.demand) lines.push({l:'Performance Marketing', s:'IG · FB · Google · min 2,500', v:'15% of spend'});
     if(state.presence) lines.push({l:'Instagram Presence', s: kitName, v:'AED ' + fmt(p.pres) + '/mo'});
@@ -586,18 +589,18 @@
 
     el('mTotal').textContent = fmt(total);
     el('mLabel').textContent = state.fix
-      ? (state.demand || state.presence ? 'INTELLIGENCE + ENGINE + GROWTH' : 'INTELLIGENCE + ENGINE')
+      ? (state.demand || state.presence ? 'INTELLIGENCE + ENGINE + GROW' : 'INTELLIGENCE + ENGINE')
       : 'INTELLIGENCE';
   }
 
   function waLink(){
     var p = prices();
-    var parts = ['Hello Vaydin — I built my plan:'];
+    var parts = ['Hello Vaydin, I built my plan:'];
     parts.push('• Vaydin Intelligence' + (state.fix ? ' (included)' : ' — AED ' + fmt(p.diag) + '/mo founding, then ' + fmt(p.diagList)));
     if(state.fix) parts.push('• Revenue Engine + Estate — AED ' + fmt(p.fixM) + '/mo' + (state.annual ? ' (annual, install waived)' : ' + AED ' + fmt(p.fixSetup) + ' install'));
     if(state.demand) parts.push('• Performance Marketing (15% of ad spend, min AED 2,500)');
     if(state.presence) parts.push('• Instagram Presence — ' + ['', '2', '4', '8'][state.kit] + ' reels kit, AED ' + fmt(p.pres) + '/mo');
-    if(state.loc > 1) parts.push('• Locations: ' + state.loc);
+    if(state.loc > 1) parts.push('• Locations: ' + state.loc + ' (multi-branch pricing to confirm on the call)');
     parts.push('Monthly: AED ' + fmt((state.fix ? p.fixM : p.diag) + (state.presence ? p.pres : 0)) + (state.demand ? ' + ad spend fee' : ''));
     return 'https://wa.me/971505553148?text=' + encodeURIComponent(parts.join('\n'));
   }
