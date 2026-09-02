@@ -182,12 +182,39 @@
   .chat-verdict .red{color:var(--critical)}
 
   /* ---------- the speed gap (stat trio) ---------- */
-  .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);box-shadow:0 0 0 1px var(--border)}
-  .stat{background:var(--bg-card);padding:44px 36px 40px;text-align:center}
-  .stat .sn{font-family:var(--serif);font-size:clamp(44px,4.5vw,64px);line-height:1;color:var(--gold-light)}
-  .stat .sl{font-size:14px;color:var(--tx-muted);margin-top:14px;max-width:240px;margin-left:auto;margin-right:auto}
-  .stat .sl b{color:var(--tx);font-weight:600}
   .stats-prov{margin-top:16px;font-family:var(--mono);font-size:9.5px;letter-spacing:0.16em;color:var(--tx-faint);text-align:center}
+
+  /* ---------- the speed gap: two inboxes, one evening (frameless, live, colour = meaning) ---------- */
+  .gap{display:grid;grid-template-columns:1fr 300px 1fr;gap:48px;align-items:center;margin-top:4px}
+  .lane{position:relative;padding:8px 0 10px}
+  .lane-red{--lc:var(--critical);--lg:rgba(248,113,113,0.55)} .lane-green{--lc:var(--ok);--lg:rgba(74,222,128,0.55)}
+  .lane-eb{font-family:var(--mono);font-size:11px;letter-spacing:0.24em;color:var(--tx-faint);margin-bottom:18px}
+  .lane-eb b{font-weight:500;color:var(--lc)}
+  .lane-t{font-family:var(--serif);font-size:clamp(64px,6.6vw,108px);line-height:0.92;color:var(--lc);font-variant-numeric:lining-nums tabular-nums;letter-spacing:-0.015em;white-space:nowrap}
+  .lane-t small{font-size:0.36em;color:var(--tx-muted);margin-left:6px;letter-spacing:0.02em}
+  .lane-bar{position:relative;height:2px;background:rgba(255,255,255,0.06);margin:24px 0 20px}
+  .lane-bar i{position:absolute;left:0;top:0;bottom:0;width:0;background:var(--lc);box-shadow:0 0 14px var(--lg)}
+  .lane-bar em{position:absolute;top:-4px;left:0;width:10px;height:10px;margin-left:-5px;border-radius:50%;background:var(--lc);box-shadow:0 0 18px var(--lc);opacity:0}
+  .lane-log{display:grid;gap:10px;min-height:88px}
+  .lane-log div{font-family:var(--mono);font-size:12px;letter-spacing:0.02em;color:var(--tx-muted);opacity:0;transform:translateY(6px);transition:opacity .5s var(--ease),transform .5s var(--ease)}
+  .lane-log div.on{opacity:1;transform:none}
+  .lane-log div span{color:var(--tx-faint);margin-right:10px}
+  .lane-log div.hit.on{color:var(--lc)}
+  .ring{position:relative;width:300px;height:300px;margin:0 auto}
+  .ring svg{width:100%;height:100%;transform:rotate(-90deg)}
+  .ring circle{fill:none;stroke-width:2}
+  .ring .r-base{stroke:rgba(255,255,255,0.06)}
+  .ring .r-ok{stroke:var(--ok);stroke-dasharray:879.6;stroke-dashoffset:879.6;filter:drop-shadow(0 0 6px rgba(74,222,128,0.45))}
+  .ring .r-red{stroke:var(--critical);stroke-width:6;stroke-dasharray:741.4;stroke-dashoffset:741.4;stroke-linecap:round}
+  .ring-c{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 44px}
+  .ring-c b{font-family:var(--serif);font-weight:400;font-size:66px;line-height:1;color:var(--gold-light)}
+  .ring-c span{font-family:var(--mono);font-size:10px;letter-spacing:0.2em;color:var(--tx-faint);margin-top:12px;line-height:1.8}
+  .ring-c span i{font-style:normal;color:var(--critical)} .ring-c span u{text-decoration:none;color:var(--ok)}
+  @media (max-width:1060px){
+    .gap{grid-template-columns:1fr;gap:34px}
+    .ring{order:-1;width:230px;height:230px} .ring-c b{font-size:50px} .ring-c span{font-size:9px}
+    .lane-t{font-size:clamp(60px,17vw,88px)}
+  }
 
   /* ---------- evidence strip ---------- */
   .frame-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);box-shadow:0 0 0 1px var(--border)}
@@ -423,10 +450,37 @@
     <h2 class="grad-text">The whole game is minutes.</h2>
     <p class="section-sub">A patient messaging clinics tonight will book with whoever answers first and best. This is the gap the diagnostic exists to find.</p>
   </div>
-  <div class="stats reveal">
-    <div class="stat"><div class="sn" data-count="4h 11m">0</div><div class="sl"><b>Hours to a first reply</b> is common when a clinic runs its own inbox (illustration).</div></div>
-    <div class="stat"><div class="sn" data-count="2">0</div><div class="sl"><b>Minutes</b> — first reply once the engine answers that same inbox.</div></div>
-    <div class="stat"><div class="sn">24/7</div><div class="sl"><b>When it happens.</b> The patient writing at 11pm is answered at 11pm.</div></div>
+  <!-- the speed gap, played out: one patient message, two inboxes, one evening -->
+  <div class="gap reveal" id="gap">
+    <div class="lane lane-red">
+      <div class="lane-eb"><b>THE CLINIC'S OWN INBOX</b> · TONIGHT</div>
+      <div class="lane-t" id="gap-red">0<small>min</small></div>
+      <div class="lane-bar"><i></i><em></em></div>
+      <div class="lane-log">
+        <div><span>21:14</span>Patient asks about lip filler this week</div>
+        <div class="hit"><span>21:20</span>Patient books the clinic that answered</div>
+        <div><span>09:38</span>Next morning the clinic replies: call us</div>
+      </div>
+    </div>
+    <div class="ring" aria-hidden="true">
+      <svg viewBox="0 0 300 300">
+        <circle class="r-base" cx="150" cy="150" r="140"/>
+        <circle class="r-ok" cx="150" cy="150" r="140"/>
+        <circle class="r-base" cx="150" cy="150" r="118"/>
+        <circle class="r-red" cx="150" cy="150" r="118"/>
+      </svg>
+      <div class="ring-c"><b>24/7</b><span><i>after hours</i> the inbox goes dark · <u>the engine</u> answers all 24</span></div>
+    </div>
+    <div class="lane lane-green">
+      <div class="lane-eb"><b>THE SAME INBOX</b> · ENGINE ON</div>
+      <div class="lane-t" id="gap-green">0<small>min</small></div>
+      <div class="lane-bar"><i></i><em></em></div>
+      <div class="lane-log">
+        <div><span>21:14</span>Patient asks about lip filler this week</div>
+        <div class="hit"><span>21:16</span>Replied · three slots offered</div>
+        <div><span>21:19</span>Booked · Thursday 19:00</div>
+      </div>
+    </div>
   </div>
   <div class="stats-prov">ILLUSTRATIVE FIGURES — YOUR DIAGNOSTIC SHOWS YOUR OWN, MEASURED NUMBERS</div>
 </section>
@@ -587,34 +641,55 @@
   }, {threshold: 0.12});
   document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
 
-  /* ================= stat trio count-up ================= */
-  function animateCount(el){
-    var target = el.getAttribute('data-count');
-    if(!target) return;
-    if(reduced){ el.textContent = target; return; }
-    var m = target.match(/^(\d+)h\s+(\d+)m$/);
-    var start = null, dur = 1600;
-    function frame(ts){
-      if(!start) start = ts;
-      var p = Math.min((ts - start) / dur, 1);
-      p = 1 - Math.pow(1 - p, 3);
-      if(m){
-        var totalMin = (parseInt(m[1]) * 60 + parseInt(m[2])) * p;
-        el.textContent = Math.floor(totalMin / 60) + 'h ' + Math.floor(totalMin % 60) + 'm';
-      } else {
-        el.textContent = Math.round(parseInt(target) * p);
-      }
-      if(p < 1) requestAnimationFrame(frame);
-      else el.textContent = target;
+  /* ================= the speed gap: one evening, two inboxes, looped while on screen ================= */
+  var gap = document.getElementById('gap');
+  if(gap){
+    var G = {
+      red:   {t: document.getElementById('gap-red'),   bar: gap.querySelector('.lane-red .lane-bar i'),   dot: gap.querySelector('.lane-red .lane-bar em'),   log: gap.querySelectorAll('.lane-red .lane-log div')},
+      green: {t: document.getElementById('gap-green'), bar: gap.querySelector('.lane-green .lane-bar i'), dot: gap.querySelector('.lane-green .lane-bar em'), log: gap.querySelectorAll('.lane-green .lane-log div')},
+      ringOk: gap.querySelector('.r-ok'), ringRed: gap.querySelector('.r-red')
+    };
+    var RED_MIN = 744, GREEN_MIN = 2, DARK = 15/24;            /* 12h 24m (21:14 -> 09:38, same evening as the chat above) · 2 min · hours the inbox is dark; all illustrative */
+    var C_OK = 879.6, C_RED = 741.4;
+    function fmt(min){
+      min = Math.round(min);
+      if(min < 60) return min + '<small>min</small>';
+      return Math.floor(min/60) + '<small>h</small> ' + (min%60) + '<small>m</small>';
     }
-    requestAnimationFrame(frame);
+    function paint(p, pg, pr){ /* p: red timeline 0..1 · pg: green 0..1 · pr: ring 0..1 */
+      var e = 1 - Math.pow(1 - p, 2.2);
+      G.red.t.innerHTML = fmt(RED_MIN * e);
+      G.red.bar.style.width = (e * 100) + '%';
+      G.red.dot.style.left = (e * 100) + '%'; G.red.dot.style.opacity = p > 0 && p < 1 ? 1 : 0;
+      G.red.log[0].classList.toggle('on', p > 0.02);
+      G.red.log[1].classList.toggle('on', e > 6/RED_MIN);     /* 21:20: the patient is gone six minutes in; the clock keeps running */
+      G.red.log[2].classList.toggle('on', p >= 1);
+      var g = Math.min(1, pg);
+      G.green.t.innerHTML = fmt(GREEN_MIN * g);
+      G.green.bar.style.width = 'max(' + (g * GREEN_MIN / RED_MIN * 100) + '%, ' + (g * 10) + 'px)';
+      G.green.dot.style.left = G.green.bar.style.width; G.green.dot.style.opacity = g >= 1 ? 1 : 0;
+      G.green.log[0].classList.toggle('on', pg > 0.02);
+      G.green.log[1].classList.toggle('on', pg >= 1);
+      G.green.log[2].classList.toggle('on', pg >= 2.2);
+      G.ringOk.style.strokeDashoffset = C_OK * (1 - Math.min(1, pr));
+      G.ringRed.style.strokeDashoffset = C_RED * (1 - DARK * e);
+    }
+    if(reduced){
+      paint(1, 3, 1);
+    } else {
+      var gvis = false, gStart = null, RUN = 6800, HOLD = 3200, RESET = 700, T = RUN + HOLD + RESET;
+      new IntersectionObserver(function(es){ gvis = es[0].isIntersecting; if(gvis){ gStart = null; requestAnimationFrame(gframe); } }, {threshold: 0.25}).observe(gap);
+      function gframe(now){
+        if(!gvis) return;
+        if(gStart === null) gStart = now;
+        var t = (now - gStart) % T;
+        if(t < RUN){ paint(t / RUN, t / 900, t / 1600); }
+        else if(t < RUN + HOLD){ paint(1, 3, 1); }
+        else { paint(0, 0, 0); }
+        requestAnimationFrame(gframe);
+      }
+    }
   }
-  var counters = new IntersectionObserver(function(entries){
-    entries.forEach(function(e){
-      if(e.isIntersecting){ animateCount(e.target); counters.unobserve(e.target); }
-    });
-  }, {threshold: 0.5});
-  document.querySelectorAll('[data-count]').forEach(function(el){ counters.observe(el); });
 
   /* ================= chat choreography: patient msg -> long gap -> late reply ================= */
   var chat = document.querySelector('.chat-frame');
