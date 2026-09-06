@@ -333,7 +333,7 @@
               <div class="sbtn plus" id="locPlus">+</div>
             </div>
             <div class="loclbl" id="locLbl">LOCATION</div>
-            <div class="locmoney">Intelligence runs at <b>AED 2,500 / month per location</b></div>
+            <div class="locmoney" id="locMoney">Intelligence runs at <b>AED 2,500 / month per location</b></div>
           </div>
         </div>
         <div class="wiznav"><span></span><span class="wbtn next" data-go="1">Next Step</span></div>
@@ -397,8 +397,8 @@
           </div>
           <div class="swapnote" id="swapNote" style="display:none"><span class="x">✗</span><span>Intelligence fee <b>cancelled automatically</b> — Layer 1 is included in the engine. Never stacked.</span></div>
           <div class="termrow" id="termRow">
-            <span class="term on" data-term="m">MONTHLY · AED 20,000 + 5,000 INSTALL · 3-MONTH MINIMUM</span>
-            <span class="term" data-term="a">ANNUAL · AED 18,000/MO · INSTALL WAIVED</span>
+            <span class="term on" data-term="m" id="termM">MONTHLY · AED 20,000 + 5,000 INSTALL · 3-MONTH MINIMUM</span>
+            <span class="term" data-term="a" id="termA">ANNUAL · AED 18,000/MO · INSTALL WAIVED</span>
           </div>
           <div class="addbtn" id="fixBtn">ADD THE ENGINE</div>
         </div>
@@ -526,19 +526,41 @@
 (function(){
   /* Numbers mirror CLAUDE_BUSINESS.md (locked 2026-09-02). Founding Intelligence rate shown as the price;
      list 2,500 shown beside it. Engine: monthly 20,000 + 5,000 install, or annual 18,000 with install waived.
-     Presence kits: 2 / 4 / 8 reels = 3,000 / 4,500 / 7,500. Demand: 15% of spend, min 2,500 (not in the total). */
-  var P = { diagFounding: 1800, diagList: 2500, fixMonthly: 20000, fixAnnual: 18000, install: 5000, presence: [0, 3000, 4500, 7500] };
+     Presence kits: 2 / 4 / 8 reels = 3,000 / 4,500 / 7,500. Demand: 15% of spend, min 2,500 (not in the total).
+
+     MULTI-LOCATION (2026-09-06). The two layers scale differently ON PURPOSE, and the reason is the
+     delivery cost, not the price list:
+       - Intelligence is PER LOCATION at full rate. Each branch is its own unannounced shop, its own
+         Google read, its own Instagram read. The work genuinely multiplies, so the price does.
+       - The Engine does NOT multiply. CLAUDE_BUSINESS locks the L2 install as per-clinic DATA isolation
+         on a SHARED control plane (~$45-70 marginal per clinic-month), so a second branch costs a
+         fraction of the first. Charging 20,000 again is a number we could not defend when the owner
+         asks why - so it is base + fixExtraLoc per additional branch.
+       - Presence kits are FLAT: content is produced for the brand, not per branch.
+       - Demand is FLAT at 15%: it already scales with the ad spend itself. */
+  var P = { diagFounding: 1800, diagList: 2500, fixMonthly: 20000, fixAnnual: 18000, install: 5000,
+            fixExtraLoc: 5000, installExtraLoc: 2500, presence: [0, 3000, 4500, 7500] };
   var state = { loc: 1, fix: false, annual: false, demand: false, presence: false, kit: 1, step: 0, revealed: false };
   var fmt = function(n){ return Math.round(n).toLocaleString('en-US'); };
   var el = function(id){ return document.getElementById(id); };
 
   function prices(){
+    var extra    = state.loc - 1;                                  /* branches beyond the first */
+    var diagUnit = state.revealed ? P.diagFounding : P.diagList;   /* per LOCATION */
+    var fixBase  = state.annual ? P.fixAnnual : P.fixMonthly;      /* first location */
     return {
-      diag: state.revealed ? P.diagFounding : P.diagList,
+      /* unit prices - what one location costs, shown on the tier cards */
+      diagUnit: diagUnit,
       diagList: P.diagList,
-      fixM: (state.annual ? P.fixAnnual : P.fixMonthly),
-      fixSetup: (state.annual ? 0 : P.install),
-      pres: P.presence[state.kit]
+      fixBase:  fixBase,
+      /* billed amounts - what state.loc locations cost, shown in the total */
+      diag:          diagUnit * state.loc,
+      diagListTotal: P.diagList * state.loc,
+      fixExtra:      P.fixExtraLoc * extra,
+      fixM:          fixBase + P.fixExtraLoc * extra,
+      fixSetup:      state.annual ? 0 : (P.install + P.installExtraLoc * extra),
+      pres:          P.presence[state.kit],
+      extra:         extra
     };
   }
 
@@ -559,12 +581,19 @@
   function render(){
     var p = prices();
 
+    var locWord = state.loc === 1 ? 'location' : 'locations';
+
     el('locNum').textContent = state.loc;
     el('locLbl').textContent = state.loc === 1 ? 'LOCATION' : 'LOCATIONS';
+    el('locMoney').innerHTML = 'Intelligence runs at <b>AED ' + fmt(p.diagUnit) + ' / month per location</b>'
+      + (p.extra ? ' &mdash; ' + state.loc + ' locations = <b>AED ' + fmt(p.diag) + ' / month</b>' : '');
     el('diagPill').textContent = state.revealed ? 'FOUNDING · 5 PLACES · FIRST 3 MONTHS, THEN AED ' + fmt(p.diagList) + ' · PER LOCATION · WRITTEN INTO YOUR AGREEMENT' : 'LIST PRICE · PER LOCATION';
     el('fixPill').textContent = state.annual
       ? 'AED ' + fmt(p.fixM) + '/MO · ANNUAL · INSTALL WAIVED'
       : 'AED ' + fmt(p.fixM) + '/MO + AED ' + fmt(p.fixSetup) + ' ONE-TIME INSTALL';
+    /* The term toggles quote the engine for the CHOSEN number of branches, not a stale single-site rate. */
+    el('termM').textContent = 'MONTHLY · AED ' + fmt(P.fixMonthly + p.fixExtra) + ' + ' + fmt(P.install + P.installExtraLoc * p.extra) + ' INSTALL · 3-MONTH MINIMUM';
+    el('termA').textContent = 'ANNUAL · AED ' + fmt(P.fixAnnual + p.fixExtra) + '/MO · INSTALL WAIVED';
     document.querySelectorAll('.term').forEach(function(t){ t.classList.toggle('on', (t.getAttribute('data-term') === 'a') === state.annual); });
     document.querySelectorAll('.kit').forEach(function(k){ k.classList.toggle('on', parseInt(k.getAttribute('data-kit')) === state.kit); });
 
@@ -591,7 +620,9 @@
     var sfx = [];
     if(!state.fix && state.revealed) sfx.push('founding rate · first 3 months, then AED ' + fmt(p.diagList));
     if(state.demand) sfx.push('+ 15% of ad spend (min AED 2,500)');
-    if(state.loc > 1) sfx.push(state.loc + ' branches · multi-branch pricing confirmed on your call');
+    if(p.extra) sfx.push(state.fix
+      ? state.loc + ' branches · AED ' + fmt(p.fixBase) + ' base + AED ' + fmt(P.fixExtraLoc) + ' per additional branch'
+      : state.loc + ' branches · AED ' + fmt(p.diagUnit) + ' × ' + state.loc + ' locations');
     el('mtm').textContent = state.fix ? (state.annual ? '12-month plan' : '3-month minimum, then monthly') : 'month-to-month';
     el('assure1').textContent = (state.fix || state.presence) ? '3-month minimum on the engine and presence, then monthly' : 'No setup fee on the diagnostic · cancel monthly';
     el('suffix').textContent = sfx.join('\n');
@@ -601,9 +632,15 @@
     var lines = [];
     if(state.fix){
       lines.push({l:'Vaydin Intelligence', s:'included in the engine', v:'INCLUDED', inc:true});
-      lines.push({l:'Revenue Engine + Estate', s: 'per location' + (state.annual ? ' · annual' : ' · monthly'), v:'AED ' + fmt(p.fixM) + '/mo'});
+      lines.push({l:'Revenue Engine + Estate',
+        s: (p.extra ? 'AED ' + fmt(p.fixBase) + ' + AED ' + fmt(P.fixExtraLoc) + ' × ' + p.extra + ' extra ' + (p.extra === 1 ? 'branch' : 'branches') : 'one location')
+           + (state.annual ? ' · annual' : ' · monthly'),
+        v:'AED ' + fmt(p.fixM) + '/mo'});
     } else {
-      lines.push({l:'Vaydin Intelligence', s: 'per location' + (state.revealed ? ' · founding rate' : ' · list price'), v:'AED ' + fmt(p.diag) + '/mo'});
+      lines.push({l:'Vaydin Intelligence',
+        s: (p.extra ? 'AED ' + fmt(p.diagUnit) + ' × ' + state.loc + ' locations' : 'one location')
+           + (state.revealed ? ' · founding rate' : ' · list price'),
+        v:'AED ' + fmt(p.diag) + '/mo'});
     }
     if(state.demand) lines.push({l:'Performance Marketing', s:'IG · FB · Google · min 2,500', v:'15% of spend'});
     if(state.presence) lines.push({l:'Instagram Presence', s: kitName, v:'AED ' + fmt(p.pres) + '/mo'});
@@ -631,11 +668,17 @@
   function waLink(){
     var p = prices();
     var parts = ['Hello Vaydin, I built my plan:'];
-    parts.push('• Vaydin Intelligence' + (state.fix ? ' (included)' : (state.revealed ? ' - AED ' + fmt(p.diag) + '/mo founding, then ' + fmt(p.diagList) : ' - AED ' + fmt(p.diag) + '/mo')));
-    if(state.fix) parts.push('• Revenue Engine + Estate — AED ' + fmt(p.fixM) + '/mo' + (state.annual ? ' (annual, install waived)' : ' + AED ' + fmt(p.fixSetup) + ' install'));
+    /* No em dashes in client-facing message text (CLAUDE.md, Code Style & Rules). */
+    parts.push('• Locations: ' + state.loc);
+    parts.push('• Vaydin Intelligence' + (state.fix ? ' (included)' : (state.revealed
+      ? ' - AED ' + fmt(p.diag) + '/mo founding, then ' + fmt(p.diagListTotal)
+      : ' - AED ' + fmt(p.diag) + '/mo'))
+      + (p.extra && !state.fix ? ' (AED ' + fmt(p.diagUnit) + ' x ' + state.loc + ' locations)' : ''));
+    if(state.fix) parts.push('• Revenue Engine + Estate - AED ' + fmt(p.fixM) + '/mo'
+      + (p.extra ? ' (AED ' + fmt(p.fixBase) + ' base + AED ' + fmt(P.fixExtraLoc) + ' x ' + p.extra + ' extra)' : '')
+      + (state.annual ? ' (annual, install waived)' : ' + AED ' + fmt(p.fixSetup) + ' install'));
     if(state.demand) parts.push('• Performance Marketing (15% of ad spend, min AED 2,500)');
-    if(state.presence) parts.push('• Instagram Presence — ' + ['', '2', '4', '8'][state.kit] + ' reels kit, AED ' + fmt(p.pres) + '/mo');
-    if(state.loc > 1) parts.push('• Locations: ' + state.loc + ' (multi-branch pricing to confirm on the call)');
+    if(state.presence) parts.push('• Instagram Presence - ' + ['', '2', '4', '8'][state.kit] + ' reels kit, AED ' + fmt(p.pres) + '/mo');
     parts.push('Monthly: AED ' + fmt((state.fix ? p.fixM : p.diag) + (state.presence ? p.pres : 0)) + (state.demand ? ' + ad spend fee' : ''));
     return 'https://wa.me/971505553148?text=' + encodeURIComponent(parts.join('\n'));
   }
